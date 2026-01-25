@@ -1,0 +1,581 @@
+/* ---------------------------
+  Variables & Config
+--------------------------- */
+$transition-default: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+$booster-width: 360px;
+$booster-height: 500px;
+$card-width: 360px;
+$card-overlap-default: -100px;
+
+/* ---------------------------
+  Mixins
+--------------------------- */
+@mixin absolute-full {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* ---------------------------
+  Scene Layout
+--------------------------- */
+.booster-scene {
+	position: relative;
+	width: 100%;
+	height: 600px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	perspective: 1000px;
+}
+
+.booster-deck {
+	perspective: 1000px;
+	width: 100%;
+}
+
+/* ---------------------------
+  Booster Logic
+--------------------------- */
+#booster {
+	position: absolute;
+	z-index: 10;
+	width: $booster-width;
+	height: $booster-height;
+	transition: transform 0.3s;
+	cursor: pointer;
+
+	&:hover {
+		transform: scale(1.1);
+	}
+
+	&.opening {
+		animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+	}
+}
+
+.booster-choice {
+	/* Dynamic margin calculation for deck fan effect */
+	--card-width: #{$card-width};
+	--max-width: 90vw;
+	--calculated-margin: calc((var(--max-width) - var(--card-width)) / var(--deck-divisor) - var(--card-width));
+	--base-margin: min(#{$card-overlap-default}, var(--calculated-margin));
+
+	margin-left: var(--base-margin);
+	transition: transform $transition-default, margin-left 0.3s ease, margin-right 0.3s ease;
+	position: relative;
+
+	&:first-child {
+		margin-left: 0 !important;
+	}
+
+	/* Hover Interaction */
+	&:hover {
+		transform: translateY(-50px) scale(1.1);
+		z-index: 9999 !important;
+	}
+}
+
+.booster-part {
+	@include absolute-full;
+	pointer-events: none;
+	transition: transform 0.6s ease-out, opacity 0.4s ease-in 0.2s;
+
+	&.booster-top {
+		clip-path: polygon(0% 0%, 100% 0%, 100% 12%, 85% 15%, 70% 12%, 55% 15%, 40% 12%, 25% 15%, 10% 12%, 0% 15%);
+		z-index: 2;
+	}
+
+	&.booster-bottom {
+		clip-path: polygon(0% 15%, 10% 12%, 25% 15%, 40% 12%, 55% 15%, 70% 12%, 85% 15%, 100% 12%, 100% 100%, 0% 100%);
+		z-index: 1;
+	}
+}
+
+/* Exploded State modifiers */
+.exploded {
+	.booster-top {
+		transform: translateY(-100px) rotate(-80deg) scale(1.1);
+		opacity: 0;
+	}
+	.booster-bottom {
+		transform: translateY(100px) rotate(10deg) scale(0.95);
+		opacity: 0;
+	}
+}
+
+/* ---------------------------
+  Card Logic
+--------------------------- */
+.card-group {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+	opacity: 0;
+	transform: scale(0.8);
+	transition: opacity 0.5s;
+
+	&.revealed {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.card-container {
+	position: relative;
+	display: inline-block;
+	transition: transform 0.3s;
+	margin: 0 var(--card-overlap, -80px) !important;
+	transform-origin: bottom center;
+	transform: rotate(var(--rotation)) translateY(var(--translate-y));
+	opacity: 0;
+
+	&:hover {
+		transform: scale(1.2) rotate(var(--rotation)) translateY(calc(var(--translate-y) + 50px)) translateZ(10px);
+		z-index: 100;
+	}
+}
+
+.revealed .card-container {
+	opacity: 1;
+	animation: deck-reveal 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+	animation-delay: calc(var(--i) * 0.1s + 0.5s);
+}
+
+/* ---------------------------
+  Special Effects (Rarity)
+--------------------------- */
+@keyframes holo-shimmer {
+	0% {
+		background-position: 0% 0%;
+	}
+	100% {
+		background-position: 100% 100%;
+	}
+}
+
+/* Base effect logic */
+%rarity-effect {
+	position: absolute;
+	inset: 0;
+	-webkit-mask-image: var(--booster-mask);
+	mask-image: var(--booster-mask);
+	-webkit-mask-size: var(--mask-size, 100% 100%);
+	mask-size: var(--mask-size, 100% 100%);
+	-webkit-mask-repeat: var(--mask-repeat, no-repeat);
+	mask-repeat: var(--mask-repeat, no-repeat);
+	-webkit-mask-position: var(--mask-position, center);
+	mask-position: var(--mask-position, center);
+	pointer-events: none;
+	z-index: 2;
+}
+
+/* Foil */
+.foil {
+	filter: brightness(1.1) saturate(120%);
+
+	&::before {
+		@extend %rarity-effect;
+		content: "";
+		background: linear-gradient(60deg, rgba(255, 0, 0, 0.8), rgba(255, 127, 0, 0.8), rgba(255, 255, 0, 0.8), rgba(0, 255, 0, 0.8), rgba(0, 0, 255, 0.8), rgba(75, 0, 130, 0.8), rgba(148, 0, 211, 0.8));
+		mix-blend-mode: soft-light;
+		opacity: 0.4;
+		z-index: 3;
+	}
+
+	&::after {
+		@extend %rarity-effect;
+		content: " ";
+		background: linear-gradient(135deg, transparent 40%, rgba(0, 255, 255, 0.6) 45%, rgba(255, 0, 255, 0.6) 50%, rgba(255, 255, 0, 0.6) 55%, transparent 60%);
+		mix-blend-mode: overlay;
+		opacity: 0.6;
+		background-repeat: no-repeat;
+		background-size: 300% 300%;
+		animation: holo-shimmer 4s ease-in-out infinite;
+		animation-delay: var(--anim-delay, 0s);
+	}
+}
+
+/* Silver */
+.silver {
+	filter: grayscale(100%)sepia(70%)hue-rotate(180deg)contrast(100%);
+
+	&::after {
+		@extend %rarity-effect;
+		content: " ";
+		background: linear-gradient(135deg, transparent 35%, rgba(192, 192, 192, 0.6) 40%, rgba(220, 220, 220, 0.8) 45%, rgba(200, 242, 250, 0.9) 50%, rgba(0, 204, 255, 0.8) 55%, rgba(0, 195, 255, 0.6) 60%, transparent 65%);
+		mix-blend-mode: overlay;
+		opacity: 0.8;
+		background-repeat: no-repeat;
+		background-size: 300% 300%;
+		animation: holo-shimmer 5s ease-in-out infinite;
+		animation-delay: var(--anim-delay, 0s);
+	}
+}
+
+/* Golden */
+.golden {
+	filter: sepia(100%)contrast(110%)saturate(150%);
+
+	&::after {
+		@extend %rarity-effect;
+		content: " ";
+		background: linear-gradient(135deg, transparent 35%, rgba(192, 192, 192, 0.6) 40%, rgba(220, 220, 220, 0.8) 45%, rgba(250, 247, 200, 0.9) 50%, rgba(255, 223, 0, 0.8) 55%, rgba(255, 215, 0, 0.6) 60%, transparent 65%);
+		mix-blend-mode: overlay;
+		opacity: 0.8;
+		background-repeat: no-repeat;
+		background-size: 300% 300%;
+		animation: holo-shimmer 5s ease-in-out infinite;
+		animation-delay: var(--anim-delay, 0s);
+	}
+}
+
+/* ---------------------------
+  Shared Utilities & Animations
+--------------------------- */
+.transition-swing {
+	transition: $transition-default;
+}
+
+@keyframes shake {
+	10%,
+	90% {
+		transform: translate3d(-1px, 0, 0) scale(1.1);
+	}
+	20%,
+	80% {
+		transform: translate3d(2px, 0, 0) scale(1.1);
+	}
+	30%,
+	50%,
+	70% {
+		transform: translate3d(-3px, 0, 0) rotate(2deg) scale(1.1);
+	}
+	40%,
+	60% {
+		transform: translate3d(3px, 0, 0) rotate(-2deg) scale(1.1);
+	}
+}
+
+@keyframes deck-reveal {
+	0% {
+		opacity: 0;
+		transform: translateY(50px) scale(0.5);
+	}
+	100% {
+		opacity: 1;
+		transform: rotate(var(--rotation)) translateY(var(--translate-y));
+	}
+}
+
+/* ---------------------------
+  Collection Styles
+--------------------------- */
+.book-container {
+	perspective: 1200px;
+	position: relative;
+	width: fit-content;
+
+	&:hover {
+		z-index: 100;
+
+		.front-cover {
+			transform: rotateY(-50deg) skewY(2deg);
+			box-shadow: 5px 15px 25px rgba(0, 0, 0, 0.4);
+		}
+
+		.back-cover {
+			transform: rotateY(0deg) scale(0.98) translateZ(-5px);
+		}
+	}
+}
+
+.book-image {
+	height: 500px;
+	width: auto;
+	border-radius: 4px;
+	transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+.front-cover {
+	position: relative;
+	z-index: 10;
+	transform-origin: left center;
+}
+
+.back-cover {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 5;
+	filter: brightness(0.7) sepia(0.2);
+}
+
+.collection-card {
+	position: relative;
+	width: 250px;
+	border-radius: 10px;
+	transition: transform 0.2s;
+	cursor: pointer;
+	overflow: hidden;
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		border-radius: 10px;
+	}
+
+	.card-name {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		background: rgba(0, 0, 0, 0.8);
+		color: white;
+		text-align: center;
+		padding: 10px;
+		opacity: 0;
+		transition: opacity 0.2s;
+		font-weight: bold;
+		font-size: 1.2rem;
+		pointer-events: none;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+		z-index: 20;
+	}
+
+	&:hover {
+		transform: scale(1.1);
+		z-index: 100;
+
+		.card-name {
+			opacity: 1;
+		}
+	}
+
+	&.locked {
+		cursor: default;
+
+		&:hover {
+			transform: none;
+			z-index: auto;
+		}
+	}
+
+	.card-quantity {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		background: rgba(0, 0, 0, 0.8);
+		color: white;
+		text-align: center;
+		padding: 10px;
+		opacity: 0;
+		transition: opacity 0.2s;
+		font-weight: bold;
+		font-size: 1.5rem;
+		pointer-events: none;
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+		z-index: 20;
+	}
+
+	&:hover {
+		transform: scale(1.1);
+		z-index: 100;
+
+		.card-quantity {
+			opacity: 1;
+		}
+	}
+
+	&.locked {
+		cursor: default;
+
+		&:hover {
+			transform: none;
+			z-index: auto;
+		}
+	}
+}
+
+.achievement-card {
+	transition: transform 0.2s, box-shadow 0.2s;
+	cursor: help;
+	--booster-mask: linear-gradient(#fff, #fff);
+	position: relative;
+	overflow: hidden;
+}
+
+.achievement-content {
+	position: relative;
+	z-index: 10;
+}
+
+.achievement-card:hover {
+	transform: translateY(-5px);
+}
+
+.achievement-card.locked {
+	opacity: 0.6;
+	background-color: #f5f5f5; /* Light grey background for locked */
+	border: 1px dashed #ccc;
+}
+
+.achievement-token {
+	position: relative;
+	width: 180px;
+	height: 180px;
+	margin: 0 auto;
+}
+/* Ensure the mask fits exactly the image content within the token */
+.achievement-token.foil::before,
+.achievement-token.foil::after,
+.achievement-token.silver::before,
+.achievement-token.silver::after,
+.achievement-token.golden::before,
+.achievement-token.golden::after {
+	-webkit-mask-size: contain;
+	mask-size: contain;
+	-webkit-mask-position: center;
+	mask-position: center;
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+}
+
+.grayscale-img {
+	filter: grayscale(100%) contrast(150%) brightness(50%);
+	opacity: 0.8;
+}
+
+/* ---------------------------
+  Explosion & Particles
+--------------------------- */
+.explosion-container {
+	@include absolute-full;
+	z-index: 5;
+	pointer-events: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.explosion-flash {
+	position: absolute;
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 0, 76, 0.6) 30%, rgba(255, 0, 0, 0.4) 60%, rgba(255, 255, 255, 0) 70%);
+	animation: flash-burst 0.8s ease-out forwards;
+	z-index: 21;
+}
+
+.particle {
+	position: absolute;
+	width: var(--size);
+	height: var(--size);
+	background-color: var(--color);
+	border-radius: 50%;
+	box-shadow: 0 0 8px var(--color);
+	animation: particle-explode var(--duration) ease-out forwards;
+	animation-delay: var(--delay);
+	opacity: 0;
+}
+
+@keyframes flash-burst {
+	0% {
+		opacity: 0;
+		transform: scale(0.1);
+	}
+	15% {
+		opacity: 1;
+		transform: scale(3);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(8);
+	}
+}
+
+@keyframes particle-explode {
+	0% {
+		transform: rotate(var(--angle)) translateX(0) scale(1);
+		opacity: 1;
+	}
+	100% {
+		transform: rotate(var(--angle)) translateX(var(--distance)) scale(0);
+		opacity: 0;
+	}
+}
+
+
+
+.notif-card{
+  height: 500px;
+  margin-right:var(--overlap); 
+  transform: scale(1);
+  z-index: 10;
+  transition: all 0.2s ease-in-out;
+	cursor: pointer;
+
+	&:hover {
+		transform: scale(1.1);
+    z-index: 100;
+    
+    &::before, &::after {
+      -webkit-mask-size: var(--mask-size, 100% 100%) !important;
+      mask-size: var(--mask-size, 100% 100%) !important;
+      -webkit-mask-repeat: var(--mask-repeat, no-repeat) !important;
+      mask-repeat: var(--mask-repeat, no-repeat) !important;
+      -webkit-mask-position: var(--mask-position, center) !important;
+      mask-position: var(--mask-position, center) !important;
+    }
+	}
+}
+
+.notif-booster{
+  height: 500px;
+  margin-right:var(--overlap); 
+  transform: scale(1);
+  z-index: 10;
+  transition: all 0.2s ease-in-out;
+	cursor: pointer;
+
+	&:hover {
+		transform: scale(1.1);
+    z-index: 100;
+	}
+}
+
+@keyframes reveal-explosion {
+  0% {
+    transform: scale(0) translateY(50px) rotate(45deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1) translateY(-20px) rotate(-10deg);
+  }
+  100% {
+    transform: scale(1) translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.reveal-item {
+  animation: reveal-explosion 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+}
+
+.reveal-item:hover {
+  transform: scale(1.15) !important;
+  z-index: 100;
+}

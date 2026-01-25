@@ -1,0 +1,44 @@
+{
+  "name": "21-tcg",
+  "version": "1.0.0",
+  "private": true,
+  "author": "T&T",
+  "scripts": {
+    "serve": "node scripts/generate-file-list.js && vue-cli-service serve",
+    "build": "node scripts/generate-file-list.js && vue-cli-service build",
+    "deploy": "node scripts/generate-file-list.js && vue-cli-service build && firebase deploy --only hosting",
+    "deploy-functions": "vue-cli-service build && firebase deploy --only functions",
+    "parse-old-data": "node scripts/parse-old-data.js"
+  },
+  "dependencies": {
+    "@mdi/font": "7.4.47",
+    "core-js": "^3.6.5",
+    "crypto-js": "^4.2.0",
+    "firebase": "^9.18.0",
+    "firebase-admin": "^13.6.0",
+    "form-data": "^4.0.0",
+    "jspdf": "^2.5.1",
+    "pinia": "^2.1.6",
+    "roboto-fontface": "*",
+    "sal.js": "^0.8.5",
+    "sql.js": "^1.13.0",
+    "swal": "^0.1.0",
+    "sweetalert2": "^11.7.3",
+    "uuid": "^11.1.0",
+    "vue": "^3.2.47",
+    "vue-router": "^4.0.0-0",
+    "vuetify": "^3.7.4",
+    "webfontloader": "^1.0.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "5.0.8",
+    "@vue/cli-plugin-router": "5.0.8",
+    "@vue/cli-service": "5.0.8",
+    "@vue/compiler-sfc": "^3.0.0",
+    "sass": "~1.32",
+    "sass-loader": "^10.0.0",
+    "vue-cli-plugin-pinia": "~0.2.4",
+    "vue-cli-plugin-vuetify": "^2.5.8",
+    "webpack-plugin-vuetify": "^3.1.0"
+  }
+}

@@ -1,0 +1,322 @@
+[
+  {
+    "id": "collectionneur_debutant",
+    "title": "Collectionneur Débutant",
+    "description": "Ouvrir votre premier booster de cartes.",
+    "points": 10,
+    "rarity": "common",
+    "image": "boosters.png"
+  },
+  {
+    "id": "collectionneur_averti",
+    "title": "Collectionneur Averti",
+    "description": "Ouvrir 10 boosters de cartes.",
+    "points": 100,
+    "rarity": "silver",
+    "image": "boosters.png"
+  },
+  {
+    "id": "collectionneur_expert",
+    "title": "Collectionneur Expert",
+    "description": "Ouvrir 50 boosters de cartes.",
+    "points": 500,
+    "rarity": "golden",
+    "image": "boosters.png"
+  },
+  {
+    "id": "collectionneur_legendaire",
+    "title": "Collectionneur Légendaire",
+    "description": "Ouvrir 100 boosters de cartes.",
+    "points": 1000,
+    "rarity": "foil",
+    "image": "boosters.png"
+  },
+  {
+    "id": "je_veux_une_carte_classique",
+    "title": "Je veux une carte classique",
+    "description": "Posséder votre première carte classique.",
+    "points": 10,
+    "rarity": "common",
+    "image": "cards1.png"
+  },
+  {
+    "id": "je_veux_une_carte_argent",
+    "title": "Je veux une carte argent",
+    "description": "Posséder votre première carte argent.",
+    "points": 25,
+    "rarity": "silver",
+    "image": "cards1.png"
+  },
+  {
+    "id": "je_veux_une_carte_doree",
+    "title": "Je veux une carte dorée",
+    "description": "Posséder votre première carte dorée.",
+    "points": 50,
+    "rarity": "golden",
+    "image": "cards1.png"
+  },
+  {
+    "id": "je_veux_une_carte_foil",
+    "title": "Je veux une carte Foil",
+    "description": "Posséder votre première carte Foil.",
+    "points": 100,
+    "rarity": "foil",
+    "image": "cards1.png"
+  },
+  {
+    "id": "encore_une_carte_classique",
+    "title": "Encore une carte classique",
+    "description": "Posséder 10 cartes classique.",
+    "points": 100,
+    "rarity": "common",
+    "image": "cards10.png"
+  },
+  {
+    "id": "encore_une_carte_argent",
+    "title": "Encore une carte argent",
+    "description": "Posséder 10 cartes argent.",
+    "points": 250,
+    "rarity": "silver",
+    "image": "cards10.png"
+  },
+  {
+    "id": "encore_une_carte_doree",
+    "title": "Encore une carte dorée",
+    "description": "Posséder 10 cartes dorée.",
+    "points": 500,
+    "rarity": "golden",
+    "image": "cards10.png"
+  },
+  {
+    "id": "encore_une_carte_foil",
+    "title": "Encore une carte Foil",
+    "description": "Posséder 10 cartes Foil.",
+    "points": 1000,
+    "rarity": "foil",
+    "image": "cards10.png"
+  },
+  {
+    "id": "toujours_plus_de_cartes_classiques",
+    "title": "Toujours plus de cartes classiques",
+    "description": "Posséder 50 cartes classiques.",
+    "points": 1000,
+    "rarity": "common",
+    "image": "cards50.png"
+  },
+  {
+    "id": "toujours_plus_de_cartes_argent",
+    "title": "Toujours plus de cartes argent",
+    "description": "Posséder 50 cartes argent.",
+    "points": 2500,
+    "rarity": "silver",
+    "image": "cards50.png"
+  },
+  {
+    "id": "toujours_plus_de_cartes_dorees",
+    "title": "Toujours plus de cartes dorées",
+    "description": "Posséder 50 cartes dorées.",
+    "points": 5000,
+    "rarity": "golden",
+    "image": "cards50.png"
+  },
+  {
+    "id": "toujours_plus_de_cartes_foil",
+    "title": "Toujours plus de cartes Foil",
+    "description": "Posséder 50 cartes Foil.",
+    "points": 10000,
+    "rarity": "foil",
+    "image": "cards50.png"
+  },
+  {
+    "id": "un_petit_cadeau",
+    "title": "Un petit cadeau",
+    "description": "Utilisés votre premier code.",
+    "points": 10,
+    "rarity": "common",
+    "image": "codes.png"
+  },
+  {
+    "id": "cadeau_utile",
+    "title": "Cadeau utile",
+    "description": "Utilisés 3 codes.",
+    "points": 50,
+    "rarity": "silver",
+    "image": "codes.png"
+  },
+  {
+    "id": "cadeau_genereux",
+    "title": "Cadeau généreux",
+    "description": "Utilisés 5 codes.",
+    "points": 100,
+    "rarity": "golden",
+    "image": "codes.png"
+  },
+  {
+    "id": "cadeau_luxueux",
+    "title": "Cadeau luxueux",
+    "description": "Utilisés 10 codes.",
+    "points": 500,
+    "rarity": "foil",
+    "image": "codes.png"
+  },
+  {
+    "id": "croc_mort",
+    "title": "Croque mort",
+    "description": "Sacrifier votre première carte.",
+    "points": 100,
+    "rarity": "common",
+    "image": "graveyard.png"
+  },
+  {
+    "id": "gardien_de_la_crypte",
+    "title": "Gardien de la crypte",
+    "description": "Sacrifier 10 cartes.",
+    "points": 250,
+    "rarity": "silver",
+    "image": "graveyard.png"
+  },
+  {
+    "id": "maitre_necromancien",
+    "title": "Maître nécromancien",
+    "description": "Sacrifier 50 cartes.",
+    "points": 500,
+    "rarity": "golden",
+    "image": "graveyard.png"
+  },
+  {
+    "id": "seigneur_des_morts",
+    "title": "Seigneur des morts",
+    "description": "Sacrifier 100 cartes.",
+    "points": 1000,
+    "rarity": "foil",
+    "image": "graveyard.png"
+  },
+  {
+    "id": "apprenti_forgeron",
+    "title": "Apprenti forgeron",
+    "description": "Faire votre première upgrade.",
+    "points": 100,
+    "rarity": "common",
+    "image": "upgrade.png"
+  },
+  {
+    "id": "maitre_forgeron",
+    "title": "Maître forgeron",
+    "description": "Faire 10 upgrades.",
+    "points": 250,
+    "rarity": "silver",
+    "image": "upgrade.png"
+  },
+  {
+    "id": "grand_armurier",
+    "title": "Grand armurier",
+    "description": "Faire 50 upgrades.",
+    "points": 500,
+    "rarity": "golden",
+    "image": "upgrade.png"
+  },
+  {
+    "id": "dieu_de_la_forge",
+    "title": "Dieu de la forge",
+    "description": "Faire 100 upgrades.",
+    "points": 1000,
+    "rarity": "foil",
+    "image": "upgrade.png"
+  },
+  {
+    "id": "la_poubelle_jaune",
+    "title": "La poubelle jaune",
+    "description": "Faire votre première downgrade.",
+    "points": 100,
+    "rarity": "common",
+    "image": "downgrade.png"
+  },
+  {
+    "id": "station_d_epuration",
+    "title": "Station d'épuration",
+    "description": "Faire 10 downgrades.",
+    "points": 250,
+    "rarity": "silver",
+    "image": "downgrade.png"
+  },
+  {
+    "id": "usine_de_gestion_des_dechets",
+    "title": "Usine de gestion des déchets",
+    "description": "Faire 50 downgrades.",
+    "points": 500,
+    "rarity": "golden",
+    "image": "downgrade.png"
+  },
+  {
+    "id": "dieu_du_recyclage",
+    "title": "Dieu du recyclage",
+    "description": "Faire 100 downgrades.",
+    "points": 1000,
+    "rarity": "foil",
+    "image": "downgrade.png"
+  },
+  {
+    "id": "addiction_aux_classiques",
+    "title": "Addiction aux classiques",
+    "description": "Compléter 1 collection de cartes classiques.",
+    "points": 100,
+    "rarity": "common",
+    "image": "collection.png"
+  },
+  {
+    "id": "addiction_a_l_argent",
+    "title": "Addiction à l'argent",
+    "description": "Compléter 1 collection de cartes argent.",
+    "points": 250,
+    "rarity": "silver",
+    "image": "collection.png"
+  },
+  {
+    "id": "addiction_a_l_or",
+    "title": "Addiction a l'or",
+    "description": "Compléter 1 collection de cartes dorées.",
+    "points": 500,
+    "rarity": "golden",
+    "image": "collection.png"
+  },
+  {
+    "id": "addiction_aux_foil",
+    "title": "Addiction aux Foil",
+    "description": "Compléter 1 collection de cartes Foil.",
+    "points": 1000,
+    "rarity": "foil",
+    "image": "collection.png"
+  },
+  {
+    "id": "ou_est_mon_dealer",
+    "title": "Où est mon dealer ?",
+    "description": "Vous n'auriez pas vu un vendeur de cartes, par hasard ?",
+    "points": 50,
+    "rarity": "foil",
+    "image": "dealer.png"
+  },
+  {
+    "id": "chasseur_de_tresors",
+    "title": "Chasseur de trésors",
+    "description": "Completer une collection entière.",
+    "points": 5000,
+    "rarity": "foil",
+    "image": "chest.png"
+  },
+  {
+    "id": "voyageur_du_temps",
+    "title": "Voyageur du temps",
+    "description": "Utiliser un code de l'ancien temps.",
+    "points": 1000,
+    "rarity": "foil",
+    "image": "oldCode.png"
+  },
+  {
+    "id": "chanceux",
+    "title": "Chanceux",
+    "description": "Obtenir une carte foil dans un booster.",
+    "points": 1000,
+    "rarity": "foil",
+    "image": "lucky.png"
+  }
+]
