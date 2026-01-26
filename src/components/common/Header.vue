@@ -324,7 +324,7 @@ export default {
 
           if (tmp_item.permissions.length <= 0) hasAccess = true
           else if (userPerms && userPerms.some(p => ['dev', 'admin'].includes(p))) hasAccess = true
-          else if (userPerms && tmp_item.permissions.every(p => userPerms.includes(p))) hasAccess = true
+          else if (userPerms && tmp_item.permissions.some(p => userPerms.includes(p))) hasAccess = true
 
           if (hasAccess) {
             currentGroup.push(tmp_item)

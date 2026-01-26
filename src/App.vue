@@ -53,7 +53,7 @@
       COPYRIGHT &copy; {{ new Date().getFullYear() }} T&T, All rights Reserved
     </footer>
 
-    <div class="notif-container" style="position: fixed; top: 10px; right: 10px; z-index: 100000; max-height: calc(100% - 20px); overflow-y: hidden;">
+    <div v-if="ready && $route.meta.showNav && $route.meta.needAccount" class="notif-container" style="position: fixed; top: 10px; right: 10px; z-index: 100000; max-height: calc(100% - 20px); overflow-y: hidden;">
       <v-card v-for="notif in notifs" :key="notif.id" class="elevation-10 rounded-lg mb-2 pa-3 " border="opacity-100 md primary" style="max-width: 600px;" @click="openNotif(notif)">
         <div class="d-flex flex-row align-center justify-space-between">
           <h5 class="mx-3 mb-2">Le {{ new Date(notif.date).toLocaleString().slice(0, 10) }} à {{ new Date(notif.date).toLocaleString().slice(11, 16) }} :</h5>
@@ -91,7 +91,7 @@
       </v-card>
     </div>
 
-    <v-dialog v-model="boosterDialog" max-width="800px" persistent style="z-index: 10000000000;">
+    <v-dialog v-if="ready && $route.meta.showNav && $route.meta.needAccount" v-model="boosterDialog" max-width="800px" persistent style="z-index: 10000000000;">
       <v-card class="pa-3">
         <div class="d-flex flex-row align-center justify-space-between mb-5">
           <div>&nbsp;</div>
@@ -107,7 +107,7 @@
       </v-card>
     </v-dialog>
 
-    <v-dialog v-model="cardDialog" max-width="800px" persistent style="z-index: 10000000000;">
+    <v-dialog v-if="ready && $route.meta.showNav && $route.meta.needAccount" v-model="cardDialog" max-width="800px" persistent style="z-index: 10000000000;">
       <v-card class="pa-3">
         <div class="d-flex flex-row align-center justify-space-between mb-5">
           <div>&nbsp;</div>
@@ -183,6 +183,7 @@ export default {
   },
   watch: {
     $route() {
+      this.checkOldCodes()
       this.checkDailyBonus()
     }
   },
@@ -374,6 +375,8 @@ export default {
       }
     },
     async checkOldCodes() {
+      if( !this.ready || !this.userStore.isLoggedIn || !this.$route.meta.needAccount || !this.$route.meta.showNav ) return;
+
       // 0. Check session storage for recent verification
       const stored = sessionStorage.getItem('oldCodesVerified');
       if (stored) {

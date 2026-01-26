@@ -289,7 +289,8 @@ export default {
       this.cards = generatedCards;
 
       // --- Animation Phase ---
-
+      if (this.status !== 'opening') return;
+      
       // Step 2: Shake animation (0.8s)
       this.timeouts.push(setTimeout(() => {
         this.status = 'exploded';
@@ -303,19 +304,19 @@ export default {
     },
     skipAnimation() {
       if (this.status === 'opening' || this.status === 'exploded') {
-        this.timeouts.forEach(clearTimeout);
+        this.timeouts.forEach(t => clearTimeout(t));
         this.timeouts = [];
         this.status = 'revealed';
       }
     },
     resetBooster(cancel = false) {
-      this.timeouts.forEach(clearTimeout);
+      this.timeouts.forEach(t => clearTimeout(t));
       this.timeouts = [];
       this.status = 'idle';
       this.selectedBooster = null;
     },
     reopenBooster() {
-      this.timeouts.forEach(clearTimeout);
+      this.timeouts.forEach(t => clearTimeout(t));
       this.timeouts = [];
       this.status = 'idle';
       this.cards = [];
