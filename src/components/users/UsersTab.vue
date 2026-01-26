@@ -937,6 +937,8 @@ export default {
 
     },
     async togglePublic(item) {
+      console.log("Toggling public for", item.name)
+      console.log("Current status:", item.stats.public)
       await item.save()
       const status = item.stats.public ? 'public' : 'privé'
       logsManager.log(this.userStore.profile.name, "MODERATION", `A passé le profil de ${item.name} en ${status}`)

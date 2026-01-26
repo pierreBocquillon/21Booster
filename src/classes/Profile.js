@@ -5,6 +5,7 @@ let collectionName = "profiles"
 
 function docToInstance(document) {
 	let data = document.data()
+  
 	return data ? new Profile(document.id, data.name, data.email, data.phone, data.role, data.permissions, data.activated, data.cash, data.collections, data.boosters, data.cards, data.codes, data.achievements, data.stats, data.lastLogin) : null
 }
 
@@ -25,6 +26,22 @@ class Profile {
 		this.achievements = achievements
 		this.stats = stats
 		this.lastLogin = lastLogin
+
+  if (!this.stats) {
+    this.stats = {
+      public: true,
+      open: 0,
+      destroy: 0,
+      upgrades: 0,
+      downgrades: 0,
+    }
+  }else{
+    if(this.stats.public === undefined){this.stats.public = true}
+    if(this.stats.open === undefined){this.stats.open = 0}
+    if(this.stats.destroy === undefined){this.stats.destroy = 0}
+    if(this.stats.upgrades === undefined){this.stats.upgrades = 0}
+    if(this.stats.downgrades === undefined){this.stats.downgrades = 0}
+  } 
 	}
 
 

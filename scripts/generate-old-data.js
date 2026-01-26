@@ -97,11 +97,46 @@ let getCollections = (data) => {
   return collections
 }
 
+let getStats = (data) => {
+  let stats = {}
+  let userOpens = {}
+
+  // Setup empty stats for each user
+  data.users.forEach((user) => {
+    stats[user.UserID] = {
+      open: 0
+    }
+    userOpens[user.UserID] = new Set()
+  })
+
+  // Process data to count opens
+  data.data.forEach((row) => {
+    const userId = row.UserID
+    const openId = row.OpenID
+
+    if (userId && openId) {
+      if (!userOpens[userId]) {
+        userOpens[userId] = new Set()
+      }
+      userOpens[userId].add(openId)
+    }
+  })
+  
+  // Calculate totals
+  for (const [userId, opens] of Object.entries(userOpens)) {
+    if (!stats[userId]) stats[userId] = { open: 0 }
+    stats[userId].open = opens.size
+  }
+
+  return stats
+}
+
 let main = () => {
 	let result = {
 		users: [],
 		cards: [],
-		collections: [],
+		collections: {},
+		stats: {},
 	}
 
 	let data = parseCSV()
@@ -109,6 +144,7 @@ let main = () => {
 	result.users = data.users
 	result.cards = data.cards
 	result.collections = getCollections(data)
+	result.stats = getStats(data)
 
   const filePath = path.join(__dirname, OUTPUT_FILE)
 

@@ -464,6 +464,7 @@ export default {
       const isLegacy = Array.isArray(entry);
       const cardData = isLegacy ? entry : (entry.cards || {});
       const collectionList = isLegacy ? [] : (entry.collections || []);
+      const stats = isLegacy ? {} : (entry.stats || {});
 
       if (!this.userStore.profile.cards) this.userStore.profile.cards = {};
       let totalCardsCount = 0;
@@ -497,10 +498,17 @@ export default {
         });
       }
 
+      // Give Stats
+      if (stats.open && stats.open > 0) {
+        if (!this.userStore.profile.stats) this.userStore.profile.stats = { open: 0, destroy: 0, upgrades: 0, downgrades: 0 };
+        this.userStore.profile.stats.open = (this.userStore.profile.stats.open || 0) + parseInt(stats.open);
+      }
+
       // Generate Rewards Text
       let rewardsParts = [];
       if (totalCardsCount > 0) rewardsParts.push(`${totalCardsCount} Cartes (Classiques)`);
       if (collectionList.length > 0) rewardsParts.push(`${collectionList.length} Collection(s)`);
+      if (stats.open && stats.open > 0) rewardsParts.push(`${stats.open} Booster(s) déjà ouvert(s)`);
       const rewardsString = rewardsParts.join(' + ');
 
       const ownerName = `${entry.firstName} ${entry.lastName}`.trim() || 'Ancien Propriétaire';

@@ -99,11 +99,13 @@ async function run() {
         const result = {};
         const usedCodes = new Set();
         const userCollectionsHoldings = data.collections || {};
+        const userStats = data.stats || {};
 
         console.log("Génération des codes...");
 
         for (const userId in userCollectionsHoldings) {
             const holdings = userCollectionsHoldings[userId];
+            const stats = userStats[userId] || { open: 0 };
             const collectionsSet = new Set();
             const cards = {};
 
@@ -120,7 +122,7 @@ async function run() {
                 }
             }
 
-            if (Object.keys(cards).length > 0) {
+            if (Object.keys(cards).length > 0 || stats.open > 0) {
                 let code;
                 do {
                     code = generateCode();
@@ -135,7 +137,8 @@ async function run() {
                     lastName: userInfo.lastName || '',
                     phone: userInfo.phone || '',
                     collections: Array.from(collectionsSet),
-                    cards: cards
+                    cards: cards,
+                    stats: stats
                 };
             }
         }
