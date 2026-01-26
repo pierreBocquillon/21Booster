@@ -172,6 +172,9 @@ export default {
         .filter(profile => {
           // If stats object doesn't exist, default to public=true (same as UsersTab logic)
           // If stats.public is explicitly false, exclude from leaderboard
+          if (!profile.activated) {
+            return false;
+          }
           if (profile.stats && profile.stats.public === false) {
             return false;
           }

@@ -6,15 +6,22 @@
       <template v-slot:bottom />
 
       <template v-slot:item.check="{ item }">
-        <v-switch v-if="item.stats && userStore.profile.permissions.some(p => ['dev', 'moderator'].includes(p))" v-model="item.stats.public" @change="togglePublic(item)" color="primary" density="compact" hide-details />
+        <v-switch v-if="item.activated && item.stats && userStore.profile.permissions.some(p => ['dev', 'moderator'].includes(p))" v-model="item.stats.public" @change="togglePublic(item)" color="primary" density="compact" hide-details />
+        <span v-else-if="!item.activated && userStore.profile.permissions.some(p => ['dev', 'moderator'].includes(p))"><v-icon color="error">mdi-handcuffs</v-icon></span>
+      </template>
+
+      <template v-slot:item.name="{ item }">
+        <span v-if="item.activated">{{ item.name }}</span>
+        <span v-else class="text-error">{{ item.name }}</span>
       </template>
 
       <template v-slot:item.phone="{ item }">
-        <span>555-{{ item.phone }}</span>
+        <span v-if="item.activated">555-{{ item.phone }}</span>
+        <span v-else class="text-error">555-{{ item.phone }}</span>
       </template>
 
       <template v-slot:item.permissions="{ item }">
-        <span v-if="item.permissions && item.permissions.length > 0">
+        <span v-if="item.activated && item.permissions && item.permissions.length > 0">
           <v-tooltip location="top" content-class="bg-background" text="string" v-for="perm in item.permissions">
             <template v-slot:activator="{ props }">
               <span v-bind="props" class="mx-1 text-h5">{{allPermissions.find(p => p.value === perm)?.icon}}</span>
@@ -22,42 +29,52 @@
             <h4>{{allPermissions.find(p => p.value === perm)?.name}}</h4>
           </v-tooltip>
         </span>
+        <span v-else-if="!item.activated">
+          <v-icon color="error">mdi-handcuffs</v-icon>
+        </span>
         <span v-else>Aucune</span>
       </template>
 
       <template v-slot:item.cash="{ item }">
-        <div class="d-inline-flex align-center font-weight-bold">
+        <div v-if="item.activated" class="d-inline-flex align-center font-weight-bold">
           <v-img src="/card-coin.png" height="20" width="20" class="mr-2" contain></v-img>
           x {{ formatMoney(item.cash) }}
+        </div>
+        <div v-else-if="!item.activated">
+          <v-icon color="error">mdi-handcuffs</v-icon>
         </div>
       </template>
 
       <template v-slot:item.actions="{ item }">
-        <v-btn icon color="accent" variant="text" @click="addToken(item)" v-if="this.userStore.profile.permissions.some(p => ['dev', 'seller'].includes(p))">
+        <v-btn icon color="accent" variant="text" @click="addToken(item)" v-if="item.activated && this.userStore.profile.permissions.some(p => ['dev', 'seller'].includes(p))">
           <v-icon>mdi-cash-multiple</v-icon>
           <v-tooltip activator="parent" location="top">Donner des card coins</v-tooltip>
         </v-btn>
-        <v-btn icon color="indigo" variant="text" @click="openGiveCard(item)" v-if="this.userStore.profile.permissions.some(p => ['dev', 'seller'].includes(p))">
+        <v-btn icon color="indigo" variant="text" @click="openGiveCard(item)" v-if="item.activated && this.userStore.profile.permissions.some(p => ['dev', 'seller'].includes(p))">
           <v-icon>mdi-cards-playing-club</v-icon>
           <v-tooltip activator="parent" location="top">Donner une carte</v-tooltip>
         </v-btn>
-        <v-btn icon color="pink" variant="text" @click="openGiveBoosters(item)" v-if="this.userStore.profile.permissions.some(p => ['dev', 'seller'].includes(p))">
+        <v-btn icon color="pink" variant="text" @click="openGiveBoosters(item)" v-if="item.activated && this.userStore.profile.permissions.some(p => ['dev', 'seller'].includes(p))">
           <v-icon>mdi-cards-playing</v-icon>
           <v-tooltip activator="parent" location="top">Donner des boosters</v-tooltip>
         </v-btn>
-        <v-btn icon color="success" variant="text" @click="openSetCollections(item)" v-if="this.userStore.profile.permissions.some(p => ['dev', 'seller'].includes(p))">
+        <v-btn icon color="success" variant="text" @click="openSetCollections(item)" v-if="item.activated && this.userStore.profile.permissions.some(p => ['dev', 'seller'].includes(p))">
           <v-icon>mdi-book-open-page-variant</v-icon>
           <v-tooltip activator="parent" location="top">Gérer les collections</v-tooltip>
         </v-btn>
-        <v-btn icon color="cyan" variant="text" @click="editItem(item)" v-if="this.userStore.profile.permissions.some(p => ['dev', 'moderator'].includes(p))">
+        <v-btn icon color="cyan" variant="text" @click="editItem(item)" v-if="item.activated && this.userStore.profile.permissions.some(p => ['dev', 'moderator'].includes(p))">
           <v-icon>mdi-pencil</v-icon>
           <v-tooltip activator="parent" location="top">Modifier l'utilisateur</v-tooltip>
         </v-btn>
-        <v-btn icon color="primary" variant="text" @click="banUser(item)" v-if="item.activated && this.userStore.profile.permissions.some(p => ['dev', 'moderator'].includes(p))">
+        <v-btn icon color="primary" variant="text" @click="resetPassword(item)" v-if="this.userStore.profile.permissions.some(p => ['dev', 'moderator'].includes(p))">
+          <v-icon>mdi-lock-reset</v-icon>
+          <v-tooltip activator="parent" location="top">Réinitialiser le mot de passe</v-tooltip>
+        </v-btn>
+        <v-btn icon color="error" variant="text" @click="banUser(item)" v-if="item.activated && this.userStore.profile.permissions.some(p => ['dev', 'moderator'].includes(p))">
           <v-icon>mdi-gavel</v-icon>
           <v-tooltip activator="parent" location="top">Bannir</v-tooltip>
         </v-btn>
-        <v-btn icon color="primary" variant="text" @click="unbanUser(item)" v-if="!item.activated && this.userStore.profile.permissions.some(p => ['dev', 'moderator'].includes(p))">
+        <v-btn icon color="error" variant="text" @click="unbanUser(item)" v-if="!item.activated && this.userStore.profile.permissions.some(p => ['dev', 'moderator'].includes(p))">
           <v-icon>mdi-thumb-up</v-icon>
           <v-tooltip activator="parent" location="top">Débannir</v-tooltip>
         </v-btn>
@@ -241,6 +258,8 @@
 <script>
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
+import { getFunctions, httpsCallable } from 'firebase/functions'
+
 import { useUserStore } from '@/store/user.js'
 
 import permissions from '@/config/permissions.js'
@@ -258,6 +277,7 @@ export default {
   data() {
     return {
       unsub: [],
+      functions: getFunctions(),
       userStore: useUserStore(),
       headers: [
         { title: 'Public', key: 'check', sortable: false, align: 'start' },
@@ -311,7 +331,7 @@ export default {
     }
   },
   mounted() {
-    this.unsub.push(Profile.listenByActivated(true, users => {
+    this.unsub.push(Profile.listenAll(users => {
       this.users = users.map(user => {
         if (!user.stats) user.stats = {}
         if (user.stats.public === undefined) user.stats.public = true
@@ -365,6 +385,53 @@ export default {
   methods: {
     formatMoney(value) {
       return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(value).replace('€', '').replace(",00", "")
+    },
+    async resetPassword(user) {
+      Swal.fire({
+        title: 'Confirmer la réinitialisation',
+        text: `Êtes-vous sûr de vouloir réinitialiser le mot de passe de "${user.name}" ?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Oui',
+        cancelButtonText: 'Annuler',
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const chars =
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+            "abcdefghijklmnopqrstuvwxyz" +
+            "0123456789"
+
+          let password = ""
+          for (let i = 0; i < 24; i++) {
+              const randomIndex = Math.floor(Math.random() * chars.length)
+              password += chars[randomIndex]
+          }
+          let tmp_password = password
+          
+          httpsCallable(this.functions, 'changePassword')({
+            userId: user.id,
+            hash: btoa(tmp_password),
+          })
+          .then(() => {
+            Swal.fire({
+              icon: 'success',
+              title: 'Succès',
+              text: `Mot de passe réinitialisé avec succès. Nouveau mot de passe temporaire : ${tmp_password} (En validant, il sera copié dans votre presse-papier.)`,
+            }).then(() => {
+              logsManager.log(this.userStore.profile.name, 'PASSWORD', `Réinitialisation du mot de passe de ${user.name}.`);
+              navigator.clipboard.writeText(tmp_password)
+            })
+          })
+          .catch(error => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Erreur',
+              text: error.message || 'Une erreur est survenue lors de la réinitialisation du mot de passe.',
+              timer: 3000,
+            })
+          })
+        }
+      })
     },
     closeUserDialog() {
       this.dialog = false

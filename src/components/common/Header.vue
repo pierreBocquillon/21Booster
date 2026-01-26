@@ -40,6 +40,13 @@
             </div>
           </v-list-item>
 
+          <v-list-item @click="openResetPasswordDialog">
+            <div class="d-flex align-center">
+                  <v-img height="42" width="42" src="/nav/changePassword.png"></v-img>
+              <h3 class="w-100 font-weight-regular">Changer mon mot de passe</h3>
+            </div>
+          </v-list-item>
+
           <v-list-item @click="logout">
             <div class="d-flex align-center">
                   <v-img height="42" width="42" src="/nav/quit.png"></v-img>
@@ -49,6 +56,23 @@
         </v-list>
       </v-menu>
     </div>
+
+    <v-dialog v-model="resetPasswordDialog" max-width="500">
+      <v-card>
+        <v-card-text>
+          <h1 class="text-primary text-center">Changer de mot de passe</h1>
+          <v-text-field label="Ancien mot de passe" type="password" v-model="oldPassword"></v-text-field>
+          <v-text-field label="Nouveau mot de passe" type="password" v-model="newPasswordA"></v-text-field>
+          <v-text-field label="Confirmer le nouveau mot de passe" type="password" v-model="newPasswordB"></v-text-field>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="primary" @click="resetPassword">Changer</v-btn>
+          <v-btn text @click="closeResetPasswordDialog">Annuler</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
     <v-dialog v-model="showSellersDialog" max-width="500">
       <v-card class="rounded-xl pa-4">
         <v-card-title class="text-h5 text-primary text-center">
@@ -253,7 +277,8 @@
   </v-app-bar>
 </template>
 <script>
-import { getAuth, signOut } from "firebase/auth"
+import { getAuth, signOut, updatePassword, EmailAuthProvider, reauthenticateWithCredential} from "firebase/auth"
+
 import { useUserStore } from '@/store/user.js'
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
@@ -277,6 +302,10 @@ export default {
       sellers: [],
       settings: new Settings(),
       unsubSellers: null,
+      resetPasswordDialog: false,
+      oldPassword: '',
+      newPasswordA: '',
+      newPasswordB: ''
     }
   },
   created() {
@@ -342,6 +371,73 @@ export default {
     formatMoney(value) {
       return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(value).replace('€', '').replace(",00", "")
     },
+    openResetPasswordDialog() {
+      this.resetPasswordDialog = true;
+      this.oldPassword = '';
+      this.newPasswordA = '';
+      this.newPasswordB = '';
+    },
+    closeResetPasswordDialog() {
+      this.resetPasswordDialog = false;
+    },
+    async resetPassword() {
+      const user = this.auth.currentUser
+
+      if(this.newPasswordA !== this.newPasswordB) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Erreur',
+          text: "Les nouveaux mots de passe ne correspondent pas.",
+          timer: 2000,
+        })
+        return
+      }
+
+      try {
+        const credential = EmailAuthProvider.credential(user.email, this.oldPassword)
+        await reauthenticateWithCredential(user, credential)
+      } catch (error) {
+        if (error.code == 'auth/wrong-password' || error.code == 'auth/invalid-login-credentials') {
+          Swal.fire({
+            icon: 'error',
+            title: 'Erreur',
+            text: "L'ancien mot de passe est incorrect.",
+            timer: 2000,
+          })
+          return
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Erreur',
+            text: error.code || "Une erreur est survenue. Merci de réessayer dans quelques minutes.",
+            timer: 2000,
+          })
+          return
+        }
+      }
+
+      try {
+        logsManager.log(this.userStore.profile.name, 'PASSWORD', `Changement de mot de passe.`);
+        await updatePassword(user, this.newPasswordA)
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Succès',
+          text: "Le mot de passe a été mis à jour avec succès.",
+          timer: 2000,
+        }).then(() => {
+          this.closeResetPasswordDialog()
+        })
+      } catch (error) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Erreur',
+          text: error.message || "Une erreur est survenue lors de la mise à jour du mot de passe.",
+          timer: 2000,
+        })
+      }
+    },
+
     reset() {
       Swal.fire({
         title: 'Êtes-vous sûr de vouloir réinitialiser votre profil ?',
