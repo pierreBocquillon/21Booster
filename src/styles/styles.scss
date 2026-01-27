@@ -17,7 +17,7 @@ html {
 }
 
 .cursor-not-allowed {
-  cursor: not-allowed !important;
+	cursor: not-allowed !important;
 }
 
 .cursor-default {
@@ -36,9 +36,10 @@ html {
 	background-color: rgba(var(--v-theme-overlay), 0.5) !important;
 }
 
-.v-card--variant-elevated, .v-card--variant-flat {
-  background-color: rgba(var(--v-theme-background), 0.8) !important;
-  backdrop-filter: blur(5px);
+.v-card--variant-elevated,
+.v-card--variant-flat {
+	background-color: rgba(var(--v-theme-background), 0.8) !important;
+	backdrop-filter: blur(5px);
 }
 
 *::-webkit-scrollbar {
@@ -66,7 +67,7 @@ body::-webkit-scrollbar-track {
 
 .v-overlay__scrim {
 	background-color: rgb(var(--v-theme-overlay)) !important;
-  opacity: 0.8 !important;
+	opacity: 0.8 !important;
 }
 
 .animate-on-scroll-left {
@@ -87,4 +88,21 @@ body::-webkit-scrollbar-track {
 .animate-on-scroll-right.is-visible {
 	opacity: 1;
 	transform: translateX(0);
+}
+
+
+.centered-input :deep(input) {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.centered-input :deep(input::-webkit-outer-spin-button),
+.centered-input :deep(input::-webkit-inner-spin-button) {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.centered-input :deep(input[type=number]) {
+  -moz-appearance: textfield;
 }

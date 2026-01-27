@@ -14,8 +14,14 @@
 
         <div class="d-flex align-center my-4">
           <v-btn icon="mdi-minus" variant="tonal" density="comfortable" @click="updateQuantity(-1)" :disabled="buyQuantity <= 1"></v-btn>
-          <div class="text-h4 mx-6 font-weight-bold" style="min-width: 40px; text-align: center;">{{ buyQuantity }}
-          </div>
+          <v-text-field
+            v-model.number="buyQuantity"
+            type="number"
+            variant="plain"
+            hide-details
+            class="centered-input mx-4 pb-3"
+            style="width: 75px"
+          ></v-text-field>
           <v-btn icon="mdi-plus" variant="tonal" density="comfortable" @click="updateQuantity(1)" :disabled="userCash < booster.price * (buyQuantity + 1)"></v-btn>
         </div>
         <div class="d-flex flex-row align-center justify-center">

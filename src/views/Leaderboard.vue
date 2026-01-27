@@ -9,7 +9,7 @@
           </template>
           <div class="pa-2">
             <div><strong>Règles de calcul des points :</strong></div>
-            <div class="mt-1">• Classique : {{ pointsConfig.common }} pt</div>
+            <div class="mt-1">• Classique : {{ pointsConfig.common }} pts</div>
             <div class="mt-1">• Silver : {{ pointsConfig.silver }} pts</div>
             <div class="mt-1">• Gold : {{ pointsConfig.gold }} pts</div>
             <div class="mt-1">• Foil : {{ pointsConfig.foil }} pts</div>
@@ -25,7 +25,7 @@
           <tr>
             <th class="text-left">Rang</th>
             <th class="text-left">Joueur</th>
-            <th class="text-left">Classique ({{ pointsConfig.common }}pt)</th>
+            <th class="text-left">Classique ({{ pointsConfig.common }}pts)</th>
             <th class="text-left">Silver ({{ pointsConfig.silver }}pts)</th>
             <th class="text-left">Gold ({{ pointsConfig.gold }}pts)</th>
             <th class="text-left">Foil ({{ pointsConfig.foil }}pts)</th>

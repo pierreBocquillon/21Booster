@@ -62,7 +62,7 @@ export default {
   methods: {
     initialize() {
       this.unsub.push(Profile.listenAll((list) => {
-        this.allProfiles = list
+        this.allProfiles = list.filter(p => p.activated !== false && p.stats.public !== false);
       }))
     },
     async checkAndInitAchievements() {
