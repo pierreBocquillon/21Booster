@@ -132,7 +132,7 @@ export default {
         const colCards = this.allCards.filter(c => c.collection === col.id);
         const totalCards = colCards.length;
 
-        const stats = { common: 0, silver: 0, golden: 0, foil: 0 };
+        const stats = { common: 0, silver: 0, golden: 0, foil: 0, any: 0 };
 
         if (totalCards > 0) {
           colCards.forEach(card => {
@@ -142,6 +142,7 @@ export default {
               if (uCard.silver > 0) stats.silver++;
               if (uCard.golden > 0) stats.golden++;
               if (uCard.foil > 0) stats.foil++;
+              if (uCard.common > 0 || uCard.silver > 0 || uCard.golden > 0 || uCard.foil > 0) stats.any++;
             }
           });
         }
@@ -152,7 +153,8 @@ export default {
           golden: totalCards > 0 ? Math.round((stats.golden / totalCards) * 100) : 0,
           foil: totalCards > 0 ? Math.round((stats.foil / totalCards) * 100) : 0,
           // Global completion for this collection
-          total: totalCards > 0 ? Math.round(((stats.common + stats.silver + stats.golden + stats.foil) / (totalCards * 4)) * 100) : 0
+          total: totalCards > 0 ? Math.round(((stats.common + stats.silver + stats.golden + stats.foil) / (totalCards * 4)) * 100) : 0,
+          partial: totalCards > 0 ? Math.round((stats.any / totalCards) * 100) : 0
         };
 
         return {

@@ -61,6 +61,7 @@ import Code from '@/classes/Code.js'
 import oldCards from '@/data/oldCards.json'
 import logsManager from '@/assets/functions/logsManager.js'
 import notifManager from '@/assets/functions/notifManager.js'
+import achievementsManager from '@/assets/functions/achievementsManager.js'
 
 export default {
   data() {
@@ -180,13 +181,15 @@ export default {
             rewards: rewardsString
           };
 
-          // Unlock Achievement: voyageur_du_temps
+          // Unlock Achievement + voyageur_du_temps
           if (!this.userStore.profile.achievements) this.userStore.profile.achievements = {};
           this.userStore.profile.achievements['voyageur_du_temps'] = true;
           
           notifManager.sendAchievementNotif(this.userStore.profile.id, 'voyageur_du_temps', 'Vous avez obtenues le succès "Voyageur du temps" !');
 
           await this.userStore.profile.save();
+
+          achievementsManager.checkForAchievements()
 
           logsManager.log(this.userStore.profile.name, 'CODE', `Code ancien temps activé : ${rawInput} (${ownerName}). Gains : ${rewardsString}`);
 
@@ -300,6 +303,8 @@ export default {
         };
 
         await this.userStore.profile.save();
+
+        achievementsManager.checkForAchievements()
 
         logsManager.log(this.userStore.profile.name, 'CODE', `Code activé : ${code.name}. Gains : ${rewardsString}`);
 

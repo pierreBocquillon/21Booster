@@ -1,16 +1,37 @@
 <template>
   <div>
-    <div class="d-flex align-center mb-4">
+    <div class="d-flex align-center mb-1">
       <v-btn icon @click="$emit('back')" class="mr-4">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
       <h1 class="mr-3" style="white-space: nowrap;">{{ collection.name }}</h1>
-      <v-progress-linear class="mx-5" :model-value="Math.ceil(stats.percent)" color="primary" height="24" rounded style="flex-grow:1; min-width:0; display:flex; align-items:center;">
-        <strong style="width:100%; text-align:center;">{{ Math.ceil(stats.percent) }}% : ({{ stats.owned }}/{{ stats.total }})</strong>
-      </v-progress-linear>
       <v-spacer></v-spacer>
       <v-switch class="mx-5" label="Info toujours ON" color="primary" hide-details style="width: 100%; max-width: 180px; min-width: 100px" v-model="infoAlwaysOn"></v-switch>
       <v-select v-model="displayMode" :items="displayModes" item-title="title" item-value="value" density="compact" hide-details variant="outlined" style="width: 100%; max-width: 180px; min-width: 100px" prepend-inner-icon="mdi-eye" bg-color="surface"></v-select>
+    </div>
+    <div class="w-100 d-flex flex-column mb-4">
+      <div class="d-flex flex-row">
+        <v-progress-linear class="my-1" :model-value="Math.ceil(stats.partial.percent)" color="primary" height="24" rounded style="flex-grow:1; min-width:0; display:flex; align-items:center;">
+          <strong style="width:100%; text-align:center;">{{ Math.ceil(stats.partial.percent) }}% : ({{ stats.partial.owned }}/{{ stats.partial.total }})</strong>
+        </v-progress-linear>
+        <div class="ml-2">
+          <v-icon color="primary">mdi-help-circle-outline</v-icon>
+          <v-tooltip activator="parent" location="top">
+            <p>Collection partielle (Toutes les cartes)</p>
+          </v-tooltip>
+        </div>
+      </div>
+      <div class="d-flex flex-row">
+        <v-progress-linear class="my-1" :model-value="Math.ceil(stats.full.percent)" color="error" height="24" rounded style="flex-grow:1; min-width:0; display:flex; align-items:center;">
+          <strong style="width:100%; text-align:center;">{{ Math.ceil(stats.full.percent) }}% : ({{ stats.full.owned }}/{{ stats.full.total }})</strong>
+        </v-progress-linear>
+        <div class="ml-2">
+          <v-icon color="error">mdi-help-circle-outline</v-icon>
+          <v-tooltip activator="parent" location="top">
+            <p>Collection complète (toutes les cartes dans toutes les variantes)</p>
+          </v-tooltip>
+        </div>
+      </div>
     </div>
 
     <div class="d-flex flex-row flex-wrap justify-center align-center gap-4">

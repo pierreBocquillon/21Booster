@@ -57,22 +57,35 @@ export default {
       });
     },
     collectionStats() {
-      if (!this.filteredCards || this.filteredCards.length === 0) return { owned: 0, total: 0, percent: 0 };
+      if (!this.filteredCards || this.filteredCards.length === 0) return { full: { owned: 0, total: 0, percent: 0 }, partial: { owned: 0, total: 0, percent: 0 } };
 
-      let owned = 0;
-      let total = this.filteredCards.length * 4;
+      let fullOwned = 0;
+      let fullTotal = this.filteredCards.length * 4;
+      let partialOwned = 0;
+      let partialTotal = this.filteredCards.length;
 
       this.filteredCards.forEach(card => {
-        if (card.amount.common > 0) owned++;
-        if (card.amount.silver > 0) owned++;
-        if (card.amount.golden > 0) owned++;
-        if (card.amount.foil > 0) owned++;
+        if (card.amount.common > 0) fullOwned++;
+        if (card.amount.silver > 0) fullOwned++;
+        if (card.amount.golden > 0) fullOwned++;
+        if (card.amount.foil > 0) fullOwned++;
+
+        if (card.amount.common > 0 || card.amount.silver > 0 || card.amount.golden > 0 || card.amount.foil > 0) {
+          partialOwned++;
+        }
       });
 
       return {
-        owned,
-        total,
-        percent: total === 0 ? 0 : (owned / total) * 100
+        full: {
+          owned: fullOwned, 
+          total: fullTotal,
+          percent: fullTotal === 0 ? 0 : (fullOwned / fullTotal) * 100
+        },
+        partial: {
+          owned: partialOwned,
+          total: partialTotal,
+          percent: partialTotal === 0 ? 0 : (partialOwned / partialTotal) * 100
+        }
       };
     }
   },

@@ -6,13 +6,27 @@
         <v-card class="pa-4 mb-4" elevation="3">
           <div class="d-flex align-center justify-space-between mb-4">
             <h3 class="text-h6">{{ collection.name }}</h3>
-            <v-chip color="primary" variant="flat">{{ collection.stats.total }}%</v-chip>
+            <div>
+              <v-chip color="primary" variant="flat">{{ collection.stats.partial }}%</v-chip>
+              &nbsp;
+              <v-chip color="error" variant="flat">{{ collection.stats.total }}%</v-chip>
+            </div>
+          </div>
+
+          <!-- Partial Collection Progress -->
+          <div class="mb-4">
+            <div class="text-caption mb-1">
+              Collection Partielle (Toutes les cartes)
+            </div>
+            <v-progress-linear :model-value="collection.stats.partial" color="primary" height="10" rounded></v-progress-linear>
           </div>
 
           <!-- Global Collection Progress -->
           <div class="mb-4">
-            <div class="text-caption mb-1">Progression Globale</div>
-            <v-progress-linear :model-value="collection.stats.total" color="primary" height="10" rounded></v-progress-linear>
+            <div class="text-caption mb-1">
+              Collection Complète (toutes les cartes dans toutes les variantes)
+            </div>
+            <v-progress-linear :model-value="collection.stats.total" color="error" height="10" rounded></v-progress-linear>
           </div>
 
           <v-divider class="mb-4"></v-divider>
