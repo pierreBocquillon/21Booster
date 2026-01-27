@@ -34,10 +34,10 @@
 
     <div v-if="isRevealed" class="d-flex flex-row align-center justify-center mt-4">
       <v-btn color="primary" variant="outlined" class="mx-2" @click.stop="$emit('reset')">
-        Ouvrir un autre Booster
+        Ouvrir un autre
       </v-btn>
       <v-btn color="primary" variant="outlined" class="mx-2" @click.stop="$emit('reopen')" v-if="boosterIsReopenable">
-        Ouvrir le même Booster
+        Ouvrir le même ({{ userStore.profile.boosters[booster.id] }} restants)
       </v-btn>
     </div>
   </div>

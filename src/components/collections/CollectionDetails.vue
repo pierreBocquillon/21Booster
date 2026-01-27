@@ -9,19 +9,20 @@
         <strong style="width:100%; text-align:center;">{{ Math.ceil(stats.percent) }}% : ({{ stats.owned }}/{{ stats.total }})</strong>
       </v-progress-linear>
       <v-spacer></v-spacer>
-      <v-select v-model="displayMode" :items="displayModes" item-title="title" item-value="value" density="compact" hide-details variant="outlined" style="width: 250px" prepend-inner-icon="mdi-eye" bg-color="surface"></v-select>
+      <v-switch class="mx-5" label="Info toujours ON" color="primary" hide-details style="width: 100%; max-width: 180px; min-width: 100px" v-model="infoAlwaysOn"></v-switch>
+      <v-select v-model="displayMode" :items="displayModes" item-title="title" item-value="value" density="compact" hide-details variant="outlined" style="width: 100%; max-width: 180px; min-width: 100px" prepend-inner-icon="mdi-eye" bg-color="surface"></v-select>
     </div>
 
     <div class="d-flex flex-row flex-wrap justify-center align-center gap-4">
       <div v-for="card in cards" :key="card.id" class="d-flex justify-center align-center flex-wrap mb-6">
-        <div class="ma-2 collection-card" @click="openPreview(card, getDisplayRarity(card))" :style="getDisplayRarity(card) === 'common' ? { '--booster-mask': `url('${currentImageUrl}')`, 'width': isLandscape(getCardImage(card, getDisplayRarity(card))) ? '25vw' : '30vh' } : { 'width': isLandscape(getCardImage(card, getDisplayRarity(card))) ? '25vw' : '30vh' }">
+        <div class="ma-2 collection-card" :class="{ 'show-info': infoAlwaysOn }" @click="openPreview(card, getDisplayRarity(card))" :style="getDisplayRarity(card) === 'common' ? { '--booster-mask': `url('${currentImageUrl}')`, 'width': isLandscape(getCardImage(card, getDisplayRarity(card))) ? '25vw' : '30vh' } : { 'width': isLandscape(getCardImage(card, getDisplayRarity(card))) ? '25vw' : '30vh' }">
           <div :class="[(getDisplayRarity(card) !== 'common' && card.amount[getDisplayRarity(card)] > 0) ? getDisplayRarity(card) : '', { 'locked': card.amount[getDisplayRarity(card)] <= 0 }]" style="width: 100%; height: 100%;"><img :src="getCardImage(card, getDisplayRarity(card))" :alt="card.name" />
           </div>
 
           <div class="card-name d-flex flex-column align-center justify-center">
-            <div>
+            <h5>
               {{ card.number }} - {{ isCardOwned(card) ? card.name : '???' }}
-            </div>
+            </h5>
           </div>
           <div class="card-quantity d-flex flex-column align-center justify-center" z-index="50">
             <div>
@@ -72,6 +73,7 @@ export default {
       cardDialog: false,
       previewCard: null,
       previewRarity: null,
+      infoAlwaysOn: false,
       displayMode: 'best',
       displayModes: [
         { title: 'Meilleure', value: 'best' },

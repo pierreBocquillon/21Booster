@@ -338,6 +338,7 @@ $card-overlap-default: -100px;
 		left: 0;
 		width: 100%;
 		background: rgba(0, 0, 0, 0.8);
+	  backdrop-filter: blur(2px);
 		color: white;
 		text-align: center;
 		padding: 10px;
@@ -354,7 +355,9 @@ $card-overlap-default: -100px;
 	&:hover {
 		transform: scale(1.1);
 		z-index: 100;
+	}
 
+	&:hover, &.show-info {
 		.card-name {
 			opacity: 1;
 		}
@@ -375,6 +378,7 @@ $card-overlap-default: -100px;
 		left: 0;
 		width: 100%;
 		background: rgba(0, 0, 0, 0.8);
+	  backdrop-filter: blur(2px);
 		color: white;
 		text-align: center;
 		padding: 10px;
@@ -388,10 +392,7 @@ $card-overlap-default: -100px;
 		z-index: 20;
 	}
 
-	&:hover {
-		transform: scale(1.1);
-		z-index: 100;
-
+	&:hover, &.show-info {
 		.card-quantity {
 			opacity: 1;
 		}
