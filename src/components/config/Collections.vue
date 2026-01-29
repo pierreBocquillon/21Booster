@@ -15,7 +15,7 @@
       <div class="flex-grow-1 overflow-hidden" style="height: 100%;">
         <v-data-table :headers="headers" :items="collections" :search="search" class="h-100" fixed-header hover items-per-page="-1" hide-default-footer>
           <template v-slot:item.coverImage="{ item }">
-            <v-img v-if="item.coverImage" :src="'/collections_cover/' + item.coverImage" width="50" height="50" cover class="rounded bg-grey-lighten-2"></v-img>
+            <v-img v-if="item.coverImage" :src="'/collections_cover/' + item.coverImage" width="50" height="50" cover class="rounded"></v-img>
             <v-icon v-else>mdi-image-off</v-icon>
           </template>
 
@@ -62,8 +62,8 @@
               <v-col cols="12" md="4">
                 <p class="text-subtitle-2 mb-2">Image de couverture</p>
                 <div class="d-flex flex-column align-center gap-2">
-                  <v-img v-if="editedItem.coverImage" :src="'/collections_cover/' + editedItem.coverImage" height="120" width="100%" cover class="rounded bg-grey-lighten-2 border mb-2"></v-img>
-                  <v-sheet v-else height="120" width="100%" class="rounded bg-grey-lighten-4 border d-flex align-center justify-center mb-2">
+                  <v-img v-if="editedItem.coverImage" :src="'/collections_cover/' + editedItem.coverImage" height="120" width="100%" cover class="border mb-2"></v-img>
+                  <v-sheet v-else height="120" width="100%" class="border d-flex align-center justify-center mb-2">
                     <span class="text-caption text-grey">Aucune image</span>
                   </v-sheet>
                   <v-btn block color="primary" variant="tonal" @click="openImageSelector('coverImage')">
@@ -76,8 +76,8 @@
               <v-col cols="12" md="4">
                 <p class="text-subtitle-2 mb-2">Image de page</p>
                 <div class="d-flex flex-column align-center gap-2">
-                  <v-img v-if="editedItem.pageImage" :src="'/collections_page/' + editedItem.pageImage" height="120" width="100%" cover class="rounded bg-grey-lighten-2 border mb-2"></v-img>
-                  <v-sheet v-else height="120" width="100%" class="rounded bg-grey-lighten-4 border d-flex align-center justify-center mb-2">
+                  <v-img v-if="editedItem.pageImage" :src="'/collections_page/' + editedItem.pageImage" height="120" width="100%" cover class="border mb-2"></v-img>
+                  <v-sheet v-else height="120" width="100%" class="border d-flex align-center justify-center mb-2">
                     <span class="text-caption text-grey">Aucune image</span>
                   </v-sheet>
                   <v-btn block color="primary" variant="tonal" @click="openImageSelector('pageImage')">
@@ -90,8 +90,8 @@
               <v-col cols="12" md="4">
                 <p class="text-subtitle-2 mb-2">Image de carte</p>
                 <div class="d-flex flex-column align-center gap-2">
-                  <v-img v-if="editedItem.cardImage" :src="'/collections_card/' + editedItem.cardImage" height="120" width="100%" cover class="rounded bg-grey-lighten-2 border mb-2"></v-img>
-                  <v-sheet v-else height="120" width="100%" class="rounded bg-grey-lighten-4 border d-flex align-center justify-center mb-2">
+                  <v-img v-if="editedItem.cardImage" :src="'/collections_card/' + editedItem.cardImage" height="120" width="100%" cover class="border mb-2"></v-img>
+                  <v-sheet v-else height="120" width="100%" class="border d-flex align-center justify-center mb-2">
                     <span class="text-caption text-grey">Aucune image</span>
                   </v-sheet>
                   <v-btn block color="primary" variant="tonal" @click="openImageSelector('cardImage')">
