@@ -1,9 +1,11 @@
 import { useUserStore } from "@/store/user.js"
 import achievementsData from "@/data/achievements.json"
 import Card from "@/classes/Card.js"
+import Collection from "@/classes/Collection.js"
 import notifManager from "@/assets/functions/notifManager.js"
 
 let cachedCards = null
+let cachedCollections = null
 
 let achievementsManager = {
 	async checkForAchievements() {
@@ -26,6 +28,9 @@ let achievementsManager = {
 		if (!cachedCards) {
 			cachedCards = await Card.getAll()
 		}
+		if (!cachedCollections) {
+			cachedCollections = await Collection.getAll()
+		}
 		const allCardsList = cachedCards
 
 		// 1. Pre-calculate Aggregates
@@ -45,6 +50,18 @@ let achievementsManager = {
 		})
 
 		const totalCodes = Object.keys(codes).length
+
+		// Calculate unopened boosters
+		let unopenedBoosters = 0
+		if (profile.boosters) {
+			unopenedBoosters = Object.values(profile.boosters).reduce((sum, count) => sum + count, 0)
+		}
+
+		// Check for secret collections
+		let hasSecretCollection = false
+		if (cachedCollections) {
+			hasSecretCollection = cachedCollections.some((c) => !c.isPublic && profile.collections && profile.collections[c.id])
+		}
 
 		// Group definitions by collection
 		const collectionDefs = {}
@@ -218,6 +235,14 @@ let achievementsManager = {
 
 				case "chasseur_de_tresors":
 					unlocked = builtCollections.all >= 1
+					break
+
+				case "sous_blister":
+					unlocked = unopenedBoosters >= 50
+					break
+
+				case "collection_secrete":
+					unlocked = hasSecretCollection
 					break
 
 				default:

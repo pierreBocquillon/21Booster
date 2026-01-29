@@ -580,3 +580,95 @@ $card-overlap-default: -100px;
   transform: scale(1.15) !important;
   z-index: 100;
 }
+.wheel-wrapper {
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  position: relative;
+  border: 5px solid #080604;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  overflow: hidden;
+}
+
+.wheel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.wheel-shadow {
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+  filter: blur(10px);
+}
+
+.pointer-arrow {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 30px solid #FF3D00;
+  position: absolute;
+  top: 5px;
+  /* Overlap slightly */
+  z-index: 10;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+}
+
+.pointer-arrow-shadow {
+  width: 0;
+  height: 0;
+  border-left: 17px solid transparent;
+  border-right: 17px solid transparent;
+  border-top: 34px solid rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 6px;
+  z-index: 9;
+  filter: blur(2px);
+}
+
+.wheel-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.label-text {
+  color: white;
+  font-size: 18px;
+  white-space: pre-line;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.text-shadow {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.wheel-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 250px;
+  background: #2D1D0E;
+  border-radius: 50%;
+  z-index: 5;
+  border: 4px solid #080604;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

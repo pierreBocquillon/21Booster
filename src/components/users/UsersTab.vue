@@ -637,6 +637,8 @@ export default {
     async saveCollections() {
       await this.currentCollectionUser.save()
 
+      achievementsManager.checkForAchievements();
+      
       logsManager.log(this.userStore.profile.name, "TRANSACTION", `A modifié les accès aux collections de ${this.currentCollectionUser.name}`)
 
       this.collectionDialog = false

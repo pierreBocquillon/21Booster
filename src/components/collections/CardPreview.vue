@@ -83,7 +83,7 @@
 
             <v-btn block color="error" variant="tonal" size="small" class="mt-2" :disabled="totalSacrificeValue <= 0" @click="confirmSacrifice">
               <v-icon start size="small">mdi-fire</v-icon>
-              Recycler (+{{ totalSacrificeValue }}<v-img src="/card-coin.png" height="16" width="16"></v-img>)
+              Sacrifier (+{{ totalSacrificeValue }}<v-img src="/card-coin.png" height="16" width="16"></v-img>)
             </v-btn>
           </div>
 
@@ -104,6 +104,7 @@
 import { useUserStore } from '@/store/user.js'
 import logsManager from '@/assets/functions/logsManager.js'
 import achievementsManager from '@/assets/functions/achievementsManager.js'
+import notifManager from '@/assets/functions/notifManager.js'
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import Settings from '@/classes/Settings.js'
 
@@ -280,6 +281,15 @@ export default {
         if (!this.userStore.profile.stats) this.userStore.profile.stats = {};
         this.userStore.profile.stats.downgrades = (this.userStore.profile.stats.downgrades || 0) + 1;
 
+        if (currentRarity === 'foil') {
+          const achId = 'c_est_du_gachis'
+          if (!this.userStore.profile.achievements) this.userStore.profile.achievements = {}
+          if (!this.userStore.profile.achievements[achId]) {
+            this.userStore.profile.achievements[achId] = true
+            notifManager.sendAchievementNotif(this.userStore.profile.id, achId, 'Vous avez obtenu le succès "C\'est du gâchis" !')
+          }
+        }
+
         logsManager.log(this.userStore.profile.name, 'DOWNGRADE', `Downgrade de ${cost} carte ${this.card.name} (${currentRarity}) en 1 carte (${prevRarity}).`);
 
         await this.userStore.profile.save();
@@ -321,7 +331,7 @@ export default {
 
       const result = await Swal.fire({
         title: 'Confirmation',
-        text: `Recycler ces cartes pour ${this.totalSacrificeValue} ?`,
+        text: `Sacrifier ces cartes pour ${this.totalSacrificeValue} ?`,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#d33',
@@ -377,7 +387,7 @@ export default {
 
         } catch (e) {
           console.error(e);
-          Swal.fire('Erreur', 'Erreur lors du recyclage.', 'error');
+          Swal.fire('Erreur', 'Erreur lors du sacrifice.', 'error');
         }
       }
     }

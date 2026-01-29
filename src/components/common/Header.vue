@@ -16,7 +16,7 @@
       </v-btn>
       <v-menu>
         <template v-slot:activator="{ props }">
-          <v-btn icon variant="plain" v-bind="props">
+          <v-btn icon variant="plain" v-bind="props" @click="handleMenuClick">
             <v-icon size="32">mdi-menu</v-icon>
           </v-btn>
         </template>
@@ -98,6 +98,25 @@
     <v-dialog v-model="showHelpDialog" max-width="800">
       <HeaderHelpCard :settings="settings" @close="showHelpDialog = false" />
     </v-dialog>
+
+    <v-dialog v-model="showEasterEggDialog" max-width="800" persistent>
+      <v-card class="pa-4 text-center rounded-xl position-relative">
+        <v-sheet class="pa-2 pl-5 mb-5 bg-accent rounded-xl d-flex flex-row align-center justify-space-between" style="z-index: 2; position: relative;">
+          <h4 class="text-wrap text-left" v-if="textSeq == 0">Arrêtez donc de frapper ce bouton comme un abruti !</h4>
+          <h4 class="text-wrap text-left" v-if="textSeq == 1">Tiens ! Choisis-en un et laisse-moi tranquille !</h4>
+          <h4 class="text-wrap text-left" v-if="textSeq == 2">Parfait, maintenant fiche le camp et laisse-moi dormir !</h4>
+          <v-btn icon variant="tonal" @click="nextText" v-if="textSeq != 1"><v-icon>mdi-arrow-right</v-icon></v-btn>
+        </v-sheet>
+        <v-img src="/demon_full.png" height="400" contain style="opacity: 1; transition: opacity 0.3s;" :style="{ opacity: textSeq == 1 ? '0.3' : '1' }"></v-img>
+        
+        <div v-if="textSeq == 1" class="d-flex flex-wrap justify-center align-center position-absolute w-100 h-100" style="top:0; left:0; padding-top: 80px; overflow-y: auto;">
+            <v-card v-for="booster in publicBoosters" :key="booster.id" class="ma-2 cursor-pointer elevation-4" @click="pickBooster(booster)" width="120" color="surface">
+                <v-img :src="'/boosters/' + booster.image" height="200" cover class="align-end"></v-img>
+            </v-card>
+        </div>
+      </v-card>
+    </v-dialog>
+
   </v-app-bar>
 </template>
 <script>
@@ -111,6 +130,7 @@ import notifManager from '@/assets/functions/notifManager.js'
 
 import Salesman from '@/classes/Salesman.js'
 import Settings from '@/classes/Settings.js'
+import Booster from '@/classes/Booster.js'
 
 import navItems from '@/config/navItems.js'
 import HeaderHelpCard from './HeaderHelpCard.vue'
@@ -128,12 +148,17 @@ export default {
       showSellersDialog: false,
       showHelpDialog: false,
       sellers: [],
+      boosters: [],
       settings: new Settings(),
       unsubSellers: null,
       resetPasswordDialog: false,
       oldPassword: '',
       newPasswordA: '',
-      newPasswordB: ''
+      newPasswordB: '',
+      menuClickCount: 0,
+      menuClickTimer: null,
+      showEasterEggDialog: false,
+      textSeq: 0,
     }
   },
   created() {
@@ -144,6 +169,9 @@ export default {
       this.sellers = list
     }).then(unsub => {
       this.unsubSellers = unsub
+    this.unsub.push(Booster.listenAll((list) => {
+      this.boosters = list
+    }))
     }))
   },
   beforeUnmount() {
@@ -192,10 +220,58 @@ export default {
           currentGroup = []
         }
       }
-      return filteredItems
+      return filteredItems    
+    },
+    publicBoosters() {
+      return this.boosters.filter(b => b.canBuy)
     },
   },
   methods: {
+    async nextText() {
+      this.textSeq++
+      if (this.textSeq > 2){
+        this.showEasterEggDialog = false
+
+        if (this.userStore.profile) {
+          if (!this.userStore.profile.achievements) this.userStore.profile.achievements = {};
+
+          if (!this.userStore.profile.achievements['un_visiteur_demoniaque']) {
+            this.userStore.profile.achievements['un_visiteur_demoniaque'] = true;
+            
+            notifManager.sendAchievementNotif(this.userStore.profile.id, 'un_visiteur_demoniaque', 'Vous avez obtenues le succès "Un visiteur demoniaque" !');
+            await this.userStore.profile.save();
+          }
+        }
+
+        setTimeout(() => {
+          this.textSeq = 0
+        }, 500)
+      }
+    },
+    async pickBooster(booster) {
+      if (!this.userStore.profile.boosters) this.userStore.profile.boosters = {}
+      this.userStore.profile.boosters[booster.id] = (this.userStore.profile.boosters[booster.id] || 0) + 1
+      await this.userStore.profile.save()
+      
+      logsManager.log(this.userStore.profile.name, 'EASTER_EGG', `A reçu le booster ${booster.name}`)
+      
+      this.textSeq++
+    },
+    handleMenuClick() {
+      if (this.userStore.profile?.achievements?.['un_visiteur_demoniaque']) return
+
+      this.menuClickCount++
+      if (this.menuClickTimer) clearTimeout(this.menuClickTimer)
+      
+      if (this.menuClickCount >= 10) {
+        this.showEasterEggDialog = true
+        this.menuClickCount = 0
+      } else {
+        this.menuClickTimer = setTimeout(() => {
+          this.menuClickCount = 0
+        }, 500)
+      }
+    },
     formatMoney(value) {
       return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(value).replace('€', '').replace(",00", "")
     },
@@ -296,6 +372,7 @@ export default {
             };
             this.userStore.profile.cash = welcomeBonus;
             this.userStore.profile.oldCodeRefused = false;
+            this.userStore.profile.lastWheelSpin = 0;
 
             await this.userStore.profile.save();
 

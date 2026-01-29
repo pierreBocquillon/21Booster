@@ -143,6 +143,16 @@ const routes = [
 			permissions: [],
 		},
 	},
+	{
+		name: "Casino",
+		path: "/casino",
+		component: () => import("@/views/Casino.vue"),
+		meta: {
+			needAccount: true,
+			showNav: true,
+			permissions: [],
+		},
+	},
 ]
 
 const router = createRouter({

@@ -12,6 +12,9 @@
 
 <script>
 import { useUserStore } from '@/store/user.js'
+
+import achievementsManager from '@/assets/functions/achievementsManager.js'
+
 import Booster from '@/classes/Booster.js'
 import Collection from '@/classes/Collection.js'
 import Swal from 'sweetalert2/dist/sweetalert2.js'
@@ -170,6 +173,8 @@ export default {
 
         // Save profile
         await this.userStore.profile.save()
+        
+        achievementsManager.checkForAchievements();
 
         logsManager.log(this.userStore.profile.name, 'BUY', `Acheté ${quantity + free} booster(s) ${booster.name} pour ${price} card coin(s).`);
 

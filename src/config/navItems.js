@@ -4,12 +4,13 @@ let navItems = [
 		{ title: "Mes boosters", icon: "boosters.png", link: "/boosters" },
 		{ title: "Mes collection", icon: "collections.png", link: "/collections" },
 		{ title: "Boutique", icon: "shop.png", link: "/shop" },
-		{ title: "Codes", icon: "codes.png", link: "/codes" },
+		{ title: "Casino", icon: "casino.png", link: "/casino" },
 	],
 	[
 		{ title: "Mes succés", icon: "achievements.png", link: "/achievements" },
 		{ title: "Mes statistiques", icon: "stats.png", link: "/statistics" },
 		{ title: "Classement", icon: "leaderboard.png", link: "/leaderboard" },
+		{ title: "Codes", icon: "codes.png", link: "/codes" },
 	],
 	[
 		{ title: "Config", icon: "config.png", link: "/config" },

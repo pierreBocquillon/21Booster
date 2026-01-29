@@ -11,7 +11,7 @@
     "id": "collectionneur_averti",
     "title": "Collectionneur Averti",
     "description": "Ouvrir 10 boosters de cartes.",
-    "points": 100,
+    "points": 75,
     "rarity": "silver",
     "image": "boosters.png"
   },
@@ -296,12 +296,44 @@
     "image": "dealer.png"
   },
   {
-    "id": "chasseur_de_tresors",
-    "title": "Chasseur de trésors",
-    "description": "Completer une collection entière.",
-    "points": 5000,
+    "id": "je_suis_une_star",
+    "title": "Je suis une star",
+    "description": "Un autre collectionneur a consulté vos statistiques.",
+    "points": 150,
     "rarity": "foil",
-    "image": "chest.png"
+    "image": "goblin_star.png"
+  },
+  {
+    "id": "collection_secrete",
+    "title": "Collection secrete",
+    "description": "Obtenir l'accés a une collection privée.",
+    "points": 150,
+    "rarity": "foil",
+    "image": "secret_collection.png"
+  },
+  {
+    "id": "sous_blister",
+    "title": "Sous blister",
+    "description": "Accumulez 50 boosters non ouverts.",
+    "points": 300,
+    "rarity": "foil",
+    "image": "blister.png"
+  },
+  {
+    "id": "casino",
+    "title": "Casino",
+    "description": "Lancer la roue du casino.",
+    "points": 500,
+    "rarity": "foil",
+    "image": "casino.png"
+  },
+  {
+    "id": "un_visiteur_demoniaque",
+    "title": "Un visiteur demoniaque",
+    "description": "Invoquer le démon des cartes.",
+    "points": 666,
+    "rarity": "foil",
+    "image": "demon.png"
   },
   {
     "id": "voyageur_du_temps",
@@ -318,5 +350,21 @@
     "points": 1000,
     "rarity": "foil",
     "image": "lucky.png"
+  },
+  {
+    "id": "c_est_du_gachis",
+    "title": "C'est du gachis",
+    "description": "Downgrade une carte foil.",
+    "points": 1000,
+    "rarity": "foil",
+    "image": "bad_downgrade.png"
+  },
+  {
+    "id": "chasseur_de_tresors",
+    "title": "Chasseur de trésors",
+    "description": "Completer une collection entière.",
+    "points": 5000,
+    "rarity": "foil",
+    "image": "chest.png"
   }
 ]

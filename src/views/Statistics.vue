@@ -27,6 +27,7 @@ import Collection from '@/classes/Collection.js'
 import Card from '@/classes/Card.js'
 import Profile from '@/classes/Profile.js'
 import achievementsData from '@/data/achievements.json'
+import notifManager from '@/assets/functions/notifManager.js'
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import GlobalProgress from '@/components/statistics/GlobalProgress.vue'
 import PlayerStatsGrid from '@/components/statistics/PlayerStatsGrid.vue'
@@ -189,9 +190,23 @@ export default {
     },
     async loadProfile(id) {
       if (id) {
-        this.customProfile = await Profile.getById(id);
+        this.customProfile = await Profile.getById(id)
+
+        // Achievement: Je suis une star
+        if (this.customProfile && this.userStore.profile && this.userStore.profile.id !== this.customProfile.id) {
+          if (!this.customProfile.achievements) this.customProfile.achievements = {}
+
+          const achId = 'je_suis_une_star'
+          if (!this.customProfile.achievements[achId]) {
+            this.customProfile.achievements[achId] = true
+            const achDef = achievementsData.find((a) => a.id === achId)
+            const title = achDef ? achDef.title : 'Je suis une star'
+            notifManager.sendAchievementNotif(this.customProfile.id, achId, `Vous avez obtenu le succès "${title}" !`)
+            await this.customProfile.save()
+          }
+        }
       } else {
-        this.customProfile = null;
+        this.customProfile = null
       }
     },
     shareStats() {

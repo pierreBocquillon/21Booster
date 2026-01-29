@@ -14,7 +14,7 @@
         <p class="my-2">Les Card Coins sont le cœur de votre aventure. Ces jetons précieux constituent la monnaie unique de la plateforme.</p>
         <ul class="ml-4">
           <li><strong>Utilité :</strong> Ils sont indispensables pour acquérir de nouveaux boosters dans la boutique.</li>
-          <li><strong>Obtention :</strong> Gagnez-en via le recyclage de cartes, les codes promos, ou en rechargeant votre solde auprès de l'un de nos vendeurs.</li>
+          <li><strong>Obtention :</strong> Gagnez-en via le sacrifice de cartes, les codes promos, ou en rechargeant votre solde auprès de l'un de nos vendeurs.</li>
         </ul>
       </div>
       <div class="my-4 mt-6">
@@ -83,7 +83,7 @@
         <v-expansion-panels class="my-2">
           <v-expansion-panel>
             <v-expansion-panel-title>
-              <strong>Voir les valeures de recyclage :</strong>
+              <strong>Voir les valeurs de sacrifice :</strong>
             </v-expansion-panel-title>
             <v-expansion-panel-text>
               <v-table>
@@ -152,12 +152,17 @@
         </v-expansion-panels>
       </div>
       <div class="my-4 mt-6">
-        <h3 class="text-primary my-2">🎁 4. Espace Codes</h3>
+        <h3 class="text-primary my-2">🎰 4. Casino</h3>
+        <p class="my-2">Vous avez quelques Card Coins qui traînent dans votre inventaire ou vous vous sentez particulièrement chanceux aujourd'hui ? C'est le moment de passer à l'action !</p>
+        <p class="my-2">Rien de plus simple : une fois par jour pour seulement 50 Card Coins, vous pouvez lancer la roue et découvrir immédiatement la récompense qui vous attend.</p>
+      </div>
+      <div class="my-4 mt-6">
+        <h3 class="text-primary my-2">🎁 5. Espace Codes</h3>
         <p class="my-2">Vous avez déniché un code secret ou reçu un cadeau ?</p>
         <p class="my-2">Entrez-le dans la section dédiée pour débloquer des récompenses immédiates : Boosters gratuits, cartes exclusives, nouvelles collections ou stocks de Card Coins. Restez à l'affût !</p>
       </div>
       <div class="my-4 mt-6">
-        <h3 class="text-primary my-2">🏆 5. Compétition et Progression</h3>
+        <h3 class="text-primary my-2">🏆 6. Compétition et Progression</h3>
         <p class="my-2">21 Booster n'est pas qu'une collection, c'est une compétition.</p>
         <ul class="ml-4">
           <li><strong>Les Succès :</strong> Relevez des défis spécifiques pour débloquer des bonus et afficher vos prouesses sur votre profil.</li>

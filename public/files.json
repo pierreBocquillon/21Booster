@@ -1,17 +1,23 @@
 {
   "achievements": [
+    "bad_downgrade.png",
+    "blister.png",
     "boosters.png",
     "cards1.png",
     "cards10.png",
     "cards50.png",
+    "casino.png",
     "chest.png",
     "codes.png",
     "collection.png",
     "dealer.png",
+    "demon.png",
     "downgrade.png",
+    "goblin_star.png",
     "graveyard.png",
     "lucky.png",
     "oldCode.png",
+    "secret_collection.png",
     "upgrade.png"
   ],
   "boosters": [
