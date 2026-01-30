@@ -144,14 +144,12 @@ export default {
           await newProfile.save()
           Swal.fire({
             icon: 'success',
-            title: 'Succès',
-            text: 'Votre compte a été créé. Vous pouvez dès à présent vous connecter pour accéder aux services.',
+            title: 'Bienvenue !',
+            text: 'Votre compte a été créé avec succès.',
+            timer: 2000,
+            showConfirmButton: false
           }).then(() => {
-            signOut(getAuth()).then(() => {
-              this.goToLogin()
-            }).catch((error) => {
-              console.error('Error signing out:', error)
-            })
+            this.$router.push('/')
           })
         })
     },

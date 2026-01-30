@@ -6,11 +6,11 @@ let collectionName = "profiles"
 function docToInstance(document) {
 	let data = document.data()
   
-	return data ? new Profile(document.id, data.name, data.email, data.phone, data.role, data.permissions, data.activated, data.cash, data.collections, data.boosters, data.cards, data.codes, data.achievements, data.stats, data.lastLogin, data.lastWheelSpin) : null
+	return data ? new Profile(document.id, data.name, data.email, data.phone, data.role, data.permissions, data.activated, data.cash, data.collections, data.boosters, data.cards, data.codes, data.achievements, data.stats, data.lastLogin, data.lastWheelSpin, data.oldCodesVerified, data.oldCodeRefused, data.helpSeen) : null
 }
 
 class Profile {
-	constructor(id, name, email, phone, role, permissions, activated, cash, collections, boosters, cards, codes, achievements, stats, lastLogin, lastWheelSpin) {
+	constructor(id, name, email, phone, role, permissions, activated, cash, collections, boosters, cards, codes, achievements, stats, lastLogin, lastWheelSpin, oldCodesVerified, oldCodeRefused, helpSeen) {
 		this.id = id
 		this.name = name
 		this.email = email
@@ -27,6 +27,9 @@ class Profile {
 		this.stats = stats
 		this.lastLogin = lastLogin
     this.lastWheelSpin = lastWheelSpin
+    this.oldCodesVerified = oldCodesVerified
+    this.oldCodeRefused = oldCodeRefused
+    this.helpSeen = helpSeen
 
     if (!this.stats) {
       this.stats = {
@@ -58,7 +61,7 @@ class Profile {
 			upgrades: 0,
 			downgrades: 0,
 		}
-		const newProfile = new Profile(uid, name, email, phone, "User", [], false, cash, {}, {}, {}, {}, {}, {}, stats, 0, 0)
+		const newProfile = new Profile(uid, name, email, phone, "User", [], false, cash, {}, {}, {}, {}, {}, {}, stats, 0, 0, null, false, false)
 		return newProfile
 	}
 
@@ -156,6 +159,9 @@ class Profile {
 			stats: this.stats,
 			lastLogin: this.lastLogin,
       lastWheelSpin: this.lastWheelSpin,
+      oldCodesVerified: this.oldCodesVerified || null,
+      oldCodeRefused: this.oldCodeRefused || false,
+      helpSeen: this.helpSeen || false,
 		}
 
 		if (this.id) {

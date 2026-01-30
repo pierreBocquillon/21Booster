@@ -242,7 +242,7 @@ export default {
       } else {
         this.userStore.profile = null
         this.userStore.uid = null
-        sessionStorage.removeItem('oldCodesVerified')
+        // sessionStorage.removeItem('oldCodesVerified')
       }
     })
   },
@@ -386,16 +386,14 @@ export default {
     async checkOldCodes() {
       if( !this.ready || !this.userStore.isLoggedIn || !this.$route.meta.needAccount || !this.$route.meta.showNav ) return;
 
-      // 0. Check session storage for recent verification
-      const stored = sessionStorage.getItem('oldCodesVerified');
+      // 0. Check profile for recent verification
+      const stored = this.userStore.profile.oldCodesVerified;
       if (stored) {
         try {
-          const data = JSON.parse(stored);
-          if (Date.now() < data.expiry) {
-            return; // Already verified recently
-          }
+           const { verified, expiry } = stored;
+           if (verified && expiry > Date.now()) return;
         } catch (e) {
-          sessionStorage.removeItem('oldCodesVerified');
+             console.error('Error parsing oldCodesVerified', e);
         }
       }
 
@@ -409,7 +407,8 @@ export default {
         const hasUsedOld = Object.keys(this.userStore.profile.codes).some(k => k.startsWith('old'));
         if (hasUsedOld) {
           // If already used, mark as verified to stop checking
-          sessionStorage.setItem('oldCodesVerified', JSON.stringify({ verified: true, expiry: Date.now() + 24 * 60 * 60 * 1000 }));
+          this.userStore.profile.oldCodesVerified = { verified: true, expiry: Date.now() + 24 * 60 * 60 * 1000 };
+          await this.userStore.profile.save();
           return;
         }
       }
@@ -464,7 +463,8 @@ export default {
       }
 
       // Mark as verified for 24h to avoid repeating popups in the same session/day
-      sessionStorage.setItem('oldCodesVerified', JSON.stringify({ verified: true, expiry: Date.now() + 24 * 60 * 60 * 1000 }));
+      this.userStore.profile.oldCodesVerified = { verified: true, expiry: Date.now() + 24 * 60 * 60 * 1000 };
+      await this.userStore.profile.save();
     },
     async applyOldCode(matchKey, entry) {
       const persistentCodeId = 'old' + Code.createId(matchKey);

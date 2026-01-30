@@ -180,10 +180,11 @@ export default {
   watch: {
     'userStore.profile': {
       handler(newProfile) {
-        setTimeout(() => {
-          if (newProfile && !localStorage.getItem('helpSeen')) {
+        setTimeout(async () => {
+          if (newProfile && !newProfile.helpSeen) {
             this.showHelpDialog = true
-            localStorage.setItem('helpSeen', 'true')
+            newProfile.helpSeen = true
+            await newProfile.save()
           }
         }, 1000);
       },
@@ -373,13 +374,15 @@ export default {
             this.userStore.profile.cash = welcomeBonus;
             this.userStore.profile.oldCodeRefused = false;
             this.userStore.profile.lastWheelSpin = 0;
+            this.userStore.profile.helpSeen = false;
+            this.userStore.profile.oldCodesVerified = null;
 
             await this.userStore.profile.save();
 
             logsManager.log(this.userStore.profile.name, 'RESET', `Profil réinitialisé par l'utilisateur.`);
 
-            sessionStorage.removeItem('oldCodesVerified');
-            localStorage.removeItem('helpSeen');
+            //sessionStorage.removeItem('oldCodesVerified');
+            //localStorage.removeItem('helpSeen');
 
             window.location.reload();
           }
@@ -388,7 +391,7 @@ export default {
     },
     logout() {
       signOut(getAuth()).then(() => {
-        sessionStorage.removeItem('oldCodesVerified');
+        // sessionStorage.removeItem('oldCodesVerified');
         this.$router.push('/login');
       }).catch(error => {
         console.error("Error signing out: ", error);
