@@ -140,19 +140,28 @@ export default {
       }
 
       // Setup spin
-      // Minimum 5 full rotations + random angle
-      // We want to land randomly.
-      const extraSpins = 5 + Math.floor(Math.random() * 3)
-      const randomAngle = Math.floor(Math.random() * 360)
+      // Pick random item
+      const targetIndex = Math.floor(Math.random() * this.items.length)
+      const degPerItem = 360 / this.items.length
+      const itemCenterAngle = (targetIndex * degPerItem) + (degPerItem / 2)
 
-      // Calculate new total rotation (accumulative to prevent counter-spin)
-      // Ensure we always move forward
-      const currentRot = this.wheelRotation % 360
-      const spins = 360 * extraSpins
+      // Calculate target rotation (modulo 360) to align item center with pointer (0deg)
+      // pointerAngle = (360 - rotation % 360) % 360 = itemCenterAngle
+      // rotation % 360 = (360 - itemCenterAngle) % 360
+      const targetRotationMod360 = (360 - itemCenterAngle) % 360
 
-      // Target is what we want to end up at visual state
-      // To be safe, just add spins + target
-      this.wheelRotation += (spins + randomAngle)
+      const currentRotation = this.wheelRotation
+      const currentMod360 = currentRotation % 360
+
+      // Calculate distance to travel forward to reach target alignment
+      const distanceToTarget = (targetRotationMod360 - currentMod360 + 360) % 360
+      
+      // 5 full turns
+      const extraSpins = 5
+      const totalRotationToAdd = distanceToTarget + (extraSpins * 360)
+      
+      // Apply rotation
+      this.wheelRotation += totalRotationToAdd
 
       setTimeout(() => {
         this.endSpin()

@@ -417,14 +417,12 @@ export default {
       const userName = this.userStore.profile.name.toLowerCase().trim();
 
       // 3. Search for a match in oldCards
-      console.log('Checking old codes for user:', userName);
       let matchKey = Object.keys(oldCards).find(key => {
         const entry = oldCards[key];
         const fullName = `${entry.firstName} ${entry.lastName}`.toLowerCase().trim();
         return fullName === userName;
       });
 
-      console.log('Checking old codes for phone:', this.userStore.profile.phone);
       if (!matchKey) {
         matchKey = Object.keys(oldCards).find(key => {
           const entry = oldCards[key];
