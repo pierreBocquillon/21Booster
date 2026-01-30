@@ -5,8 +5,6 @@ let navItems = [
 		{ title: "Mes collection", icon: "collections.png", link: "/collections" },
 		{ title: "Boutique", icon: "shop.png", link: "/shop" },
 		{ title: "Casino", icon: "casino.png", link: "/casino" },
-	],
-	[
 		{ title: "Mes succés", icon: "achievements.png", link: "/achievements" },
 		{ title: "Mes statistiques", icon: "stats.png", link: "/statistics" },
 		{ title: "Classement", icon: "leaderboard.png", link: "/leaderboard" },

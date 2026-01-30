@@ -27,6 +27,7 @@ import BoosterSelection from '@/components/boosters/BoosterSelection.vue'
 import BoosterOpening from '@/components/boosters/BoosterOpening.vue'
 import Settings from '@/classes/Settings.js'
 import notifManager from '../assets/functions/notifManager'
+import Notif from '@/classes/Notif.js'
 
 export default {
   components: {
@@ -35,6 +36,7 @@ export default {
   },
   data() {
     return {
+      notifsCleaned: false,
       unsub: [],
       userStore: useUserStore(),
       status: 'idle', // idle, opening, exploded, revealed
@@ -64,11 +66,20 @@ export default {
     this.unsub.push(Settings.listenById("general", (s) => {
       this.settings = s;
     }));
+    
+    if (this.userStore.profile) {
+      this.deleteBoosterNotifs();
+      this.notifsCleaned = true;
+    }
   },
   watch: {
     'userStore.profile': {
       handler() {
         this.loadInventory();
+        if (!this.notifsCleaned && this.userStore.profile) {
+          this.deleteBoosterNotifs();
+          this.notifsCleaned = true;
+        }
       },
       deep: true
     },
@@ -321,6 +332,16 @@ export default {
       this.status = 'idle';
       this.cards = [];
       this.openBooster();
+    },
+    async deleteBoosterNotifs() {
+      if (!this.userStore.profile || !this.userStore.profile.id) return;
+      try {
+        const notifs = await Notif.getByUser(this.userStore.profile.id);
+        const boosterNotifs = notifs.filter(n => n.type === 'BOOSTER');
+        await Promise.all(boosterNotifs.map(n => n.delete()));
+      } catch (e) {
+        console.error("Error deleting booster notifs:", e);
+      }
     }
   },
   beforeUnmount() {
