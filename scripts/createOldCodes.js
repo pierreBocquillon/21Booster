@@ -87,6 +87,11 @@ async function run() {
                     dbCollectionId = dbCardsById[dbCardId].collection;
                 }
 
+                // Vérification stricte : la collection doit exister en BDD
+                if (dbCollectionId && !dbCollectionsById[dbCollectionId]) {
+                    dbCollectionId = null;
+                }
+
                 if (dbCardId) {
                     outputCardToDbMap[card.CardID] = {
                         cardId: dbCardId,

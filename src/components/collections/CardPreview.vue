@@ -4,7 +4,7 @@
 
       <div class="d-flex flex-row align-center justify-center w-100">
         <div class="d-flex flex-column align-center justify-center" @click.stop>
-          <div class="collection-card elevation-24 mb-4 mx-3 mt-3" :class="currentRarity" :style="{ '--booster-mask': `url('${currentImageUrl}')`, 'width': isLandscape(currentImageUrl) ? '50vw' : '40vh' }" @click.stop>
+          <div class="collection-card elevation-24 mb-4 mx-3 mt-3" :class="currentRarity" :style="{ '--booster-mask': `url('${currentImageUrl}')`, 'width': computeWidth(currentImageUrl) }" @click.stop>
             <img :src="currentImageUrl">
             </img>
           </div>
@@ -230,6 +230,21 @@ export default {
       const img = new Image();
       img.src = currentImageUrl;
       return img.width > img.height;
+    },
+    getImageRatio(currentImageUrl) {
+      const img = new Image();
+      img.src = currentImageUrl;
+      return img.width / img.height;
+    },
+    computeWidth(currentImageUrl) {
+      let optimalSize = window.innerHeight * 0.75;
+      let width = 0;
+      if(this.isLandscape(currentImageUrl)){
+        width = optimalSize;
+      } else {
+        width = optimalSize * this.getImageRatio(currentImageUrl);
+      }
+      return width + 'px';
     },
     async processUpgrade(index) {
       if (index < 0 || index >= this.rarityTypes.length - 1) return;

@@ -36,8 +36,9 @@
 
     <div class="d-flex flex-row flex-wrap justify-center align-center gap-4">
       <div v-for="card in cards" :key="card.id" class="d-flex justify-center align-center flex-wrap mb-6">
-        <div class="ma-2 collection-card" :class="{ 'show-info': infoAlwaysOn }" @click="openPreview(card, getDisplayRarity(card))" :style="getDisplayRarity(card) === 'common' ? { '--booster-mask': `url('${currentImageUrl}')`, 'width': isLandscape(getCardImage(card, getDisplayRarity(card))) ? '25vw' : '30vh' } : { 'width': isLandscape(getCardImage(card, getDisplayRarity(card))) ? '25vw' : '30vh' }">
-          <div :class="[(getDisplayRarity(card) !== 'common' && card.amount[getDisplayRarity(card)] > 0) ? getDisplayRarity(card) : '', { 'locked': card.amount[getDisplayRarity(card)] <= 0 }]" style="width: 100%; height: 100%;"><img :src="getCardImage(card, getDisplayRarity(card))" :alt="card.name" />
+        <div class="ma-2 collection-card" :class="{ 'show-info': infoAlwaysOn }" @click="openPreview(card, getDisplayRarity(card))" :style="getDisplayRarity(card) === 'common' ? { '--booster-mask': `url('${getCardImage(card, getDisplayRarity(card))}')`, 'width': isLandscape(getCardImage(card, getDisplayRarity(card))) ? '25vw' : '30vh' } : { 'width': isLandscape(getCardImage(card, getDisplayRarity(card))) ? '25vw' : '30vh' }">
+          <div :class="[(getDisplayRarity(card) !== 'common' && card.amount[getDisplayRarity(card)] > 0) ? getDisplayRarity(card) : '', { 'locked': card.amount[getDisplayRarity(card)] <= 0 }]" style="width: 100%; height: 100%;">
+            <img :src="getCardImage(card, getDisplayRarity(card))" :alt="card.name" />
           </div>
 
           <div class="card-name d-flex flex-column align-center justify-center">

@@ -1,5 +1,5 @@
 <template>
-  <v-app  style="background: url('/bg.png'); background-position: center center; background-size: cover; background-attachment: fixed;">
+  <v-app style="background: url('/bg.png'); background-position: center center; background-size: cover; background-attachment: fixed;">
     <v-dialog v-model="showLoader" persistent max-width="500px">
       <v-card class="pa-10 d-flex flex-column align-center justify-center" style="border-radius: 20px; opacity: .9; overflow: hidden;">
         <h1 class="text-primary mb-3">Chargement ...</h1>
@@ -95,11 +95,11 @@
       <v-card class="pa-3">
         <div class="d-flex flex-row align-center justify-space-between mb-5">
           <div>&nbsp;</div>
-          <h3 class="text-center">{{currentNotif.data.reason}}</h3>
+          <h3 class="text-center">{{ currentNotif.data.reason }}</h3>
           <v-btn icon variant="text" @click="closeNotif(currentNotif)"><v-icon>mdi-close</v-icon></v-btn>
         </div>
-        <div class="d-flex flex-row my-5 mx-3 justify-center" :style="{ paddingRight: Math.min(299,300-(500 / currentBoosters.length)) + 'px' }">
-          <v-img v-for="(booster, i) in currentBoosters" :key="i" class="notif-booster reveal-item" :src="`/boosters/${booster.image}`" :style="`--overlap: -${Math.min(299,300-(500 / currentBoosters.length))}px; animation-delay: ${getAnimationDelay(i, currentBoosters.length)}ms;`"></v-img>
+        <div class="d-flex flex-row my-5 mx-3 justify-center" :style="{ paddingRight: Math.min(299, 300 - (500 / currentBoosters.length)) + 'px' }">
+          <v-img v-for="(booster, i) in currentBoosters" :key="i" class="notif-booster reveal-item" :src="`/boosters/${booster.image}`" :style="`--overlap: -${Math.min(299, 300 - (500 / currentBoosters.length))}px; animation-delay: ${getAnimationDelay(i, currentBoosters.length)}ms;`"></v-img>
         </div>
         <div class="d-flex flex-row align-center justify-center mt-5">
           <v-btn color="primary" variant="tonal" @click="goToBooster(currentNotif)">Aller voir mes boosters</v-btn>
@@ -111,11 +111,11 @@
       <v-card class="pa-3">
         <div class="d-flex flex-row align-center justify-space-between mb-5">
           <div>&nbsp;</div>
-          <h3 class="text-center">{{currentNotif.data.reason}}</h3>
+          <h3 class="text-center">{{ currentNotif.data.reason }}</h3>
           <v-btn icon variant="text" @click="closeNotif(currentNotif)"><v-icon>mdi-close</v-icon></v-btn>
         </div>
-        <div class="d-flex flex-row my-5 mx-3 justify-center" :style="{ paddingRight: Math.min(299,300-(500 / currentCards.length)) + 'px' }">
-          <v-img v-for="(card, i) in currentCards" :key="i" class="notif-card reveal-item" :src="`/cards/${card.image}`" :class="card.rarity" :style="`--booster-mask: url('/cards/${card.image}'); --mask-size: contain; --mask-position: center; --mask-repeat: no-repeat; --overlap: -${Math.min(299,300-(500 / currentCards.length))}px; animation-delay: ${getAnimationDelay(i, currentCards.length)}ms;`"></v-img>
+        <div class="d-flex flex-row my-5 mx-3 justify-center" :style="{ paddingRight: Math.min(299, 300 - (500 / currentCards.length)) + 'px' }">
+          <v-img v-for="(card, i) in currentCards" :key="i" class="notif-card reveal-item" :src="`/cards/${card.image}`" :class="card.rarity" :style="`--booster-mask: url('/cards/${card.image}'); --mask-size: contain; --mask-position: center; --mask-repeat: no-repeat; --overlap: -${Math.min(299, 300 - (500 / currentCards.length))}px; animation-delay: ${getAnimationDelay(i, currentCards.length)}ms;`"></v-img>
         </div>
         <div class="d-flex flex-row align-center justify-center mt-5">
           <v-btn color="primary" variant="tonal" @click="goToCollection(currentNotif)">Aller voir mes collections</v-btn>
@@ -249,9 +249,9 @@ export default {
   computed: {
     currentCards() {
       let currentCards = []
-      for(let cardId in this.currentNotif.data.cards){
-        if(this.cards.find(c => c.id === cardId)){
-          for(let i = 0; i < this.currentNotif.data.cards[cardId].amount; i++){
+      for (let cardId in this.currentNotif.data.cards) {
+        if (this.cards.find(c => c.id === cardId)) {
+          for (let i = 0; i < this.currentNotif.data.cards[cardId].amount; i++) {
             let tmp_card = JSON.parse(JSON.stringify(this.cards.find(c => c.id === cardId)))
             tmp_card.rarity = this.currentNotif.data.cards[cardId].rarity
             currentCards.push(tmp_card)
@@ -262,9 +262,9 @@ export default {
     },
     currentBoosters() {
       let currentBoosters = []
-      for(let boosterId in this.currentNotif.data.boosters){
-        if(this.boosters.find(b => b.id === boosterId)){
-          for(let i = 0; i < this.currentNotif.data.boosters[boosterId]; i++){
+      for (let boosterId in this.currentNotif.data.boosters) {
+        if (this.boosters.find(b => b.id === boosterId)) {
+          for (let i = 0; i < this.currentNotif.data.boosters[boosterId]; i++) {
             let tmp_booster = JSON.parse(JSON.stringify(this.boosters.find(b => b.id === boosterId)))
             currentBoosters.push(tmp_booster)
           }
@@ -384,16 +384,16 @@ export default {
       }
     },
     async checkOldCodes() {
-      if( !this.ready || !this.userStore.isLoggedIn || !this.$route.meta.needAccount || !this.$route.meta.showNav ) return;
+      if (!this.ready || !this.userStore.isLoggedIn || !this.$route.meta.needAccount || !this.$route.meta.showNav) return;
 
       // 0. Check profile for recent verification
       const stored = this.userStore.profile.oldCodesVerified;
       if (stored) {
         try {
-           const { verified, expiry } = stored;
-           if (verified && expiry > Date.now()) return;
+          const { verified, expiry } = stored;
+          if (verified && expiry > Date.now()) return;
         } catch (e) {
-             console.error('Error parsing oldCodesVerified', e);
+          console.error('Error parsing oldCodesVerified', e);
         }
       }
 
@@ -465,6 +465,16 @@ export default {
       await this.userStore.profile.save();
     },
     async applyOldCode(matchKey, entry) {
+      if (this.userStore.profile.codes && Object.keys(this.userStore.profile.codes).some(k => k.startsWith('old'))) {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Action impossible',
+          text: "Les secrets de l'ancien temps ne peuvent être révélés qu'une seule fois.",
+          confirmButtonText: 'Fermer'
+        });
+        return;
+      }
+
       const persistentCodeId = 'old' + Code.createId(matchKey);
 
       // Extract Rewards
@@ -507,7 +517,7 @@ export default {
 
       // Give Stats
       if (stats.open && stats.open > 0) {
-        if (!this.userStore.profile.stats) this.userStore.profile.stats = {public: true, open: 0, destroy: 0, upgrades: 0, downgrades: 0 };
+        if (!this.userStore.profile.stats) this.userStore.profile.stats = { public: true, open: 0, destroy: 0, upgrades: 0, downgrades: 0 };
         this.userStore.profile.stats.open = (this.userStore.profile.stats.open || 0) + parseInt(stats.open);
       }
 
@@ -532,7 +542,7 @@ export default {
       // Unlock Achievement: voyageur_du_temps
       if (!this.userStore.profile.achievements) this.userStore.profile.achievements = {};
       this.userStore.profile.achievements['voyageur_du_temps'] = true;
-      
+
       notifManager.sendAchievementNotif(this.userStore.profile.id, 'voyageur_du_temps', 'Vous avez obtenues le succès "Voyageur du temps" !');
 
       await this.userStore.profile.save();

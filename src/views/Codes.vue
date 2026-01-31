@@ -191,8 +191,6 @@ export default {
 
           achievementsManager.checkForAchievements()
 
-          logsManager.log(this.userStore.profile.name, 'CODE', `Code ancien temps activé : ${rawInput} (${ownerName}). Gains : ${rewardsString}`);
-
           Swal.fire({
             icon: 'success',
             title: 'Voyage Temporel !',

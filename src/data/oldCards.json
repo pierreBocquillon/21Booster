@@ -1,150 +1,542 @@
 {
-  "23000658": {
-    "userId": "U-000191",
-    "firstName": "Daisy",
-    "lastName": "Mckenzie",
-    "phone": "8476",
+  "20304378": {
+    "userId": "U-000104",
+    "firstName": "Purple",
+    "lastName": "Luxio",
+    "phone": "3990",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
+      "SET-4_C-000066": 1,
       "SET-4_C-000067": 1,
-      "SET-4_C-000076": 1
+      "SET-4_C-000069": 1,
+      "SET-4_C-000071": 1,
+      "SET-4_C-000072": 1,
+      "SET-4_C-000073": 1,
+      "SET-4_C-000074": 1
     },
     "stats": {
-      "open": 2
+      "open": 7
     }
   },
-  "36187851": {
-    "userId": "U-000229",
-    "firstName": "Shin",
-    "lastName": "Robins",
-    "phone": "1336",
-    "collections": [
-      "tombola-zombie-cars"
-    ],
-    "cards": {
-      "SET-4_C-000067": 1
-    },
-    "stats": {
-      "open": 1
-    }
-  },
-  "48209921": {
-    "userId": "U-000146",
-    "firstName": "Sam",
-    "lastName": "Blade",
-    "phone": "1162",
-    "collections": [
-      "tombola-zombie-cars"
-    ],
-    "cards": {
-      "SET-4_C-000066": 1
-    },
-    "stats": {
-      "open": 1
-    }
-  },
-  "68004560": {
-    "userId": "U-000270",
-    "firstName": "Alexander",
-    "lastName": "Brown",
-    "phone": "8666",
-    "collections": [
-      "tombola-zombie-cars"
-    ],
-    "cards": {
-      "SET-4_C-000068": 1
-    },
-    "stats": {
-      "open": 1
-    }
-  },
-  "79292321": {
-    "userId": "U-000250",
-    "firstName": "Jenna",
-    "lastName": "Aguilar",
-    "phone": "7107",
-    "collections": [
-      "tombola-zombie-cars"
-    ],
-    "cards": {
-      "SET-4_C-000068": 1,
-      "SET-4_C-000069": 1
-    },
-    "stats": {
-      "open": 2
-    }
-  },
-  "96014302": {
-    "userId": "U-000075",
-    "firstName": "Caleb",
-    "lastName": "Johnson",
-    "phone": "8441",
+  "21711400": {
+    "userId": "U-000182",
+    "firstName": "Trevor",
+    "lastName": "Mills",
+    "phone": "8775",
     "collections": [
       "lme-des-cartes-de-san-andreas"
     ],
     "cards": {
-      "SET-1_C-000032": 1,
-      "SET-1_C-000056": 1,
-      "SET-1_C-000025": 1,
+      "SET-1_C-000012": 2,
+      "SET-1_C-000018": 3,
+      "SET-1_C-000036": 4,
+      "SET-1_C-000060": 2,
+      "SET-1_C-000038": 3,
+      "SET-1_C-000022": 1,
+      "SET-1_C-000057": 2,
+      "SET-1_C-000043": 3,
       "SET-1_C-000061": 1,
-      "SET-1_C-000027": 1
+      "SET-1_C-000016": 1,
+      "SET-1_C-000011": 1,
+      "SET-1_C-000063": 1,
+      "SET-1_C-000027": 4,
+      "SET-1_C-000008": 2,
+      "SET-1_C-000064": 5,
+      "SET-1_C-000006": 3,
+      "SET-1_C-000030": 2,
+      "SET-1_C-000033": 3,
+      "SET-1_C-000062": 1,
+      "SET-1_C-000052": 1,
+      "SET-1_C-000045": 2,
+      "SET-1_C-000034": 2,
+      "SET-1_C-000041": 2,
+      "SET-1_C-000007": 1,
+      "SET-1_C-000042": 1,
+      "SET-1_C-000004": 1,
+      "SET-1_C-000024": 1,
+      "SET-1_C-000025": 1,
+      "SET-1_C-000049": 5,
+      "SET-1_C-000058": 2,
+      "SET-1_C-000048": 1,
+      "SET-1_C-000056": 2,
+      "SET-1_C-000039": 1,
+      "SET-1_C-000046": 1,
+      "SET-1_C-000002": 1,
+      "SET-1_C-000032": 2,
+      "SET-1_C-000035": 1,
+      "SET-1_C-000031": 1,
+      "SET-1_C-000003": 2,
+      "SET-1_C-000013": 1,
+      "SET-1_C-000001": 2,
+      "SET-1_C-000040": 1,
+      "SET-1_C-000026": 1,
+      "SET-1_C-000019": 2,
+      "SET-1_C-000021": 2,
+      "SET-1_C-000059": 1,
+      "SET-1_C-000020": 1,
+      "SET-1_C-000050": 2,
+      "SET-1_C-000014": 1,
+      "SET-1_C-000055": 1
+    },
+    "stats": {
+      "open": 18
+    }
+  },
+  "29802006": {
+    "userId": "U-000201",
+    "firstName": "Jake",
+    "lastName": "Phenix",
+    "phone": "5083",
+    "collections": [
+      "tombola-zombie-cars"
+    ],
+    "cards": {
+      "SET-4_C-000067": 1,
+      "SET-4_C-000068": 1,
+      "SET-4_C-000069": 1,
+      "SET-4_C-000072": 1,
+      "SET-4_C-000076": 1
+    },
+    "stats": {
+      "open": 5
+    }
+  },
+  "42444415": {
+    "userId": "U-000244",
+    "firstName": "Paul",
+    "lastName": "Olegnac",
+    "phone": "7936",
+    "collections": [
+      "lme-des-cartes-de-san-andreas",
+      "tombola-zombie-cars"
+    ],
+    "cards": {
+      "SET-1_C-000049": 3,
+      "SET-1_C-000043": 3,
+      "SET-1_C-000036": 1,
+      "SET-1_C-000023": 2,
+      "SET-1_C-000052": 2,
+      "SET-1_C-000038": 1,
+      "SET-1_C-000004": 2,
+      "SET-1_C-000039": 1,
+      "SET-1_C-000037": 1,
+      "SET-1_C-000042": 1,
+      "SET-1_C-000017": 2,
+      "SET-1_C-000064": 3,
+      "SET-1_C-000007": 2,
+      "SET-1_C-000002": 1,
+      "SET-1_C-000016": 4,
+      "SET-1_C-000046": 1,
+      "SET-1_C-000029": 2,
+      "SET-1_C-000009": 2,
+      "SET-1_C-000040": 1,
+      "SET-1_C-000018": 3,
+      "SET-1_C-000006": 1,
+      "SET-1_C-000025": 3,
+      "SET-1_C-000059": 1,
+      "SET-1_C-000050": 1,
+      "SET-1_C-000003": 1,
+      "SET-1_C-000045": 2,
+      "SET-1_C-000055": 2,
+      "SET-1_C-000008": 1,
+      "SET-1_C-000032": 1,
+      "SET-1_C-000030": 1,
+      "SET-1_C-000033": 3,
+      "SET-1_C-000021": 1,
+      "SET-1_C-000005": 1,
+      "SET-1_C-000010": 1,
+      "SET-1_C-000019": 1,
+      "SET-1_C-000013": 1,
+      "SET-4_C-000069": 1
+    },
+    "stats": {
+      "open": 13
+    }
+  },
+  "45805230": {
+    "userId": "U-000301",
+    "firstName": "Allyster",
+    "lastName": "Brown",
+    "phone": "6546",
+    "collections": [
+      "warren-gilles"
+    ],
+    "cards": {
+      "SET-7_C-000228": 4,
+      "SET-7_C-000227": 3,
+      "SET-7_C-000235": 2,
+      "SET-7_C-000229": 2,
+      "SET-7_C-000234": 1,
+      "SET-7_C-000237": 1,
+      "SET-7_C-000236": 3,
+      "SET-7_C-000232": 1,
+      "SET-7_C-000230": 1
+    },
+    "stats": {
+      "open": 6
+    }
+  },
+  "49731330": {
+    "userId": "U-000309",
+    "firstName": "Arthur",
+    "lastName": "McGee",
+    "phone": "7776",
+    "collections": [
+      "tombola-zombie-cars"
+    ],
+    "cards": {
+      "SET-4_C-000076": 1
     },
     "stats": {
       "open": 1
     }
   },
-  "96211242": {
-    "userId": "U-000018",
-    "firstName": "Gilles",
-    "lastName": "Gagné",
-    "phone": "6401",
+  "61007621": {
+    "userId": "U-000009",
+    "firstName": "Ella",
+    "lastName": "Swan",
+    "phone": "1545",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "tombola-zombie-cars",
-      "SET-4"
+      "un-jour-je-serai-le-meilleur-collectionneur",
+      "lance-une-pice-ton-collectionneur",
+      "tombola-zombie-cars"
     ],
     "cards": {
-      "SET-1_C-000012": 3,
-      "SET-1_C-000025": 2,
-      "SET-1_C-000003": 1,
-      "SET-1_C-000023": 2,
-      "SET-1_C-000046": 1,
-      "SET-1_C-000060": 1,
-      "SET-1_C-000017": 1,
-      "SET-1_C-000036": 1,
-      "SET-1_C-000007": 1,
-      "SET-1_C-000063": 1,
-      "SET-1_C-000037": 1,
-      "SET-1_C-000013": 2,
-      "SET-1_C-000042": 3,
-      "SET-1_C-000057": 1,
-      "SET-1_C-000027": 2,
-      "SET-1_C-000035": 1,
-      "SET-1_C-000008": 1,
-      "SET-1_C-000006": 1,
+      "SET-1_C-000017": 6,
+      "SET-1_C-000043": 7,
+      "SET-1_C-000035": 2,
+      "SET-1_C-000063": 2,
+      "SET-1_C-000026": 2,
+      "SET-1_C-000060": 10,
+      "SET-1_C-000058": 3,
+      "SET-1_C-000013": 5,
+      "SET-1_C-000018": 17,
+      "SET-1_C-000025": 10,
+      "SET-1_C-000059": 6,
+      "SET-1_C-000024": 3,
+      "SET-1_C-000049": 10,
+      "SET-1_C-000033": 10,
+      "SET-1_C-000056": 6,
+      "SET-1_C-000019": 8,
+      "SET-1_C-000028": 1,
+      "SET-1_C-000011": 5,
+      "SET-1_C-000054": 3,
+      "SET-1_C-000014": 2,
+      "SET-1_C-000012": 8,
+      "SET-1_C-000016": 7,
+      "SET-1_C-000036": 8,
+      "SET-1_C-000040": 6,
+      "SET-1_C-000057": 8,
+      "SET-1_C-000031": 3,
+      "SET-1_C-000027": 7,
+      "SET-1_C-000064": 4,
+      "SET-1_C-000046": 3,
+      "SET-1_C-000007": 8,
+      "SET-1_C-000045": 2,
+      "SET-1_C-000053": 4,
+      "SET-1_C-000005": 3,
+      "SET-1_C-000047": 8,
+      "SET-1_C-000052": 3,
+      "SET-1_C-000050": 1,
+      "SET-1_C-000002": 5,
+      "SET-1_C-000023": 10,
+      "SET-1_C-000038": 2,
+      "SET-1_C-000032": 5,
       "SET-1_C-000055": 1,
-      "SET-1_C-000033": 2,
+      "SET-1_C-000042": 8,
+      "SET-1_C-000022": 6,
+      "SET-1_C-000021": 4,
+      "SET-1_C-000009": 1,
+      "SET-1_C-000051": 6,
+      "SET-1_C-000030": 5,
+      "SET-1_C-000003": 6,
+      "SET-1_C-000006": 5,
+      "SET-1_C-000039": 2,
+      "SET-1_C-000061": 3,
+      "SET-1_C-000001": 3,
+      "SET-1_C-000062": 3,
+      "SET-1_C-000041": 2,
+      "SET-1_C-000010": 2,
+      "SET-1_C-000048": 3,
+      "SET-1_C-000037": 2,
+      "SET-1_C-000029": 1,
+      "SET-1_C-000034": 1,
+      "SET-3_C-000103": 10,
+      "SET-3_C-000136": 14,
+      "SET-3_C-000151": 15,
+      "SET-3_C-000131": 8,
+      "SET-3_C-000111": 3,
+      "SET-3_C-000104": 10,
+      "SET-3_C-000123": 4,
+      "SET-3_C-000126": 12,
+      "SET-3_C-000142": 8,
+      "SET-3_C-000085": 14,
+      "SET-3_C-000100": 12,
+      "SET-3_C-000089": 12,
+      "SET-3_C-000110": 6,
+      "SET-3_C-000133": 15,
+      "SET-3_C-000107": 8,
+      "SET-3_C-000134": 7,
+      "SET-3_C-000114": 8,
+      "SET-3_C-000122": 8,
+      "SET-3_C-000117": 9,
+      "SET-3_C-000132": 7,
+      "SET-3_C-000102": 4,
+      "SET-3_C-000098": 5,
+      "SET-3_C-000125": 10,
+      "SET-3_C-000163": 7,
+      "SET-3_C-000153": 12,
+      "SET-3_C-000145": 10,
+      "SET-3_C-000121": 20,
+      "SET-3_C-000116": 13,
+      "SET-3_C-000109": 12,
+      "SET-3_C-000118": 16,
+      "SET-3_C-000099": 2,
+      "SET-3_C-000105": 9,
+      "SET-3_C-000093": 7,
+      "SET-3_C-000149": 6,
+      "SET-3_C-000088": 16,
+      "SET-3_C-000120": 10,
+      "SET-3_C-000150": 7,
+      "SET-3_C-000094": 14,
+      "SET-3_C-000130": 14,
+      "SET-3_C-000152": 10,
+      "SET-3_C-000129": 7,
+      "SET-3_C-000091": 9,
+      "SET-3_C-000148": 14,
+      "SET-3_C-000127": 14,
+      "SET-3_C-000124": 15,
+      "SET-3_C-000106": 9,
+      "SET-3_C-000097": 10,
+      "SET-3_C-000112": 8,
+      "SET-3_C-000084": 7,
+      "SET-3_C-000157": 17,
+      "SET-3_C-000092": 11,
+      "SET-3_C-000156": 8,
+      "SET-3_C-000090": 13,
+      "SET-3_C-000143": 8,
+      "SET-3_C-000140": 9,
+      "SET-3_C-000096": 9,
+      "SET-3_C-000154": 11,
+      "SET-3_C-000146": 11,
+      "SET-3_C-000141": 13,
+      "SET-3_C-000113": 7,
+      "SET-3_C-000082": 19,
+      "SET-3_C-000119": 11,
+      "SET-3_C-000115": 14,
+      "SET-3_C-000086": 7,
+      "SET-3_C-000139": 7,
+      "SET-3_C-000164": 3,
+      "SET-3_C-000138": 8,
+      "SET-3_C-000128": 8,
+      "SET-3_C-000101": 10,
+      "SET-3_C-000144": 8,
+      "SET-3_C-000155": 6,
+      "SET-3_C-000161": 4,
+      "SET-3_C-000160": 4,
+      "SET-3_C-000137": 7,
+      "SET-3_C-000165": 6,
+      "SET-3_C-000158": 6,
+      "SET-3_C-000083": 7,
+      "SET-3_C-000162": 6,
+      "SET-3_C-000095": 4,
+      "SET-3_C-000108": 7,
+      "SET-3_C-000135": 1,
+      "SET-3_C-000159": 1,
+      "SET-5_C-000208": 2,
+      "SET-5_C-000170": 4,
+      "SET-5_C-000223": 4,
+      "SET-5_C-000195": 2,
+      "SET-5_C-000180": 6,
+      "SET-5_C-000209": 4,
+      "SET-5_C-000205": 2,
+      "SET-5_C-000213": 3,
+      "SET-5_C-000169": 6,
+      "SET-5_C-000212": 6,
+      "SET-5_C-000192": 3,
+      "SET-5_C-000211": 6,
+      "SET-5_C-000207": 1,
+      "SET-5_C-000184": 2,
+      "SET-5_C-000198": 1,
+      "SET-5_C-000202": 3,
+      "SET-5_C-000175": 4,
+      "SET-5_C-000183": 2,
+      "SET-5_C-000168": 2,
+      "SET-5_C-000201": 2,
+      "SET-5_C-000190": 3,
+      "SET-5_C-000224": 3,
+      "SET-5_C-000188": 2,
+      "SET-5_C-000220": 4,
+      "SET-5_C-000226": 4,
+      "SET-5_C-000200": 4,
+      "SET-5_C-000171": 3,
+      "SET-5_C-000199": 1,
+      "SET-5_C-000203": 4,
+      "SET-5_C-000172": 5,
+      "SET-5_C-000216": 3,
+      "SET-5_C-000178": 4,
+      "SET-5_C-000187": 1,
+      "SET-5_C-000191": 3,
+      "SET-5_C-000204": 6,
+      "SET-5_C-000206": 1,
+      "SET-5_C-000219": 2,
+      "SET-5_C-000214": 2,
+      "SET-5_C-000222": 3,
+      "SET-5_C-000210": 3,
+      "SET-5_C-000221": 3,
+      "SET-5_C-000176": 4,
+      "SET-5_C-000225": 1,
+      "SET-5_C-000189": 3,
+      "SET-5_C-000194": 3,
+      "SET-5_C-000173": 2,
+      "SET-5_C-000167": 4,
+      "SET-5_C-000196": 3,
+      "SET-5_C-000185": 4,
+      "SET-5_C-000174": 2,
       "SET-1_C-000015": 1,
+      "SET-1_C-000044": 1,
+      "SET-1_C-000004": 1,
+      "SET-3_C-000147": 2,
+      "SET-5_C-000181": 1,
+      "SET-5_C-000177": 1,
+      "SET-5_C-000179": 2,
+      "SET-5_C-000193": 1,
+      "SET-4_C-000076": 1
+    },
+    "stats": {
+      "open": 243
+    }
+  },
+  "73303193": {
+    "userId": "U-000292",
+    "firstName": "Mathis",
+    "lastName": "Ray",
+    "phone": "7873",
+    "collections": [
+      "lme-des-cartes-de-san-andreas",
+      "un-jour-je-serai-le-meilleur-collectionneur",
+      "lance-une-pice-ton-collectionneur"
+    ],
+    "cards": {
+      "SET-1_C-000054": 2,
+      "SET-1_C-000063": 1,
+      "SET-1_C-000025": 1,
+      "SET-1_C-000036": 1,
+      "SET-1_C-000045": 2,
+      "SET-1_C-000016": 1,
+      "SET-1_C-000012": 2,
+      "SET-1_C-000027": 2,
+      "SET-1_C-000026": 1,
+      "SET-1_C-000030": 1,
+      "SET-1_C-000034": 1,
+      "SET-1_C-000049": 1,
+      "SET-1_C-000019": 1,
+      "SET-1_C-000041": 1,
+      "SET-1_C-000033": 1,
+      "SET-1_C-000064": 1,
+      "SET-3_C-000156": 1,
+      "SET-3_C-000125": 1,
+      "SET-3_C-000152": 1,
+      "SET-3_C-000096": 2,
+      "SET-3_C-000136": 1,
+      "SET-3_C-000120": 1,
+      "SET-3_C-000092": 1,
+      "SET-3_C-000124": 1,
+      "SET-3_C-000109": 1,
+      "SET-3_C-000131": 1,
+      "SET-3_C-000139": 1,
+      "SET-3_C-000148": 1,
+      "SET-3_C-000122": 1,
+      "SET-3_C-000083": 1,
+      "SET-3_C-000117": 1,
+      "SET-3_C-000154": 1,
+      "SET-3_C-000113": 1,
+      "SET-3_C-000106": 1,
+      "SET-3_C-000151": 1,
+      "SET-5_C-000200": 1,
+      "SET-5_C-000172": 1,
+      "SET-5_C-000169": 1,
+      "SET-5_C-000215": 1,
+      "SET-5_C-000209": 2,
+      "SET-5_C-000173": 1,
+      "SET-5_C-000190": 1,
+      "SET-5_C-000184": 1,
+      "SET-5_C-000211": 1,
+      "SET-5_C-000195": 1,
+      "SET-5_C-000220": 1,
+      "SET-5_C-000180": 1,
+      "SET-5_C-000186": 1,
+      "SET-5_C-000189": 1,
+      "SET-5_C-000203": 3,
+      "SET-5_C-000199": 1,
+      "SET-5_C-000219": 1
+    },
+    "stats": {
+      "open": 12
+    }
+  },
+  "89855281": {
+    "userId": "U-000066",
+    "firstName": "Henry",
+    "lastName": "Royer",
+    "phone": "5277",
+    "collections": [
+      "lme-des-cartes-de-san-andreas",
+      "tombola-zombie-cars"
+    ],
+    "cards": {
+      "SET-1_C-000023": 2,
+      "SET-1_C-000025": 1,
+      "SET-1_C-000041": 2,
+      "SET-1_C-000062": 1,
+      "SET-1_C-000036": 1,
+      "SET-1_C-000033": 3,
+      "SET-1_C-000020": 1,
+      "SET-1_C-000054": 1,
+      "SET-1_C-000018": 1,
+      "SET-1_C-000001": 1,
+      "SET-1_C-000005": 1,
+      "SET-1_C-000019": 1,
+      "SET-1_C-000012": 1,
+      "SET-1_C-000039": 1,
+      "SET-1_C-000042": 1,
+      "SET-1_C-000014": 1,
+      "SET-1_C-000032": 1,
+      "SET-1_C-000013": 1,
+      "SET-1_C-000006": 1,
+      "SET-1_C-000003": 1,
+      "SET-1_C-000060": 1,
+      "SET-1_C-000021": 1,
+      "SET-1_C-000064": 1,
+      "SET-1_C-000052": 1,
+      "SET-1_C-000034": 1,
+      "SET-1_C-000029": 1,
       "SET-4_C-000066": 1,
+      "SET-4_C-000067": 1,
       "SET-4_C-000068": 1,
+      "SET-4_C-000069": 1,
+      "SET-4_C-000070": 1,
+      "SET-4_C-000071": 1,
+      "SET-4_C-000072": 1,
+      "SET-4_C-000073": 1,
+      "SET-4_C-000074": 1,
       "SET-4_C-000075": 1,
       "SET-4_C-000076": 1
     },
     "stats": {
-      "open": 10
+      "open": 17
     }
   },
-  "633C4F49": {
+  "3AB3B6DE": {
     "userId": "U-000004",
     "firstName": "Fergus",
     "lastName": "McGraw",
     "phone": "8285",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -154,7 +546,7 @@
       "open": 2
     }
   },
-  "BEBB8438": {
+  "A930234A": {
     "userId": "U-000005",
     "firstName": "Kevin",
     "lastName": "Beldor",
@@ -212,7 +604,7 @@
       "open": 16
     }
   },
-  "580BF162": {
+  "9244E631": {
     "userId": "U-000006",
     "firstName": "Gunnar",
     "lastName": "Bjornson",
@@ -279,7 +671,7 @@
       "open": 27
     }
   },
-  "1879B1AC": {
+  "A51E4A11": {
     "userId": "U-000007",
     "firstName": "Dan",
     "lastName": "Mayers",
@@ -490,224 +882,7 @@
       "open": 180
     }
   },
-  "C9EF2060": {
-    "userId": "U-000009",
-    "firstName": "Ella",
-    "lastName": "Swan",
-    "phone": "1545",
-    "collections": [
-      "lme-des-cartes-de-san-andreas",
-      "un-jour-je-serai-le-meilleur-collectionneur",
-      "lance-une-pice-ton-collectionneur",
-      "SET-4"
-    ],
-    "cards": {
-      "SET-1_C-000017": 6,
-      "SET-1_C-000043": 7,
-      "SET-1_C-000035": 2,
-      "SET-1_C-000063": 2,
-      "SET-1_C-000026": 2,
-      "SET-1_C-000060": 10,
-      "SET-1_C-000058": 3,
-      "SET-1_C-000013": 5,
-      "SET-1_C-000018": 17,
-      "SET-1_C-000025": 10,
-      "SET-1_C-000059": 6,
-      "SET-1_C-000024": 3,
-      "SET-1_C-000049": 10,
-      "SET-1_C-000033": 10,
-      "SET-1_C-000056": 6,
-      "SET-1_C-000019": 8,
-      "SET-1_C-000028": 1,
-      "SET-1_C-000011": 5,
-      "SET-1_C-000054": 3,
-      "SET-1_C-000014": 2,
-      "SET-1_C-000012": 8,
-      "SET-1_C-000016": 7,
-      "SET-1_C-000036": 8,
-      "SET-1_C-000040": 6,
-      "SET-1_C-000057": 8,
-      "SET-1_C-000031": 3,
-      "SET-1_C-000027": 7,
-      "SET-1_C-000064": 4,
-      "SET-1_C-000046": 3,
-      "SET-1_C-000007": 8,
-      "SET-1_C-000045": 2,
-      "SET-1_C-000053": 4,
-      "SET-1_C-000005": 3,
-      "SET-1_C-000047": 8,
-      "SET-1_C-000052": 3,
-      "SET-1_C-000050": 1,
-      "SET-1_C-000002": 5,
-      "SET-1_C-000023": 10,
-      "SET-1_C-000038": 2,
-      "SET-1_C-000032": 5,
-      "SET-1_C-000055": 1,
-      "SET-1_C-000042": 8,
-      "SET-1_C-000022": 6,
-      "SET-1_C-000021": 4,
-      "SET-1_C-000009": 1,
-      "SET-1_C-000051": 6,
-      "SET-1_C-000030": 5,
-      "SET-1_C-000003": 6,
-      "SET-1_C-000006": 5,
-      "SET-1_C-000039": 2,
-      "SET-1_C-000061": 3,
-      "SET-1_C-000001": 3,
-      "SET-1_C-000062": 3,
-      "SET-1_C-000041": 2,
-      "SET-1_C-000010": 2,
-      "SET-1_C-000048": 3,
-      "SET-1_C-000037": 2,
-      "SET-1_C-000029": 1,
-      "SET-1_C-000034": 1,
-      "SET-3_C-000103": 10,
-      "SET-3_C-000136": 14,
-      "SET-3_C-000151": 15,
-      "SET-3_C-000131": 8,
-      "SET-3_C-000111": 3,
-      "SET-3_C-000104": 10,
-      "SET-3_C-000123": 4,
-      "SET-3_C-000126": 12,
-      "SET-3_C-000142": 8,
-      "SET-3_C-000085": 14,
-      "SET-3_C-000100": 12,
-      "SET-3_C-000089": 12,
-      "SET-3_C-000110": 6,
-      "SET-3_C-000133": 15,
-      "SET-3_C-000107": 8,
-      "SET-3_C-000134": 7,
-      "SET-3_C-000114": 8,
-      "SET-3_C-000122": 8,
-      "SET-3_C-000117": 9,
-      "SET-3_C-000132": 7,
-      "SET-3_C-000102": 4,
-      "SET-3_C-000098": 5,
-      "SET-3_C-000125": 10,
-      "SET-3_C-000163": 7,
-      "SET-3_C-000153": 12,
-      "SET-3_C-000145": 10,
-      "SET-3_C-000121": 20,
-      "SET-3_C-000116": 13,
-      "SET-3_C-000109": 12,
-      "SET-3_C-000118": 16,
-      "SET-3_C-000099": 2,
-      "SET-3_C-000105": 9,
-      "SET-3_C-000093": 7,
-      "SET-3_C-000149": 6,
-      "SET-3_C-000088": 16,
-      "SET-3_C-000120": 10,
-      "SET-3_C-000150": 7,
-      "SET-3_C-000094": 14,
-      "SET-3_C-000130": 14,
-      "SET-3_C-000152": 10,
-      "SET-3_C-000129": 7,
-      "SET-3_C-000091": 9,
-      "SET-3_C-000148": 14,
-      "SET-3_C-000127": 14,
-      "SET-3_C-000124": 15,
-      "SET-3_C-000106": 9,
-      "SET-3_C-000097": 10,
-      "SET-3_C-000112": 8,
-      "SET-3_C-000084": 7,
-      "SET-3_C-000157": 17,
-      "SET-3_C-000092": 11,
-      "SET-3_C-000156": 8,
-      "SET-3_C-000090": 13,
-      "SET-3_C-000143": 8,
-      "SET-3_C-000140": 9,
-      "SET-3_C-000096": 9,
-      "SET-3_C-000154": 11,
-      "SET-3_C-000146": 11,
-      "SET-3_C-000141": 13,
-      "SET-3_C-000113": 7,
-      "SET-3_C-000082": 19,
-      "SET-3_C-000119": 11,
-      "SET-3_C-000115": 14,
-      "SET-3_C-000086": 7,
-      "SET-3_C-000139": 7,
-      "SET-3_C-000164": 3,
-      "SET-3_C-000138": 8,
-      "SET-3_C-000128": 8,
-      "SET-3_C-000101": 10,
-      "SET-3_C-000144": 8,
-      "SET-3_C-000155": 6,
-      "SET-3_C-000161": 4,
-      "SET-3_C-000160": 4,
-      "SET-3_C-000137": 7,
-      "SET-3_C-000165": 6,
-      "SET-3_C-000158": 6,
-      "SET-3_C-000083": 7,
-      "SET-3_C-000162": 6,
-      "SET-3_C-000095": 4,
-      "SET-3_C-000108": 7,
-      "SET-3_C-000135": 1,
-      "SET-3_C-000159": 1,
-      "SET-5_C-000208": 2,
-      "SET-5_C-000170": 4,
-      "SET-5_C-000223": 4,
-      "SET-5_C-000195": 2,
-      "SET-5_C-000180": 6,
-      "SET-5_C-000209": 4,
-      "SET-5_C-000205": 2,
-      "SET-5_C-000213": 3,
-      "SET-5_C-000169": 6,
-      "SET-5_C-000212": 6,
-      "SET-5_C-000192": 3,
-      "SET-5_C-000211": 6,
-      "SET-5_C-000207": 1,
-      "SET-5_C-000184": 2,
-      "SET-5_C-000198": 1,
-      "SET-5_C-000202": 3,
-      "SET-5_C-000175": 4,
-      "SET-5_C-000183": 2,
-      "SET-5_C-000168": 2,
-      "SET-5_C-000201": 2,
-      "SET-5_C-000190": 3,
-      "SET-5_C-000224": 3,
-      "SET-5_C-000188": 2,
-      "SET-5_C-000220": 4,
-      "SET-5_C-000226": 4,
-      "SET-5_C-000200": 4,
-      "SET-5_C-000171": 3,
-      "SET-5_C-000199": 1,
-      "SET-5_C-000203": 4,
-      "SET-5_C-000172": 5,
-      "SET-5_C-000216": 3,
-      "SET-5_C-000178": 4,
-      "SET-5_C-000187": 1,
-      "SET-5_C-000191": 3,
-      "SET-5_C-000204": 6,
-      "SET-5_C-000206": 1,
-      "SET-5_C-000219": 2,
-      "SET-5_C-000214": 2,
-      "SET-5_C-000222": 3,
-      "SET-5_C-000210": 3,
-      "SET-5_C-000221": 3,
-      "SET-5_C-000176": 4,
-      "SET-5_C-000225": 1,
-      "SET-5_C-000189": 3,
-      "SET-5_C-000194": 3,
-      "SET-5_C-000173": 2,
-      "SET-5_C-000167": 4,
-      "SET-5_C-000196": 3,
-      "SET-5_C-000185": 4,
-      "SET-5_C-000174": 2,
-      "SET-1_C-000015": 1,
-      "SET-1_C-000044": 1,
-      "SET-1_C-000004": 1,
-      "SET-3_C-000147": 2,
-      "SET-5_C-000181": 1,
-      "SET-5_C-000177": 1,
-      "SET-5_C-000179": 2,
-      "SET-5_C-000193": 1,
-      "SET-4_C-000076": 1
-    },
-    "stats": {
-      "open": 243
-    }
-  },
-  "0B1FF341": {
+  "6A1B28C8": {
     "userId": "U-000010",
     "firstName": "Régie",
     "lastName": "Taylor",
@@ -798,14 +973,13 @@
       "open": 35
     }
   },
-  "4290AF07": {
+  "DCCE666F": {
     "userId": "U-000011",
     "firstName": "Alasthor",
     "lastName": "Vydal",
     "phone": "9321",
     "collections": [
-      "lme-des-cartes-de-san-andreas",
-      "SET-2"
+      "lme-des-cartes-de-san-andreas"
     ],
     "cards": {
       "SET-1_C-000007": 14,
@@ -871,14 +1045,13 @@
       "SET-1_C-000024": 5,
       "SET-1_C-000051": 1,
       "SET-1_C-000062": 4,
-      "SET-1_C-000032": 1,
-      "SET-2_C-000065": 1
+      "SET-1_C-000032": 1
     },
     "stats": {
       "open": 73
     }
   },
-  "00711105": {
+  "402A32A0": {
     "userId": "U-000012",
     "firstName": "Elowen",
     "lastName": "Greenwood",
@@ -954,7 +1127,7 @@
       "open": 54
     }
   },
-  "1E028585": {
+  "D7ECD447": {
     "userId": "U-000013",
     "firstName": "Tiago",
     "lastName": "Navarro",
@@ -962,8 +1135,7 @@
     "collections": [
       "lme-des-cartes-de-san-andreas",
       "tombola-zombie-cars",
-      "warren-gilles",
-      "SET-4"
+      "warren-gilles"
     ],
     "cards": {
       "SET-1_C-000036": 7,
@@ -1045,15 +1217,14 @@
       "open": 65
     }
   },
-  "77E13A78": {
+  "F4750CB2": {
     "userId": "U-000014",
     "firstName": "Scott",
     "lastName": "Mackey",
     "phone": "450",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-1_C-000054": 2,
@@ -1118,7 +1289,7 @@
       "open": 39
     }
   },
-  "BE568222": {
+  "C23121AF": {
     "userId": "U-000015",
     "firstName": "Giulia",
     "lastName": "Fabaro",
@@ -1186,18 +1357,16 @@
       "open": 25
     }
   },
-  "EDF29BEB": {
+  "AD7492F1": {
     "userId": "U-000017",
     "firstName": "Peter",
     "lastName": "McSon",
     "phone": "7901",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "SET-2",
       "un-jour-je-serai-le-meilleur-collectionneur",
       "tombola-zombie-cars",
-      "lance-une-pice-ton-collectionneur",
-      "SET-4"
+      "lance-une-pice-ton-collectionneur"
     ],
     "cards": {
       "SET-1_C-000059": 4,
@@ -1264,7 +1433,6 @@
       "SET-1_C-000051": 1,
       "SET-1_C-000062": 1,
       "SET-1_C-000002": 1,
-      "SET-2_C-000065": 1,
       "SET-3_C-000086": 11,
       "SET-3_C-000087": 2,
       "SET-3_C-000134": 16,
@@ -1419,7 +1587,47 @@
       "open": 376
     }
   },
-  "A09B43C8": {
+  "333A3737": {
+    "userId": "U-000018",
+    "firstName": "Gilles",
+    "lastName": "Gagné",
+    "phone": "6401",
+    "collections": [
+      "lme-des-cartes-de-san-andreas",
+      "tombola-zombie-cars"
+    ],
+    "cards": {
+      "SET-1_C-000012": 3,
+      "SET-1_C-000025": 2,
+      "SET-1_C-000003": 1,
+      "SET-1_C-000023": 2,
+      "SET-1_C-000046": 1,
+      "SET-1_C-000060": 1,
+      "SET-1_C-000017": 1,
+      "SET-1_C-000036": 1,
+      "SET-1_C-000007": 1,
+      "SET-1_C-000063": 1,
+      "SET-1_C-000037": 1,
+      "SET-1_C-000013": 2,
+      "SET-1_C-000042": 3,
+      "SET-1_C-000057": 1,
+      "SET-1_C-000027": 2,
+      "SET-1_C-000035": 1,
+      "SET-1_C-000008": 1,
+      "SET-1_C-000006": 1,
+      "SET-1_C-000055": 1,
+      "SET-1_C-000033": 2,
+      "SET-1_C-000015": 1,
+      "SET-4_C-000066": 1,
+      "SET-4_C-000068": 1,
+      "SET-4_C-000075": 1,
+      "SET-4_C-000076": 1
+    },
+    "stats": {
+      "open": 10
+    }
+  },
+  "07044341": {
     "userId": "U-000019",
     "firstName": "Skye",
     "lastName": "Sinclair",
@@ -1427,7 +1635,7 @@
     "collections": [
       "lme-des-cartes-de-san-andreas",
       "lance-une-pice-ton-collectionneur",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-1_C-000057": 1,
@@ -1534,7 +1742,7 @@
       "open": 43
     }
   },
-  "A77EE62B": {
+  "4E6157BF": {
     "userId": "U-000020",
     "firstName": "Logan",
     "lastName": "Reyes",
@@ -1571,7 +1779,7 @@
       "open": 7
     }
   },
-  "0D3695D4": {
+  "1D1018FD": {
     "userId": "U-000021",
     "firstName": "Martin",
     "lastName": "Dupont",
@@ -1762,7 +1970,7 @@
       "open": 104
     }
   },
-  "B5EBDE69": {
+  "5BE7519B": {
     "userId": "U-000022",
     "firstName": "Morganne",
     "lastName": "Perez",
@@ -1865,7 +2073,7 @@
       "open": 43
     }
   },
-  "2E580F34": {
+  "34BF5951": {
     "userId": "U-000023",
     "firstName": "Nate",
     "lastName": "Jenkins",
@@ -1931,7 +2139,7 @@
       "open": 29
     }
   },
-  "1C25013A": {
+  "F2A4A6E8": {
     "userId": "U-000024",
     "firstName": "Roxane",
     "lastName": "Val",
@@ -1939,7 +2147,7 @@
     "collections": [
       "lme-des-cartes-de-san-andreas",
       "lance-une-pice-ton-collectionneur",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-1_C-000010": 3,
@@ -2063,7 +2271,7 @@
       "open": 96
     }
   },
-  "B33A523D": {
+  "88AF1670": {
     "userId": "U-000027",
     "firstName": "Max",
     "lastName": "Thompson",
@@ -2071,8 +2279,7 @@
     "collections": [
       "lme-des-cartes-de-san-andreas",
       "tombola-zombie-cars",
-      "un-jour-je-serai-le-meilleur-collectionneur",
-      "SET-4"
+      "un-jour-je-serai-le-meilleur-collectionneur"
     ],
     "cards": {
       "SET-1_C-000017": 4,
@@ -2186,7 +2393,7 @@
       "open": 44
     }
   },
-  "28A5F895": {
+  "CD4FD1D5": {
     "userId": "U-000028",
     "firstName": "Aaron",
     "lastName": "Cooper",
@@ -2249,7 +2456,7 @@
       "open": 24
     }
   },
-  "20DC5836": {
+  "E574563C": {
     "userId": "U-000029",
     "firstName": "Warren",
     "lastName": "Lone",
@@ -2321,7 +2528,7 @@
       "open": 29
     }
   },
-  "C5150803": {
+  "CF6BC063": {
     "userId": "U-000030",
     "firstName": "Peter",
     "lastName": "Wilson",
@@ -2454,14 +2661,13 @@
       "open": 91
     }
   },
-  "8A9E4AA3": {
+  "494DBD09": {
     "userId": "U-000033",
     "firstName": "Lazare",
     "lastName": "Owens",
     "phone": "3493",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "SET-2",
       "tombola-zombie-cars",
       "lance-une-pice-ton-collectionneur",
       "warren-gilles"
@@ -2531,7 +2737,6 @@
       "SET-1_C-000034": 7,
       "SET-1_C-000006": 3,
       "SET-1_C-000041": 2,
-      "SET-2_C-000065": 1,
       "SET-4_C-000068": 1,
       "SET-4_C-000070": 1,
       "SET-4_C-000072": 1,
@@ -2607,7 +2812,7 @@
       "open": 167
     }
   },
-  "2755B3F3": {
+  "E4C344A9": {
     "userId": "U-000034",
     "firstName": "Jack",
     "lastName": "Jhonson",
@@ -2628,7 +2833,7 @@
       "open": 2
     }
   },
-  "A81DD710": {
+  "3508F486": {
     "userId": "U-000035",
     "firstName": "John",
     "lastName": "Deek",
@@ -2664,7 +2869,7 @@
       "open": 6
     }
   },
-  "A20D84BC": {
+  "06AC76AE": {
     "userId": "U-000036",
     "firstName": "William",
     "lastName": "Steelings",
@@ -2713,7 +2918,7 @@
       "open": 12
     }
   },
-  "78ECB30E": {
+  "4CA9F1A4": {
     "userId": "U-000037",
     "firstName": "Otto",
     "lastName": "Steiner",
@@ -2732,7 +2937,7 @@
       "open": 1
     }
   },
-  "899F2914": {
+  "7F75C4FE": {
     "userId": "U-000038",
     "firstName": "Nicolas",
     "lastName": "Carter",
@@ -2799,15 +3004,14 @@
       "open": 25
     }
   },
-  "8007B663": {
+  "3D94FC89": {
     "userId": "U-000039",
     "firstName": "Noah",
     "lastName": "Dubois",
     "phone": "1373",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-1_C-000013": 3,
@@ -2874,7 +3078,7 @@
       "open": 28
     }
   },
-  "C5AF8935": {
+  "C9B8C63C": {
     "userId": "U-000040",
     "firstName": "Jaden",
     "lastName": "Pickles",
@@ -2946,18 +3150,16 @@
       "open": 38
     }
   },
-  "6E7D0771": {
+  "E53918F7": {
     "userId": "U-000041",
     "firstName": "Nic",
     "lastName": "Parnas",
     "phone": "6969",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "SET-2",
       "tombola-zombie-cars",
       "un-jour-je-serai-le-meilleur-collectionneur",
-      "lance-une-pice-ton-collectionneur",
-      "SET-4"
+      "lance-une-pice-ton-collectionneur"
     ],
     "cards": {
       "SET-1_C-000038": 10,
@@ -3024,7 +3226,6 @@
       "SET-1_C-000008": 4,
       "SET-1_C-000046": 3,
       "SET-1_C-000026": 1,
-      "SET-2_C-000065": 1,
       "SET-4_C-000066": 1,
       "SET-3_C-000112": 24,
       "SET-3_C-000110": 20,
@@ -3112,7 +3313,6 @@
       "SET-3_C-000099": 1,
       "SET-4_C-000068": 1,
       "SET-3_C-000123": 2,
-      "SET-2_C-000166": 1,
       "SET-4_C-000069": 1,
       "SET-4_C-000070": 1,
       "SET-4_C-000071": 1,
@@ -3185,18 +3385,16 @@
       "open": 560
     }
   },
-  "E9C7F46B": {
+  "51604D11": {
     "userId": "U-000042",
     "firstName": "Malya",
     "lastName": "Da Costa",
     "phone": "2383",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "SET-2",
       "tombola-zombie-cars",
       "un-jour-je-serai-le-meilleur-collectionneur",
-      "lance-une-pice-ton-collectionneur",
-      "SET-4"
+      "lance-une-pice-ton-collectionneur"
     ],
     "cards": {
       "SET-1_C-000060": 18,
@@ -3263,7 +3461,6 @@
       "SET-1_C-000063": 8,
       "SET-1_C-000039": 4,
       "SET-1_C-000028": 2,
-      "SET-2_C-000065": 1,
       "SET-4_C-000066": 1,
       "SET-3_C-000163": 29,
       "SET-3_C-000098": 14,
@@ -3351,7 +3548,6 @@
       "SET-4_C-000068": 1,
       "SET-3_C-000087": 1,
       "SET-3_C-000123": 1,
-      "SET-2_C-000166": 1,
       "SET-4_C-000069": 1,
       "SET-4_C-000070": 1,
       "SET-4_C-000071": 1,
@@ -3417,7 +3613,6 @@
       "SET-5_C-000179": 3,
       "SET-5_C-000188": 2,
       "SET-4_C-000073": 1,
-      "SET-2_C-000239": 1,
       "SET-4_C-000074": 1,
       "SET-4_C-000075": 1,
       "SET-4_C-000076": 1
@@ -3426,7 +3621,7 @@
       "open": 548
     }
   },
-  "92AE47D7": {
+  "11CA049B": {
     "userId": "U-000043",
     "firstName": "Rob",
     "lastName": "Dickinson",
@@ -3479,7 +3674,7 @@
       "open": 12
     }
   },
-  "0A26169E": {
+  "CF2CAC21": {
     "userId": "U-000044",
     "firstName": "Alice",
     "lastName": "Morose",
@@ -3487,8 +3682,7 @@
     "collections": [
       "lme-des-cartes-de-san-andreas",
       "tombola-zombie-cars",
-      "un-jour-je-serai-le-meilleur-collectionneur",
-      "SET-4"
+      "un-jour-je-serai-le-meilleur-collectionneur"
     ],
     "cards": {
       "SET-1_C-000017": 4,
@@ -3603,18 +3797,16 @@
       "open": 48
     }
   },
-  "A08FFA9C": {
+  "DCE64534": {
     "userId": "U-000045",
     "firstName": "Calvin",
     "lastName": "Ox",
     "phone": "3616",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "SET-2",
       "tombola-zombie-cars",
       "un-jour-je-serai-le-meilleur-collectionneur",
-      "lance-une-pice-ton-collectionneur",
-      "SET-4"
+      "lance-une-pice-ton-collectionneur"
     ],
     "cards": {
       "SET-1_C-000003": 21,
@@ -3681,7 +3873,6 @@
       "SET-1_C-000039": 2,
       "SET-1_C-000008": 2,
       "SET-1_C-000037": 1,
-      "SET-2_C-000065": 1,
       "SET-4_C-000066": 1,
       "SET-3_C-000085": 35,
       "SET-3_C-000094": 18,
@@ -3770,7 +3961,6 @@
       "SET-3_C-000111": 1,
       "SET-4_C-000069": 1,
       "SET-3_C-000087": 1,
-      "SET-2_C-000166": 1,
       "SET-4_C-000070": 1,
       "SET-4_C-000071": 1,
       "SET-4_C-000072": 1,
@@ -3840,14 +4030,13 @@
       "open": 492
     }
   },
-  "7E209994": {
+  "60308FC0": {
     "userId": "U-000046",
     "firstName": "Clément",
     "lastName": "Adit",
     "phone": "3924",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "SET-2",
       "tombola-zombie-cars",
       "un-jour-je-serai-le-meilleur-collectionneur",
       "lance-une-pice-ton-collectionneur"
@@ -3917,7 +4106,6 @@
       "SET-1_C-000044": 5,
       "SET-1_C-000059": 4,
       "SET-1_C-000031": 6,
-      "SET-2_C-000065": 1,
       "SET-4_C-000066": 1,
       "SET-4_C-000067": 1,
       "SET-3_C-000109": 21,
@@ -4004,7 +4192,6 @@
       "SET-3_C-000111": 3,
       "SET-3_C-000147": 2,
       "SET-3_C-000135": 1,
-      "SET-2_C-000166": 1,
       "SET-4_C-000068": 1,
       "SET-4_C-000069": 1,
       "SET-4_C-000070": 1,
@@ -4072,7 +4259,7 @@
       "open": 488
     }
   },
-  "8E423B56": {
+  "BA30E596": {
     "userId": "U-000047",
     "firstName": "Kata",
     "lastName": "Engel",
@@ -4197,7 +4384,7 @@
       "open": 42
     }
   },
-  "3661B2F6": {
+  "AE7DB500": {
     "userId": "U-000048",
     "firstName": "Mathieu",
     "lastName": "Voss",
@@ -4275,7 +4462,7 @@
       "open": 61
     }
   },
-  "35284FAE": {
+  "23ED1BA9": {
     "userId": "U-000049",
     "firstName": "Miky",
     "lastName": "Quest",
@@ -4312,17 +4499,15 @@
       "open": 8
     }
   },
-  "BE75C29C": {
+  "EE0DD62A": {
     "userId": "U-000050",
     "firstName": "John",
     "lastName": "Williams",
     "phone": "2357",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "SET-2",
       "tombola-zombie-cars",
-      "un-jour-je-serai-le-meilleur-collectionneur",
-      "SET-4"
+      "un-jour-je-serai-le-meilleur-collectionneur"
     ],
     "cards": {
       "SET-1_C-000042": 11,
@@ -4389,7 +4574,6 @@
       "SET-1_C-000009": 1,
       "SET-1_C-000008": 2,
       "SET-1_C-000041": 2,
-      "SET-2_C-000065": 2,
       "SET-4_C-000066": 1,
       "SET-3_C-000129": 10,
       "SET-3_C-000082": 11,
@@ -4479,7 +4663,6 @@
       "SET-3_C-000135": 2,
       "SET-3_C-000152": 3,
       "SET-3_C-000147": 1,
-      "SET-2_C-000166": 1,
       "SET-4_C-000071": 1,
       "SET-4_C-000072": 1,
       "SET-4_C-000073": 1,
@@ -4490,18 +4673,16 @@
       "open": 216
     }
   },
-  "F00C3CC7": {
+  "A81314C5": {
     "userId": "U-000052",
     "firstName": "Roman",
     "lastName": "Favi",
     "phone": "5389",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "SET-2",
       "tombola-zombie-cars",
       "un-jour-je-serai-le-meilleur-collectionneur",
-      "lance-une-pice-ton-collectionneur",
-      "SET-4"
+      "lance-une-pice-ton-collectionneur"
     ],
     "cards": {
       "SET-1_C-000023": 9,
@@ -4568,7 +4749,6 @@
       "SET-1_C-000006": 5,
       "SET-1_C-000057": 2,
       "SET-1_C-000021": 1,
-      "SET-2_C-000065": 1,
       "SET-4_C-000066": 1,
       "SET-3_C-000121": 25,
       "SET-3_C-000155": 11,
@@ -4658,7 +4838,6 @@
       "SET-4_C-000070": 1,
       "SET-3_C-000135": 1,
       "SET-3_C-000159": 1,
-      "SET-2_C-000166": 1,
       "SET-4_C-000071": 1,
       "SET-4_C-000072": 1,
       "SET-5_C-000178": 13,
@@ -4723,7 +4902,6 @@
       "SET-5_C-000224": 5,
       "SET-4_C-000074": 1,
       "SET-5_C-000186": 1,
-      "SET-2_C-000239": 1,
       "SET-4_C-000075": 1,
       "SET-4_C-000076": 1
     },
@@ -4731,7 +4909,7 @@
       "open": 432
     }
   },
-  "103475FE": {
+  "4D0F8058": {
     "userId": "U-000054",
     "firstName": "Fred",
     "lastName": "Dumont",
@@ -4764,14 +4942,13 @@
       "open": 6
     }
   },
-  "A398E6D4": {
+  "86E0CCF7": {
     "userId": "U-000055",
     "firstName": "Charly",
     "lastName": "Miller",
     "phone": "7305",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "SET-2",
       "un-jour-je-serai-le-meilleur-collectionneur",
       "tombola-zombie-cars"
     ],
@@ -4840,7 +5017,6 @@
       "SET-1_C-000022": 3,
       "SET-1_C-000039": 1,
       "SET-1_C-000028": 1,
-      "SET-2_C-000065": 1,
       "SET-3_C-000101": 1,
       "SET-3_C-000129": 1,
       "SET-3_C-000088": 2,
@@ -4882,15 +5058,14 @@
       "open": 102
     }
   },
-  "99167B66": {
+  "7F655363": {
     "userId": "U-000056",
     "firstName": "Luciana",
     "lastName": "Hartley",
     "phone": "4316",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-1_C-000056": 1,
@@ -4941,15 +5116,14 @@
       "open": 20
     }
   },
-  "8D463718": {
+  "75C31866": {
     "userId": "U-000057",
     "firstName": "Noah",
     "lastName": "Maddox",
     "phone": "763",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-1_C-000012": 5,
@@ -4988,7 +5162,7 @@
       "open": 14
     }
   },
-  "3D009349": {
+  "29B3F8EC": {
     "userId": "U-000058",
     "firstName": "Matteo",
     "lastName": "Montoya",
@@ -5060,7 +5234,7 @@
       "open": 17
     }
   },
-  "9A3B0B3F": {
+  "3E51A1F8": {
     "userId": "U-000059",
     "firstName": "Leonard",
     "lastName": "Davis",
@@ -5069,8 +5243,7 @@
       "lme-des-cartes-de-san-andreas",
       "tombola-zombie-cars",
       "un-jour-je-serai-le-meilleur-collectionneur",
-      "lance-une-pice-ton-collectionneur",
-      "SET-4"
+      "lance-une-pice-ton-collectionneur"
     ],
     "cards": {
       "SET-1_C-000064": 3,
@@ -5188,7 +5361,7 @@
       "open": 43
     }
   },
-  "3745B951": {
+  "6C08D90C": {
     "userId": "U-000060",
     "firstName": "Léonardo",
     "lastName": "Bianchi",
@@ -5197,9 +5370,7 @@
       "lme-des-cartes-de-san-andreas",
       "tombola-zombie-cars",
       "un-jour-je-serai-le-meilleur-collectionneur",
-      "lance-une-pice-ton-collectionneur",
-      "SET-2",
-      "SET-4"
+      "lance-une-pice-ton-collectionneur"
     ],
     "cards": {
       "SET-1_C-000021": 7,
@@ -5407,7 +5578,6 @@
       "SET-5_C-000171": 1,
       "SET-4_C-000073": 1,
       "SET-4_C-000074": 1,
-      "SET-2_C-000065": 1,
       "SET-5_C-000214": 1,
       "SET-5_C-000175": 1,
       "SET-5_C-000167": 1,
@@ -5421,7 +5591,7 @@
       "open": 234
     }
   },
-  "5B39E3A1": {
+  "AFECDCB1": {
     "userId": "U-000061",
     "firstName": "Lyana",
     "lastName": "Valmont",
@@ -5431,8 +5601,7 @@
       "tombola-zombie-cars",
       "un-jour-je-serai-le-meilleur-collectionneur",
       "lance-une-pice-ton-collectionneur",
-      "warren-gilles",
-      "SET-4"
+      "warren-gilles"
     ],
     "cards": {
       "SET-1_C-000064": 3,
@@ -5609,7 +5778,7 @@
       "open": 97
     }
   },
-  "BFDA27CB": {
+  "EADCA728": {
     "userId": "U-000062",
     "firstName": "Joseph",
     "lastName": "Portalis",
@@ -5740,14 +5909,13 @@
       "open": 60
     }
   },
-  "CC95C3EA": {
+  "F4E61E18": {
     "userId": "U-000063",
     "firstName": "Elizabeth",
     "lastName": "Jones",
     "phone": "394",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "SET-2",
       "un-jour-je-serai-le-meilleur-collectionneur",
       "lance-une-pice-ton-collectionneur"
     ],
@@ -5816,7 +5984,6 @@
       "SET-1_C-000035": 2,
       "SET-1_C-000034": 2,
       "SET-1_C-000052": 2,
-      "SET-2_C-000065": 1,
       "SET-3_C-000120": 5,
       "SET-3_C-000155": 10,
       "SET-3_C-000101": 7,
@@ -5957,7 +6124,7 @@
       "open": 241
     }
   },
-  "E37E0508": {
+  "6C99F9E4": {
     "userId": "U-000064",
     "firstName": "Alex",
     "lastName": "Raynes",
@@ -5965,8 +6132,7 @@
     "collections": [
       "lme-des-cartes-de-san-andreas",
       "tombola-zombie-cars",
-      "un-jour-je-serai-le-meilleur-collectionneur",
-      "SET-4"
+      "un-jour-je-serai-le-meilleur-collectionneur"
     ],
     "cards": {
       "SET-1_C-000016": 1,
@@ -6045,7 +6211,7 @@
       "open": 24
     }
   },
-  "C0092E90": {
+  "F850866E": {
     "userId": "U-000065",
     "firstName": "Isaac",
     "lastName": "Howel",
@@ -6090,60 +6256,7 @@
       "open": 12
     }
   },
-  "02C474CE": {
-    "userId": "U-000066",
-    "firstName": "Henry",
-    "lastName": "Royer",
-    "phone": "5277",
-    "collections": [
-      "lme-des-cartes-de-san-andreas",
-      "tombola-zombie-cars",
-      "SET-4"
-    ],
-    "cards": {
-      "SET-1_C-000023": 2,
-      "SET-1_C-000025": 1,
-      "SET-1_C-000041": 2,
-      "SET-1_C-000062": 1,
-      "SET-1_C-000036": 1,
-      "SET-1_C-000033": 3,
-      "SET-1_C-000020": 1,
-      "SET-1_C-000054": 1,
-      "SET-1_C-000018": 1,
-      "SET-1_C-000001": 1,
-      "SET-1_C-000005": 1,
-      "SET-1_C-000019": 1,
-      "SET-1_C-000012": 1,
-      "SET-1_C-000039": 1,
-      "SET-1_C-000042": 1,
-      "SET-1_C-000014": 1,
-      "SET-1_C-000032": 1,
-      "SET-1_C-000013": 1,
-      "SET-1_C-000006": 1,
-      "SET-1_C-000003": 1,
-      "SET-1_C-000060": 1,
-      "SET-1_C-000021": 1,
-      "SET-1_C-000064": 1,
-      "SET-1_C-000052": 1,
-      "SET-1_C-000034": 1,
-      "SET-1_C-000029": 1,
-      "SET-4_C-000066": 1,
-      "SET-4_C-000067": 1,
-      "SET-4_C-000068": 1,
-      "SET-4_C-000069": 1,
-      "SET-4_C-000070": 1,
-      "SET-4_C-000071": 1,
-      "SET-4_C-000072": 1,
-      "SET-4_C-000073": 1,
-      "SET-4_C-000074": 1,
-      "SET-4_C-000075": 1,
-      "SET-4_C-000076": 1
-    },
-    "stats": {
-      "open": 17
-    }
-  },
-  "C7D95BD1": {
+  "5597C742": {
     "userId": "U-000067",
     "firstName": "Carl",
     "lastName": "Barton",
@@ -6222,7 +6335,7 @@
       "open": 62
     }
   },
-  "817E7C40": {
+  "6801BE23": {
     "userId": "U-000068",
     "firstName": "Helmoute",
     "lastName": "Pincho",
@@ -6298,7 +6411,7 @@
       "open": 60
     }
   },
-  "F5B2ACE9": {
+  "A1D90FB7": {
     "userId": "U-000069",
     "firstName": "Anders",
     "lastName": "Cook",
@@ -6347,7 +6460,7 @@
       "open": 12
     }
   },
-  "5341B91E": {
+  "9444A724": {
     "userId": "U-000070",
     "firstName": "Bubba",
     "lastName": "Craven",
@@ -6372,7 +6485,7 @@
       "open": 3
     }
   },
-  "C9ABE74B": {
+  "E198E2C3": {
     "userId": "U-000071",
     "firstName": "Diego",
     "lastName": "Delamar",
@@ -6396,7 +6509,7 @@
       "open": 2
     }
   },
-  "44B53017": {
+  "9608DF65": {
     "userId": "U-000072",
     "firstName": "Julien",
     "lastName": "Smith",
@@ -6478,7 +6591,7 @@
       "open": 18
     }
   },
-  "09767E06": {
+  "D5F21E89": {
     "userId": "U-000073",
     "firstName": "Casper",
     "lastName": "Trobriand",
@@ -6531,7 +6644,7 @@
       "open": 12
     }
   },
-  "75B18EF8": {
+  "6CDA25B9": {
     "userId": "U-000074",
     "firstName": "Mike",
     "lastName": "Harker",
@@ -6550,14 +6663,32 @@
       "open": 1
     }
   },
-  "493CF0C2": {
+  "AC4433EE": {
+    "userId": "U-000075",
+    "firstName": "Caleb",
+    "lastName": "Johnson",
+    "phone": "8441",
+    "collections": [
+      "lme-des-cartes-de-san-andreas"
+    ],
+    "cards": {
+      "SET-1_C-000032": 1,
+      "SET-1_C-000056": 1,
+      "SET-1_C-000025": 1,
+      "SET-1_C-000061": 1,
+      "SET-1_C-000027": 1
+    },
+    "stats": {
+      "open": 1
+    }
+  },
+  "F78CC9F2": {
     "userId": "U-000076",
     "firstName": "Cillian",
     "lastName": "O'Mulligan",
     "phone": "5204",
     "collections": [
-      "lme-des-cartes-de-san-andreas",
-      "SET-2"
+      "lme-des-cartes-de-san-andreas"
     ],
     "cards": {
       "SET-1_C-000024": 5,
@@ -6623,25 +6754,22 @@
       "SET-1_C-000002": 2,
       "SET-1_C-000061": 3,
       "SET-1_C-000058": 2,
-      "SET-1_C-000015": 1,
-      "SET-2_C-000065": 1
+      "SET-1_C-000015": 1
     },
     "stats": {
       "open": 85
     }
   },
-  "5C55B2C0": {
+  "97C0470B": {
     "userId": "U-000077",
     "firstName": "Walter",
     "lastName": "Bear",
     "phone": "3910",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "SET-2",
       "un-jour-je-serai-le-meilleur-collectionneur",
       "tombola-zombie-cars",
-      "lance-une-pice-ton-collectionneur",
-      "SET-4"
+      "lance-une-pice-ton-collectionneur"
     ],
     "cards": {
       "SET-1_C-000016": 13,
@@ -6708,7 +6836,6 @@
       "SET-1_C-000006": 4,
       "SET-1_C-000034": 3,
       "SET-1_C-000041": 2,
-      "SET-2_C-000065": 1,
       "SET-3_C-000145": 10,
       "SET-3_C-000114": 7,
       "SET-3_C-000134": 9,
@@ -6796,7 +6923,6 @@
       "SET-3_C-000120": 3,
       "SET-3_C-000087": 1,
       "SET-3_C-000099": 1,
-      "SET-2_C-000166": 1,
       "SET-4_C-000072": 1,
       "SET-5_C-000214": 14,
       "SET-5_C-000223": 6,
@@ -6858,14 +6984,13 @@
       "SET-5_C-000168": 4,
       "SET-5_C-000217": 1,
       "SET-5_C-000191": 1,
-      "SET-2_C-000239": 1,
       "SET-4_C-000076": 1
     },
     "stats": {
       "open": 321
     }
   },
-  "4BA9E242": {
+  "5249B1FA": {
     "userId": "U-000078",
     "firstName": "Cléia",
     "lastName": "Collew",
@@ -6873,7 +6998,6 @@
     "collections": [
       "lme-des-cartes-de-san-andreas",
       "un-jour-je-serai-le-meilleur-collectionneur",
-      "SET-2",
       "lance-une-pice-ton-collectionneur"
     ],
     "cards": {
@@ -6994,7 +7118,6 @@
       "SET-3_C-000163": 8,
       "SET-3_C-000100": 12,
       "SET-3_C-000152": 6,
-      "SET-2_C-000065": 1,
       "SET-3_C-000118": 14,
       "SET-3_C-000082": 5,
       "SET-3_C-000085": 8,
@@ -7088,14 +7211,13 @@
       "open": 247
     }
   },
-  "DFA58355": {
+  "FEC7BD76": {
     "userId": "U-000079",
     "firstName": "Marc",
     "lastName": "Calame",
     "phone": "8778",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "SET-2",
       "lance-une-pice-ton-collectionneur"
     ],
     "cards": {
@@ -7163,7 +7285,6 @@
       "SET-1_C-000053": 4,
       "SET-1_C-000009": 1,
       "SET-1_C-000006": 3,
-      "SET-2_C-000065": 1,
       "SET-5_C-000176": 7,
       "SET-5_C-000222": 10,
       "SET-5_C-000192": 5,
@@ -7221,14 +7342,13 @@
       "open": 115
     }
   },
-  "FF0B9141": {
+  "21E5B760": {
     "userId": "U-000080",
     "firstName": "Lila",
     "lastName": "Yter-Roze",
     "phone": "2113",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "SET-2",
       "un-jour-je-serai-le-meilleur-collectionneur",
       "tombola-zombie-cars",
       "lance-une-pice-ton-collectionneur"
@@ -7298,7 +7418,6 @@
       "SET-1_C-000002": 2,
       "SET-1_C-000059": 5,
       "SET-1_C-000048": 1,
-      "SET-2_C-000065": 1,
       "SET-3_C-000124": 6,
       "SET-3_C-000083": 9,
       "SET-3_C-000138": 6,
@@ -7384,7 +7503,6 @@
       "SET-3_C-000158": 5,
       "SET-3_C-000159": 1,
       "SET-3_C-000123": 1,
-      "SET-2_C-000166": 1,
       "SET-5_C-000199": 8,
       "SET-5_C-000184": 10,
       "SET-5_C-000218": 9,
@@ -7449,14 +7567,13 @@
       "open": 324
     }
   },
-  "9E6E3867": {
+  "2A616CB5": {
     "userId": "U-000081",
     "firstName": "Nicolas",
     "lastName": "Hurst",
     "phone": "9594",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "SET-2",
       "un-jour-je-serai-le-meilleur-collectionneur",
       "tombola-zombie-cars",
       "lance-une-pice-ton-collectionneur"
@@ -7526,7 +7643,6 @@
       "SET-1_C-000063": 1,
       "SET-1_C-000058": 1,
       "SET-1_C-000001": 1,
-      "SET-2_C-000065": 1,
       "SET-3_C-000156": 4,
       "SET-3_C-000138": 10,
       "SET-3_C-000122": 3,
@@ -7654,7 +7770,7 @@
       "open": 153
     }
   },
-  "694EEE98": {
+  "F1A5A236": {
     "userId": "U-000082",
     "firstName": "Eddy",
     "lastName": "Rockson",
@@ -7724,15 +7840,14 @@
       "open": 14
     }
   },
-  "4E2BAD52": {
+  "689AD5E7": {
     "userId": "U-000083",
     "firstName": "Elya",
     "lastName": "Biel",
     "phone": "1170",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-1_C-000042": 1,
@@ -7767,7 +7882,7 @@
       "open": 10
     }
   },
-  "5DD46EFC": {
+  "7DE98E2A": {
     "userId": "U-000084",
     "firstName": "Charlie",
     "lastName": "Reynolds",
@@ -7823,14 +7938,13 @@
       "open": 12
     }
   },
-  "99B97A0F": {
+  "D5ACB5A7": {
     "userId": "U-000085",
     "firstName": "Colm",
     "lastName": "Corbec",
     "phone": "1819",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "SET-2",
       "un-jour-je-serai-le-meilleur-collectionneur"
     ],
     "cards": {
@@ -7898,7 +8012,6 @@
       "SET-1_C-000021": 9,
       "SET-1_C-000041": 19,
       "SET-1_C-000035": 5,
-      "SET-2_C-000065": 1,
       "SET-3_C-000140": 25,
       "SET-3_C-000124": 32,
       "SET-3_C-000160": 34,
@@ -7982,14 +8095,13 @@
       "SET-3_C-000099": 4,
       "SET-3_C-000111": 3,
       "SET-3_C-000123": 1,
-      "SET-3_C-000147": 1,
-      "SET-2_C-000166": 1
+      "SET-3_C-000147": 1
     },
     "stats": {
       "open": 626
     }
   },
-  "0C73E047": {
+  "1B1B1CE1": {
     "userId": "U-000086",
     "firstName": "Maona",
     "lastName": "Almeira Adansoni",
@@ -7999,8 +8111,7 @@
       "un-jour-je-serai-le-meilleur-collectionneur",
       "tombola-zombie-cars",
       "lance-une-pice-ton-collectionneur",
-      "warren-gilles",
-      "SET-2"
+      "warren-gilles"
     ],
     "cards": {
       "SET-1_C-000013": 15,
@@ -8207,14 +8318,13 @@
       "SET-7_C-000232": 5,
       "SET-7_C-000237": 3,
       "SET-7_C-000233": 1,
-      "SET-1_C-000014": 1,
-      "SET-2_C-000065": 1
+      "SET-1_C-000014": 1
     },
     "stats": {
       "open": 170
     }
   },
-  "2E721F71": {
+  "53845E72": {
     "userId": "U-000087",
     "firstName": "Kevin",
     "lastName": "Attwood",
@@ -8247,7 +8357,7 @@
       "open": 6
     }
   },
-  "2B91C525": {
+  "FEA787E4": {
     "userId": "U-000088",
     "firstName": "Ella",
     "lastName": "Clarke",
@@ -8255,8 +8365,7 @@
     "collections": [
       "lme-des-cartes-de-san-andreas",
       "tombola-zombie-cars",
-      "un-jour-je-serai-le-meilleur-collectionneur",
-      "SET-4"
+      "un-jour-je-serai-le-meilleur-collectionneur"
     ],
     "cards": {
       "SET-1_C-000022": 2,
@@ -8363,7 +8472,7 @@
       "open": 41
     }
   },
-  "7703761B": {
+  "818368DF": {
     "userId": "U-000089",
     "firstName": "Ayden",
     "lastName": "Salvatore",
@@ -8414,7 +8523,7 @@
       "open": 10
     }
   },
-  "AA62869B": {
+  "3DD4AFE7": {
     "userId": "U-000090",
     "firstName": "Logan",
     "lastName": "Wade",
@@ -8470,7 +8579,7 @@
       "open": 15
     }
   },
-  "A9D634AD": {
+  "DEAB75B8": {
     "userId": "U-000091",
     "firstName": "Jonny",
     "lastName": "Kadryrov",
@@ -8516,7 +8625,7 @@
       "open": 10
     }
   },
-  "A1592CA8": {
+  "436C371D": {
     "userId": "U-000092",
     "firstName": "Arthur",
     "lastName": "Eralith",
@@ -8617,7 +8726,7 @@
       "open": 31
     }
   },
-  "541303AD": {
+  "CE0A8004": {
     "userId": "U-000093",
     "firstName": "Ethan",
     "lastName": "Kleer",
@@ -8639,7 +8748,7 @@
       "open": 8
     }
   },
-  "2358BBEB": {
+  "5949442D": {
     "userId": "U-000094",
     "firstName": "Jason",
     "lastName": "Brooks",
@@ -8655,7 +8764,7 @@
       "open": 2
     }
   },
-  "7E87CCE1": {
+  "0D57F0C9": {
     "userId": "U-000095",
     "firstName": "Marcel",
     "lastName": "Aubrin",
@@ -8671,7 +8780,7 @@
       "open": 2
     }
   },
-  "EDB8E965": {
+  "4B80D706": {
     "userId": "U-000096",
     "firstName": "Luke",
     "lastName": "Meyers",
@@ -8687,7 +8796,7 @@
       "open": 2
     }
   },
-  "E5A7F7BF": {
+  "E395B0CC": {
     "userId": "U-000097",
     "firstName": "Syllas",
     "lastName": "Drake",
@@ -8762,7 +8871,7 @@
       "open": 40
     }
   },
-  "584C880A": {
+  "2E85883A": {
     "userId": "U-000098",
     "firstName": "Aiden",
     "lastName": "Ace",
@@ -8777,7 +8886,7 @@
       "open": 1
     }
   },
-  "EDAA4794": {
+  "2108536A": {
     "userId": "U-000099",
     "firstName": "Jamie",
     "lastName": "Damballa",
@@ -8793,15 +8902,14 @@
       "open": 2
     }
   },
-  "02E3451E": {
+  "48423C2D": {
     "userId": "U-000100",
     "firstName": "Finley",
     "lastName": "Roosevelt",
     "phone": "8518",
     "collections": [
       "tombola-zombie-cars",
-      "warren-gilles",
-      "SET-4"
+      "warren-gilles"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -8830,14 +8938,13 @@
       "open": 21
     }
   },
-  "F44B27E5": {
+  "0B6C2F9A": {
     "userId": "U-000101",
     "firstName": "Max",
     "lastName": "Wells",
     "phone": "9973",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -8854,14 +8961,13 @@
       "open": 9
     }
   },
-  "5BED439F": {
+  "3FAA007E": {
     "userId": "U-000102",
     "firstName": "Jax",
     "lastName": "Teller",
     "phone": "3590",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -8873,7 +8979,7 @@
       "open": 4
     }
   },
-  "D4BEF90E": {
+  "9B972E91": {
     "userId": "U-000103",
     "firstName": "Derek",
     "lastName": "Norris",
@@ -8888,28 +8994,7 @@
       "open": 1
     }
   },
-  "C6B682DA": {
-    "userId": "U-000104",
-    "firstName": "Purple",
-    "lastName": "Luxio",
-    "phone": "3990",
-    "collections": [
-      "tombola-zombie-cars"
-    ],
-    "cards": {
-      "SET-4_C-000066": 1,
-      "SET-4_C-000067": 1,
-      "SET-4_C-000069": 1,
-      "SET-4_C-000071": 1,
-      "SET-4_C-000072": 1,
-      "SET-4_C-000073": 1,
-      "SET-4_C-000074": 1
-    },
-    "stats": {
-      "open": 7
-    }
-  },
-  "3DB49135": {
+  "BA0BD705": {
     "userId": "U-000105",
     "firstName": "Wayat",
     "lastName": "Wright",
@@ -8924,7 +9009,7 @@
       "open": 1
     }
   },
-  "A85FD1DF": {
+  "7794A3AF": {
     "userId": "U-000106",
     "firstName": "Alex",
     "lastName": "Callahan",
@@ -8939,7 +9024,7 @@
       "open": 1
     }
   },
-  "5E97B31B": {
+  "ED215E6C": {
     "userId": "U-000107",
     "firstName": "Kevin",
     "lastName": "Williams",
@@ -9117,7 +9202,7 @@
       "open": 62
     }
   },
-  "CD0B27C1": {
+  "89BC6ED0": {
     "userId": "U-000108",
     "firstName": "Odafinn",
     "lastName": "Scott",
@@ -9136,7 +9221,7 @@
       "open": 5
     }
   },
-  "E8A7BDE6": {
+  "68CFDED1": {
     "userId": "U-000109",
     "firstName": "Dino",
     "lastName": "Mariani",
@@ -9155,7 +9240,7 @@
       "open": 5
     }
   },
-  "4C8130B0": {
+  "213B33CB": {
     "userId": "U-000110",
     "firstName": "Seth",
     "lastName": "Jones",
@@ -9174,7 +9259,7 @@
       "open": 6
     }
   },
-  "AF6B3EFC": {
+  "FFF8B6DA": {
     "userId": "U-000111",
     "firstName": "Warren",
     "lastName": "Snow",
@@ -9184,8 +9269,7 @@
       "lme-des-cartes-de-san-andreas",
       "un-jour-je-serai-le-meilleur-collectionneur",
       "warren-gilles",
-      "lance-une-pice-ton-collectionneur",
-      "SET-4"
+      "lance-une-pice-ton-collectionneur"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -9285,15 +9369,14 @@
       "open": 40
     }
   },
-  "DD12AC34": {
+  "6F391072": {
     "userId": "U-000112",
     "firstName": "Jim",
     "lastName": "Cross",
     "phone": "5871",
     "collections": [
       "tombola-zombie-cars",
-      "warren-gilles",
-      "SET-4"
+      "warren-gilles"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -9317,14 +9400,13 @@
       "open": 12
     }
   },
-  "5CD99979": {
+  "5409EDAB": {
     "userId": "U-000113",
     "firstName": "June",
     "lastName": "Warren",
     "phone": "8100",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -9338,7 +9420,7 @@
       "open": 6
     }
   },
-  "E7C57712": {
+  "ABE6D50E": {
     "userId": "U-000114",
     "firstName": "Danny",
     "lastName": "Everich",
@@ -9355,7 +9437,7 @@
       "open": 3
     }
   },
-  "587877BF": {
+  "1306370B": {
     "userId": "U-000115",
     "firstName": "Cris",
     "lastName": "Maxwel",
@@ -9371,14 +9453,13 @@
       "open": 2
     }
   },
-  "9018E001": {
+  "92F893CD": {
     "userId": "U-000116",
     "firstName": "Larry",
     "lastName": "Perez",
     "phone": "6846",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -9396,7 +9477,7 @@
       "open": 10
     }
   },
-  "4257BDAB": {
+  "78054B9B": {
     "userId": "U-000117",
     "firstName": "Bruce",
     "lastName": "Norris",
@@ -9411,7 +9492,7 @@
       "open": 1
     }
   },
-  "7956EDBA": {
+  "A8D7747A": {
     "userId": "U-000118",
     "firstName": "Jack",
     "lastName": "Burden",
@@ -9426,7 +9507,7 @@
       "open": 1
     }
   },
-  "CFD5EE6A": {
+  "6A4FA780": {
     "userId": "U-000119",
     "firstName": "Tom",
     "lastName": "Randers",
@@ -9444,7 +9525,7 @@
       "open": 4
     }
   },
-  "3B402FAE": {
+  "65FA5D6F": {
     "userId": "U-000120",
     "firstName": "Han",
     "lastName": "Yuzuki",
@@ -9459,7 +9540,7 @@
       "open": 1
     }
   },
-  "FEF5D570": {
+  "500EDAAA": {
     "userId": "U-000121",
     "firstName": "Marcus",
     "lastName": "Larson",
@@ -9468,9 +9549,7 @@
       "tombola-zombie-cars",
       "lme-des-cartes-de-san-andreas",
       "un-jour-je-serai-le-meilleur-collectionneur",
-      "SET-2",
-      "lance-une-pice-ton-collectionneur",
-      "SET-4"
+      "lance-une-pice-ton-collectionneur"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -9578,7 +9657,6 @@
       "SET-3_C-000111": 3,
       "SET-4_C-000068": 1,
       "SET-1_C-000029": 3,
-      "SET-2_C-000065": 1,
       "SET-4_C-000069": 1,
       "SET-3_C-000114": 8,
       "SET-3_C-000152": 5,
@@ -9627,7 +9705,6 @@
       "SET-3_C-000099": 1,
       "SET-4_C-000070": 1,
       "SET-3_C-000135": 1,
-      "SET-2_C-000166": 1,
       "SET-4_C-000071": 1,
       "SET-4_C-000072": 1,
       "SET-5_C-000212": 7,
@@ -9697,7 +9774,7 @@
       "open": 314
     }
   },
-  "AFA8DFB9": {
+  "38D9B026": {
     "userId": "U-000122",
     "firstName": "Léon",
     "lastName": "Shelby",
@@ -9714,14 +9791,13 @@
       "open": 3
     }
   },
-  "5BE0DC07": {
+  "F127A550": {
     "userId": "U-000123",
     "firstName": "Will",
     "lastName": "Kith",
     "phone": "6280",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -9733,7 +9809,7 @@
       "open": 4
     }
   },
-  "1B77D9D5": {
+  "6AF6CAD4": {
     "userId": "U-000124",
     "firstName": "Théo",
     "lastName": "Mattelli",
@@ -9748,7 +9824,7 @@
       "open": 1
     }
   },
-  "89C99A69": {
+  "40AD85E0": {
     "userId": "U-000125",
     "firstName": "Ted",
     "lastName": "Tuckerson",
@@ -9812,7 +9888,7 @@
       "open": 21
     }
   },
-  "83C89ACC": {
+  "1B23EF52": {
     "userId": "U-000126",
     "firstName": "May",
     "lastName": "Ingelton",
@@ -9827,14 +9903,13 @@
       "open": 1
     }
   },
-  "B8C4E5EE": {
+  "B364EEE8": {
     "userId": "U-000127",
     "firstName": "Elliot",
     "lastName": "Dumont",
     "phone": "1145",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -9846,7 +9921,7 @@
       "open": 4
     }
   },
-  "CA63B22C": {
+  "47E9028E": {
     "userId": "U-000128",
     "firstName": "Henry",
     "lastName": "Jones",
@@ -9861,7 +9936,7 @@
       "open": 1
     }
   },
-  "4EBEB982": {
+  "E0493217": {
     "userId": "U-000129",
     "firstName": "Luc",
     "lastName": "Syrio",
@@ -9881,7 +9956,7 @@
       "open": 6
     }
   },
-  "1F23CBD2": {
+  "4B2C4E89": {
     "userId": "U-000130",
     "firstName": "Steve",
     "lastName": "Nahon",
@@ -9899,7 +9974,7 @@
       "open": 4
     }
   },
-  "3E613BAB": {
+  "72AF6FB5": {
     "userId": "U-000131",
     "firstName": "Teddy",
     "lastName": "Readers",
@@ -9915,7 +9990,7 @@
       "open": 2
     }
   },
-  "0F4F65D1": {
+  "0A8E18DB": {
     "userId": "U-000132",
     "firstName": "Tommy",
     "lastName": "Hawks",
@@ -9932,7 +10007,7 @@
       "open": 3
     }
   },
-  "1C8DAF5C": {
+  "86F9EE9B": {
     "userId": "U-000133",
     "firstName": "Owen",
     "lastName": "Nilis",
@@ -9947,14 +10022,13 @@
       "open": 1
     }
   },
-  "8BFED6E1": {
+  "4B2EBAE5": {
     "userId": "U-000134",
     "firstName": "Pierre",
     "lastName": "Pryte",
     "phone": "866",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -9971,14 +10045,13 @@
       "open": 9
     }
   },
-  "B6AEE47A": {
+  "63F2C575": {
     "userId": "U-000135",
     "firstName": "José",
     "lastName": "Delarosa",
     "phone": "4830",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -9991,15 +10064,14 @@
       "open": 5
     }
   },
-  "C9DFADA8": {
+  "02842D69": {
     "userId": "U-000136",
     "firstName": "Milo",
     "lastName": "Peletier",
     "phone": "5833",
     "collections": [
       "tombola-zombie-cars",
-      "warren-gilles",
-      "SET-4"
+      "warren-gilles"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -10020,14 +10092,13 @@
       "open": 15
     }
   },
-  "36855FC3": {
+  "3C02E204": {
     "userId": "U-000137",
     "firstName": "Reginald",
     "lastName": "Sting",
     "phone": "9193",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -10037,14 +10108,13 @@
       "open": 2
     }
   },
-  "B4602CE7": {
+  "10A61AE1": {
     "userId": "U-000138",
     "firstName": "Léo",
     "lastName": "Thomas",
     "phone": "9967",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -10056,7 +10126,7 @@
       "open": 4
     }
   },
-  "8B570D9B": {
+  "7EB10E1B": {
     "userId": "U-000139",
     "firstName": "Aaron",
     "lastName": "Gomez",
@@ -10071,7 +10141,7 @@
       "open": 1
     }
   },
-  "556DEDA0": {
+  "92A34E13": {
     "userId": "U-000140",
     "firstName": "Alan",
     "lastName": "Oye",
@@ -10091,7 +10161,7 @@
       "open": 7
     }
   },
-  "AB9FAE2D": {
+  "A4505EAB": {
     "userId": "U-000141",
     "firstName": "Toby",
     "lastName": "Bols",
@@ -10106,14 +10176,13 @@
       "open": 1
     }
   },
-  "E8DD6ED8": {
+  "69B5C74E": {
     "userId": "U-000142",
     "firstName": "Francis",
     "lastName": "Sylvestre",
     "phone": "2977",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -10131,14 +10200,13 @@
       "open": 10
     }
   },
-  "6DD8FAA8": {
+  "C2C5E23F": {
     "userId": "U-000143",
     "firstName": "Mike",
     "lastName": "Delarue",
     "phone": "1648",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -10150,7 +10218,7 @@
       "open": 4
     }
   },
-  "728C0A5E": {
+  "7525E2D4": {
     "userId": "U-000144",
     "firstName": "Mason",
     "lastName": "Howell",
@@ -10166,14 +10234,13 @@
       "open": 2
     }
   },
-  "C0F3B4B3": {
+  "6DF2CC55": {
     "userId": "U-000145",
     "firstName": "Han",
     "lastName": "Li-Rodriguez",
     "phone": "7594",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "SET-2",
       "un-jour-je-serai-le-meilleur-collectionneur"
     ],
     "cards": {
@@ -10241,7 +10308,6 @@
       "SET-1_C-000002": 3,
       "SET-1_C-000034": 1,
       "SET-1_C-000054": 1,
-      "SET-2_C-000065": 1,
       "SET-3_C-000127": 14,
       "SET-3_C-000109": 11,
       "SET-3_C-000091": 9,
@@ -10328,7 +10394,22 @@
       "open": 205
     }
   },
-  "E5DE7AD0": {
+  "CAC0C306": {
+    "userId": "U-000146",
+    "firstName": "Sam",
+    "lastName": "Blade",
+    "phone": "1162",
+    "collections": [
+      "tombola-zombie-cars"
+    ],
+    "cards": {
+      "SET-4_C-000066": 1
+    },
+    "stats": {
+      "open": 1
+    }
+  },
+  "2F824761": {
     "userId": "U-000147",
     "firstName": "William",
     "lastName": "Wilder",
@@ -10368,7 +10449,7 @@
       "open": 7
     }
   },
-  "58B58CE8": {
+  "BF823490": {
     "userId": "U-000148",
     "firstName": "Hunter",
     "lastName": "Knox",
@@ -10385,7 +10466,7 @@
       "open": 3
     }
   },
-  "A6FCA5B3": {
+  "AEDC08BB": {
     "userId": "U-000149",
     "firstName": "Loyd",
     "lastName": "Bär",
@@ -10401,14 +10482,13 @@
       "open": 2
     }
   },
-  "D85A6BB7": {
+  "D41ECE19": {
     "userId": "U-000150",
     "firstName": "Baralai",
     "lastName": "Nasth",
     "phone": "2560",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -10420,14 +10500,13 @@
       "open": 4
     }
   },
-  "04BBD409": {
+  "7930A97B": {
     "userId": "U-000151",
     "firstName": "Jason",
     "lastName": "Moreau",
     "phone": "6423",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -10445,14 +10524,13 @@
       "open": 10
     }
   },
-  "BF449DC9": {
+  "A67525DC": {
     "userId": "U-000152",
     "firstName": "Michael",
     "lastName": "Doring",
     "phone": "9601",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -10464,7 +10542,7 @@
       "open": 5
     }
   },
-  "B700070B": {
+  "ECF80F71": {
     "userId": "U-000153",
     "firstName": "Alexis",
     "lastName": "Murphy",
@@ -10481,7 +10559,7 @@
       "open": 3
     }
   },
-  "A29BB383": {
+  "938D9CEC": {
     "userId": "U-000154",
     "firstName": "Liam",
     "lastName": "Caverne",
@@ -10503,7 +10581,7 @@
       "open": 3
     }
   },
-  "AF4909AB": {
+  "E4DF906F": {
     "userId": "U-000155",
     "firstName": "Tim",
     "lastName": "Rolland",
@@ -10513,8 +10591,7 @@
       "lme-des-cartes-de-san-andreas",
       "un-jour-je-serai-le-meilleur-collectionneur",
       "lance-une-pice-ton-collectionneur",
-      "warren-gilles",
-      "SET-4"
+      "warren-gilles"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -10584,7 +10661,7 @@
       "open": 29
     }
   },
-  "5C3E4107": {
+  "854FA0D1": {
     "userId": "U-000156",
     "firstName": "Anderson",
     "lastName": "Dejohn",
@@ -10600,15 +10677,14 @@
       "open": 2
     }
   },
-  "F8FC36C2": {
+  "18385A01": {
     "userId": "U-000157",
     "firstName": "Jake",
     "lastName": "Johnson Reyes",
     "phone": "3480",
     "collections": [
       "tombola-zombie-cars",
-      "warren-gilles",
-      "SET-4"
+      "warren-gilles"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -10634,15 +10710,14 @@
       "open": 14
     }
   },
-  "164DAB8D": {
+  "2A69AB6E": {
     "userId": "U-000158",
     "firstName": "Cassy",
     "lastName": "Johnson Reyes",
     "phone": "7802",
     "collections": [
       "tombola-zombie-cars",
-      "warren-gilles",
-      "SET-4"
+      "warren-gilles"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -10670,7 +10745,7 @@
       "open": 20
     }
   },
-  "B74B9734": {
+  "7BF4A49A": {
     "userId": "U-000159",
     "firstName": "Aitana",
     "lastName": "Li-Rodriguez",
@@ -10746,7 +10821,7 @@
       "open": 60
     }
   },
-  "1934819D": {
+  "2D380D80": {
     "userId": "U-000160",
     "firstName": "Thomas",
     "lastName": "Marbo",
@@ -10782,15 +10857,14 @@
       "open": 6
     }
   },
-  "828A2502": {
+  "5C2C714A": {
     "userId": "U-000161",
     "firstName": "Elly",
     "lastName": "Stenson",
     "phone": "42",
     "collections": [
       "lme-des-cartes-de-san-andreas",
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-1_C-000052": 2,
@@ -10850,7 +10924,7 @@
       "open": 28
     }
   },
-  "4D427C6F": {
+  "76DAA897": {
     "userId": "U-000163",
     "firstName": "Louis",
     "lastName": "Sakura",
@@ -10901,7 +10975,7 @@
       "open": 10
     }
   },
-  "8025E079": {
+  "2DC867FD": {
     "userId": "U-000164",
     "firstName": "Ginny",
     "lastName": "Hodge",
@@ -10916,7 +10990,7 @@
       "open": 1
     }
   },
-  "3096788B": {
+  "BD257559": {
     "userId": "U-000165",
     "firstName": "Matt",
     "lastName": "Lapra",
@@ -10931,7 +11005,7 @@
       "open": 1
     }
   },
-  "D3BB7C7C": {
+  "3F3C0F66": {
     "userId": "U-000166",
     "firstName": "Eva",
     "lastName": "Ann",
@@ -10947,7 +11021,7 @@
       "open": 2
     }
   },
-  "BD879DAE": {
+  "FB2324F1": {
     "userId": "U-000167",
     "firstName": "Damian",
     "lastName": "Mcfish",
@@ -10964,7 +11038,7 @@
       "open": 3
     }
   },
-  "37B63A04": {
+  "8264B83D": {
     "userId": "U-000168",
     "firstName": "Gustavo",
     "lastName": "Varela",
@@ -10980,7 +11054,7 @@
       "open": 2
     }
   },
-  "1F9F98CB": {
+  "9B5F4C17": {
     "userId": "U-000169",
     "firstName": "Paul",
     "lastName": "Dubel",
@@ -10997,14 +11071,13 @@
       "open": 3
     }
   },
-  "57EE2A73": {
+  "B09041C6": {
     "userId": "U-000170",
     "firstName": "Mathew",
     "lastName": "Shawn",
     "phone": "8326",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -11018,7 +11091,7 @@
       "open": 6
     }
   },
-  "E4238263": {
+  "BDE741F7": {
     "userId": "U-000171",
     "firstName": "Chloé",
     "lastName": "Brooks",
@@ -11043,7 +11116,7 @@
       "open": 7
     }
   },
-  "C760D3B4": {
+  "3C237B59": {
     "userId": "U-000172",
     "firstName": "Alexander",
     "lastName": "Odkart",
@@ -11059,7 +11132,7 @@
       "open": 2
     }
   },
-  "78CED1F4": {
+  "0EC39279": {
     "userId": "U-000173",
     "firstName": "Lenny",
     "lastName": "Anderson",
@@ -11077,7 +11150,7 @@
       "open": 4
     }
   },
-  "DC05A42F": {
+  "6277A5FC": {
     "userId": "U-000174",
     "firstName": "Hugo",
     "lastName": "Marini",
@@ -11099,14 +11172,13 @@
       "open": 8
     }
   },
-  "893B8D01": {
+  "4A9BDC0D": {
     "userId": "U-000175",
     "firstName": "Aidan",
     "lastName": "Simmons",
     "phone": "8548",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -11125,7 +11197,7 @@
       "open": 11
     }
   },
-  "811AF7F5": {
+  "0D66C01C": {
     "userId": "U-000176",
     "firstName": "Zayne",
     "lastName": "Mercer",
@@ -11142,14 +11214,13 @@
       "open": 3
     }
   },
-  "C0817D77": {
+  "C44C8BCB": {
     "userId": "U-000177",
     "firstName": "Steve",
     "lastName": "Walker",
     "phone": "883",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -11163,7 +11234,7 @@
       "open": 6
     }
   },
-  "CE9C03E6": {
+  "F6DFCF4D": {
     "userId": "U-000178",
     "firstName": "Ciaràn",
     "lastName": "O'Lowry",
@@ -11171,8 +11242,7 @@
     "collections": [
       "tombola-zombie-cars",
       "lme-des-cartes-de-san-andreas",
-      "un-jour-je-serai-le-meilleur-collectionneur",
-      "SET-4"
+      "un-jour-je-serai-le-meilleur-collectionneur"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -11251,15 +11321,14 @@
       "open": 29
     }
   },
-  "6735792D": {
+  "2F5B6E12": {
     "userId": "U-000179",
     "firstName": "Guillaume",
     "lastName": "Quéna Becker",
     "phone": "6133",
     "collections": [
       "tombola-zombie-cars",
-      "lance-une-pice-ton-collectionneur",
-      "SET-4"
+      "lance-une-pice-ton-collectionneur"
     ],
     "cards": {
       "SET-4_C-000066": 1,
@@ -11304,7 +11373,7 @@
       "open": 17
     }
   },
-  "5D24D5BD": {
+  "63E63C35": {
     "userId": "U-000180",
     "firstName": "Théo",
     "lastName": "Palmers",
@@ -11428,7 +11497,7 @@
       "open": 36
     }
   },
-  "5C37E303": {
+  "8C6553B0": {
     "userId": "U-000181",
     "firstName": "Hooper",
     "lastName": "Reeves",
@@ -11513,71 +11582,7 @@
       "open": 25
     }
   },
-  "B8894FB8": {
-    "userId": "U-000182",
-    "firstName": "Trevor",
-    "lastName": "Mills",
-    "phone": "8775",
-    "collections": [
-      "lme-des-cartes-de-san-andreas"
-    ],
-    "cards": {
-      "SET-1_C-000012": 2,
-      "SET-1_C-000018": 3,
-      "SET-1_C-000036": 4,
-      "SET-1_C-000060": 2,
-      "SET-1_C-000038": 3,
-      "SET-1_C-000022": 1,
-      "SET-1_C-000057": 2,
-      "SET-1_C-000043": 3,
-      "SET-1_C-000061": 1,
-      "SET-1_C-000016": 1,
-      "SET-1_C-000011": 1,
-      "SET-1_C-000063": 1,
-      "SET-1_C-000027": 4,
-      "SET-1_C-000008": 2,
-      "SET-1_C-000064": 5,
-      "SET-1_C-000006": 3,
-      "SET-1_C-000030": 2,
-      "SET-1_C-000033": 3,
-      "SET-1_C-000062": 1,
-      "SET-1_C-000052": 1,
-      "SET-1_C-000045": 2,
-      "SET-1_C-000034": 2,
-      "SET-1_C-000041": 2,
-      "SET-1_C-000007": 1,
-      "SET-1_C-000042": 1,
-      "SET-1_C-000004": 1,
-      "SET-1_C-000024": 1,
-      "SET-1_C-000025": 1,
-      "SET-1_C-000049": 5,
-      "SET-1_C-000058": 2,
-      "SET-1_C-000048": 1,
-      "SET-1_C-000056": 2,
-      "SET-1_C-000039": 1,
-      "SET-1_C-000046": 1,
-      "SET-1_C-000002": 1,
-      "SET-1_C-000032": 2,
-      "SET-1_C-000035": 1,
-      "SET-1_C-000031": 1,
-      "SET-1_C-000003": 2,
-      "SET-1_C-000013": 1,
-      "SET-1_C-000001": 2,
-      "SET-1_C-000040": 1,
-      "SET-1_C-000026": 1,
-      "SET-1_C-000019": 2,
-      "SET-1_C-000021": 2,
-      "SET-1_C-000059": 1,
-      "SET-1_C-000020": 1,
-      "SET-1_C-000050": 2,
-      "SET-1_C-000014": 1,
-      "SET-1_C-000055": 1
-    },
-    "stats": {
-      "open": 18
-    }
-  },
-  "7170E399": {
+  "7A77F9E0": {
     "userId": "U-000183",
     "firstName": "Adrien",
     "lastName": "Hunter",
@@ -11592,7 +11597,7 @@
       "open": 1
     }
   },
-  "5446A849": {
+  "5B4A5BA0": {
     "userId": "U-000184",
     "firstName": "Scott",
     "lastName": "Hill",
@@ -11608,7 +11613,7 @@
       "open": 2
     }
   },
-  "6E7DA473": {
+  "9B5CF4AF": {
     "userId": "U-000185",
     "firstName": "Clark",
     "lastName": "Burk",
@@ -11623,7 +11628,7 @@
       "open": 1
     }
   },
-  "ADF6EF3B": {
+  "FAA7B380": {
     "userId": "U-000186",
     "firstName": "Jojo",
     "lastName": "MR Las",
@@ -11638,14 +11643,13 @@
       "open": 1
     }
   },
-  "EF424492": {
+  "A926BC7A": {
     "userId": "U-000187",
     "firstName": "Bobby",
     "lastName": "Cooper",
     "phone": "2041",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000067": 1,
@@ -11657,7 +11661,7 @@
       "open": 4
     }
   },
-  "428B7CB2": {
+  "3D005B27": {
     "userId": "U-000188",
     "firstName": "Paco",
     "lastName": "Gutirrez",
@@ -11673,7 +11677,7 @@
       "open": 2
     }
   },
-  "2BB28E9F": {
+  "D0BA24B9": {
     "userId": "U-000189",
     "firstName": "Ayv",
     "lastName": "Whitehorse",
@@ -11689,7 +11693,7 @@
       "open": 2
     }
   },
-  "1D8F94BB": {
+  "6213C312": {
     "userId": "U-000190",
     "firstName": "Chester",
     "lastName": "Newman",
@@ -11704,7 +11708,23 @@
       "open": 1
     }
   },
-  "81D8A010": {
+  "6B294BE9": {
+    "userId": "U-000191",
+    "firstName": "Daisy",
+    "lastName": "Mckenzie",
+    "phone": "8476",
+    "collections": [
+      "tombola-zombie-cars"
+    ],
+    "cards": {
+      "SET-4_C-000067": 1,
+      "SET-4_C-000076": 1
+    },
+    "stats": {
+      "open": 2
+    }
+  },
+  "86BA6503": {
     "userId": "U-000192",
     "firstName": "Lucas",
     "lastName": "Evans",
@@ -11720,14 +11740,13 @@
       "open": 2
     }
   },
-  "D0CC80F8": {
+  "63CD0001": {
     "userId": "U-000193",
     "firstName": "Jackson",
     "lastName": "Teller",
     "phone": "5535",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000067": 1,
@@ -11745,14 +11764,13 @@
       "open": 10
     }
   },
-  "AC11E674": {
+  "5A359192": {
     "userId": "U-000194",
     "firstName": "Paul",
     "lastName": "Clark",
     "phone": "4768",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000067": 1,
@@ -11766,7 +11784,7 @@
       "open": 6
     }
   },
-  "E4BFE152": {
+  "F548DF4A": {
     "userId": "U-000195",
     "firstName": "Marc",
     "lastName": "Johnson",
@@ -11785,7 +11803,7 @@
       "open": 5
     }
   },
-  "7D6DF072": {
+  "DB60E0C1": {
     "userId": "U-000196",
     "firstName": "Jeffrey",
     "lastName": "Leco",
@@ -11800,7 +11818,7 @@
       "open": 1
     }
   },
-  "74D545FF": {
+  "C0F44406": {
     "userId": "U-000197",
     "firstName": "Eliah",
     "lastName": "Swann",
@@ -11815,7 +11833,7 @@
       "open": 1
     }
   },
-  "939BFCD4": {
+  "75150F04": {
     "userId": "U-000198",
     "firstName": "Bradley",
     "lastName": "Hopkins",
@@ -11834,7 +11852,7 @@
       "open": 5
     }
   },
-  "2AACF4C8": {
+  "F1B4C015": {
     "userId": "U-000199",
     "firstName": "Lenny",
     "lastName": "Dodson",
@@ -11849,7 +11867,7 @@
       "open": 1
     }
   },
-  "EE997759": {
+  "A7620ABD": {
     "userId": "U-000200",
     "firstName": "Martin",
     "lastName": "Roudaut",
@@ -11864,27 +11882,7 @@
       "open": 1
     }
   },
-  "80BA7E54": {
-    "userId": "U-000201",
-    "firstName": "Jake",
-    "lastName": "Phenix",
-    "phone": "5083",
-    "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
-    ],
-    "cards": {
-      "SET-4_C-000067": 1,
-      "SET-4_C-000068": 1,
-      "SET-4_C-000069": 1,
-      "SET-4_C-000072": 1,
-      "SET-4_C-000076": 1
-    },
-    "stats": {
-      "open": 5
-    }
-  },
-  "2990BA1E": {
+  "811E515E": {
     "userId": "U-000202",
     "firstName": "Douglas",
     "lastName": "Baker",
@@ -11901,7 +11899,7 @@
       "open": 3
     }
   },
-  "5A5779C1": {
+  "E6472D25": {
     "userId": "U-000203",
     "firstName": "James",
     "lastName": "Anderson",
@@ -11917,7 +11915,7 @@
       "open": 2
     }
   },
-  "456446B5": {
+  "481EE12A": {
     "userId": "U-000204",
     "firstName": "Crowley",
     "lastName": "Aleister",
@@ -11932,7 +11930,7 @@
       "open": 1
     }
   },
-  "4492A93B": {
+  "BDC94643": {
     "userId": "U-000205",
     "firstName": "Alex",
     "lastName": "Wyatt",
@@ -11947,14 +11945,13 @@
       "open": 1
     }
   },
-  "084441A0": {
+  "490FD77D": {
     "userId": "U-000206",
     "firstName": "Chris",
     "lastName": "Turner",
     "phone": "4622",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000067": 1,
@@ -11970,7 +11967,7 @@
       "open": 8
     }
   },
-  "9542B8ED": {
+  "C27FFED7": {
     "userId": "U-000207",
     "firstName": "Effy",
     "lastName": "Keller",
@@ -11986,7 +11983,7 @@
       "open": 2
     }
   },
-  "A7F70533": {
+  "75D68D45": {
     "userId": "U-000208",
     "firstName": "Walker",
     "lastName": "Toddler",
@@ -12002,7 +11999,7 @@
       "open": 2
     }
   },
-  "81C6690B": {
+  "D0CF5CF1": {
     "userId": "U-000209",
     "firstName": "Rémy",
     "lastName": "Laframboise",
@@ -12019,7 +12016,7 @@
       "open": 3
     }
   },
-  "91A07DFD": {
+  "10F6A226": {
     "userId": "U-000210",
     "firstName": "Paul",
     "lastName": "Specter",
@@ -12035,7 +12032,7 @@
       "open": 2
     }
   },
-  "18EF1A94": {
+  "77A2D0AD": {
     "userId": "U-000211",
     "firstName": "Zion",
     "lastName": "Campbell",
@@ -12050,7 +12047,7 @@
       "open": 1
     }
   },
-  "2F2903C3": {
+  "B21B8171": {
     "userId": "U-000212",
     "firstName": "Tora",
     "lastName": "Johansen",
@@ -12108,7 +12105,7 @@
       "open": 14
     }
   },
-  "A14DC32F": {
+  "96724CAB": {
     "userId": "U-000213",
     "firstName": "Shogo",
     "lastName": "Hayabusa",
@@ -12124,7 +12121,7 @@
       "open": 2
     }
   },
-  "7C878BD3": {
+  "47A05BD5": {
     "userId": "U-000214",
     "firstName": "Justin",
     "lastName": "Moore",
@@ -12141,7 +12138,7 @@
       "open": 3
     }
   },
-  "4ED1F945": {
+  "4977FC97": {
     "userId": "U-000215",
     "firstName": "Aaaron",
     "lastName": "Silver",
@@ -12157,14 +12154,13 @@
       "open": 2
     }
   },
-  "57F89747": {
+  "CED9F3EA": {
     "userId": "U-000216",
     "firstName": "Triana",
     "lastName": "Lomidia",
     "phone": "7665",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000067": 1,
@@ -12177,7 +12173,7 @@
       "open": 5
     }
   },
-  "1F3BA21C": {
+  "CBEEA731": {
     "userId": "U-000217",
     "firstName": "Theo",
     "lastName": "Forest",
@@ -12194,7 +12190,7 @@
       "open": 3
     }
   },
-  "D09A61E5": {
+  "471BCAF0": {
     "userId": "U-000218",
     "firstName": "Antoine",
     "lastName": "Martines",
@@ -12210,14 +12206,13 @@
       "open": 2
     }
   },
-  "38066F17": {
+  "C46DE818": {
     "userId": "U-000219",
     "firstName": "Edouard",
     "lastName": "Bonno",
     "phone": "4701",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000067": 1,
@@ -12227,7 +12222,7 @@
       "open": 2
     }
   },
-  "1BCC6AF7": {
+  "C4E5EE65": {
     "userId": "U-000220",
     "firstName": "Caleb",
     "lastName": "Stross",
@@ -12242,7 +12237,7 @@
       "open": 1
     }
   },
-  "7AEFE9A6": {
+  "6461DD34": {
     "userId": "U-000221",
     "firstName": "Tom",
     "lastName": "White",
@@ -12257,7 +12252,7 @@
       "open": 1
     }
   },
-  "EBBC7CD4": {
+  "4E49577F": {
     "userId": "U-000222",
     "firstName": "Jim",
     "lastName": "Sandoval",
@@ -12273,14 +12268,13 @@
       "open": 2
     }
   },
-  "8BFD1806": {
+  "05AAAC27": {
     "userId": "U-000223",
     "firstName": "James",
     "lastName": "Ford",
     "phone": "3430",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000067": 1,
@@ -12291,7 +12285,7 @@
       "open": 3
     }
   },
-  "3AE7797B": {
+  "7C1D17FE": {
     "userId": "U-000224",
     "firstName": "Wade",
     "lastName": "Radcliffe",
@@ -12308,7 +12302,7 @@
       "open": 3
     }
   },
-  "54A896F9": {
+  "10922FE6": {
     "userId": "U-000225",
     "firstName": "Ezechiel",
     "lastName": "Barretto",
@@ -12323,14 +12317,13 @@
       "open": 1
     }
   },
-  "83289BB1": {
+  "DFF2D085": {
     "userId": "U-000226",
     "firstName": "Minnie",
     "lastName": "White",
     "phone": "9924",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000067": 1,
@@ -12342,7 +12335,7 @@
       "open": 4
     }
   },
-  "9D55F699": {
+  "949527C2": {
     "userId": "U-000227",
     "firstName": "Shana",
     "lastName": "Riggs",
@@ -12386,7 +12379,7 @@
       "open": 9
     }
   },
-  "2B6C0C2B": {
+  "7BB6F76D": {
     "userId": "U-000228",
     "firstName": "Eli",
     "lastName": "Lonergan",
@@ -12401,7 +12394,22 @@
       "open": 1
     }
   },
-  "A7AFBB54": {
+  "535269E4": {
+    "userId": "U-000229",
+    "firstName": "Shin",
+    "lastName": "Robins",
+    "phone": "1336",
+    "collections": [
+      "tombola-zombie-cars"
+    ],
+    "cards": {
+      "SET-4_C-000067": 1
+    },
+    "stats": {
+      "open": 1
+    }
+  },
+  "BAA87F57": {
     "userId": "U-000230",
     "firstName": "Max",
     "lastName": "Callahan",
@@ -12416,7 +12424,7 @@
       "open": 1
     }
   },
-  "65FD16C3": {
+  "E0938E1E": {
     "userId": "U-000231",
     "firstName": "Lalo",
     "lastName": "Kush",
@@ -12431,7 +12439,7 @@
       "open": 1
     }
   },
-  "0B2294B9": {
+  "D2FC788A": {
     "userId": "U-000232",
     "firstName": "Salazar",
     "lastName": "Mendez",
@@ -12446,7 +12454,7 @@
       "open": 1
     }
   },
-  "F37AF219": {
+  "C457F881": {
     "userId": "U-000233",
     "firstName": "Isaac",
     "lastName": "Orlov",
@@ -12464,7 +12472,7 @@
       "open": 4
     }
   },
-  "DCFD191A": {
+  "80FBBCFF": {
     "userId": "U-000234",
     "firstName": "Al",
     "lastName": "Ollim",
@@ -12480,7 +12488,7 @@
       "open": 2
     }
   },
-  "8FC59A1B": {
+  "4A5B3CE0": {
     "userId": "U-000236",
     "firstName": "Tyler",
     "lastName": "Jackson",
@@ -12496,7 +12504,7 @@
       "open": 2
     }
   },
-  "5FF99D8C": {
+  "7B3A1374": {
     "userId": "U-000237",
     "firstName": "JC",
     "lastName": "Tremblay",
@@ -12504,8 +12512,7 @@
     "collections": [
       "tombola-zombie-cars",
       "lme-des-cartes-de-san-andreas",
-      "un-jour-je-serai-le-meilleur-collectionneur",
-      "SET-4"
+      "un-jour-je-serai-le-meilleur-collectionneur"
     ],
     "cards": {
       "SET-4_C-000067": 1,
@@ -12541,7 +12548,7 @@
       "open": 8
     }
   },
-  "5084DDFB": {
+  "53A24364": {
     "userId": "U-000238",
     "firstName": "Edouard",
     "lastName": "Marchant Silverman",
@@ -12557,7 +12564,7 @@
       "open": 2
     }
   },
-  "B566F16C": {
+  "0A85333A": {
     "userId": "U-000239",
     "firstName": "Miguel",
     "lastName": "Madrigal",
@@ -12572,7 +12579,7 @@
       "open": 1
     }
   },
-  "02EC32B1": {
+  "D899BB77": {
     "userId": "U-000240",
     "firstName": "Joey",
     "lastName": "Morison Charpentier",
@@ -12587,7 +12594,7 @@
       "open": 1
     }
   },
-  "1C452776": {
+  "D055E8F1": {
     "userId": "U-000241",
     "firstName": "Olympe",
     "lastName": "Morison Charpentier",
@@ -12602,7 +12609,7 @@
       "open": 1
     }
   },
-  "763677DE": {
+  "BD7A0A99": {
     "userId": "U-000242",
     "firstName": "Ayden",
     "lastName": "White",
@@ -12640,7 +12647,7 @@
       "open": 5
     }
   },
-  "24B59D3F": {
+  "FC9680A6": {
     "userId": "U-000243",
     "firstName": "Jeff",
     "lastName": "Keller",
@@ -12678,59 +12685,7 @@
       "open": 9
     }
   },
-  "65DEDF1B": {
-    "userId": "U-000244",
-    "firstName": "Paul",
-    "lastName": "Olegnac",
-    "phone": "7936",
-    "collections": [
-      "lme-des-cartes-de-san-andreas",
-      "tombola-zombie-cars"
-    ],
-    "cards": {
-      "SET-1_C-000049": 3,
-      "SET-1_C-000043": 3,
-      "SET-1_C-000036": 1,
-      "SET-1_C-000023": 2,
-      "SET-1_C-000052": 2,
-      "SET-1_C-000038": 1,
-      "SET-1_C-000004": 2,
-      "SET-1_C-000039": 1,
-      "SET-1_C-000037": 1,
-      "SET-1_C-000042": 1,
-      "SET-1_C-000017": 2,
-      "SET-1_C-000064": 3,
-      "SET-1_C-000007": 2,
-      "SET-1_C-000002": 1,
-      "SET-1_C-000016": 4,
-      "SET-1_C-000046": 1,
-      "SET-1_C-000029": 2,
-      "SET-1_C-000009": 2,
-      "SET-1_C-000040": 1,
-      "SET-1_C-000018": 3,
-      "SET-1_C-000006": 1,
-      "SET-1_C-000025": 3,
-      "SET-1_C-000059": 1,
-      "SET-1_C-000050": 1,
-      "SET-1_C-000003": 1,
-      "SET-1_C-000045": 2,
-      "SET-1_C-000055": 2,
-      "SET-1_C-000008": 1,
-      "SET-1_C-000032": 1,
-      "SET-1_C-000030": 1,
-      "SET-1_C-000033": 3,
-      "SET-1_C-000021": 1,
-      "SET-1_C-000005": 1,
-      "SET-1_C-000010": 1,
-      "SET-1_C-000019": 1,
-      "SET-1_C-000013": 1,
-      "SET-4_C-000069": 1
-    },
-    "stats": {
-      "open": 13
-    }
-  },
-  "87342B1C": {
+  "D4C603BA": {
     "userId": "U-000245",
     "firstName": "Marc",
     "lastName": "Trope",
@@ -12745,7 +12700,7 @@
       "open": 1
     }
   },
-  "B0A7F244": {
+  "FA4D0AE7": {
     "userId": "U-000246",
     "firstName": "Curtis",
     "lastName": "Mackey",
@@ -12762,7 +12717,7 @@
       "open": 3
     }
   },
-  "02A64502": {
+  "4AA4C528": {
     "userId": "U-000247",
     "firstName": "Ali",
     "lastName": "Gotar",
@@ -12780,7 +12735,7 @@
       "open": 5
     }
   },
-  "5A4758B4": {
+  "85C575ED": {
     "userId": "U-000248",
     "firstName": "Matt",
     "lastName": "Morgan",
@@ -12796,7 +12751,7 @@
       "open": 2
     }
   },
-  "BD98BE56": {
+  "4743878D": {
     "userId": "U-000249",
     "firstName": "Leroy",
     "lastName": "Burnett",
@@ -12811,7 +12766,23 @@
       "open": 1
     }
   },
-  "4A1FBB8C": {
+  "533A7A5F": {
+    "userId": "U-000250",
+    "firstName": "Jenna",
+    "lastName": "Aguilar",
+    "phone": "7107",
+    "collections": [
+      "tombola-zombie-cars"
+    ],
+    "cards": {
+      "SET-4_C-000068": 1,
+      "SET-4_C-000069": 1
+    },
+    "stats": {
+      "open": 2
+    }
+  },
+  "B5440A32": {
     "userId": "U-000251",
     "firstName": "Li",
     "lastName": "Wang",
@@ -12826,7 +12797,7 @@
       "open": 1
     }
   },
-  "4A22CA88": {
+  "961ADCC7": {
     "userId": "U-000252",
     "firstName": "Matt",
     "lastName": "Keeper",
@@ -12862,7 +12833,7 @@
       "open": 7
     }
   },
-  "658C61D2": {
+  "5037CBD7": {
     "userId": "U-000254",
     "firstName": "Joe",
     "lastName": "Cain",
@@ -12877,7 +12848,7 @@
       "open": 1
     }
   },
-  "F6E20184": {
+  "D9E43C4A": {
     "userId": "U-000255",
     "firstName": "Crystal",
     "lastName": "Hoffman-Leclerc",
@@ -12892,7 +12863,7 @@
       "open": 1
     }
   },
-  "7D011276": {
+  "7810E5F5": {
     "userId": "U-000256",
     "firstName": "Nathan",
     "lastName": "Drexler",
@@ -12907,15 +12878,14 @@
       "open": 1
     }
   },
-  "154874E7": {
+  "16D5C468": {
     "userId": "U-000257",
     "firstName": "Mike",
     "lastName": "Shepard",
     "phone": "2101",
     "collections": [
       "tombola-zombie-cars",
-      "warren-gilles",
-      "SET-4"
+      "warren-gilles"
     ],
     "cards": {
       "SET-4_C-000068": 1,
@@ -12936,7 +12906,7 @@
       "open": 10
     }
   },
-  "3A87C56A": {
+  "119C68F9": {
     "userId": "U-000258",
     "firstName": "Sully",
     "lastName": "Carter",
@@ -12951,7 +12921,7 @@
       "open": 1
     }
   },
-  "D44932ED": {
+  "34CEA9F5": {
     "userId": "U-000259",
     "firstName": "Colas",
     "lastName": "Loen",
@@ -12966,7 +12936,7 @@
       "open": 1
     }
   },
-  "724ECFD2": {
+  "31CD76AB": {
     "userId": "U-000260",
     "firstName": "Ford",
     "lastName": "Dent",
@@ -12984,14 +12954,13 @@
       "open": 4
     }
   },
-  "D866A872": {
+  "7E25FD48": {
     "userId": "U-000261",
     "firstName": "Bronislaw",
     "lastName": "Hieronim",
     "phone": "7101",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000068": 1,
@@ -13004,14 +12973,13 @@
       "open": 5
     }
   },
-  "CE8EEBB6": {
+  "9FFA4CC2": {
     "userId": "U-000262",
     "firstName": "James",
     "lastName": "K Anderson",
     "phone": "9472",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000068": 1,
@@ -13023,14 +12991,13 @@
       "open": 4
     }
   },
-  "9602F6EA": {
+  "2D02837D": {
     "userId": "U-000263",
     "firstName": "Brandon",
     "lastName": "Wellborn",
     "phone": "8893",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000068": 1,
@@ -13044,7 +13011,7 @@
       "open": 6
     }
   },
-  "4B36C5C5": {
+  "8562BE9C": {
     "userId": "U-000264",
     "firstName": "Sierra",
     "lastName": "Borden",
@@ -13063,7 +13030,7 @@
       "open": 5
     }
   },
-  "6441AF7E": {
+  "248880AF": {
     "userId": "U-000265",
     "firstName": "Renan",
     "lastName": "Holloway",
@@ -13079,7 +13046,7 @@
       "open": 2
     }
   },
-  "EB45DDDD": {
+  "4B076026": {
     "userId": "U-000266",
     "firstName": "Rico",
     "lastName": "Malos",
@@ -13094,7 +13061,7 @@
       "open": 1
     }
   },
-  "FDA72C7A": {
+  "ACAFDE15": {
     "userId": "U-000267",
     "firstName": "Lucas",
     "lastName": "Montana",
@@ -13109,7 +13076,7 @@
       "open": 1
     }
   },
-  "485AA841": {
+  "EF4F2287": {
     "userId": "U-000268",
     "firstName": "Brandon",
     "lastName": "Jaouen",
@@ -13124,7 +13091,7 @@
       "open": 1
     }
   },
-  "15C3458A": {
+  "A2C2205C": {
     "userId": "U-000269",
     "firstName": "Donovan",
     "lastName": "Miller",
@@ -13139,7 +13106,22 @@
       "open": 1
     }
   },
-  "A5D9DBD8": {
+  "EB30CF7C": {
+    "userId": "U-000270",
+    "firstName": "Alexander",
+    "lastName": "Brown",
+    "phone": "8666",
+    "collections": [
+      "tombola-zombie-cars"
+    ],
+    "cards": {
+      "SET-4_C-000068": 1
+    },
+    "stats": {
+      "open": 1
+    }
+  },
+  "0CB3DCF4": {
     "userId": "U-000271",
     "firstName": "Arnaud",
     "lastName": "Acevito",
@@ -13154,7 +13136,7 @@
       "open": 1
     }
   },
-  "75B85680": {
+  "82C297E1": {
     "userId": "U-000272",
     "firstName": "Jeanne",
     "lastName": "Wibert",
@@ -13170,7 +13152,7 @@
       "open": 2
     }
   },
-  "1A8BA4E5": {
+  "5DCDDDC7": {
     "userId": "U-000273",
     "firstName": "Isla",
     "lastName": "Fraser",
@@ -13213,7 +13195,7 @@
       "open": 7
     }
   },
-  "82C18558": {
+  "60BBDDB9": {
     "userId": "U-000274",
     "firstName": "Lemy",
     "lastName": "Teller",
@@ -13249,7 +13231,7 @@
       "open": 6
     }
   },
-  "8A53EBE1": {
+  "B2149AC6": {
     "userId": "U-000275",
     "firstName": "Quentin",
     "lastName": "Grandé",
@@ -13327,7 +13309,7 @@
       "open": 21
     }
   },
-  "02FCE56A": {
+  "CDEDC6BF": {
     "userId": "U-000276",
     "firstName": "John",
     "lastName": "Shelton",
@@ -13458,7 +13440,7 @@
       "open": 49
     }
   },
-  "07E01B7F": {
+  "301D515A": {
     "userId": "U-000277",
     "firstName": "Tommy",
     "lastName": "Neal",
@@ -13648,7 +13630,7 @@
       "open": 87
     }
   },
-  "1BE72C72": {
+  "CD5F343A": {
     "userId": "U-000278",
     "firstName": "Liam",
     "lastName": "Shaw",
@@ -13663,7 +13645,7 @@
       "open": 1
     }
   },
-  "05236090": {
+  "6F89B5BB": {
     "userId": "U-000279",
     "firstName": "Maurice",
     "lastName": "Bohr",
@@ -13671,95 +13653,219 @@
     "collections": [
       "lme-des-cartes-de-san-andreas",
       "un-jour-je-serai-le-meilleur-collectionneur",
-      "lance-une-pice-ton-collectionneur"
+      "lance-une-pice-ton-collectionneur",
+      "warren-gilles"
     ],
     "cards": {
-      "SET-1_C-000033": 4,
-      "SET-1_C-000054": 1,
-      "SET-1_C-000009": 1,
-      "SET-1_C-000023": 3,
-      "SET-1_C-000010": 1,
-      "SET-1_C-000052": 1,
-      "SET-1_C-000016": 2,
-      "SET-1_C-000019": 2,
-      "SET-1_C-000024": 1,
-      "SET-1_C-000027": 1,
-      "SET-1_C-000045": 1,
-      "SET-1_C-000006": 1,
-      "SET-1_C-000011": 1,
-      "SET-1_C-000026": 1,
-      "SET-1_C-000048": 1,
-      "SET-1_C-000012": 1,
-      "SET-1_C-000003": 1,
-      "SET-1_C-000032": 1,
-      "SET-1_C-000034": 1,
-      "SET-1_C-000064": 1,
-      "SET-1_C-000047": 1,
-      "SET-1_C-000043": 1,
-      "SET-1_C-000035": 1,
-      "SET-3_C-000158": 1,
-      "SET-3_C-000105": 1,
-      "SET-3_C-000156": 1,
-      "SET-3_C-000155": 1,
+      "SET-1_C-000013": 15,
+      "SET-1_C-000049": 9,
+      "SET-1_C-000032": 20,
+      "SET-1_C-000064": 9,
+      "SET-1_C-000022": 8,
+      "SET-1_C-000037": 3,
+      "SET-1_C-000059": 7,
+      "SET-1_C-000062": 4,
+      "SET-1_C-000004": 6,
+      "SET-1_C-000024": 5,
+      "SET-1_C-000047": 3,
+      "SET-1_C-000035": 4,
+      "SET-1_C-000009": 3,
+      "SET-1_C-000043": 12,
+      "SET-1_C-000002": 15,
+      "SET-1_C-000039": 5,
+      "SET-1_C-000057": 9,
+      "SET-1_C-000044": 5,
+      "SET-1_C-000003": 6,
+      "SET-1_C-000011": 4,
+      "SET-1_C-000056": 9,
+      "SET-1_C-000053": 6,
+      "SET-1_C-000051": 7,
+      "SET-1_C-000016": 8,
+      "SET-1_C-000058": 3,
+      "SET-1_C-000017": 11,
+      "SET-1_C-000007": 11,
+      "SET-1_C-000054": 4,
+      "SET-1_C-000042": 10,
+      "SET-1_C-000046": 2,
+      "SET-1_C-000023": 15,
+      "SET-1_C-000041": 5,
+      "SET-1_C-000018": 28,
+      "SET-1_C-000029": 5,
+      "SET-1_C-000040": 5,
+      "SET-1_C-000052": 10,
+      "SET-1_C-000006": 3,
+      "SET-1_C-000008": 5,
+      "SET-1_C-000045": 7,
+      "SET-1_C-000060": 8,
+      "SET-1_C-000036": 9,
+      "SET-1_C-000019": 7,
+      "SET-1_C-000005": 1,
+      "SET-1_C-000048": 3,
+      "SET-1_C-000025": 4,
+      "SET-1_C-000010": 6,
+      "SET-1_C-000033": 6,
+      "SET-1_C-000021": 6,
+      "SET-1_C-000027": 5,
+      "SET-1_C-000034": 4,
+      "SET-1_C-000055": 3,
+      "SET-1_C-000031": 2,
+      "SET-3_C-000112": 4,
+      "SET-3_C-000089": 4,
+      "SET-3_C-000129": 3,
+      "SET-3_C-000145": 5,
+      "SET-3_C-000149": 2,
       "SET-3_C-000133": 3,
-      "SET-3_C-000138": 1,
-      "SET-3_C-000165": 2,
-      "SET-3_C-000084": 2,
-      "SET-3_C-000102": 1,
-      "SET-3_C-000148": 1,
-      "SET-3_C-000094": 1,
-      "SET-3_C-000162": 1,
-      "SET-3_C-000146": 3,
-      "SET-3_C-000088": 3,
-      "SET-3_C-000097": 1,
-      "SET-3_C-000132": 1,
-      "SET-3_C-000140": 1,
-      "SET-3_C-000122": 1,
-      "SET-3_C-000110": 1,
-      "SET-3_C-000164": 1,
-      "SET-3_C-000136": 1,
+      "SET-3_C-000082": 2,
+      "SET-3_C-000090": 1,
+      "SET-3_C-000150": 2,
+      "SET-3_C-000095": 2,
+      "SET-3_C-000108": 3,
+      "SET-3_C-000091": 3,
       "SET-3_C-000139": 1,
+      "SET-3_C-000092": 3,
+      "SET-1_C-000063": 3,
+      "SET-1_C-000001": 3,
+      "SET-1_C-000026": 3,
+      "SET-3_C-000105": 2,
+      "SET-3_C-000098": 3,
+      "SET-3_C-000114": 3,
+      "SET-3_C-000156": 3,
+      "SET-3_C-000115": 3,
+      "SET-3_C-000154": 4,
+      "SET-3_C-000142": 3,
+      "SET-3_C-000126": 2,
+      "SET-3_C-000083": 2,
+      "SET-3_C-000161": 1,
+      "SET-3_C-000136": 3,
+      "SET-3_C-000101": 1,
+      "SET-3_C-000128": 2,
+      "SET-3_C-000093": 3,
+      "SET-3_C-000124": 2,
+      "SET-3_C-000137": 4,
+      "SET-3_C-000118": 1,
+      "SET-3_C-000158": 3,
+      "SET-3_C-000094": 3,
+      "SET-3_C-000138": 2,
+      "SET-3_C-000152": 1,
+      "SET-3_C-000121": 2,
+      "SET-1_C-000028": 6,
+      "SET-3_C-000148": 3,
+      "SET-3_C-000116": 3,
+      "SET-3_C-000106": 2,
+      "SET-3_C-000163": 2,
+      "SET-3_C-000144": 2,
+      "SET-3_C-000085": 3,
+      "SET-1_C-000015": 2,
+      "SET-3_C-000143": 2,
+      "SET-3_C-000160": 3,
+      "SET-3_C-000109": 1,
+      "SET-3_C-000141": 2,
+      "SET-3_C-000103": 3,
+      "SET-3_C-000155": 1,
+      "SET-3_C-000140": 1,
+      "SET-3_C-000134": 1,
+      "SET-3_C-000096": 3,
+      "SET-3_C-000100": 1,
+      "SET-3_C-000127": 2,
+      "SET-3_C-000132": 2,
+      "SET-5_C-000195": 3,
+      "SET-5_C-000202": 8,
+      "SET-5_C-000223": 8,
+      "SET-5_C-000178": 5,
+      "SET-5_C-000212": 6,
       "SET-5_C-000172": 3,
-      "SET-5_C-000224": 3,
-      "SET-5_C-000193": 1,
-      "SET-5_C-000210": 1,
-      "SET-5_C-000212": 3,
-      "SET-5_C-000209": 1,
-      "SET-5_C-000211": 1,
-      "SET-5_C-000176": 3,
-      "SET-5_C-000225": 2,
-      "SET-5_C-000204": 3,
-      "SET-5_C-000194": 2,
-      "SET-5_C-000185": 3,
-      "SET-5_C-000200": 3,
-      "SET-5_C-000206": 1,
-      "SET-5_C-000168": 1,
-      "SET-5_C-000203": 2,
-      "SET-5_C-000184": 2,
-      "SET-5_C-000221": 1,
-      "SET-5_C-000191": 1,
-      "SET-5_C-000207": 1,
-      "SET-5_C-000202": 2,
-      "SET-5_C-000173": 1,
-      "SET-5_C-000208": 2,
-      "SET-5_C-000179": 2,
-      "SET-5_C-000222": 1,
-      "SET-5_C-000218": 1,
+      "SET-5_C-000175": 3,
+      "SET-5_C-000184": 6,
+      "SET-5_C-000192": 5,
       "SET-5_C-000169": 2,
-      "SET-5_C-000177": 1,
-      "SET-5_C-000189": 1,
-      "SET-5_C-000195": 1,
-      "SET-5_C-000213": 2,
-      "SET-5_C-000215": 2,
       "SET-5_C-000214": 2,
-      "SET-5_C-000216": 1,
-      "SET-5_C-000180": 1
+      "SET-5_C-000220": 4,
+      "SET-5_C-000174": 4,
+      "SET-5_C-000194": 3,
+      "SET-5_C-000225": 2,
+      "SET-5_C-000221": 2,
+      "SET-5_C-000189": 8,
+      "SET-5_C-000173": 5,
+      "SET-5_C-000170": 2,
+      "SET-5_C-000209": 2,
+      "SET-5_C-000176": 6,
+      "SET-5_C-000203": 2,
+      "SET-5_C-000171": 4,
+      "SET-5_C-000216": 5,
+      "SET-5_C-000218": 1,
+      "SET-5_C-000186": 2,
+      "SET-5_C-000191": 3,
+      "SET-5_C-000217": 2,
+      "SET-5_C-000206": 3,
+      "SET-5_C-000226": 3,
+      "SET-5_C-000200": 1,
+      "SET-5_C-000211": 8,
+      "SET-5_C-000207": 1,
+      "SET-5_C-000188": 2,
+      "SET-5_C-000177": 5,
+      "SET-5_C-000183": 2,
+      "SET-5_C-000167": 4,
+      "SET-5_C-000222": 5,
+      "SET-5_C-000210": 2,
+      "SET-5_C-000197": 2,
+      "SET-5_C-000215": 5,
+      "SET-5_C-000204": 4,
+      "SET-5_C-000201": 5,
+      "SET-5_C-000208": 7,
+      "SET-5_C-000179": 1,
+      "SET-5_C-000198": 2,
+      "SET-5_C-000196": 7,
+      "SET-5_C-000193": 4,
+      "SET-5_C-000182": 4,
+      "SET-5_C-000181": 2,
+      "SET-5_C-000180": 6,
+      "SET-5_C-000168": 6,
+      "SET-5_C-000224": 2,
+      "SET-1_C-000038": 1,
+      "SET-1_C-000020": 2,
+      "SET-1_C-000061": 1,
+      "SET-1_C-000030": 2,
+      "SET-1_C-000050": 1,
+      "SET-3_C-000102": 2,
+      "SET-3_C-000097": 3,
+      "SET-3_C-000099": 1,
+      "SET-3_C-000125": 1,
+      "SET-3_C-000130": 1,
+      "SET-3_C-000157": 1,
+      "SET-3_C-000162": 2,
+      "SET-3_C-000159": 1,
+      "SET-3_C-000107": 1,
+      "SET-3_C-000119": 2,
+      "SET-3_C-000113": 1,
+      "SET-3_C-000110": 1,
+      "SET-3_C-000084": 1,
+      "SET-3_C-000146": 1,
+      "SET-3_C-000120": 1,
+      "SET-3_C-000131": 1,
+      "SET-3_C-000165": 1,
+      "SET-5_C-000219": 3,
+      "SET-5_C-000199": 2,
+      "SET-5_C-000190": 2,
+      "SET-5_C-000185": 2,
+      "SET-7_C-000227": 9,
+      "SET-7_C-000229": 9,
+      "SET-7_C-000236": 12,
+      "SET-7_C-000234": 2,
+      "SET-7_C-000231": 3,
+      "SET-7_C-000228": 11,
+      "SET-7_C-000238": 2,
+      "SET-7_C-000235": 8,
+      "SET-7_C-000230": 7,
+      "SET-7_C-000232": 5,
+      "SET-7_C-000237": 3,
+      "SET-7_C-000233": 1,
+      "SET-1_C-000014": 1
     },
     "stats": {
-      "open": 24
+      "open": 175
     }
   },
-  "C4F3B96F": {
+  "B5FE2FAE": {
     "userId": "U-000280",
     "firstName": "Bill",
     "lastName": "Rack",
@@ -13768,7 +13874,7 @@
       "lme-des-cartes-de-san-andreas",
       "un-jour-je-serai-le-meilleur-collectionneur",
       "warren-gilles",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-1_C-000033": 1,
@@ -13814,7 +13920,7 @@
       "open": 19
     }
   },
-  "0D8525D8": {
+  "74ADFB4F": {
     "userId": "U-000281",
     "firstName": "Louis",
     "lastName": "Louis",
@@ -13822,8 +13928,7 @@
     "collections": [
       "lme-des-cartes-de-san-andreas",
       "un-jour-je-serai-le-meilleur-collectionneur",
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-1_C-000033": 1,
@@ -13846,7 +13951,7 @@
       "open": 7
     }
   },
-  "2CAE7CAB": {
+  "3D7DD568": {
     "userId": "U-000282",
     "firstName": "Andrew",
     "lastName": "Duncan",
@@ -13887,7 +13992,7 @@
       "open": 6
     }
   },
-  "545EDF56": {
+  "C3BBD282": {
     "userId": "U-000283",
     "firstName": "Bella",
     "lastName": "Lynch",
@@ -13905,7 +14010,7 @@
       "open": 4
     }
   },
-  "5C2F6551": {
+  "76B90C42": {
     "userId": "U-000284",
     "firstName": "Joe",
     "lastName": "Miller",
@@ -13920,7 +14025,7 @@
       "open": 1
     }
   },
-  "53092F47": {
+  "416F8626": {
     "userId": "U-000285",
     "firstName": "Nick",
     "lastName": "Park",
@@ -13937,7 +14042,7 @@
       "open": 3
     }
   },
-  "A6344A53": {
+  "BC4006D5": {
     "userId": "U-000287",
     "firstName": "Kyle",
     "lastName": "Gray",
@@ -13997,7 +14102,7 @@
       "open": 21
     }
   },
-  "F538DEAE": {
+  "73B2A71A": {
     "userId": "U-000288",
     "firstName": "Marius",
     "lastName": "Gramont",
@@ -14041,7 +14146,7 @@
       "open": 6
     }
   },
-  "DC65ED82": {
+  "77C30290": {
     "userId": "U-000289",
     "firstName": "Maya",
     "lastName": "Fischer",
@@ -14101,7 +14206,7 @@
       "open": 12
     }
   },
-  "06A0AC57": {
+  "FA13E339": {
     "userId": "U-000290",
     "firstName": "Matthew",
     "lastName": "Cross",
@@ -14162,7 +14267,7 @@
       "open": 12
     }
   },
-  "C42FC0DC": {
+  "C60E35B2": {
     "userId": "U-000291",
     "firstName": "Henry",
     "lastName": "Trace",
@@ -14254,82 +14359,14 @@
       "open": 19
     }
   },
-  "3656D62A": {
-    "userId": "U-000292",
-    "firstName": "Mathis",
-    "lastName": "Ray",
-    "phone": "7873",
-    "collections": [
-      "lme-des-cartes-de-san-andreas",
-      "un-jour-je-serai-le-meilleur-collectionneur",
-      "lance-une-pice-ton-collectionneur"
-    ],
-    "cards": {
-      "SET-1_C-000054": 2,
-      "SET-1_C-000063": 1,
-      "SET-1_C-000025": 1,
-      "SET-1_C-000036": 1,
-      "SET-1_C-000045": 2,
-      "SET-1_C-000016": 1,
-      "SET-1_C-000012": 2,
-      "SET-1_C-000027": 2,
-      "SET-1_C-000026": 1,
-      "SET-1_C-000030": 1,
-      "SET-1_C-000034": 1,
-      "SET-1_C-000049": 1,
-      "SET-1_C-000019": 1,
-      "SET-1_C-000041": 1,
-      "SET-1_C-000033": 1,
-      "SET-1_C-000064": 1,
-      "SET-3_C-000156": 1,
-      "SET-3_C-000125": 1,
-      "SET-3_C-000152": 1,
-      "SET-3_C-000096": 2,
-      "SET-3_C-000136": 1,
-      "SET-3_C-000120": 1,
-      "SET-3_C-000092": 1,
-      "SET-3_C-000124": 1,
-      "SET-3_C-000109": 1,
-      "SET-3_C-000131": 1,
-      "SET-3_C-000139": 1,
-      "SET-3_C-000148": 1,
-      "SET-3_C-000122": 1,
-      "SET-3_C-000083": 1,
-      "SET-3_C-000117": 1,
-      "SET-3_C-000154": 1,
-      "SET-3_C-000113": 1,
-      "SET-3_C-000106": 1,
-      "SET-3_C-000151": 1,
-      "SET-5_C-000200": 1,
-      "SET-5_C-000172": 1,
-      "SET-5_C-000169": 1,
-      "SET-5_C-000215": 1,
-      "SET-5_C-000209": 2,
-      "SET-5_C-000173": 1,
-      "SET-5_C-000190": 1,
-      "SET-5_C-000184": 1,
-      "SET-5_C-000211": 1,
-      "SET-5_C-000195": 1,
-      "SET-5_C-000220": 1,
-      "SET-5_C-000180": 1,
-      "SET-5_C-000186": 1,
-      "SET-5_C-000189": 1,
-      "SET-5_C-000203": 3,
-      "SET-5_C-000199": 1,
-      "SET-5_C-000219": 1
-    },
-    "stats": {
-      "open": 12
-    }
-  },
-  "F838B139": {
+  "15CF74B3": {
     "userId": "U-000293",
     "firstName": "Damon",
     "lastName": "Moses",
     "phone": "1637",
     "collections": [
       "un-jour-je-serai-le-meilleur-collectionneur",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-3_C-000086": 1,
@@ -14352,14 +14389,13 @@
       "open": 4
     }
   },
-  "174F41F2": {
+  "D0174B9D": {
     "userId": "U-000295",
     "firstName": "Lucien",
     "lastName": "Nastral",
     "phone": "9008",
     "collections": [
-      "tombola-zombie-cars",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000074": 1,
@@ -14370,7 +14406,7 @@
       "open": 3
     }
   },
-  "15EB00BA": {
+  "F50CD4F1": {
     "userId": "U-000296",
     "firstName": "Kathryn",
     "lastName": "Powell",
@@ -14432,7 +14468,7 @@
       "open": 18
     }
   },
-  "6167F825": {
+  "A3886C6E": {
     "userId": "U-000297",
     "firstName": "François",
     "lastName": "Nestor",
@@ -14454,7 +14490,7 @@
       "open": 6
     }
   },
-  "ADF6EF6B": {
+  "EB91C8B7": {
     "userId": "U-000298",
     "firstName": "Alicia",
     "lastName": "Wiley",
@@ -14480,7 +14516,7 @@
       "open": 12
     }
   },
-  "BB21C98B": {
+  "A09D32BE": {
     "userId": "U-000299",
     "firstName": "Aleksander",
     "lastName": "Balor",
@@ -14505,7 +14541,7 @@
       "open": 12
     }
   },
-  "F967D00F": {
+  "F22734C0": {
     "userId": "U-000300",
     "firstName": "Tim",
     "lastName": "Avery",
@@ -14528,30 +14564,7 @@
       "open": 6
     }
   },
-  "119F20CD": {
-    "userId": "U-000301",
-    "firstName": "Allyster",
-    "lastName": "Brown",
-    "phone": "6546",
-    "collections": [
-      "warren-gilles"
-    ],
-    "cards": {
-      "SET-7_C-000228": 4,
-      "SET-7_C-000227": 3,
-      "SET-7_C-000235": 2,
-      "SET-7_C-000229": 2,
-      "SET-7_C-000234": 1,
-      "SET-7_C-000237": 1,
-      "SET-7_C-000236": 3,
-      "SET-7_C-000232": 1,
-      "SET-7_C-000230": 1
-    },
-    "stats": {
-      "open": 6
-    }
-  },
-  "1E7F3677": {
+  "912C9211": {
     "userId": "U-000302",
     "firstName": "Matt",
     "lastName": "Thomson",
@@ -14652,7 +14665,7 @@
       "open": 24
     }
   },
-  "395AA2BE": {
+  "B66354C5": {
     "userId": "U-000303",
     "firstName": "Rick",
     "lastName": "Lindemann",
@@ -14676,14 +14689,13 @@
       "open": 6
     }
   },
-  "D67FE60E": {
+  "F97E14D1": {
     "userId": "U-000304",
     "firstName": "Samy",
     "lastName": "Vaine",
     "phone": "6349",
     "collections": [
       "warren-gilles",
-      "SET-4",
       "tombola-zombie-cars"
     ],
     "cards": {
@@ -14706,7 +14718,7 @@
       "open": 14
     }
   },
-  "EC4333BF": {
+  "018A490F": {
     "userId": "U-000305",
     "firstName": "Ezio",
     "lastName": "Sarda",
@@ -14729,14 +14741,14 @@
       "open": 6
     }
   },
-  "045F62BC": {
+  "1C268374": {
     "userId": "U-000306",
     "firstName": "Emma",
     "lastName": "Dumas",
     "phone": "9084",
     "collections": [
       "warren-gilles",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-7_C-000233": 6,
@@ -14756,14 +14768,14 @@
       "open": 13
     }
   },
-  "5BE0030C": {
+  "8707D9A6": {
     "userId": "U-000307",
     "firstName": "Chris",
     "lastName": "Bosetti",
     "phone": "709",
     "collections": [
       "warren-gilles",
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-7_C-000233": 2,
@@ -14783,28 +14795,13 @@
       "open": 19
     }
   },
-  "0979BC79": {
+  "B03DBC05": {
     "userId": "U-000308",
     "firstName": "Yaelle",
     "lastName": "Luquet",
     "phone": "4551",
     "collections": [
-      "SET-4"
-    ],
-    "cards": {
-      "SET-4_C-000076": 1
-    },
-    "stats": {
-      "open": 1
-    }
-  },
-  "B7E7D407": {
-    "userId": "U-000309",
-    "firstName": "Arthur",
-    "lastName": "McGee",
-    "phone": "7776",
-    "collections": [
-      "SET-4"
+      "tombola-zombie-cars"
     ],
     "cards": {
       "SET-4_C-000076": 1
