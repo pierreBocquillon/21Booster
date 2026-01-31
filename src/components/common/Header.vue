@@ -359,23 +359,20 @@ export default {
             let settings = await Settings.getById("general");
             const welcomeBonus = settings ? settings.welcomeBonus : 500;
 
-            this.userStore.profile.collections = {};
-            this.userStore.profile.boosters = {};
-            this.userStore.profile.cards = {};
-            this.userStore.profile.codes = {};
-            this.userStore.profile.achievements = {};
-            this.userStore.profile.stats = {
-              public: true,
-              open: 0,
-              destroy: 0,
-              upgrades: 0,
-              downgrades: 0,
-            };
-            this.userStore.profile.cash = welcomeBonus;
-            this.userStore.profile.oldCodeRefused = false;
-            this.userStore.profile.lastWheelSpin = 0;
-            this.userStore.profile.helpSeen = false;
-            this.userStore.profile.oldCodesVerified = null;
+            this.userStore.profile.collections = {}
+            this.userStore.profile.boosters = {}
+            this.userStore.profile.cards = {}
+            this.userStore.profile.codes = {}
+            this.userStore.profile.achievements = {}
+            this.userStore.profile.stats.open = 0
+            this.userStore.profile.stats.destroy = 0
+            this.userStore.profile.stats.upgrades = 0
+            this.userStore.profile.stats.downgrades = 0
+            this.userStore.profile.cash = welcomeBonus
+            this.userStore.profile.oldCodeRefused = false
+            this.userStore.profile.lastWheelSpin = 0
+            this.userStore.profile.helpSeen = false
+            this.userStore.profile.oldCodesVerified = null
 
             await this.userStore.profile.save();
 

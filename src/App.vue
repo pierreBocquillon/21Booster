@@ -507,7 +507,7 @@ export default {
 
       // Give Stats
       if (stats.open && stats.open > 0) {
-        if (!this.userStore.profile.stats) this.userStore.profile.stats = { open: 0, destroy: 0, upgrades: 0, downgrades: 0 };
+        if (!this.userStore.profile.stats) this.userStore.profile.stats = {public: true, open: 0, destroy: 0, upgrades: 0, downgrades: 0 };
         this.userStore.profile.stats.open = (this.userStore.profile.stats.open || 0) + parseInt(stats.open);
       }
 

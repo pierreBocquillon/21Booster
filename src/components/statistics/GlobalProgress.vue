@@ -17,7 +17,8 @@
     <v-col cols="12" sm="6">
       <v-card class="pa-4 fill-height d-flex flex-column justify-center" elevation="2">
         <div class="d-flex justify-space-between mb-2">
-          <span class="text-subtitle-1">Succès Débloqués</span>
+          <span class="text-subtitle-1">Succès Débloqués <v-btn color="error" icon variant="plain" @click="goToAchievements"><v-icon>mdi-link-variant</v-icon></v-btn></span>
+
           <span class="text-h6 text-orange">{{ achievements }}%</span>
         </div>
         <v-progress-linear :model-value="achievements" color="error" height="25" rounded striped>
@@ -41,6 +42,11 @@ export default {
       type: Number,
       required: true,
       default: 0
+    }
+  },
+  methods: {
+    goToAchievements() {
+      this.$emit('go-to-achievements');
     }
   }
 }

@@ -66,6 +66,10 @@
           <v-icon>mdi-pencil</v-icon>
           <v-tooltip activator="parent" location="top">Modifier l'utilisateur</v-tooltip>
         </v-btn>
+        <v-btn icon color="pink" variant="text" @click="deleteItem(item)" v-if="!item.activated && this.userStore.profile.permissions.some(p => ['dev'].includes(p))">
+          <v-icon>mdi-trash-can</v-icon>
+          <v-tooltip activator="parent" location="top">Effacer l'utilisateur</v-tooltip>
+        </v-btn>
         <v-btn icon color="primary" variant="text" @click="resetPassword(item)" v-if="this.userStore.profile.permissions.some(p => ['dev', 'moderator'].includes(p))">
           <v-icon>mdi-lock-reset</v-icon>
           <v-tooltip activator="parent" location="top">Réinitialiser le mot de passe</v-tooltip>
@@ -81,6 +85,10 @@
         <v-btn icon color="purple" variant="text" @click="exportUser(item)" v-if="this.userStore.profile.permissions.some(p => ['dev'].includes(p))">
           <v-icon>mdi-package-down</v-icon>
           <v-tooltip activator="parent" location="top">Exporter le profil</v-tooltip>
+        </v-btn>
+        <v-btn icon color="pink" variant="text" @click="wipeItem(item)" v-if="this.userStore.profile.permissions.some(p => ['dev'].includes(p))">
+          <v-icon>mdi-eraser</v-icon>
+          <v-tooltip activator="parent" location="top">Wipe l'utilisateur</v-tooltip>
         </v-btn>
         <v-btn icon color="error" variant="text" @click="fullProfile(item)" v-if="this.userStore.profile.permissions.some(p => ['dev'].includes(p))">
           <v-icon>mdi-emoticon-devil</v-icon>
@@ -272,6 +280,7 @@ import Collection from '@/classes/Collection.js'
 import logsManager from '@/assets/functions/logsManager.js'
 import notifManager from '@/assets/functions/notifManager.js'
 import achievementsManager from '@/assets/functions/achievementsManager.js'
+import Settings from '@/classes/Settings.js'
 
 export default {
   data() {
@@ -385,6 +394,53 @@ export default {
   methods: {
     formatMoney(value) {
       return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(value).replace('€', '').replace(",00", "")
+    },
+    async wipeItem(item) {
+      Swal.fire({
+        title: 'Effacer les données utilisateur',
+        text: `Êtes-vous sûr de vouloir effacer toutes les données de "${item.name}" ? Cette action est irréversible.`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Oui, effacer',
+        cancelButtonText: 'Annuler',
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          let settings = await Settings.getById("general")
+          const welcomeBonus = settings ? settings.welcomeBonus : 500
+
+          item.cash = 0
+          item.collections = {}
+          item.boosters = {}
+          item.cards = {}
+          item.codes = {}
+          item.achievements = {}
+          item.stats.open = 0
+          item.stats.destroy = 0
+          item.stats.upgrades = 0
+          item.stats.downgrades = 0
+          item.cash = welcomeBonus
+          item.oldCodeRefused = false
+          item.lastWheelSpin = 0
+          item.helpSeen = false
+          item.oldCodesVerified = null
+
+          await item.save()
+        }
+      })
+    },
+    async deleteItem(item) {
+      Swal.fire({
+        title: 'Effacer l\'utilisateur',
+        text: `Êtes-vous sûr de vouloir effacer l'utilisateur "${item.name}" ? Cette action est irréversible.`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Oui, effacer',
+        cancelButtonText: 'Annuler',
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await item.delete()
+        }
+      })
     },
     async resetPassword(user) {
       Swal.fire({

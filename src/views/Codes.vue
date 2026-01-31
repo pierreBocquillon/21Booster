@@ -75,15 +75,15 @@ export default {
     history() {
       if (!this.userStore.profile || !this.userStore.profile.codes) return [];
 
-      const list = Object.values(this.userStore.profile.codes)
-        .sort((a, b) => new Date(b.date) - new Date(a.date))
-        .map(entry => {
+      const list = Object.entries(this.userStore.profile.codes)
+        .sort(([, a], [, b]) => new Date(b.date) - new Date(a.date))
+        .map(([key, entry]) => {
           const dateObj = new Date(entry.date);
           const formattedDate = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()} ${dateObj.getHours().toString().padStart(2, '0')}:${dateObj.getMinutes().toString().padStart(2, '0')}`;
 
           return {
             date: formattedDate,
-            code: entry.code,
+            code: key.startsWith('old') ? "Code de l'ancien temps" : entry.code,
             content: entry.rewards
           };
         });
@@ -159,7 +159,7 @@ export default {
 
           // Give Stats
           if (stats.open && stats.open > 0) {
-            if (!this.userStore.profile.stats) this.userStore.profile.stats = { open: 0, destroy: 0, upgrades: 0, downgrades: 0 };
+            if (!this.userStore.profile.stats) this.userStore.profile.stats = { public:true, open: 0, destroy: 0, upgrades: 0, downgrades: 0 };
             this.userStore.profile.stats.open = (this.userStore.profile.stats.open || 0) + parseInt(stats.open);
           }
 

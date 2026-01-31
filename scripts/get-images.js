@@ -135,6 +135,7 @@ async function main() {
         console.log(`Succès : ${successCount}`);
         console.log(`Ignorés : ${skipCount}`);
         console.log(`Échecs : ${failCount}`);
+        return;
     } catch (error) {
         console.error('Erreur inattendue :', error);
     }

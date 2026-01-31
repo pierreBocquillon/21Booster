@@ -64,6 +64,16 @@ const routes = [
 		},
 	},
 	{
+		name: "Succès du joueur",
+		path: "/achievements/:id",
+		component: () => import("@/views/Achievements.vue"),
+		meta: {
+			needAccount: false,
+			showNav: true,
+			permissions: [],
+		},
+	},
+	{
 		name: "Boutique",
 		path: "/shop",
 		component: () => import("@/views/Shop.vue"),

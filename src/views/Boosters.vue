@@ -263,7 +263,7 @@ export default {
         });
 
         if (!this.userStore.profile.stats) {
-          this.userStore.profile.stats = { open: 0, destroy: 0, upgrades: 0, downgrades: 0 };
+          this.userStore.profile.stats = {public:true, open: 0, destroy: 0, upgrades: 0, downgrades: 0 };
         }
         this.userStore.profile.stats.open += 1;
 

@@ -9,7 +9,7 @@
         <v-btn icon="mdi-share-variant" variant="text" color="primary" @click="shareStats" title="Partager"></v-btn>
       </div>
 
-      <GlobalProgress :completion="completion.my" :achievements="achievementsStats.percentage" />
+      <GlobalProgress :completion="completion.my" :achievements="achievementsStats.percentage" @go-to-achievements="goToAchievements" />
 
       <PlayerStatsGrid :stats="playerStats" />
 
@@ -23,12 +23,15 @@
 
 <script>
 import { useUserStore } from '@/store/user.js'
+
 import Collection from '@/classes/Collection.js'
 import Card from '@/classes/Card.js'
 import Profile from '@/classes/Profile.js'
+
 import achievementsData from '@/data/achievements.json'
 import notifManager from '@/assets/functions/notifManager.js'
 import Swal from 'sweetalert2/dist/sweetalert2.js'
+
 import GlobalProgress from '@/components/statistics/GlobalProgress.vue'
 import PlayerStatsGrid from '@/components/statistics/PlayerStatsGrid.vue'
 import CollectionBreakdown from '@/components/statistics/CollectionBreakdown.vue'
@@ -177,6 +180,9 @@ export default {
     this.initialize();
   },
   methods: {
+    goToAchievements() {
+      this.$router.push('/achievements/' + (this.customProfile ? this.customProfile.id : ''));
+    },
     initialize() {
       this.unsub.push(Collection.listenAll((list) => {
         this.allCollections = list.sort((a, b) => {
