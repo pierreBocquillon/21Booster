@@ -322,8 +322,8 @@ export default {
       allCards: [],
       rarities: [
         { title: 'Classique', value: 'common' },
-        { title: 'Argent', value: 'silver' },
-        { title: 'Or', value: 'golden' },
+        { title: 'Silver', value: 'silver' },
+        { title: 'Golden', value: 'golden' },
         { title: 'Foil', value: 'foil' }
       ],
 

@@ -28,8 +28,8 @@
           <v-card class="pa-4 mb-4" title="Classement (Score)">
             <v-text-field label="Multiplicateur par Collection Complète" v-model.number="settings.collectionMultiplier" type="number" step="0.01"></v-text-field>
             <v-text-field label="Classique" v-model.number="settings.rarityPoints.common" type="number" prefix="pts"></v-text-field>
-            <v-text-field label="Argent" v-model.number="settings.rarityPoints.silver" type="number" prefix="pts"></v-text-field>
-            <v-text-field label="Or" v-model.number="settings.rarityPoints.golden" type="number" prefix="pts"></v-text-field>
+            <v-text-field label="Silver" v-model.number="settings.rarityPoints.silver" type="number" prefix="pts"></v-text-field>
+            <v-text-field label="Golden" v-model.number="settings.rarityPoints.golden" type="number" prefix="pts"></v-text-field>
             <v-text-field label="Foil" v-model.number="settings.rarityPoints.foil" type="number" prefix="pts"></v-text-field>
           </v-card>
         </v-col>
@@ -46,8 +46,8 @@
         <v-col cols="12" md="6">
           <v-card class="pa-4 mb-4" title="Probabilités par Variantes">
             <v-text-field label="Classique (%)" :model-value="commonRarityProb" readonly suffix="%" variant="outlined" hint="(Calculé automatiquement)" persistent-hint class="mb-4"></v-text-field>
-            <v-text-field label="Argent (%)" v-model.number="settings.rarityDropRates.silver" type="number" min="0" max="100" suffix="%"></v-text-field>
-            <v-text-field label="Or (%)" v-model.number="settings.rarityDropRates.golden" type="number" min="0" max="100" suffix="%"></v-text-field>
+            <v-text-field label="Silver (%)" v-model.number="settings.rarityDropRates.silver" type="number" min="0" max="100" suffix="%"></v-text-field>
+            <v-text-field label="Golden (%)" v-model.number="settings.rarityDropRates.golden" type="number" min="0" max="100" suffix="%"></v-text-field>
             <v-text-field label="Foil (%)" v-model.number="settings.rarityDropRates.foil" type="number" min="0" max="100" suffix="%"></v-text-field>
           </v-card>
         </v-col>
@@ -115,8 +115,8 @@ export default {
       },
       variants: {
         common: 'Classique',
-        silver: 'Argent',
-        golden: 'Or',
+        silver: 'Silver',
+        golden: 'Golden',
         foil: 'Foil'
       }
     }

@@ -14,7 +14,7 @@
         <p class="my-2">Les Card Coins sont le cœur de votre aventure. Ces jetons précieux constituent la monnaie unique de la plateforme.</p>
         <ul class="ml-4">
           <li><strong>Utilité :</strong> Ils sont indispensables pour acquérir de nouveaux boosters dans la boutique.</li>
-          <li><strong>Obtention :</strong> Gagnez-en via le sacrifice de cartes, les codes promos, ou en rechargeant votre solde auprès de l'un de nos vendeurs.</li>
+          <li><strong>Obtention :</strong> Gagnez-en via le casino, le sacrifice de cartes, les codes promos, ou en rechargeant votre solde auprès de l'un de nos vendeurs.</li>
         </ul>
       </div>
       <div class="my-4 mt-6">
@@ -35,8 +35,8 @@
                   <tr>
                     <th class="font-weight-bold">Rareté\Variante</th>
                     <th class="font-weight-bold">Classique</th>
-                    <th class="font-weight-bold">Argent</th>
-                    <th class="font-weight-bold">Or</th>
+                    <th class="font-weight-bold">Silver</th>
+                    <th class="font-weight-bold">Golden</th>
                     <th class="font-weight-bold">Foil</th>
                   </tr>
                   <tr>
@@ -91,8 +91,8 @@
                   <tr>
                     <th class="font-weight-bold">Rareté\Variante</th>
                     <th class="font-weight-bold">Classique</th>
-                    <th class="font-weight-bold">Argent</th>
-                    <th class="font-weight-bold">Or</th>
+                    <th class="font-weight-bold">Silver</th>
+                    <th class="font-weight-bold">Golden</th>
                     <th class="font-weight-bold">Foil</th>
                   </tr>
                   <tr>
