@@ -110,6 +110,8 @@ export default {
         { title: 'Rare', value: 'rare', color: 'blue-darken-1' },
         { title: 'Mythique', value: 'mythic', color: 'purple-darken-1' },
       ],
+      orientationCache: {},
+      loadingCache: {},
     }
   },
   computed: {
@@ -140,9 +142,19 @@ export default {
       this.cardDialog = true;
     },
     isLandscape(currentImageUrl) {
-      const img = new Image();
-      img.src = currentImageUrl;
-      return img.width > img.height;
+      if (!currentImageUrl) return false;
+      if (this.orientationCache[currentImageUrl] !== undefined) {
+        return this.orientationCache[currentImageUrl];
+      }
+      if (!this.loadingCache[currentImageUrl]) {
+        this.loadingCache[currentImageUrl] = true;
+        const img = new Image();
+        img.onload = () => {
+          this.orientationCache[currentImageUrl] = img.width > img.height;
+        };
+        img.src = currentImageUrl;
+      }
+      return false;
     },
     getDisplayRarity(card) {
       if (this.displayMode === 'best') return this.getBestRarity(card);
