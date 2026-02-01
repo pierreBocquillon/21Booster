@@ -243,40 +243,104 @@ export default {
         }
 
         // Collection
-        if (code.collection) {
+        if (code.collections && code.collections.length > 0) {
+          if (!this.userStore.profile.collections) this.userStore.profile.collections = {};
+          code.collections.forEach(col => {
+            this.userStore.profile.collections[col] = true;
+          });
+          rewardsDesc.push(`${code.collections.length} Collection(s) débloquée(s)`);
+        }
+        // Backward compatibility
+        if (code.collection && (!code.collections || !code.collections.includes(code.collection))) {
           if (!this.userStore.profile.collections) this.userStore.profile.collections = {};
           this.userStore.profile.collections[code.collection] = true;
           rewardsDesc.push(`Collection débloquée`);
         }
 
         // Booster
-        if (code.booster && code.boosterAmount > 0) {
+        const boostersNotif = {};
+        if (code.boosters && code.boosters.length > 0) {
           if (!this.userStore.profile.boosters) this.userStore.profile.boosters = {};
-          const currentBoosters = this.userStore.profile.boosters[code.booster] || 0;
-          this.userStore.profile.boosters[code.booster] = currentBoosters + parseInt(code.boosterAmount);
-          rewardsDesc.push(`${code.boosterAmount} Booster(s)`);
-
-          let boosters = {}
-          boosters[code.booster] = parseInt(code.boosterAmount)
-          await notifManager.sendBoosterNotif(this.userStore.uid, boosters, `Code Promo : ${code.name}`)
+          code.boosters.forEach(b => {
+             if (b.amount > 0 && b.id) {
+               this.userStore.profile.boosters[b.id] = (this.userStore.profile.boosters[b.id] || 0) + parseInt(b.amount);
+               boostersNotif[b.id] = (boostersNotif[b.id] || 0) + parseInt(b.amount);
+               rewardsDesc.push(`${b.amount} Booster(s)`);
+             }
+          });
+        }
+        // Backward compatibility
+        if (code.booster && code.boosterAmount > 0) {
+           // Basic check if already added via list to avoid duplicates if data is mixed
+           const alreadyAdded = code.boosters && code.boosters.some(b => b.id === code.booster);
+           if (!alreadyAdded) {
+               if (!this.userStore.profile.boosters) this.userStore.profile.boosters = {};
+               const currentBoosters = this.userStore.profile.boosters[code.booster] || 0;
+               this.userStore.profile.boosters[code.booster] = currentBoosters + parseInt(code.boosterAmount);
+               boostersNotif[code.booster] = (boostersNotif[code.booster] || 0) + parseInt(code.boosterAmount);
+               rewardsDesc.push(`${code.boosterAmount} Booster(s)`);
+           }
+        }
+        
+        if (Object.keys(boostersNotif).length > 0) {
+           await notifManager.sendBoosterNotif(this.userStore.uid, boostersNotif, `Code Promo : ${code.name}`)
         }
 
         // Card
+        const cardsNotif = {};
+        if (code.cards && code.cards.length > 0) {
+           if (!this.userStore.profile.cards) this.userStore.profile.cards = {};
+           code.cards.forEach(c => {
+             if (c.amount > 0 && c.id) {
+               if (!this.userStore.profile.cards[c.id]) {
+                 this.userStore.profile.cards[c.id] = { common: 0, silver: 0, golden: 0, foil: 0 };
+               }
+               const rarity = c.rarity || 'common';
+               this.userStore.profile.cards[c.id][rarity] = (this.userStore.profile.cards[c.id][rarity] || 0) + parseInt(c.amount);
+               
+               if (!cardsNotif[c.id]) cardsNotif[c.id] = { amount: 0, rarity: rarity }; // Simplified notif for mixed rarities might need separate
+               // Note: notifManager might not support multiple rarities for same card easily in one go? 
+               // Assuming simplistic "sendCardNotif"
+               // We will just accumulate calls or send one per card
+               // For now, let's just trigger notif per item to be safe or bulk if structure permits
+               // Looking at existing code: cards[code.card] = { amount: ..., rarity: ... }
+               // If we have same card multiple times with diff rarity, last key wins in obj.
+               
+               // Let's send notif immediately for each card reward to be safe with existing manager
+               /* Loop logic below handles batched notif if keys are unique */
+             }
+           });
+           
+           // Re-loop for notification to handle multiples correctly if needed, or just push to 'cardsNotif'
+           // If 'cardsNotif' structure is key -> {amount, rarity}, we can't have same card different rarity.
+           // So we should send individual notifs if collision.
+           
+           for(const c of code.cards) {
+             if(c.amount > 0 && c.id) {
+               let singleCardNotif = {};
+               singleCardNotif[c.id] = { amount: parseInt(c.amount), rarity: c.rarity || 'common' };
+               await notifManager.sendCardNotif(this.userStore.uid, singleCardNotif, `Code Promo : ${code.name}`);
+               rewardsDesc.push(`${c.amount} Carte(s)`);
+             }
+           }
+        }
+
+        // Backward compatibility
         if (code.card && code.cardAmount > 0) {
-          if (!this.userStore.profile.cards) this.userStore.profile.cards = {};
-          if (!this.userStore.profile.cards[code.card]) {
-            this.userStore.profile.cards[code.card] = { common: 0, silver: 0, golden: 0, foil: 0 };
-          }
-          const rarity = code.cardRarity || 'common';
-          // Handle mapping if needed (e.g. golden/gold mismatch)
-          let targetRarity = rarity;
-
-          this.userStore.profile.cards[code.card][targetRarity] = (this.userStore.profile.cards[code.card][targetRarity] || 0) + parseInt(code.cardAmount);
-          rewardsDesc.push(`${code.cardAmount} Carte(s) (${rarity})`);
-
-          let cards = {}
-          cards[code.card] = { amount: parseInt(code.cardAmount), rarity: targetRarity }
-          await notifManager.sendCardNotif(this.userStore.uid, cards, `Code Promo : ${code.name}`)
+           const alreadyAdded = code.cards && code.cards.some(c => c.id === code.card);
+           if (!alreadyAdded) {
+              if (!this.userStore.profile.cards) this.userStore.profile.cards = {};
+              if (!this.userStore.profile.cards[code.card]) {
+                this.userStore.profile.cards[code.card] = { common: 0, silver: 0, golden: 0, foil: 0 };
+              }
+              const rarity = code.cardRarity || 'common';
+              this.userStore.profile.cards[code.card][rarity] = (this.userStore.profile.cards[code.card][rarity] || 0) + parseInt(code.cardAmount);
+              rewardsDesc.push(`${code.cardAmount} Carte(s) (${rarity})`);
+              
+              let singleCardNotif = {}
+              singleCardNotif[code.card] = { amount: parseInt(code.cardAmount), rarity: rarity }
+              await notifManager.sendCardNotif(this.userStore.uid, singleCardNotif, `Code Promo : ${code.name}`)
+           }
         }
 
         const rewardsString = rewardsDesc.join(', ') || code.description || "Récompense mystère";

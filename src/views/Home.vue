@@ -1,6 +1,6 @@
 <template>
   <div class="pa-5" style="min-height: calc(100vh - 120px); height: 100%;">
-    <v-card class="rounded-xl" :style="'max-width: ' + (filteredNavItems.length > 1 ? '920px' : '440px') + '; margin: auto;'">
+    <v-card class="rounded-xl" style="max-width: 920px; margin: auto;">
       <v-card-text class="pa-5 d-flex flex-column align-center">
         <div>
           <h2 class="text-center mb-2">Nom : <span class=" text-h5 font-weight-regular">{{ userStore.profile.name }}</span></h2>

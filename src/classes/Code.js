@@ -5,28 +5,41 @@ let collectionName = "codes"
 
 function docToInstance(document) {
 	let data = document.data()
-	return data ? new Code(document.id, data.name, data.description, data.end, data.amount, data.collection, data.card, data.cardRarity, data.cardAmount, data.booster, data.boosterAmount, data.cash) : null
+	if (!data) return null
+
+	// Backward compatibility
+	let collections = data.collections || []
+	if (data.collection && !collections.includes(data.collection)) collections.push(data.collection)
+
+	let cards = data.cards || []
+	if (data.card) {
+		cards.push({ id: data.card, amount: data.cardAmount || 1, rarity: data.cardRarity || 'common' })
+	}
+
+	let boosters = data.boosters || []
+	if (data.booster) {
+		boosters.push({ id: data.booster, amount: data.boosterAmount || 1 })
+	}
+
+	return new Code(document.id, data.name, data.description, data.end, data.amount, data.cash, collections, cards, boosters)
 }
 
 class Code {
-	constructor(id, name, description, end, amount, collection, card, cardRarity, cardAmount, booster, boosterAmount, cash) {
+	constructor(id, name, description, end, amount, cash, collections = [], cards = [], boosters = []) {
 		this.id = id
 		this.name = name
 		this.description = description
 		this.end = end
 		this.amount = amount
-		this.collection = collection
-		this.card = card
-		this.cardAmount = cardAmount
-		this.cardRarity = cardRarity
-		this.booster = booster
-		this.boosterAmount = boosterAmount
 		this.cash = cash
+		this.collections = collections
+		this.cards = cards
+		this.boosters = boosters
 	}
 
 	static initOne(name = "") {
 		let id = Code.createId(name)
-		const newCode = new Code(id, name, "", 0, 1, null, null, "common", 0, null, 0, 0)
+		const newCode = new Code(id, name, "", 0, 1, 0, [], [], [])
 		return newCode
 	}
 
@@ -89,13 +102,10 @@ class Code {
 			description: this.description,
 			end: this.end,
 			amount: this.amount,
-			collection: this.collection,
-			card: this.card,
-			cardAmount: this.cardAmount,
-			cardRarity: this.cardRarity,
-			booster: this.booster,
-			boosterAmount: this.boosterAmount,
 			cash: this.cash,
+			collections: this.collections,
+			cards: this.cards,
+			boosters: this.boosters
 		}
 
 		if (this.id) {

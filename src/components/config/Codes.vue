@@ -51,12 +51,9 @@ export default {
         description: '',
         end: new Date(new Date().getTime() + (7 * 24 * 60 * 60 * 1000)).toISOString().substr(0, 10),
         amount: 0,
-        collection: null,
-        card: null,
-        cardAmount: 1,
-        cardRarity: 'common',
-        booster: null,
-        boosterAmount: 1,
+        collections: [],
+        cards: [],
+        boosters: [],
         cash: 0,
       },
       boosterOptions: [],
@@ -107,12 +104,9 @@ export default {
         description: item.description,
         end: endDate,
         amount: item.amount,
-        collection: item.collection,
-        card: item.card,
-        cardRarity: item.cardRarity || 'common',
-        cardAmount: item.cardAmount || 1,
-        booster: item.booster,
-        boosterAmount: item.boosterAmount || 1,
+        collections: item.collections || [],
+        cards: item.cards || [],
+        boosters: item.boosters || [],
         cash: item.cash
       };
       this.dialog = true
@@ -147,26 +141,20 @@ export default {
             formData.description,
             endDate,
             formData.amount,
-            formData.collection,
-            formData.card,
-            formData.cardRarity || 'common',
-            formData.cardAmount || 0,
-            formData.booster,
-            formData.boosterAmount || 0,
-            formData.cash || 0
+            formData.cash || 0,
+            formData.collections || [],
+            formData.cards || [],
+            formData.boosters || []
           );
         } else {
           code = Code.initOne(formData.name);
           code.description = formData.description || "";
           code.end = endDate || "";
           code.amount = formData.amount || 0;
-          code.collection = formData.collection || "";
-          code.card = formData.card || "";
-          code.cardRarity = formData.cardRarity || "common";
-          code.cardAmount = formData.cardAmount || 1;
-          code.booster = formData.booster || "";
-          code.boosterAmount = formData.boosterAmount || 1;
           code.cash = formData.cash || 0;
+          code.collections = formData.collections || [];
+          code.cards = formData.cards || [];
+          code.boosters = formData.boosters || [];
         }
         await code.save();
         logsManager.log(this.userStore.profile.name, 'CONFIG', `${formData.id ? 'Modification' : 'Création'} du code: ${code.name} (${code.id})`);

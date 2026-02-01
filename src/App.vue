@@ -292,6 +292,9 @@ export default {
       } else {
         if (this.userStore.isLoggedIn && this.userStore.profile && this.userStore.profile.activated) {
           return true
+        } else if (!this.userStore.isLoggedIn) {
+          this.$router.push('/login')
+          return false
         } else {
           return false
         }
