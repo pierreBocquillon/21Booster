@@ -141,15 +141,15 @@ import Card from '@/classes/Card.js'
 import Collection from '@/classes/Collection.js'
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import { useUserStore } from '@/store/user.js'
+import { useDataStore } from '@/store/data.js'
 import logsManager from '@/assets/functions/logsManager.js'
 
 export default {
   data() {
     return {
       userStore: useUserStore(),
+      dataStore: useDataStore(),
       unsub: [],
-      cards: [],
-      collections: [],
       files: {
         cards: []
       },
@@ -184,6 +184,28 @@ export default {
     }
   },
   computed: {
+    cards() {
+      const sorted = [...this.dataStore.cards];
+      sorted.sort((a, b) => {
+        const colA = this.collections.find(c => c.id === a.collection);
+        const colB = this.collections.find(c => c.id === b.collection);
+        const numA = colA ? (colA.number || 0) : 0;
+        const numB = colB ? (colB.number || 0) : 0;
+
+        if (numA !== numB) return numA - numB;
+        if (a.collection !== b.collection) return a.collection.localeCompare(b.collection || '');
+        // Sort by card number
+        const cardNumA = parseInt(a.number) || 0;
+        const cardNumB = parseInt(b.number) || 0;
+        if (cardNumA !== cardNumB) return cardNumA - cardNumB;
+        
+        return (a.name || '').localeCompare(b.name || '');
+      });
+      return sorted;
+    },
+    collections() {
+      return this.dataStore.collections;
+    },
     formTitle() {
       return this.editedItem.id ? 'Modifier la carte' : 'Nouvelle carte'
     },
@@ -205,32 +227,15 @@ export default {
         .map(img => ({ title: img, value: img }));
     }
   },
-  created() {
-    this.unsub.push(Collection.listenAll((list) => {
-      this.collections = list
-      this.sortCards()
-    }))
-    this.unsub.push(Card.listenAll((list) => {
-      this.cards = list
-      this.sortCards()
-    }))
+  async created() {
+    await Promise.all([
+      this.dataStore.bindCollections(),
+      this.dataStore.bindCards()
+    ]);
     this.loadFiles()
   },
   methods: {
-    sortCards() {
-      if (!this.cards.length) return;
-      this.cards.sort((a, b) => {
-        const colA = this.collections.find(c => c.id === a.collection);
-        const colB = this.collections.find(c => c.id === b.collection);
-        const numA = colA ? (colA.number || 0) : 0;
-        const numB = colB ? (colB.number || 0) : 0;
-
-        if (numA !== numB) return numA - numB;
-        if (a.collection !== b.collection) return a.collection.localeCompare(b.collection || '');
-        if (a.number !== b.number) return (parseInt(a.number) || 0) - (parseInt(b.number) || 0);
-        return (a.name || '').localeCompare(b.name || '');
-      });
-    },
+    // sortCards removed
     async loadFiles() {
       try {
         const response = await fetch('/files.json');

@@ -10,6 +10,7 @@
 
 <script>
 import { useUserStore } from '@/store/user.js'
+import { useDataStore } from '@/store/data.js'
 import Collection from '@/classes/Collection.js'
 import Card from '@/classes/Card.js'
 import CollectionList from '@/components/collections/CollectionList.vue'
@@ -25,12 +26,17 @@ export default {
     return {
       unsub: [],
       userStore: useUserStore(),
-      collections: [],
-      cards: [],
+      dataStore: useDataStore(),
       selectedCollection: null
     }
   },
   computed: {
+    cards() {
+      return this.dataStore.cards;
+    },
+    collections() {
+      return [...this.dataStore.collections].sort((a, b) => (a.number || 0) - (b.number || 0));
+    },
     unlockedCollections() {
       if (!this.userStore.profile || !this.userStore.profile.collections) return [];
 
@@ -41,6 +47,9 @@ export default {
     filteredCards() {
       if (!this.selectedCollection) return [];
       const collectionCards = this.cards.filter(card => card.collection === this.selectedCollection.id);
+
+      // Sort by card number
+      collectionCards.sort((a, b) => (parseInt(a.number) || 0) - (parseInt(b.number) || 0));
 
       return collectionCards.map(card => {
         const userCardData = (this.userStore.profile && this.userStore.profile.cards && this.userStore.profile.cards[card.id]) || {};
@@ -95,36 +104,19 @@ export default {
         this.syncProfile();
       },
       deep: true
+    },
+    'dataStore.loading.collections'(newVal) {
+        if (!newVal) this.syncProfile();
     }
   },
-  created() {
-    this.initialize();
+  async created() {
+    await Promise.all([
+      this.dataStore.bindCollections(),
+      this.dataStore.bindCards()
+    ]);
+    this.syncProfile();
   },
   methods: {
-    initialize() {
-      this.unsub.push(Collection.listenAll((list) => {
-        this.collections = list.sort((a, b) => (a.number || 0) - (b.number || 0));
-        this.syncProfile();
-        this.sortCards();
-      }));
-      this.unsub.push(Card.listenAll((list) => {
-        this.cards = list;
-        this.sortCards();
-      }));
-    },
-    sortCards() {
-      if (!this.cards.length) return;
-      this.cards.sort((a, b) => {
-        if (a.collection === b.collection) {
-          return (parseInt(a.number) || 0) - (parseInt(b.number) || 0);
-        }
-        const colA = this.collections.find(c => c.id === a.collection);
-        const colB = this.collections.find(c => c.id === b.collection);
-        const numA = colA ? (colA.number || 0) : 0;
-        const numB = colB ? (colB.number || 0) : 0;
-        return numA - numB || a.collection.localeCompare(b.collection);
-      });
-    },
     async syncProfile() {
       if (!this.userStore.profile) return;
       if (!this.collections.length) return;

@@ -261,8 +261,6 @@ export default {
         if (!this.userStore.profile.stats) this.userStore.profile.stats = {};
         this.userStore.profile.stats.upgrades = (this.userStore.profile.stats.upgrades || 0) + 1;
 
-        logsManager.log(this.userStore.profile.name, 'UPGRADE', `Upgrade de ${cost} cartes ${this.card.name} (${currentRarity}) en 1 carte (${nextRarity}).`);
-
         await this.userStore.profile.save();
         achievementsManager.checkForAchievements();
 
@@ -304,8 +302,6 @@ export default {
             notifManager.sendAchievementNotif(this.userStore.profile.id, achId, 'Vous avez obtenu le succès "C\'est du gâchis" !')
           }
         }
-
-        logsManager.log(this.userStore.profile.name, 'DOWNGRADE', `Downgrade de ${cost} carte ${this.card.name} (${currentRarity}) en 1 carte (${prevRarity}).`);
 
         await this.userStore.profile.save();
         achievementsManager.checkForAchievements();

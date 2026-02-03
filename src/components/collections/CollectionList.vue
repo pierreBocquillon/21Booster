@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import Card from '@/classes/Card.js';
 import { useUserStore } from '@/store/user.js'
+import { useDataStore } from '@/store/data.js'
 
 export default {
   name: 'CollectionList',
@@ -41,17 +41,11 @@ export default {
   },
   data() {
     return {
-      unsub: [],
       userStore: useUserStore(),
-      cards: [],
+      dataStore: useDataStore(),
     }
   },
   emits: ['select'],
-  mounted() {
-    this.unsub.push(Card.listenAll((list) => {
-      this.cards = list
-    }))
-  },
   computed: {
     fullCompletion() {
       const result = {};
@@ -61,7 +55,7 @@ export default {
           owned: 0,
           total: 0
         };
-        let collectionCards = this.cards.filter(card => card.collection && card.collection == collection.id);
+        let collectionCards = this.dataStore.cards.filter(card => card.collection && card.collection == collection.id);
         result[collection.id].total = collectionCards.length*4;
 
         if (collectionCards.length > 0) {
@@ -87,7 +81,7 @@ export default {
           owned: 0,
           total: 0
         };
-        let collectionCards = this.cards.filter(card => card.collection && card.collection == collection.id);
+        let collectionCards = this.dataStore.cards.filter(card => card.collection && card.collection == collection.id);
         result[collection.id].total = collectionCards.length;
 
         if (collectionCards.length > 0) {
@@ -102,11 +96,6 @@ export default {
       }
       return result;
     }
-  },
-  beforeUnmount() {
-    this.unsub.forEach(unsub => {
-      if(typeof unsub === 'function') unsub();
-    })
   },
 }
 </script>

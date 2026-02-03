@@ -23,7 +23,7 @@
 
 <script>
 import { useUserStore } from '@/store/user.js'
-
+import { useDataStore } from '@/store/data.js'
 import Collection from '@/classes/Collection.js'
 import Card from '@/classes/Card.js'
 import Profile from '@/classes/Profile.js'
@@ -47,12 +47,20 @@ export default {
     return {
       unsub: [],
       userStore: useUserStore(),
-      allCollections: [],
-      allCards: [],
+      dataStore: useDataStore(),
       customProfile: null
     }
   },
   computed: {
+    allCollections() {
+      return [...this.dataStore.collections].sort((a, b) => {
+        if (a.number !== b.number) return (a.number || 0) - (b.number || 0);
+        return (a.name || '').localeCompare(b.name || '');
+      });
+    },
+    allCards() {
+      return this.dataStore.cards;
+    },
     targetProfile() {
       return this.customProfile || this.userStore.profile || {};
     },
@@ -177,23 +185,14 @@ export default {
     }
   },
   created() {
-    this.initialize();
+    this.dataStore.bindCollections();
+    this.dataStore.bindCards();
   },
   methods: {
     goToAchievements() {
       this.$router.push('/achievements/' + (this.customProfile ? this.customProfile.id : ''));
     },
-    initialize() {
-      this.unsub.push(Collection.listenAll((list) => {
-        this.allCollections = list.sort((a, b) => {
-          if (a.number !== b.number) return (a.number || 0) - (b.number || 0);
-          return (a.name || '').localeCompare(b.name || '');
-        });
-      }))
-      this.unsub.push(Card.listenAll((list) => {
-        this.allCards = list;
-      }));
-    },
+    // initialize() removed
     async loadProfile(id) {
       if (id) {
         this.customProfile = await Profile.getById(id)

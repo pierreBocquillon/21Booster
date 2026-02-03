@@ -3,7 +3,7 @@ const path = require('path');
 const admin = require('firebase-admin');
 
 const SERVICE_ACCOUNT = path.join(__dirname, 'serviceAccountKey.json');
-const BACKUP_FILE = path.join(__dirname, `backup_${new Date().toISOString().split('T')[0]}.json`);
+const BACKUP_FILE = path.join(__dirname, `backup_${new Date().toISOString().split('T')[0]}_${new Date().getHours()}h${new Date().getMinutes()}.json`);
 
 if (!fs.existsSync(SERVICE_ACCOUNT)) {
     console.error(`Fichier de clé de service introuvable : ${SERVICE_ACCOUNT}`);

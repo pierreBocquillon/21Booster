@@ -134,6 +134,7 @@ import { useTheme } from 'vuetify'
 import { getAuth, signOut, deleteUser } from '@firebase/auth'
 
 import { useUserStore } from '@/store/user.js'
+import { useDataStore } from '@/store/data.js'
 
 import Profile from "@/classes/Profile.js"
 import Notif from "@/classes/Notif.js"
@@ -169,12 +170,10 @@ export default {
       unsub: [],
       nestedUnsub: [],
       userStore: useUserStore(),
+      dataStore: useDataStore(),
       achievementsData: achievementsData,
       loginModalIsOpen: false,
       ready: false,
-      settings: new Settings(),
-      cards: [],
-      boosters: [],
       notifs: [],
       boosterDialog: false,
       cardDialog: false,
@@ -188,18 +187,14 @@ export default {
     }
   },
   async mounted() {
-    this.unsub.push(Settings.listenById("general", (s) => {
-      this.settings = s || new Settings("general");
-      this.checkDailyBonus(); // Check on settings load too
-    }))
+    await Promise.all([
+      this.dataStore.bindSettings(),
+      this.dataStore.bindCards(),
+      this.dataStore.bindBoosters(),
+      this.dataStore.bindCollections()
+    ])
 
-    this.unsub.push(Card.listenAll(cards => {
-      this.cards = cards
-    }))
-
-    this.unsub.push(Booster.listenAll(boosters => {
-      this.boosters = boosters
-    }))
+    this.checkDailyBonus();
 
     setTimeout(() => {
       this.ready = true
@@ -247,6 +242,9 @@ export default {
     })
   },
   computed: {
+    cards() { return this.dataStore.cards },
+    boosters() { return this.dataStore.boosters },
+    settings() { return this.dataStore.settings || new Settings() },
     currentCards() {
       let currentCards = []
       for (let cardId in this.currentNotif.data.cards) {

@@ -1,4 +1,4 @@
-import { getFirestore, doc, collection, query, where, addDoc, getDoc, getDocs, updateDoc, setDoc, onSnapshot, deleteDoc, documentId } from "firebase/firestore"
+import { getFirestore, doc, collection, query, where, orderBy, limit, addDoc, getDoc, getDocs, updateDoc, setDoc, onSnapshot, deleteDoc, documentId } from "firebase/firestore"
 let db = getFirestore()
 
 let collectionName = "logs"
@@ -36,7 +36,7 @@ class Log {
 
 	static async listenAll(callback) {
 		const sevenDaysAgo = new Date().getTime() - (7 * 24 * 60 * 60 * 1000)
-		const q = query(collection(db, collectionName), where("date", ">=", sevenDaysAgo))
+		const q = query(collection(db, collectionName), where("date", ">=", sevenDaysAgo), limit(100))
 		return onSnapshot(q, (snapshot) => {
 			const list = []
 			snapshot.forEach((doc) => {

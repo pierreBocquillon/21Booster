@@ -17,6 +17,7 @@
 
 <script>
 import { useUserStore } from '@/store/user.js'
+import { useDataStore } from '@/store/data.js'
 import Booster from '@/classes/Booster.js'
 import Card from '@/classes/Card.js'
 import Collection from '@/classes/Collection.js'
@@ -39,34 +40,38 @@ export default {
       notifsCleaned: false,
       unsub: [],
       userStore: useUserStore(),
+      dataStore: useDataStore(),
       status: 'idle', // idle, opening, exploded, revealed
       selectedBooster: null,
       cards: [],
       boosters: [], // This will be the expanded inventory list
-      allBoosters: [],
-      allCards: [],
-      collections: [],
       timeouts: [],
-      settings: null
+    }
+  },
+  computed: {
+    allBoosters() {
+      return this.dataStore.boosters
+    },
+    allCards() {
+      return this.dataStore.cards
+    },
+    collections() {
+      return this.dataStore.collections
+    },
+    settings() {
+      return this.dataStore.settings
     }
   },
   created() {
-    this.unsub.push(Booster.listenAll((list) => {
-      this.allBoosters = list;
+    Promise.all([
+      this.dataStore.bindBoosters(),
+      this.dataStore.bindCards(),
+      this.dataStore.bindCollections(),
+      this.dataStore.bindSettings()
+    ]).then(() => {
       this.loadInventory();
-    }));
-    this.unsub.push(Card.listenAll((list) => {
-      this.allCards = list;
-    }));
-    this.unsub.push(Collection.listenAll((list) => {
-      this.collections = list;
-      this.loadInventory();
-    }));
-    // Charger les settings généraux
-    this.unsub.push(Settings.listenById("general", (s) => {
-      this.settings = s;
-    }));
-    
+    });
+
     if (this.userStore.profile) {
       this.deleteBoosterNotifs();
       this.notifsCleaned = true;

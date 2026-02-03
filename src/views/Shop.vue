@@ -12,10 +12,10 @@
 
 <script>
 import { useUserStore } from '@/store/user.js'
+import { useDataStore } from '@/store/data.js'
 
 import achievementsManager from '@/assets/functions/achievementsManager.js'
 
-import Booster from '@/classes/Booster.js'
 import Collection from '@/classes/Collection.js'
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import logsManager from '@/assets/functions/logsManager.js'
@@ -31,13 +31,14 @@ export default {
     return {
       unsub: [],
       userStore: useUserStore(),
-      boosters: [],
-      collections: [],
+      dataStore: useDataStore(),
       buyDialog: false,
       selectedBooster: null
     }
   },
   computed: {
+    boosters() { return this.dataStore.boosters },
+    collections() { return this.dataStore.collections },
     userCash() {
       return this.userStore.profile?.cash || 0
     },
@@ -79,21 +80,19 @@ export default {
         this.syncProfile();
       },
       deep: true
+    },
+    'dataStore.loading.collections'(newVal) {
+        if (!newVal) this.syncProfile();
     }
   },
-  created() {
-    this.initialize();
+  async created() {
+    await Promise.all([
+      this.dataStore.bindBoosters(),
+      this.dataStore.bindCollections()
+    ])
+    this.syncProfile();
   },
   methods: {
-    initialize() {
-      this.unsub.push(Booster.listenAll((list) => {
-        this.boosters = list;
-      }));
-      this.unsub.push(Collection.listenAll((list) => {
-        this.collections = list;
-        this.syncProfile();
-      }));
-    },
     async syncProfile() {
       if (!this.userStore.profile) return;
 
