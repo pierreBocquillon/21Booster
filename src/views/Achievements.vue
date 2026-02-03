@@ -13,7 +13,7 @@
       <AchievementProgress :percentage="progressPercentage" :unlocked-count="unlockedCount" :total-count="achievements.length" :total-points="totalPoints" />
 
       <!-- Grille de succès -->
-      <AchievementGrid :achievements="achievements" :all-profiles="allProfiles" />
+      <AchievementGrid :achievements="achievements" :rates="rates" />
     </v-card>
   </div>
 </template>
@@ -26,6 +26,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js'
 import notifManager from '@/assets/functions/notifManager.js'
 
 import Profile from '@/classes/Profile.js'
+import AchievementStats from '@/classes/AchievementStats.js'
 import AchievementProgress from '@/components/achievements/AchievementProgress.vue'
 import AchievementGrid from '@/components/achievements/AchievementGrid.vue'
 
@@ -39,7 +40,7 @@ export default {
     return {
       unsub: [],
       userStore: useUserStore(),
-      allProfiles: [],
+      rates: {},
       customProfile: null
     }
   },
@@ -73,10 +74,9 @@ export default {
     }
   },
   methods: {
-    initialize() {
-      this.unsub.push(Profile.listenAll((list) => {
-        this.allProfiles = list.filter(p => p.activated !== false && p.stats.public !== false);
-      }))
+    async initialize() {
+      const stats = await AchievementStats.getOrUpdate()
+      this.rates = stats.rates
     },
     async checkAndInitAchievements() {
       if (!this.userStore.profile) return

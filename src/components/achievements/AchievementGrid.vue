@@ -20,16 +20,15 @@ export default {
       required: true,
       default: () => []
     },
-    allProfiles: {
-      type: Array,
-      default: () => []
+    rates: {
+      type: Object,
+      default: () => ({})
     }
   },
   methods: {
     getAchievementRate(achievement) {
-      if (!this.allProfiles || this.allProfiles.length === 0) return '0%'
-      const count = this.allProfiles.filter(p => p.achievements && p.achievements[achievement.id] === true).length
-      return Math.round((count / this.allProfiles.length) * 100) + '%'
+      if (!this.rates || !this.rates[achievement.id]) return '0%'
+      return this.rates[achievement.id]
     }
   }
 }

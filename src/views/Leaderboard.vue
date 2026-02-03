@@ -93,8 +93,7 @@
 <script>
 import { useUserStore } from '@/store/user.js'
 import { useDataStore } from '@/store/data.js'
-import Profile from '@/classes/Profile.js'
-import achievementsData from '@/data/achievements.json'
+import Leaderboard from '@/classes/Leaderboard.js'
 import Settings from '@/classes/Settings.js'
 
 export default {
@@ -104,22 +103,15 @@ export default {
       unsub: [],
       userStore: useUserStore(),
       dataStore: useDataStore(),
-      players: [], // To be populated with real data
+      players: [], 
+      updatedAt: 0
     }
   },
   computed: {
-    allCards() {
-      return this.dataStore.cards
-    },
-    allCollections() {
-      return this.dataStore.collections
-    },
     settings() {
       return this.dataStore.settings || new Settings()
     },
     pointsConfig() {
-      // Adapter between Settings (golden) and View (gold) if needed, 
-      // or just used for display convenience
       return {
         common: this.settings.rarityPoints.common,
         silver: this.settings.rarityPoints.silver,
@@ -128,31 +120,11 @@ export default {
       };
     },
     sortedLeaderboard() {
-      // Calcul du score pour chaque joueur
-      const leaderboardWithScores = this.players.map(player => {
-        // Multiplier calculation: 1 + (number of collections completed * configuration setting)
-        const getMultiplier = (type) => 1 + ((player.completedCollections?.[type] || 0) * this.settings.collectionMultiplier);
-
-        const score = (player.cards.common * this.pointsConfig.common * getMultiplier('common')) +
-          (player.cards.silver * this.pointsConfig.silver * getMultiplier('silver')) +
-          (player.cards.gold * this.pointsConfig.gold * getMultiplier('gold')) +
-          (player.cards.foil * this.pointsConfig.foil * getMultiplier('foil')) +
-          player.achievementPoints;
-
-        return {
-          ...player,
-          score,
-          multipliers: {
-            common: getMultiplier('common'),
-            silver: getMultiplier('silver'),
-            gold: getMultiplier('gold'),
-            foil: getMultiplier('foil')
-          }
-        };
-      });
-
-      // Tri par score décroissant
-      return leaderboardWithScores.sort((a, b) => b.score - a.score);
+      // Data is already sorted by the Leaderboard class
+      return this.players.map(p => ({
+          ...p,
+          isCurrentUser: this.userStore.profile && p.id === this.userStore.profile.id
+      }));
     }
   },
   created() {
@@ -160,100 +132,12 @@ export default {
   },
   methods: {
     async initialize() {
-      // 1. Fetch necessary metadata
-      const profiles = await Profile.getAll();
-
-      // 2. Process each profile
-      this.players = profiles
-        .filter(profile => {
-          // If stats object doesn't exist, default to public=true (same as UsersTab logic)
-          // If stats.public is explicitly false, exclude from leaderboard
-          if (!profile.activated) {
-            return false;
-          }
-          if (profile.stats && profile.stats.public === false) {
-            return false;
-          }
-          return true;
-        })
-        .map(profile => {
-          return this.calculatePlayerStats(profile);
-        });
+      const lb = await Leaderboard.getOrUpdate();
+      this.players = lb.players;
+      this.updatedAt = lb.updatedAt;
     },
     goToPlayerProfile(playerId) {
       this.$router.push('/statistics/'+playerId);
-    },
-    calculatePlayerStats(profile) {
-      const userCards = profile.cards || {};
-
-      // Count Unique Cards
-      const cardCounts = { common: 0, silver: 0, gold: 0, foil: 0 };
-
-      // Calculate Collections Completed
-      const completed = { common: 0, silver: 0, gold: 0, foil: 0 };
-
-      // --- 1. Unique Card Counts ---
-      Object.entries(userCards).forEach(([cardId, cardData]) => {
-        // Find definition to check collection
-        const cardDef = this.allCards.find(c => c.id === cardId);
-        if (!cardDef) return;
-
-        // SKIP if user does not own the collection
-        if (!profile.collections || !profile.collections[cardDef.collection]) return;
-
-        if (cardData.common > 0) cardCounts.common++;
-        if (cardData.silver > 0) cardCounts.silver++;
-        // Note: Profile normally stores keys as 'common', 'silver', 'golden', 'foil'. 
-        // View expects 'gold', but profile data usually has 'golden'. Need to map.
-        if ((cardData.golden || cardData.gold) > 0) cardCounts.gold++;
-        if (cardData.foil > 0) cardCounts.foil++;
-      });
-
-      // --- 2. Collection Completion ---
-      this.allCollections.forEach(collection => {
-        // SKIP if user does not own the collection
-        if (!profile.collections || !profile.collections[collection.id]) return;
-
-        const collectionCardIds = this.allCards
-          .filter(c => c.collection === collection.id)
-          .map(c => c.id);
-
-        if (collectionCardIds.length === 0) return;
-
-        // Check each rarity for full completion of this collection
-        const isComplete = (rarityKey) => {
-          return collectionCardIds.every(cardId => {
-            const owned = userCards[cardId];
-            // Handle 'golden' vs 'gold' if necessary
-            const key = rarityKey === 'gold' ? 'golden' : rarityKey;
-            return owned && owned[key] > 0;
-          });
-        };
-
-        if (isComplete('common')) completed.common++;
-        if (isComplete('silver')) completed.silver++;
-        if (isComplete('gold')) completed.gold++;
-        if (isComplete('foil')) completed.foil++;
-      });
-
-      // --- 3. Achievement Points ---
-      let achievementPoints = 0;
-      if (profile.achievements) {
-        achievementsData.forEach(ach => {
-          if (profile.achievements[ach.id] === true) {
-            achievementPoints += ach.points;
-          }
-        });
-      }
-
-      return {
-        id: profile.id,
-        name: profile.name || 'Joueur Inconnu',
-        isCurrentUser: this.userStore.profile && profile.id === this.userStore.profile.id,
-        achievementPoints: achievementPoints,
-        cards: cardCounts,
-        completedCollections: completed
-      };
     }
   },
   beforeUnmount() {
