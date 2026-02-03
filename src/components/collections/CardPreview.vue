@@ -107,6 +107,7 @@ import achievementsManager from '@/assets/functions/achievementsManager.js'
 import notifManager from '@/assets/functions/notifManager.js'
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import Settings from '@/classes/Settings.js'
+import Card from '@/classes/Card.js'
 
 export default {
   name: 'CardPreview',
@@ -187,7 +188,7 @@ export default {
       if (!this.card) return '';
       // Use live amount check
       if (this.canShowImage(this.currentRarity)) {
-        return '/cards/' + this.card.image;
+        return Card.buildImageUrl(this.card.image);
       }
       return this.imageUrl;
     },

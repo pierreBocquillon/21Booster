@@ -16,7 +16,7 @@
       <div class="flex-grow-1 overflow-hidden" style="height: 100%;">
         <v-data-table :headers="headers" :items="filteredCards" :search="search" class="h-100" fixed-header hover items-per-page="-1" hide-default-footer>
           <template v-slot:item.image="{ item }">
-            <v-img v-if="item.image" :src="'/cards/' + item.image" width="40" height="60" contain></v-img>
+            <v-img v-if="item.image" :src="getCardImageUrl(item.image)" width="40" height="60" contain></v-img>
             <v-icon v-else>mdi-image-off</v-icon>
           </template>
 
@@ -52,7 +52,7 @@
             <v-row>
               <v-col cols="12" md="4" class="d-flex flex-column align-center">
                 <v-card flat border class="d-flex justify-center align-center mb-2" width="160" height="220">
-                  <v-img v-if="editedItem.image" :src="'/cards/' + editedItem.image" max-width="100%" max-height="100%" contain></v-img>
+                  <v-img v-if="editedItem.image" :src="getCardImageUrl(editedItem.image)" max-width="100%" max-height="100%" contain></v-img>
                   <v-icon v-else size="60" color="grey-lighten-1">mdi-image</v-icon>
                 </v-card>
                 <v-btn prepend-icon="mdi-image-search" variant="tonal" color="primary" @click="openImageSelector">
@@ -108,7 +108,7 @@
               <v-col v-for="img in availableCardImages" :key="img.value" cols="6" sm="4" md="3">
                 <v-item :value="img.value" v-slot="{ isSelected, toggle }">
                   <v-card :color="isSelected ? 'primary' : ''" class="d-flex align-center justify-center pa-2 position-relative" @click="toggle" border flat height="180">
-                    <v-img :src="'/cards/' + img.value" contain max-height="140"></v-img>
+                    <v-img :src="getCardImageUrl(img.value)" contain max-height="140"></v-img>
                     <div v-if="isSelected" class="position-absolute top-0 right-0 ma-2">
                       <v-icon color="white" icon="mdi-check-circle" size="large"></v-icon>
                     </div>
@@ -235,6 +235,10 @@ export default {
     this.loadFiles()
   },
   methods: {
+    getCardImageUrl(imageName) {
+      if (!imageName) return '';
+      return `https://firebasestorage.googleapis.com/v0/b/tcg-21.firebasestorage.app/o/cards%2F${encodeURIComponent(imageName)}?alt=media`;
+    },
     // sortCards removed
     async loadFiles() {
       try {

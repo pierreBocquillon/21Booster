@@ -92,9 +92,8 @@
 
 <script>
 import { useUserStore } from '@/store/user.js'
+import { useDataStore } from '@/store/data.js'
 import Profile from '@/classes/Profile.js'
-import Card from '@/classes/Card.js'
-import Collection from '@/classes/Collection.js'
 import achievementsData from '@/data/achievements.json'
 import Settings from '@/classes/Settings.js'
 
@@ -104,13 +103,20 @@ export default {
     return {
       unsub: [],
       userStore: useUserStore(),
+      dataStore: useDataStore(),
       players: [], // To be populated with real data
-      allCards: [],
-      allCollections: [],
-      settings: new Settings()
     }
   },
   computed: {
+    allCards() {
+      return this.dataStore.cards
+    },
+    allCollections() {
+      return this.dataStore.collections
+    },
+    settings() {
+      return this.dataStore.settings || new Settings()
+    },
     pointsConfig() {
       // Adapter between Settings (golden) and View (gold) if needed, 
       // or just used for display convenience
@@ -150,22 +156,12 @@ export default {
     }
   },
   created() {
-    this.unsub.push(Settings.listenById("general", (s) => {
-      this.settings = s || new Settings("general");
-    }));
     this.initialize();
   },
   methods: {
     async initialize() {
       // 1. Fetch necessary metadata
-      const [cards, collections, profiles] = await Promise.all([
-        Card.getAll(),
-        Collection.getAll(),
-        Profile.getAll()
-      ]);
-
-      this.allCards = cards;
-      this.allCollections = collections;
+      const profiles = await Profile.getAll();
 
       // 2. Process each profile
       this.players = profiles

@@ -115,7 +115,7 @@
           <v-btn icon variant="text" @click="closeNotif(currentNotif)"><v-icon>mdi-close</v-icon></v-btn>
         </div>
         <div class="d-flex flex-row my-5 mx-3 justify-center" :style="{ paddingRight: Math.min(299, 300 - (500 / currentCards.length)) + 'px' }">
-          <v-img v-for="(card, i) in currentCards" :key="i" class="notif-card reveal-item" :src="`/cards/${card.image}`" :class="card.rarity" :style="`--booster-mask: url('/cards/${card.image}'); --mask-size: contain; --mask-position: center; --mask-repeat: no-repeat; --overlap: -${Math.min(299, 300 - (500 / currentCards.length))}px; animation-delay: ${getAnimationDelay(i, currentCards.length)}ms;`"></v-img>
+          <v-img v-for="(card, i) in currentCards" :key="i" class="notif-card reveal-item" :src="getCardImageUrl(card.image)" :class="card.rarity" :style="`--booster-mask: url('${getCardImageUrl(card.image)}'); --mask-size: contain; --mask-position: center; --mask-repeat: no-repeat; --overlap: -${Math.min(299, 300 - (500 / currentCards.length))}px; animation-delay: ${getAnimationDelay(i, currentCards.length)}ms;`"></v-img>
         </div>
         <div class="d-flex flex-row align-center justify-center mt-5">
           <v-btn color="primary" variant="tonal" @click="goToCollection(currentNotif)">Aller voir mes collections</v-btn>
@@ -308,6 +308,9 @@ export default {
         groupSize = 2;
       }
       return Math.floor(index / groupSize) * 100;
+    },
+    getCardImageUrl(imageName) {
+      return Card.buildImageUrl(imageName);
     },
     async openNotif(notif) {
       this.currentNotif = notif

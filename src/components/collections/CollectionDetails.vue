@@ -80,6 +80,7 @@
 
 <script>
 import CardPreview from './CardPreview.vue';
+import Card from '@/classes/Card.js';
 
 export default {
   name: 'CollectionDetails',
@@ -131,7 +132,7 @@ export default {
     },
     getCardImage(card, type) {
       if (card.amount[type] > 0) {
-        return '/cards/' + card.image;
+        return Card.buildImageUrl(card.image);
       }
       return '/collections_card/' + this.collection.cardImage;
     },

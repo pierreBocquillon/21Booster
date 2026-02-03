@@ -88,6 +88,11 @@ class Card {
 		})
 	}
 
+	static buildImageUrl(imageName) {
+		if (!imageName) return '';
+		return `https://firebasestorage.googleapis.com/v0/b/tcg-21.firebasestorage.app/o/cards%2F${encodeURIComponent(imageName)}?alt=media`;
+	}
+
 	async save() {
 		const new_doc = {
 			number: this.number,

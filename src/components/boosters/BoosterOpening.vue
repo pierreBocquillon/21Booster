@@ -15,7 +15,7 @@
       <div class="card-group" :class="{ 'revealed': isRevealed }" :style="{ '--card-overlap': cardOverlap }" v-if="currentBoosterCardWidth">
         <div v-for="(item, index) in cards" :key="index" class="card-container cursor-pointer" :style="getCardStyle(item, index)">
           <div style="position: relative;" :class="item.type">
-            <v-img :src="`/cards/${item.frontImage}`" :style="{'width': currentBoosterCardWidth + 'px'}" cover :transition="false"></v-img>
+            <v-img :src="getCardImageUrl(item.frontImage)" :style="{'width': currentBoosterCardWidth + 'px'}" cover :transition="false"></v-img>
           </div>
           <v-img v-if="item.isNew" src="/new.png" width="80" style="position: absolute; top: -20px; z-index: 10;" :style="{'left': Math.round((currentBoosterCardWidth/2)-40) + 'px'}"></v-img>
         </div>
@@ -45,6 +45,7 @@
 
 <script>
 import { useUserStore } from '@/store/user.js'
+import Card from '@/classes/Card.js'
 
 export default {
   name: 'BoosterOpening',
@@ -114,7 +115,7 @@ export default {
           this.currentBoosterCardWidth = 360;
         }
       };
-      image.src = '/cards/' + this.cards[0].frontImage;
+      image.src = this.getCardImageUrl(this.cards[0].frontImage);
     },
     // Styles for individual cards in fan layout
     getCardStyle(item, index) {
@@ -131,11 +132,14 @@ export default {
 
       // Special Effects Masks
       if (item.type !== 'common') {
-        style['--booster-mask'] = `url(/cards/${item.frontImage})`;
+        style['--booster-mask'] = `url('${this.getCardImageUrl(item.frontImage)}')`;
         style['--anim-delay'] = `${Math.random() * 0.5}s`;
       }
 
       return style;
+    },
+    getCardImageUrl(imageName) {
+      return Card.buildImageUrl(imageName);
     },
     // Random styles for explosion particles
     getParticleStyle(n) {
