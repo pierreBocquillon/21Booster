@@ -222,10 +222,10 @@ export default {
         const foilRate = variantRates.foil || 0;
         const goldenRate = variantRates.golden || 0;
         const silverRate = variantRates.silver || 0;
-        
+
         let variant = 'common';
         let rngVariant = Math.random() * 100;
-        
+
         if (rngVariant < foilRate) {
           variant = 'foil';
         } else if (rngVariant < (foilRate + goldenRate)) {
@@ -268,7 +268,7 @@ export default {
         });
 
         if (!this.userStore.profile.stats) {
-          this.userStore.profile.stats = {public:true, open: 0, destroy: 0, upgrades: 0, downgrades: 0 };
+          this.userStore.profile.stats = { public: true, open: 0, destroy: 0, upgrades: 0, downgrades: 0 };
         }
         this.userStore.profile.stats.open += 1;
 
@@ -304,18 +304,32 @@ export default {
       });
       this.cards = generatedCards;
 
+      // START PRELOADING HERE
+      const imagePromises = generatedCards.map(card => {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.onload = () => resolve();
+          img.onerror = () => resolve();
+          img.src = Card.buildImageUrl(card.frontImage);
+        });
+      });
+
       // --- Animation Phase ---
       if (this.status !== 'opening') return;
-      
+
       // Step 2: Shake animation (0.8s)
       this.timeouts.push(setTimeout(() => {
         this.status = 'exploded';
 
         // Step 3: Explode/Tear animation (0.8s) -> Then Reveal
-        this.timeouts.push(setTimeout(() => {
-          this.status = 'revealed';
-          this.timeouts = [];
-        }, 800));
+        const explosionPromise = new Promise(resolve => setTimeout(resolve, 800));
+
+        Promise.all([explosionPromise, ...imagePromises]).then(() => {
+          if (this.status === 'exploded') {
+            this.status = 'revealed';
+            this.timeouts = [];
+          }
+        });
       }, 800));
     },
     skipAnimation() {
