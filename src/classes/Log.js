@@ -39,6 +39,20 @@ class Log {
 		return allDocs.slice(startIndex, startIndex + pageSize)
 	}
 
+	static async getAllByFilters(filters = {}) {
+		let q = query(collection(db, collectionName), orderBy("date", "desc"))
+
+		if (filters.user) {
+			q = query(q, where("user", "==", filters.user))
+		}
+		if (filters.type) {
+			q = query(q, where("type", "==", filters.type))
+		}
+
+		const documents = await getDocs(q)
+		return documents.docs.map(docToInstance)
+	}
+
 	static async getCount(filters = {}) {
 		let q = query(collection(db, collectionName))
 

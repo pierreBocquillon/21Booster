@@ -346,6 +346,7 @@ export default {
         if (user.stats.public === undefined) user.stats.public = true
         return user
       })
+      this.users.sort((a, b) => a.name.localeCompare(b.name))
     }))
   },
   computed: {
