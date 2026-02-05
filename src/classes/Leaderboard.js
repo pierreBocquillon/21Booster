@@ -30,12 +30,14 @@ class Leaderboard {
 
     static async recalculate() {
         // Fetch specific data needed for calculation
-        const [cards, collections, profiles, settings] = await Promise.all([
+        const [cards, allCollections, profiles, settings] = await Promise.all([
             Card.getAll(),
             Collection.getAll(),
             Profile.getAll(),
             Settings.getById("general")
         ])
+
+        const collections = allCollections.filter(c => c.isPublic)
 
         const pointsConfig = {
             common: settings.rarityPoints.common,
@@ -72,6 +74,10 @@ class Leaderboard {
         Object.entries(userCards).forEach(([cardId, cardData]) => {
             const cardDef = allCards.find(c => c.id === cardId)
             if (!cardDef) return
+
+            // Verify the card belongs to a valid (public) collection
+            const collectionDef = allCollections.find(c => c.id === cardDef.collection)
+            if (!collectionDef) return
 
             if (!profile.collections || !profile.collections[cardDef.collection]) return
 

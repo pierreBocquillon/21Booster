@@ -8,6 +8,7 @@
             <v-icon v-bind="props" icon="mdi-help-circle-outline" class="text-medium-emphasis cursor-pointer"></v-icon>
           </template>
           <div class="pa-2">
+            <div class="mb-2"><strong>Derniere mise a jour :</strong> {{ new Date(updatedAt).toLocaleString() }}</div>
             <div><strong>Règles de calcul des points :</strong></div>
             <div class="mt-1">• Classique : {{ pointsConfig.common }} pts</div>
             <div class="mt-1">• Silver : {{ pointsConfig.silver }} pts</div>
@@ -15,7 +16,7 @@
             <div class="mt-1">• Foil : {{ pointsConfig.foil }} pts</div>
             <div class="mt-2"><strong>Bonus Collection :</strong></div>
             <div>Multiplicateur +{{ settings.collectionMultiplier }} par collection complète (par rareté)</div>
-            <div class="mt-2 text-caption font-italic2">* Les cartes en double ne sont pas prises en compte.</div>
+            <div class="mt-2 text-caption font-italic2">* Les cartes en double ou provenant de collections privées ne sont pas prises en compte.</div>
           </div>
         </v-tooltip>
       </div>

@@ -96,7 +96,7 @@ export default {
       cardDialog: false,
       previewCard: null,
       previewRarity: null,
-      infoAlwaysOn: false,
+      infoAlwaysOn: localStorage.getItem('collectionInfoAlwaysOn') === 'true',
       displayMode: 'best',
       displayModes: [
         { title: 'Meilleure', value: 'best' },
@@ -119,6 +119,11 @@ export default {
     previewImageUrl() {
       if (!this.previewCard || !this.previewRarity) return '';
       return this.getCardImage(this.previewCard, this.previewRarity);
+    }
+  },
+  watch: {
+    infoAlwaysOn(val) {
+      localStorage.setItem('collectionInfoAlwaysOn', val);
     }
   },
   methods: {
