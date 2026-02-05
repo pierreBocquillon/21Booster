@@ -49,8 +49,12 @@
     </v-main>
 
 
-    <footer class="pa-3 text-center header" v-if="ready && $route.meta.showNav">
-      COPYRIGHT &copy; {{ new Date().getFullYear() }} T&T, All rights Reserved
+    <footer class="pa-3 header d-flex flex-row align-center justify-space-between" v-if="ready && $route.meta.showNav">
+      <div></div>
+      <div>
+        COPYRIGHT &copy; {{ new Date().getFullYear() }} T&T, All rights Reserved
+      </div>
+      <div class="cursor-pointer" @click="openPatchNote">v{{ version }}</div>
     </footer>
 
     <div v-if="ready && $route.meta.showNav && $route.meta.needAccount" class="notif-container" style="position: fixed; top: 10px; right: 10px; z-index: 100000; max-height: calc(100% - 20px); overflow-y: hidden;">
@@ -123,6 +127,8 @@
       </v-card>
     </v-dialog>
 
+    <PatchNotesDialog v-model="patchNoteDialog" />
+
   </v-app>
 </template>
 
@@ -154,10 +160,14 @@ import Swal from 'sweetalert2/dist/sweetalert2.js'
 import oldCards from '@/data/oldCards.json'
 
 import Header from "@/components/common/Header.vue"
+import PatchNotesDialog from "@/components/common/PatchNotesDialog.vue"
+
+import packageJson from '../package.json'
 
 export default {
   components: {
-    Header
+    Header,
+    PatchNotesDialog
   },
   setup() {
     const { mdAndUp } = useDisplay()
@@ -169,6 +179,7 @@ export default {
     return {
       unsub: [],
       nestedUnsub: [],
+      version: packageJson.version,
       userStore: useUserStore(),
       dataStore: useDataStore(),
       achievementsData: achievementsData,
@@ -178,6 +189,7 @@ export default {
       boosterDialog: false,
       cardDialog: false,
       currentNotif: null,
+      patchNoteDialog: false,
     }
   },
   watch: {
@@ -300,6 +312,12 @@ export default {
     }
   },
   methods: {
+    openPatchNote() {
+      this.patchNoteDialog = true
+    },
+    closePatchNote() {
+      this.patchNoteDialog = false
+    },
     getAnimationDelay(index, totalCount) {
       let groupSize = 1;
       if (totalCount > 50) {

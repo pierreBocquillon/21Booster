@@ -1,0 +1,28 @@
+[
+  {
+    "version": "1.2.0",
+    "date": "2026-02-05",
+    "changes": [
+      "Sauvegarde du choix du mode d'affichage des cartes",
+      "Correction des cartes comptabilisées dans le classement",
+      "Ajout d'une mention de la date de dernière mise à jour du classement",
+      "Correction de bugs mineurs"
+    ]
+  },
+  {
+    "version": "1.1.0",
+    "date": "2026-02-03",
+    "changes": [
+      "Ajout d'un outil de gestion des ventes",
+      "Optimisation de la gestion des données",
+      "Correction de bugs mineurs"
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "date": "2026-02-02",
+    "changes": [
+      "Lancement officiel de l'application"
+    ]
+  }
+]
