@@ -50,6 +50,10 @@ class Profile {
     if (!this.lastWheelSpin) {
       this.lastWheelSpin = 0
     }
+
+    if (typeof this.lastLogin !== 'number') {
+      this.lastLogin = Date.now()
+    }
 	}
 
 
@@ -61,7 +65,7 @@ class Profile {
 			upgrades: 0,
 			downgrades: 0,
 		}
-		const newProfile = new Profile(uid, name, email, phone, "User", [], false, cash, {}, {}, {}, {}, {}, {}, stats, 0, 0, null, false, false)
+		const newProfile = new Profile(uid, name, email, phone, "User", [], false, cash, {}, {}, {}, {}, {}, stats, 0, 0, null, false, false)
 		return newProfile
 	}
 

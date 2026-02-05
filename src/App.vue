@@ -337,25 +337,31 @@ export default {
     },
     checkDailyBonus() {
       if (!this.userStore.isLoggedIn || !this.userStore.profile) return;
-      if (!this.settings.dailyBonus || this.settings.dailyBonus <= 0) return;
 
-      const today = new Date().toISOString().split('T')[0];
-      let lastLoginDate = '';
+      const now = new Date();
+      const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+
+      let lastLoginStart = 0;
 
       if (this.userStore.profile.lastLogin) {
-        if (typeof this.userStore.profile.lastLogin === 'number') {
-          lastLoginDate = new Date(this.userStore.profile.lastLogin).toISOString().split('T')[0];
-        } else {
-          lastLoginDate = this.userStore.profile.lastLogin;
-        }
+        const lastLoginDate = new Date(this.userStore.profile.lastLogin);
+        lastLoginStart = new Date(lastLoginDate.getFullYear(), lastLoginDate.getMonth(), lastLoginDate.getDate()).getTime();
       } else {
-        this.userStore.profile.lastLogin = new Date().getTime();
+        this.userStore.profile.lastLogin = Date.now();
         this.userStore.profile.save();
         return;
       }
 
-      if (lastLoginDate != today) {
-        this.giveDailyBonus();
+      if (lastLoginStart < todayStart) {
+        if (this.settings.dailyBonus && this.settings.dailyBonus > 0) {
+          this.giveDailyBonus();
+        } else {
+          this.userStore.profile.lastLogin = Date.now();
+          this.userStore.profile.save();
+        }
+      } else if (now.getTime() - this.userStore.profile.lastLogin > 12 * 60 * 60 * 1000) {
+        this.userStore.profile.lastLogin = Date.now();
+        this.userStore.profile.save();
       }
     },
     async giveDailyBonus() {
