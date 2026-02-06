@@ -61,7 +61,6 @@ export default firebaseConfig
 
 Pour que l'application s'affiche correctement, vous devez ajouter vos propres images dans le dossier `public/`. Voici la structure attendue :
 
--   `public/cards/` : Images des cartes (format recommandé : `.png` ou `.jpg`).
 -   `public/boosters/` : Illustrations des paquets de boosters.
 -   `public/collections_card/` : Images pour les miniatures de collections.
 -   `public/achievements/` : Icônes des succès.
