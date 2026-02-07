@@ -3,7 +3,8 @@
     "version": "1.2.1",
     "date": "2026-02-06",
     "changes": [
-      "Optimisation sur le chargements des images",
+      "Ajout des fonctionalités d'upgrades et de sacrifices automatiques",
+      "Optimisation du chargement des images",
       "Correction de bugs mineurs"
     ]
   },

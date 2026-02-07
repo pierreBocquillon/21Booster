@@ -14,6 +14,7 @@
             <div class="mt-1">• Silver : {{ pointsConfig.silver }} pts</div>
             <div class="mt-1">• Gold : {{ pointsConfig.gold }} pts</div>
             <div class="mt-1">• Foil : {{ pointsConfig.foil }} pts</div>
+            <div class="mt-1">• Âmes : {{ pointsConfig.souls }} pts</div>
             <div class="mt-2"><strong>Bonus Collection :</strong></div>
             <div>Multiplicateur +{{ settings.collectionMultiplier }} par collection complète (par rareté)</div>
             <div class="mt-2 text-caption font-italic2">* Les cartes en double ou provenant de collections privées ne sont pas prises en compte.</div>
@@ -30,6 +31,7 @@
             <th class="text-left">Silver ({{ pointsConfig.silver }}pts)</th>
             <th class="text-left">Gold ({{ pointsConfig.gold }}pts)</th>
             <th class="text-left">Foil ({{ pointsConfig.foil }}pts)</th>
+            <th class="text-left">Âmes ({{ pointsConfig.souls }}pts)</th>
             <th class="text-left">Succès</th>
             <th class="text-left">Score Total</th>
           </tr>
@@ -82,6 +84,9 @@
                 }}</v-chip>
               </div>
             </td>
+            <td class="text-left">
+              <span class="d-inline-block">{{ player.souls }}</span>
+            </td>
             <td class="text-left">{{ player.achievementPoints.toLocaleString() }} pts</td>
             <td class="text-left font-weight-bold text-primary">{{ player.score.toLocaleString() }} pts</td>
           </tr>
@@ -117,7 +122,8 @@ export default {
         common: this.settings.rarityPoints.common,
         silver: this.settings.rarityPoints.silver,
         gold: this.settings.rarityPoints.golden,
-        foil: this.settings.rarityPoints.foil
+        foil: this.settings.rarityPoints.foil,
+        souls: this.settings.soulPoints
       };
     },
     sortedLeaderboard() {

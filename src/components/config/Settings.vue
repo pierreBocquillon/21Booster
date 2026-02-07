@@ -31,6 +31,7 @@
             <v-text-field label="Silver" v-model.number="settings.rarityPoints.silver" type="number" prefix="pts"></v-text-field>
             <v-text-field label="Golden" v-model.number="settings.rarityPoints.golden" type="number" prefix="pts"></v-text-field>
             <v-text-field label="Foil" v-model.number="settings.rarityPoints.foil" type="number" prefix="pts"></v-text-field>
+            <v-text-field label="Âme" v-model.number="settings.soulPoints" type="number" prefix="pts"></v-text-field>
           </v-card>
         </v-col>
 
@@ -67,17 +68,34 @@
                 <tr v-for="(label, key) in rarities" :key="key">
                   <td class="font-weight-bold">{{ label }}</td>
                   <td v-for="(vLabel, vKey) in variants" :key="vKey">
-                    <v-text-field
-                      v-if="settings.rarityCash && settings.rarityCash[key]"
-                      hide-details
-                      density="compact"
-                      v-model.number="settings.rarityCash[key][vKey]"
-                      type="number"
-                      variant="underlined"
-                      class="text-center"
-                    >
+                    <v-text-field v-if="settings.rarityCash && settings.rarityCash[key]" hide-details density="compact" v-model.number="settings.rarityCash[key][vKey]" type="number" variant="underlined" class="text-center">
                       <template v-slot:prepend-inner>
                         <v-img src="/card-coin.png" width="16" height="16"></v-img>
+                      </template>
+                    </v-text-field>
+                  </td>
+                </tr>
+              </tbody>
+            </v-table>
+          </v-card>
+        </v-col>
+
+        <v-col cols="12">
+          <v-card class="pa-4 mb-4" title="Valeurs d'extraction">
+            <v-table>
+              <thead>
+                <tr>
+                  <th v-for="(label, key) in rarities" :key="key" class="text-center">
+                    {{ label }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td v-for="(label, key) in rarities" :key="key">
+                    <v-text-field v-if="settings.raritySoul && settings.raritySoul[key]" hide-details density="compact" v-model.number="settings.raritySoul[key]" type="number" variant="underlined" class="text-center">
+                      <template v-slot:prepend-inner>
+                        <v-img src="/card-soul.png" width="20" height="20"></v-img>
                       </template>
                     </v-text-field>
                   </td>
@@ -152,7 +170,7 @@ export default {
         if (this.settings.rarityDropRates) {
           this.settings.rarityDropRates.common = this.commonRarityProb;
         }
-        
+
         await this.settings.save();
         logsManager.log(this.userStore.profile.name, 'CONFIG', `Mise à jour des paramètres généraux`);
         Swal.fire({
@@ -173,7 +191,7 @@ export default {
   },
   beforeUnmount() {
     this.unsub.forEach(unsub => {
-      if(typeof unsub === 'function') unsub();
+      if (typeof unsub === 'function') unsub();
     })
   },
 }

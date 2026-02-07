@@ -65,13 +65,6 @@
               <span class="text-caption font-weight-bold text-grey-lighten-1">Cimetière</span>
             </div>
 
-            <div class="d-flex justify-center mb-4">
-              Rareté :&nbsp;
-              <v-chip :color="getTypeColor(card.type)" size="x-small" label variant="flat" style="z-index: 150">
-                {{ getTypeName(card.type) }}
-              </v-chip>
-            </div>
-
             <div v-for="r in rarityTypes" :key="r.value" class="d-flex align-center justify-space-between mb-1">
               <span class="text-subtitle-2 mr-2" :style="{ color: r.color }">{{ r.label }}</span>
               <div class="d-flex align-center bg-grey-darken-3 rounded px-1">
@@ -84,6 +77,35 @@
             <v-btn block color="error" variant="tonal" size="small" class="mt-2" :disabled="totalSacrificeValue <= 0" @click="confirmSacrifice">
               <v-icon start size="small">mdi-fire</v-icon>
               Sacrifier (+{{ totalSacrificeValue }}<v-img src="/card-coin.png" height="16" width="16"></v-img>)
+            </v-btn>
+          </div>
+
+          <!-- RECYCLING ZONE -->
+          <div class="d-flex flex-column bg-surface pa-3 rounded-lg elevation-3 border border-opacity-25 my-2" style="border-color: rgba(255,255,255,0.1);">
+            <div class="d-flex align-center justify-center mb-1">
+              <v-icon color="grey-lighten-1" size="small" class="mr-1">mdi-chemical-weapon</v-icon>
+              <span class="text-caption font-weight-bold text-grey-lighten-1">Extraction d'âme</span>
+            </div>
+
+            <div class="d-flex justify-center my-2">
+              Rareté :&nbsp;
+              <v-chip :color="getTypeColor(card.type)" size="x-small" label variant="flat" style="z-index: 150">
+                {{ getTypeName(card.type) }}
+              </v-chip>
+            </div>
+
+            <div class="d-flex align-center justify-space-between mb-1">
+              <span class="text-subtitle-2 mr-2" :style="{ color: '#A167B2' }">Foil</span>
+              <div class="d-flex align-center bg-grey-darken-3 rounded px-1">
+                <v-btn icon="mdi-minus" size="small" variant="text" density="compact" @click="updateSoulExtraction(-1)" :disabled="soulExtractionCount <= 0"></v-btn>
+                <span class="mx-2 text-caption font-weight-bold text-white">{{ soulExtractionCount }}</span>
+                <v-btn icon="mdi-plus" size="small" variant="text" density="compact" @click="updateSoulExtraction(1)" :disabled="soulExtractionCount >= getCardAmount('foil')"></v-btn>
+              </div>
+            </div>
+
+            <v-btn block color="purple-darken-3" variant="tonal" size="small" class="mt-2" :disabled="soulExtractionCount <= 0" @click="confirmSoulExtraction">
+              <v-icon start size="small">mdi-auto-fix</v-icon>
+              Extraire (+{{ totalSoulValue }}<v-img src="/card-soul.png" height="16" width="16"></v-img>)
             </v-btn>
           </div>
 
@@ -148,6 +170,7 @@ export default {
         golden: 0,
         foil: 0
       },
+      soulExtractionCount: 0,
       types: [
         { title: 'Commun', value: 'common', color: 'grey-darken-1' },
         { title: 'Inhabituel', value: 'uncommon', color: 'green-darken-1' },
@@ -176,6 +199,12 @@ export default {
       }
       return total;
     },
+    totalSoulValue() {
+      if (!this.card || !this.settings?.raritySoul) return 0;
+      const cardType = this.card.type || 'common';
+      const soulValue = this.settings.raritySoul[cardType] || 0;
+      return this.soulExtractionCount * soulValue;
+    },
     currentRarity: {
       get() {
         return this.internalRarity || this.rarity;
@@ -202,8 +231,7 @@ export default {
     modelValue(val) {
       if (val) {
         this.internalRarity = this.rarity;        // Reset selection on open
-        this.sacrificeSelection = { common: 0, silver: 0, golden: 0, foil: 0 };
-      }
+        this.sacrificeSelection = { common: 0, silver: 0, golden: 0, foil: 0 };        this.soulExtractionCount = 0;      }
     },
     rarity(val) {
       this.internalRarity = val;
@@ -336,6 +364,67 @@ export default {
       const newVal = current + change;
       if (newVal >= 0 && newVal <= owned) {
         this.sacrificeSelection[rarity] = newVal;
+      }
+    },
+    updateSoulExtraction(change) {
+      const current = this.soulExtractionCount;
+      const owned = this.getCardAmount('foil');
+      const newVal = current + change;
+      if (newVal >= 0 && newVal <= owned) {
+        this.soulExtractionCount = newVal;
+      }
+    },
+    async confirmSoulExtraction() {
+      if (this.totalSoulValue <= 0) return;
+
+      const result = await Swal.fire({
+        title: 'Extraction d\'âme',
+        text: `Transformer ${this.soulExtractionCount} carte(s) Foil pour ${this.totalSoulValue} âmes ?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#8E24AA',
+        cancelButtonColor: '#757575',
+        confirmButtonText: 'Extraire',
+        cancelButtonText: 'Annuler'
+      });
+
+      if (result.isConfirmed) {
+        try {
+          // Double check we still own them
+          if (this.userStore.profile.cards[this.card.id]['foil'] >= this.soulExtractionCount) {
+             this.userStore.profile.cards[this.card.id]['foil'] -= this.soulExtractionCount;
+          } else {
+             return; // Should not happen
+          }
+
+          // Update Souls
+          if (!this.userStore.profile.souls) this.userStore.profile.souls = 0;
+          this.userStore.profile.souls += this.totalSoulValue;
+
+           // Update Stats (Maybe track extractions?)
+           // Not tracking extractions specifically in stats for now, but assume it counts as destroys?
+           // User asked for extraction, usually distinct from destroy logic in stats, but let's just log it.
+
+          logsManager.log(this.userStore.profile.name, 'EXTRACT', `Extrait ${this.soulExtractionCount} Foil ${this.card.name} pour ${this.totalSoulValue} âmes.`);
+
+          await this.userStore.profile.save();
+          achievementsManager.checkForAchievements();
+
+          Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'success',
+            title: `+${this.totalSoulValue} Âmes`,
+            showConfirmButton: false,
+            timer: 1500
+          });
+
+          this.soulExtractionCount = 0;
+
+        } catch (e) {
+          console.error(e);
+          Swal.fire('Erreur', 'Erreur lors de l\'extraction.', 'error');
+        }
       }
     },
     async confirmSacrifice() {

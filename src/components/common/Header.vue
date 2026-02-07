@@ -6,14 +6,23 @@
     </h1>
     <v-spacer></v-spacer>
     <div class="d-flex flex-row align-center justify-center" v-if="userStore.isLoggedIn">
+
+      <div class="mr-5 d-flex flex-row align-center justify-center">
+        <v-img src="/card-soul.png" height="38" width="38"></v-img>
+        <h3>&nbsp;x&nbsp;</h3>
+        <h2>{{ formatMoney(userStore.profile?.souls) }}</h2>
+      </div>
+
       <div class="mr-5 d-flex flex-row align-center justify-center cursor-pointer" @click="handleCashClick">
         <v-img src="/card-coin.png" height="30" width="30"></v-img>
         <h3>&nbsp;x&nbsp;</h3>
         <h2>{{ formatMoney(userStore.profile?.cash) }}</h2>
       </div>
+
       <v-btn icon variant="text" color="primary" class="mr-2" @click="showHelpDialog = true">
         <v-icon size="28">mdi-help-circle-outline</v-icon>
       </v-btn>
+
       <v-menu>
         <template v-slot:activator="{ props }">
           <v-btn icon variant="plain" v-bind="props" @click="handleMenuClick">

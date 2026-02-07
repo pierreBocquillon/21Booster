@@ -43,7 +43,8 @@ class Leaderboard {
             common: settings.rarityPoints.common,
             silver: settings.rarityPoints.silver,
             gold: settings.rarityPoints.golden,
-            foil: settings.rarityPoints.foil
+            foil: settings.rarityPoints.foil,
+            souls: settings.soulPoints || 100
         }
 
         const players = profiles
@@ -128,6 +129,7 @@ class Leaderboard {
             (cardCounts.silver * pointsConfig.silver * getMultiplier('silver')) +
             (cardCounts.gold * pointsConfig.gold * getMultiplier('gold')) +
             (cardCounts.foil * pointsConfig.foil * getMultiplier('foil')) +
+            ((profile.souls || 0) * pointsConfig.souls) + 
             achievementPoints
 
         return {
@@ -136,6 +138,7 @@ class Leaderboard {
             // isCurrentUser checked in View using ID
             achievementPoints: achievementPoints,
             cards: cardCounts,
+            souls: profile.souls || 0,
             completedCollections: completed,
             score: score,
             multipliers: {

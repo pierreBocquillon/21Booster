@@ -15,12 +15,14 @@ function docToInstance(document) {
 		data.dailyBonus, 
 		data.rarityDropRates,
 		data.typeDropRates,
-		data.welcomeBonus
+		data.welcomeBonus,
+    data.raritySoul,
+    data.soulPoints
 	) : null
 }
 
 class Settings {
-	constructor(id, downgradeCost, upgradeCost, rarityPoints, rarityCash, collectionMultiplier, dailyBonus, rarityDropRates, typeDropRates, welcomeBonus) {
+	constructor(id, downgradeCost, upgradeCost, rarityPoints, rarityCash, collectionMultiplier, dailyBonus, rarityDropRates, typeDropRates, welcomeBonus, raritySoul, soulPoints) {
 		this.id = id
 		this.downgradeCost = downgradeCost !== undefined ? downgradeCost : 1
 		this.upgradeCost = upgradeCost !== undefined ? upgradeCost : 5
@@ -36,6 +38,13 @@ class Settings {
 			rare: { common: 20, silver: 120, golden: 720, foil: 4000 },
 			mythic: { common: 50, silver: 300, golden: 1800, foil: 10000 }
 		}
+    this.raritySoul = raritySoul || {
+      common: 1,
+      uncommon: 3,
+      rare: 5,
+      mythic: 10
+    }
+    this.soulPoints = soulPoints !== undefined ? soulPoints : 100
 
 		// Migration old format (single object) to new format (double entry)
 		if (this.rarityCash && typeof this.rarityCash.common === 'number') {
@@ -99,7 +108,9 @@ class Settings {
 			dailyBonus: this.dailyBonus,
 			welcomeBonus: this.welcomeBonus,
 			rarityDropRates: this.rarityDropRates,
-			typeDropRates: this.typeDropRates
+			typeDropRates: this.typeDropRates,
+      raritySoul: this.raritySoul,
+      soulPoints: this.soulPoints
 		}
 
 		if (this.id) {

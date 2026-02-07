@@ -6,6 +6,8 @@
       </v-btn>
       <h1 class="mr-3" style="white-space: nowrap;">{{ collection.name }}</h1>
       <v-spacer></v-spacer>
+      <v-btn class="mx-3" size="small" color="success" @click="autoUpgrade"><v-icon class="mr-1">mdi-anvil</v-icon> Upgrades Auto</v-btn>
+      <v-btn class="mx-3" size="small" color="error" @click="autoDestroy"><v-icon class="mr-1">mdi-grave-stone</v-icon> Sacrifices Auto</v-btn>
       <v-switch class="mx-5" label="Info toujours ON" color="primary" hide-details style="width: 100%; max-width: 180px; min-width: 100px" v-model="infoAlwaysOn"></v-switch>
       <v-select v-model="displayMode" :items="displayModes" item-title="title" item-value="value" density="compact" hide-details variant="outlined" style="width: 100%; max-width: 180px; min-width: 100px" prepend-inner-icon="mdi-eye" bg-color="surface"></v-select>
     </div>
@@ -32,6 +34,8 @@
           </v-tooltip>
         </div>
       </div>
+    </div>
+    <div class="d-flex align-center justify-center mb-3">
     </div>
 
     <div class="d-flex flex-row flex-wrap justify-center align-center gap-4">
@@ -81,6 +85,11 @@
 <script>
 import CardPreview from './CardPreview.vue';
 import Card from '@/classes/Card.js';
+import Settings from '@/classes/Settings.js';
+import { useUserStore } from '@/store/user.js';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import logsManager from '@/assets/functions/logsManager.js';
+import achievementsManager from '@/assets/functions/achievementsManager.js';
 
 export default {
   name: 'CollectionDetails',
@@ -90,9 +99,15 @@ export default {
     cards: { type: Array, required: true },
     stats: { type: Object, required: true }
   },
+  setup() {
+    return {
+      userStore: useUserStore()
+    }
+  },
   emits: ['back'],
   data() {
     return {
+      settings: new Settings(),
       cardDialog: false,
       previewCard: null,
       previewRarity: null,
@@ -113,7 +128,18 @@ export default {
       ],
       orientationCache: {},
       loadingCache: {},
+      unsub: [],
     }
+  },
+  created() {
+    this.unsub.push(Settings.listenById("general", (s) => {
+      this.settings = s || new Settings("general");
+    }));
+  },
+  beforeUnmount() {
+    this.unsub.forEach(unsub => {
+      if(typeof unsub === 'function') unsub();
+    })
   },
   computed: {
     previewImageUrl() {
@@ -174,6 +200,162 @@ export default {
     },
     isCardOwned(card) {
       return (card.amount.common + card.amount.silver + card.amount.golden + card.amount.foil) > 0;
+    },
+    async autoUpgrade() {
+      const { value: minKeep } = await Swal.fire({
+        title: 'Upgrade Auto',
+        input: 'number',
+        inputLabel: 'Combien de carte de chaque variante garder au minimum ?',
+        inputValue: 1,
+        showCancelButton: true,
+        confirmButtonText: 'Lancer',
+        cancelButtonText: 'Annuler',
+        inputValidator: (value) => {
+          if (!value || value < 0) {
+            return 'Vous devez entrer un nombre positif ou nul'
+          }
+        }
+      })
+
+      if (minKeep === undefined) return; // Cancelled
+
+      let totalUpgrades = 0;
+      let processedCards = 0;
+      const upgradeCost = this.settings.upgradeCost || 5;
+      const variants = ['common', 'silver', 'golden']; // Variants that can be upgraded
+      const nextVariants = ['silver', 'golden', 'foil'];
+
+      // Iterate all cards in this collection
+      for (const card of this.cards) {
+        let cardModified = false;
+        // Access true profile data reference to ensure we modify the store
+        let userCard = this.userStore.profile.cards[card.id];
+        
+        if (!userCard) continue;
+
+        // Process sequentially: Common -> Silver, then Silver -> Golden, then Golden -> Foil
+        // We do this in order so upgrades propagate (e.g. many commons -> silvers -> goldens)
+        for (let i = 0; i < variants.length; i++) {
+          const currentVar = variants[i];
+          const nextVar = nextVariants[i];
+
+          if (userCard[currentVar] > minKeep) {
+            const excess = userCard[currentVar] - minKeep;
+            const possibleUpgrades = Math.floor(excess / upgradeCost);
+
+            if (possibleUpgrades > 0) {
+              const consumed = possibleUpgrades * upgradeCost;
+              userCard[currentVar] -= consumed;
+              userCard[nextVar] = (userCard[nextVar] || 0) + possibleUpgrades;
+              
+              totalUpgrades += possibleUpgrades;
+              cardModified = true;
+            }
+          }
+        }
+        if (cardModified) processedCards++;
+      }
+
+      if (totalUpgrades > 0) {
+        if (!this.userStore.profile.stats) this.userStore.profile.stats = {};
+        this.userStore.profile.stats.upgrades = (this.userStore.profile.stats.upgrades || 0) + totalUpgrades;
+
+        await this.userStore.profile.save();
+        achievementsManager.checkForAchievements();
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Upgrade Auto Terminé',
+          text: `${totalUpgrades} upgrades effectués sur ${processedCards} cartes.`
+        });
+      } else {
+        Swal.fire({
+          icon: 'info',
+          title: 'Rien à upgrade',
+          text: `Aucune carte ne peut être upgrade avec les critères choisis (Garder ${minKeep}, Coût: ${upgradeCost}).`
+        });
+      }
+    },
+    async autoDestroy() {
+      const { value: minKeep } = await Swal.fire({
+        title: 'Sacrifice Auto',
+        input: 'number',
+        inputLabel: 'Combien de carte de chaque variante garder au minimum ?',
+        inputValue: 1,
+        showCancelButton: true,
+        confirmButtonText: 'Lancer',
+        cancelButtonText: 'Annuler',
+        confirmButtonColor: '#d33',
+        inputValidator: (value) => {
+          if (!value || value < 0) {
+            return 'Vous devez entrer un nombre positif ou nul'
+          }
+        }
+      })
+
+      if (minKeep === undefined) return;
+
+      const variants = ['common', 'silver', 'golden', 'foil'];
+      let totalDestroyed = 0;
+      let totalCash = 0;
+      let logDetails = {}; // Track counts per rarity for logging summary
+
+      for (const card of this.cards) {
+        let userCard = this.userStore.profile.cards[card.id];
+        if (!userCard) continue;
+
+        const cardType = card.type || 'common';
+        const cashValues = this.settings.rarityCash[cardType] || {};
+
+        for (const variant of variants) {
+          if (userCard[variant] > minKeep) {
+            const toDestroy = userCard[variant] - minKeep;
+            
+            if (toDestroy > 0) {
+              const valuePerCard = cashValues[variant] || 0;
+              const cashEarned = toDestroy * valuePerCard;
+
+              userCard[variant] -= toDestroy;
+              
+              totalDestroyed += toDestroy;
+              totalCash += cashEarned;
+
+              if (!logDetails[variant]) logDetails[variant] = 0;
+              logDetails[variant] += toDestroy;
+            }
+          }
+        }
+      }
+
+      if (totalDestroyed > 0) {
+         // Update Cash
+        this.userStore.profile.cash += totalCash;
+
+        // Update Stats
+        if (!this.userStore.profile.stats) this.userStore.profile.stats = {};
+        if (!this.userStore.profile.stats.destroy) this.userStore.profile.stats.destroy = 0;
+        this.userStore.profile.stats.destroy += totalDestroyed;
+
+        // Log
+        const logStr = Object.entries(logDetails).map(([r, c]) => `${c} ${r}`).join(', ');
+        logsManager.log(this.userStore.profile.name, 'AUTO_DESTROY', `Recyclage Auto collection ${this.collection.name}: ${logStr} pour ${totalCash} card coin(s).`);
+
+        await this.userStore.profile.save();
+        achievementsManager.checkForAchievements();
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Sacrifice Auto Terminé',
+          text: `Vous avez recyclé ${totalDestroyed} cartes pour ${totalCash} card coins.`
+        });
+
+      } else {
+        Swal.fire({
+          icon: 'info',
+          title: 'Rien à sacrifier',
+          text: `Aucune carte en excès trouvée (Garder au moins ${minKeep}).`
+        });
+      }
     }
   }
 }

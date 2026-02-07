@@ -6,11 +6,11 @@ let collectionName = "profiles"
 function docToInstance(document) {
 	let data = document.data()
   
-	return data ? new Profile(document.id, data.name, data.email, data.phone, data.role, data.permissions, data.activated, data.cash, data.collections, data.boosters, data.cards, data.codes, data.achievements, data.stats, data.lastLogin, data.lastWheelSpin, data.oldCodesVerified, data.oldCodeRefused, data.helpSeen) : null
+	return data ? new Profile(document.id, data.name, data.email, data.phone, data.role, data.permissions, data.activated, data.cash, data.collections, data.boosters, data.cards, data.codes, data.achievements, data.stats, data.lastLogin, data.lastWheelSpin, data.oldCodesVerified, data.oldCodeRefused, data.helpSeen, data.souls) : null
 }
 
 class Profile {
-	constructor(id, name, email, phone, role, permissions, activated, cash, collections, boosters, cards, codes, achievements, stats, lastLogin, lastWheelSpin, oldCodesVerified, oldCodeRefused, helpSeen) {
+	constructor(id, name, email, phone, role, permissions, activated, cash, collections, boosters, cards, codes, achievements, stats, lastLogin, lastWheelSpin, oldCodesVerified, oldCodeRefused, helpSeen, souls) {
 		this.id = id
 		this.name = name
 		this.email = email
@@ -30,6 +30,11 @@ class Profile {
     this.oldCodesVerified = oldCodesVerified
     this.oldCodeRefused = oldCodeRefused
     this.helpSeen = helpSeen
+    this.souls = souls
+
+    if (this.souls === undefined) {
+      this.souls = 0
+    }
 
     if (!this.stats) {
       this.stats = {
@@ -65,7 +70,7 @@ class Profile {
 			upgrades: 0,
 			downgrades: 0,
 		}
-		const newProfile = new Profile(uid, name, email, phone, "User", [], false, cash, {}, {}, {}, {}, {}, stats, 0, 0, null, false, false)
+		const newProfile = new Profile(uid, name, email, phone, "User", [], false, cash, {}, {}, {}, {}, {}, stats, 0, 0, null, false, false, 0)
 		return newProfile
 	}
 
@@ -166,6 +171,7 @@ class Profile {
       oldCodesVerified: this.oldCodesVerified || null,
       oldCodeRefused: this.oldCodeRefused || false,
       helpSeen: this.helpSeen || false,
+      souls: this.souls || 0,
 		}
 
 		if (this.id) {
