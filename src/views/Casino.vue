@@ -3,9 +3,9 @@
     <v-row justify="center" align="center">
       <v-col cols="12" class="text-center">
         <div class="d-flex justify-center mb-10">
-          <v-btn size="x-large" color="primary" @click="spin" :disabled="spinning || alreadySpunToday || userStore.profile.cash < 50">
-            <span v-if="alreadySpunToday">Vous avez déjà lancé la roue aujourd'hui !</span>
-            <span v-else>Lancer la roue (50 <img src="/card-coin.png" height="20" class="ml-1" style="vertical-align: middle;" />)</span>
+          <v-btn size="x-large" color="primary" @click="spin" :disabled="spinning || userStore.profile.cash < currentSpinCost">
+            <span>Lancer la roue ({{ currentSpinCost }} <img src="/card-coin.png" height="20" class="ml-1" style="vertical-align: middle;" />)</span>
+            <v-tooltip activator="parent" location="bottom">Le prix d'un lancé double à chaque lancer et est réinitialisé à minuit chaque jour.</v-tooltip>
           </v-btn>
         </div>
       </v-col>
@@ -89,12 +89,16 @@ export default {
         transition: this.spinning ? 'transform 5s cubic-bezier(0.1, 0, 0.18, 1)' : 'none'
       }
     },
-    alreadySpunToday() {
-      if (!this.userStore.profile.lastWheelSpin) return false
+    currentSpinCost() {
+      if (!this.userStore.profile.lastWheelSpin) return 50
       const lastDate = new Date(this.userStore.profile.lastWheelSpin)
       const today = new Date()
 
-      return lastDate.toLocaleDateString() === today.toLocaleDateString()
+      // Reset to 50 if new day
+      if (lastDate.toLocaleDateString() !== today.toLocaleDateString()) {
+        return 50
+      }
+      return this.userStore.profile.casinoCost || 50
     }
   },
   methods: {
@@ -119,16 +123,21 @@ export default {
       })
     },
     async spin() {
-      if (this.userStore.profile.cash < 50) {
+      const cost = this.currentSpinCost
+      if (this.userStore.profile.cash < cost) {
         Swal.fire('Erreur', 'Pas assez d\'argent !', 'error')
         return
       }
 
       this.spinning = true
 
-      // Pay 50
-      this.userStore.profile.cash -= 50
+      // Pay cost
+      this.userStore.profile.cash -= cost
       this.userStore.profile.lastWheelSpin = new Date().getTime()
+      
+      // Increase next cost
+      this.userStore.profile.casinoCost = cost + 50
+      
       await this.userStore.profile.save()
 
       // Trigger Achievement if not already

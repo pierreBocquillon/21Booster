@@ -42,6 +42,11 @@ export default {
       type: Number,
       required: true,
       default: 0
+    },
+    souls: {
+      type: Number,
+      required: false,
+      default: 0
     }
   },
   methods: {

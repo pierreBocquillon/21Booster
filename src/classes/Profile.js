@@ -6,11 +6,11 @@ let collectionName = "profiles"
 function docToInstance(document) {
 	let data = document.data()
   
-	return data ? new Profile(document.id, data.name, data.email, data.phone, data.role, data.permissions, data.activated, data.cash, data.collections, data.boosters, data.cards, data.codes, data.achievements, data.stats, data.lastLogin, data.lastWheelSpin, data.oldCodesVerified, data.oldCodeRefused, data.helpSeen, data.souls) : null
+	return data ? new Profile(document.id, data.name, data.email, data.phone, data.role, data.permissions, data.activated, data.cash, data.collections, data.boosters, data.cards, data.codes, data.achievements, data.stats, data.lastLogin, data.lastWheelSpin, data.oldCodesVerified, data.oldCodeRefused, data.helpSeen, data.souls, data.casinoCost) : null
 }
 
 class Profile {
-	constructor(id, name, email, phone, role, permissions, activated, cash, collections, boosters, cards, codes, achievements, stats, lastLogin, lastWheelSpin, oldCodesVerified, oldCodeRefused, helpSeen, souls) {
+	constructor(id, name, email, phone, role, permissions, activated, cash, collections, boosters, cards, codes, achievements, stats, lastLogin, lastWheelSpin, oldCodesVerified, oldCodeRefused, helpSeen, souls, casinoCost) {
 		this.id = id
 		this.name = name
 		this.email = email
@@ -31,6 +31,11 @@ class Profile {
     this.oldCodeRefused = oldCodeRefused
     this.helpSeen = helpSeen
     this.souls = souls
+    this.casinoCost = casinoCost
+
+    if (this.casinoCost === undefined) {
+      this.casinoCost = 50
+    }
 
     if (this.souls === undefined) {
       this.souls = 0
@@ -70,7 +75,7 @@ class Profile {
 			upgrades: 0,
 			downgrades: 0,
 		}
-		const newProfile = new Profile(uid, name, email, phone, "User", [], false, cash, {}, {}, {}, {}, {}, stats, 0, 0, null, false, false, 0)
+		const newProfile = new Profile(uid, name, email, phone, "User", [], false, cash, {}, {}, {}, {}, {}, stats, 0, 0, null, false, false, 0, 50)
 		return newProfile
 	}
 
@@ -172,6 +177,7 @@ class Profile {
       oldCodeRefused: this.oldCodeRefused || false,
       helpSeen: this.helpSeen || false,
       souls: this.souls || 0,
+      casinoCost: this.casinoCost || 50,
 		}
 
 		if (this.id) {

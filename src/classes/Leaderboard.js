@@ -125,11 +125,17 @@ class Leaderboard {
         // --- 4. Score Calculation ---
         const getMultiplier = (type) => 1 + ((completed[type] || 0) * settings.collectionMultiplier)
 
+        let soulsScore = 0
+        const souls = profile.souls || 0
+        if (souls > 0) {
+            soulsScore = (Math.floor(Math.log2(souls)) + 1) * pointsConfig.souls
+        }
+
         const score = (cardCounts.common * pointsConfig.common * getMultiplier('common')) +
             (cardCounts.silver * pointsConfig.silver * getMultiplier('silver')) +
             (cardCounts.gold * pointsConfig.gold * getMultiplier('gold')) +
             (cardCounts.foil * pointsConfig.foil * getMultiplier('foil')) +
-            ((profile.souls || 0) * pointsConfig.souls) + 
+            soulsScore + 
             achievementPoints
 
         return {

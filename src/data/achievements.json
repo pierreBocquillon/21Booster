@@ -256,6 +256,38 @@
     "image": "downgrade.png"
   },
   {
+    "id": "extracteur_junior",
+    "title": "Extracteur Junior",
+    "description": "Extraire votre première âme.",
+    "points": 1000,
+    "rarity": "common",
+    "image": "extraction.png"
+  },
+  {
+    "id": "expert_en_extractions",
+    "title": "Expert en extractions",
+    "description": "Obtenir 10 âmes.",
+    "points": 2500,
+    "rarity": "silver",
+    "image": "extraction.png"
+  },
+  {
+    "id": "buveur_d_ames",
+    "title": "Buveur d'âmes",
+    "description": "Obtenir 50 âmes.",
+    "points": 5000,
+    "rarity": "golden",
+    "image": "extraction.png"
+  },
+  {
+    "id": "maitre_des_ames",
+    "title": "Maître des âmes",
+    "description": "Obtenir 100 âmes.",
+    "points": 10000,
+    "rarity": "foil",
+    "image": "extraction.png"
+  },
+  {
     "id": "addiction_aux_classiques",
     "title": "Addiction aux classiques",
     "description": "Compléter 1 collection de cartes classiques.",

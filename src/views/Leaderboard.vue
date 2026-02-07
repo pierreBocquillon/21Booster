@@ -8,13 +8,14 @@
             <v-icon v-bind="props" icon="mdi-help-circle-outline" class="text-medium-emphasis cursor-pointer"></v-icon>
           </template>
           <div class="pa-2">
-            <div class="mb-2"><strong>Derniere mise a jour :</strong> {{ new Date(updatedAt).toLocaleString() }}</div>
+            <div class="mb-2"><strong>Dernière mise à jour :</strong> {{ new Date(updatedAt).toLocaleString() }}</div>
             <div><strong>Règles de calcul des points :</strong></div>
             <div class="mt-1">• Classique : {{ pointsConfig.common }} pts</div>
             <div class="mt-1">• Silver : {{ pointsConfig.silver }} pts</div>
             <div class="mt-1">• Gold : {{ pointsConfig.gold }} pts</div>
             <div class="mt-1">• Foil : {{ pointsConfig.foil }} pts</div>
-            <div class="mt-1">• Âmes : {{ pointsConfig.souls }} pts</div>
+            <div class="mt-2"><strong>Les points d'âmes :</strong></div>
+            <div>Vous obtenez {{ pointsConfig.souls }} pts pour votre première âme extraite, puis {{ pointsConfig.souls }} pts supplémentaires chaque fois que vous doublez votre nombre total d'âmes (1, 2, 4, 8, 16, etc.).</div>
             <div class="mt-2"><strong>Bonus Collection :</strong></div>
             <div>Multiplicateur +{{ settings.collectionMultiplier }} par collection complète (par rareté)</div>
             <div class="mt-2 text-caption font-italic2">* Les cartes en double ou provenant de collections privées ne sont pas prises en compte.</div>
@@ -31,7 +32,7 @@
             <th class="text-left">Silver ({{ pointsConfig.silver }}pts)</th>
             <th class="text-left">Gold ({{ pointsConfig.gold }}pts)</th>
             <th class="text-left">Foil ({{ pointsConfig.foil }}pts)</th>
-            <th class="text-left">Âmes ({{ pointsConfig.souls }}pts)</th>
+            <th class="text-left">Âmes</th>
             <th class="text-left">Succès</th>
             <th class="text-left">Score Total</th>
           </tr>
@@ -85,7 +86,7 @@
               </div>
             </td>
             <td class="text-left">
-              <span class="d-inline-block">{{ player.souls }}</span>
+              <span class="d-inline-block">{{ player.soulsScore }} pts</span>
             </td>
             <td class="text-left">{{ player.achievementPoints.toLocaleString() }} pts</td>
             <td class="text-left font-weight-bold text-primary">{{ player.score.toLocaleString() }} pts</td>

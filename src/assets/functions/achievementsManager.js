@@ -219,6 +219,20 @@ let achievementsManager = {
 					unlocked = (stats.downgrades || 0) >= 100
 					break
 
+				// Souls
+				case "extracteur_junior":
+					unlocked = (profile.souls || 0) >= 1
+					break
+				case "expert_en_extractions":
+					unlocked = (profile.souls || 0) >= 10
+					break
+				case "buveur_d_ames":
+					unlocked = (profile.souls || 0) >= 50
+					break
+				case "maitre_des_ames":
+					unlocked = (profile.souls || 0) >= 100
+					break
+
 				// Collections
 				case "addiction_aux_classiques":
 					unlocked = builtCollections.common >= 1

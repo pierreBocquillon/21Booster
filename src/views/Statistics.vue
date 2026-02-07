@@ -9,7 +9,7 @@
         <v-btn icon="mdi-share-variant" variant="text" color="primary" @click="shareStats" title="Partager"></v-btn>
       </div>
 
-      <GlobalProgress :completion="completion.my" :achievements="achievementsStats.percentage" @go-to-achievements="goToAchievements" />
+      <GlobalProgress :completion="completion.my" :achievements="achievementsStats.percentage" :souls="targetProfile.souls" @go-to-achievements="goToAchievements" />
 
       <PlayerStatsGrid :stats="playerStats" />
 
