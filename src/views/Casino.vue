@@ -5,7 +5,7 @@
         <div class="d-flex justify-center mb-10">
           <v-btn size="x-large" color="primary" @click="spin" :disabled="spinning || userStore.profile.cash < currentSpinCost">
             <span>Lancer la roue ({{ currentSpinCost }} <img src="/card-coin.png" height="20" class="ml-1" style="vertical-align: middle;" />)</span>
-            <v-tooltip activator="parent" location="bottom">Le prix d'un lancé double à chaque lancer et est réinitialisé à minuit chaque jour.</v-tooltip>
+            <v-tooltip activator="parent" location="bottom">Le prix d'un lancé augmente de 50 à chaque lancer et est réinitialisé à minuit chaque jour.</v-tooltip>
           </v-btn>
         </div>
       </v-col>
@@ -111,14 +111,16 @@ export default {
     },
     generateItems() {
       // Rewards configuration
-      let rewards = [0, 50, 100, 50, 0, 'b1', 0, 50, 100, 50, 0, 'b3', 0, 50, 100, 50, 0, 'b1', 0, 50, 100, 50, 0, 'b3']
+      let rewards = [250, 0, 50, 100, 'b1', 100, 50, 0, 'b3', 0, 50, 100, 'b1', 100, 50, 0, 250, 'b5', 250, 0, 50, 100, 'b1', 100, 50, 0, 'b3', 0, 50, 100, 'b1', 100, 50, 0, 250, 'b5']
 
       this.items = rewards.map(val => {
         if (val === 0) return { label: 'PERDU', value: 0, hexColor: '#16110c' }
         if (val === 50) return { label: '50 <img src="/card-coin.png" class="ml-1" height="16" style="vertical-align: middle; margin-bottom: 2px;" />', value: 50, hexColor: '#2d1d0e' }
         if (val === 100) return { label: '100 <img src="/card-coin.png" class="ml-1" height="16" style="vertical-align: middle; margin-bottom: 2px;" />', value: 100, hexColor: '#543113' }
+        if (val === 250) return { label: '250 <img src="/card-coin.png" class="ml-1" height="16" style="vertical-align: middle; margin-bottom: 2px;" />', value: 250, hexColor: '#87440a' }
         if (val === 'b1') return { label: '1 BOOSTER', value: 'b1', hexColor: '#9e5617' }
         if (val === 'b3') return { label: '3 BOOSTERS', value: 'b3', hexColor: '#F17511' }
+        if (val === 'b5') return { label: '5 BOOSTERS', value: 'b5', hexColor: '#F1A311' }
         return { label: '?', value: val, hexColor: '#000000' }
       })
     },
@@ -193,7 +195,7 @@ export default {
       const winningIndex = Math.floor(pointerAngle / degPerItem)
       const wonItem = this.items[winningIndex]
 
-      if (wonItem.value === 'b1' || wonItem.value === 'b3') {
+      if (wonItem.value === 'b1' || wonItem.value === 'b3' || wonItem.value === 'b5') {
         const publicBoosters = this.boosters.filter(b => {
           if (!b.canBuy) return false
           const collection = this.collections.find(c => c.id === b.collection)
@@ -201,7 +203,7 @@ export default {
         })
 
         if (publicBoosters.length > 0) {
-          let count = wonItem.value === 'b3' ? 3 : 1
+          let count = wonItem.value === 'b3' ? 3 : (wonItem.value === 'b5' ? 5 : 1)
           const randomBooster = publicBoosters[Math.floor(Math.random() * publicBoosters.length)]
 
           if (!this.userStore.profile.boosters) this.userStore.profile.boosters = {}
