@@ -128,7 +128,42 @@
     </v-dialog>
 
     <PatchNotesDialog v-model="patchNoteDialog" />
+    <v-dialog v-model="newVersionDialog" persistent max-width="600px">
+      <v-card class="rounded-xl">
+        <v-card-title class="d-flex justify-center align-center pa-4 bg-primary text-white">
+          <span class="text-h5 font-weight-regular">Mise à jour {{ version }}</span>
+        </v-card-title>
 
+        <v-card-text class="pa-4">
+          <p class="mb-4">Une nouvelle version de l'application est disponible.</p>
+          <p class="mb-1">Voici les dernières nouveautés :</p>
+          
+          <div class="mb-6 pa-4 rounded-lg border">
+            <ul class="pl-4">
+              <li v-for="(change, i) in latestChanges" :key="i" class="mb-1">
+                {{ change }}
+              </li>
+            </ul>
+          </div>
+
+          <v-alert type="info" variant="tonal" class="mb-0 text-caption" icon="mdi-information">
+            <h3 class="font-weight-regular">
+              Vous pouvez retrouver tous les détails relatifs aux mises à jour à tout moment en cliquant sur le numéro de version en bas à droite de votre écran.
+            </h3>
+          </v-alert>
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions class="pa-4">
+          <v-spacer></v-spacer>
+          <v-btn class="px-5" color="primary" variant="elevated" @click="updateVersionAndClose">
+            Super, merci !
+          </v-btn>
+          <v-spacer></v-spacer>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-app>
 </template>
 
@@ -158,6 +193,7 @@ import logsManager from '@/assets/functions/logsManager.js'
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 import oldCards from '@/data/oldCards.json'
+import patchNotesData from '@/data/patchNotes.json'
 
 import Header from "@/components/common/Header.vue"
 import PatchNotesDialog from "@/components/common/PatchNotesDialog.vue"
@@ -190,12 +226,14 @@ export default {
       cardDialog: false,
       currentNotif: null,
       patchNoteDialog: false,
+      newVersionDialog: false,
     }
   },
   watch: {
     $route() {
       this.checkOldCodes()
       this.checkDailyBonus()
+      this.checkVersion()
     }
   },
   async mounted() {
@@ -235,6 +273,7 @@ export default {
             this.ready = true
 
             this.checkOldCodes()
+            this.checkVersion()
 
           } else {
             deleteUser(user).then(() => {
@@ -281,6 +320,10 @@ export default {
         }
       }
       return currentBoosters
+    },
+    latestChanges() {
+      const latest = patchNotesData.find(note => note.version === this.version)
+      return latest ? latest.changes : []
     },
     showLoader() {
       return !this.ready
@@ -409,6 +452,30 @@ export default {
 
       } catch (e) {
         console.error("Error giving daily bonus", e);
+      }
+    },
+    async updateVersionAndClose() {
+      this.newVersionDialog = false
+      if (this.userStore.profile) {
+        this.userStore.profile.lastKnownVersion = this.version
+        await this.userStore.profile.save()
+      }
+    },
+    checkVersion() {
+      if (this.userStore.profile) {
+        const lastKnown = this.userStore.profile.lastKnownVersion
+
+        if (!lastKnown) {
+          this.newVersionDialog = true
+          return
+        }
+
+        const currentParts = this.version.split('.').map(Number)
+        const knownParts = lastKnown.split('.').map(Number)
+
+        if (knownParts[0] < currentParts[0] || (knownParts[0] === currentParts[0] && knownParts[1] < currentParts[1])) {
+          this.newVersionDialog = true
+        }
       }
     },
     async checkOldCodes() {
