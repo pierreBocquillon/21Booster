@@ -1,5 +1,18 @@
 [
   {
+    "version": "1.3.0",
+    "date": "2026-02-09",
+    "changes": [
+      "Modification de la configuration de la roue du casino",
+      "Modification du prix du casino (Lancement infini avec +50 cc au prix par lancé)",
+      "Ajout des âmes (obtenues par extraction sur une carte foil)",
+      "Ajout des fonctionalités d'extraction automatiques",
+      "Modification du calcul des points du classement pour inclure les points d'âmes",
+      "Ajout de 13 nouveaux succés",
+      "Correction de bugs mineurs"
+    ]
+  },
+  {
     "version": "1.2.1",
     "date": "2026-02-06",
     "changes": [

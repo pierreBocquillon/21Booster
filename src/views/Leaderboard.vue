@@ -7,7 +7,7 @@
           <template v-slot:activator="{ props }">
             <v-icon v-bind="props" icon="mdi-help-circle-outline" class="text-medium-emphasis cursor-pointer"></v-icon>
           </template>
-          <div class="pa-2">
+          <div class="pa-2" style="max-width: 500px;">
             <div class="mb-2"><strong>Dernière mise à jour :</strong> {{ new Date(updatedAt).toLocaleString() }}</div>
             <div><strong>Règles de calcul des points :</strong></div>
             <div class="mt-1">• Classique : {{ pointsConfig.common }} pts</div>

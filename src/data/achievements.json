@@ -288,6 +288,70 @@
     "image": "extraction.png"
   },
   {
+    "id": "top_10_collectionneurs",
+    "title": "Top 10 des collectionneurs",
+    "description": "Atteindre le top 10 du classement.",
+    "points": 500,
+    "rarity": "common",
+    "image": "leaderboard.png"
+  },
+  {
+    "id": "top_5_collectionneurs",
+    "title": "Top 5 des collectionneurs",
+    "description": "Atteindre le top 5 du classement.",
+    "points": 1000,
+    "rarity": "silver",
+    "image": "leaderboard.png"
+  },
+  {
+    "id": "top_3_collectionneurs",
+    "title": "Top 3 des collectionneurs",
+    "description": "Atteindre le top 3 du classement.",
+    "points": 2500,
+    "rarity": "golden",
+    "image": "leaderboard.png"
+  },
+  {
+    "id": "le_roi_des_collectionneurs",
+    "title": "Le roi des collectionneurs",
+    "description": "Atteindre la première place du classement.",
+    "points": 5000,
+    "rarity": "foil",
+    "image": "leaderboard.png"
+  },
+  {
+    "id": "l_argent_ne_fait_pas_le_bonheur",
+    "title": "L'argent ne fait pas le bonheur",
+    "description": "Posséder 1000 card coins.",
+    "points": 1000,
+    "rarity": "common",
+    "image": "i_am_rich.png"
+  },
+  {
+    "id": "je_suis_riche",
+    "title": "Je suis riche",
+    "description": "Posséder 5000 card coins.",
+    "points": 2500,
+    "rarity": "silver",
+    "image": "i_am_rich.png"
+  },
+  {
+    "id": "je_nage_dans_les_card_coins",
+    "title": "Je nage dans les card coins",
+    "description": "Posséder 10000 card coins.",
+    "points": 5000,
+    "rarity": "golden",
+    "image": "i_am_rich.png"
+  },
+  {
+    "id": "l_evasions_fiscale_ca_me_connait",
+    "title": "L'evasions fiscale, ca me connait",
+    "description": "Posséder 25000 card coins.",
+    "points": 10000,
+    "rarity": "foil",
+    "image": "i_am_rich.png"
+  },
+  {
     "id": "addiction_aux_classiques",
     "title": "Addiction aux classiques",
     "description": "Compléter 1 collection de cartes classiques.",
@@ -358,6 +422,14 @@
     "points": 500,
     "rarity": "foil",
     "image": "casino.png"
+  },
+  {
+    "id": "c_est_meme_pas_rentable",
+    "title": "C'est même pas rentable.",
+    "description": "Faites tourner la roue pour un coût de 500 card coins ou plus.",
+    "points": 1000,
+    "rarity": "foil",
+    "image": "casino_gold.png"
   },
   {
     "id": "un_visiteur_demoniaque",

@@ -6,8 +6,9 @@
       </v-btn>
       <h1 class="mr-3" style="white-space: nowrap;">{{ collection.name }}</h1>
       <v-spacer></v-spacer>
-      <v-btn class="mx-3" size="small" color="success" @click="autoUpgrade"><v-icon class="mr-1">mdi-anvil</v-icon> Upgrades Auto</v-btn>
-      <v-btn class="mx-3" size="small" color="error" @click="autoDestroy"><v-icon class="mr-1">mdi-grave-stone</v-icon> Sacrifices Auto</v-btn>
+      <v-btn class="mx-1" size="small" color="light-blue" @click="autoExtract"><v-icon class="mr-1">mdi-chemical-weapon</v-icon> Extraction Auto</v-btn>
+      <v-btn class="mx-1" size="small" color="success" @click="autoUpgrade"><v-icon class="mr-1">mdi-anvil</v-icon> Upgrade Auto</v-btn>
+      <v-btn class="mx-1" size="small" color="error" @click="autoDestroy"><v-icon class="mr-1">mdi-grave-stone</v-icon> Sacrifice Auto</v-btn>
       <v-switch class="mx-5" label="Info toujours ON" color="primary" hide-details style="width: 100%; max-width: 180px; min-width: 100px" v-model="infoAlwaysOn"></v-switch>
       <v-select v-model="displayMode" :items="displayModes" item-title="title" item-value="value" density="compact" hide-details variant="outlined" style="width: 100%; max-width: 180px; min-width: 100px" prepend-inner-icon="mdi-eye" bg-color="surface"></v-select>
     </div>
@@ -354,6 +355,68 @@ export default {
           icon: 'info',
           title: 'Rien à sacrifier',
           text: `Aucune carte en excès trouvée (Garder au moins ${minKeep}).`
+        });
+      }
+    },
+    async autoExtract() {
+      const { value: minKeep } = await Swal.fire({
+        title: 'Extraction Auto',
+        input: 'number',
+        inputLabel: 'Combien de carte Foil garder au minimum ?',
+        inputValue: 1,
+        showCancelButton: true,
+        confirmButtonText: 'Lancer',
+        cancelButtonText: 'Annuler',
+        confirmButtonColor: '#8E24AA',
+        inputValidator: (value) => {
+          if (!value || value < 0) {
+            return 'Vous devez entrer un nombre positif ou nul'
+          }
+        }
+      })
+
+      if (minKeep === undefined) return;
+
+      let totalExtracted = 0;
+      let totalSouls = 0;
+      
+      for (const card of this.cards) {
+        let userCard = this.userStore.profile.cards[card.id];
+        if (!userCard) continue;
+
+        if (userCard.foil > minKeep) {
+          const toExtract = userCard.foil - minKeep;
+          if (toExtract > 0) {
+            const cardType = card.type || 'common';
+            const soulValue = (this.settings.raritySoul && this.settings.raritySoul[cardType]) || 0;
+            const soulsEarned = toExtract * soulValue;
+
+            userCard.foil -= toExtract;
+            totalExtracted += toExtract;
+            totalSouls += soulsEarned;
+          }
+        }
+      }
+
+      if (totalExtracted > 0) {
+        if (!this.userStore.profile.souls) this.userStore.profile.souls = 0;
+        this.userStore.profile.souls += totalSouls;
+
+        logsManager.log(this.userStore.profile.name, 'AUTO_EXTRACT', `Extraction Auto collection ${this.collection.name}: ${totalExtracted} Foils pour ${totalSouls} âmes.`);
+
+        await this.userStore.profile.save();
+        achievementsManager.checkForAchievements();
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Extraction Auto Terminée',
+          text: `Vous avez extrait ${totalExtracted} cartes Foil pour ${totalSouls} âmes.`
+        });
+      } else {
+        Swal.fire({
+          icon: 'info',
+          title: 'Rien à extraire',
+          text: `Aucune carte Foil en excès trouvée (Garder au moins ${minKeep}).`
         });
       }
     }

@@ -1,167 +1,198 @@
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore"
-import Profile from './Profile.js'
-import Card from './Card.js'
-import Collection from './Collection.js'
-import Settings from './Settings.js'
-import achievementsData from '@/data/achievements.json'
+import Profile from "./Profile.js"
+import Card from "./Card.js"
+import Collection from "./Collection.js"
+import Settings from "./Settings.js"
+import achievementsData from "@/data/achievements.json"
+import notifManager from "@/assets/functions/notifManager.js"
 
 const db = getFirestore()
 const docRef = doc(db, "general", "leaderboard")
 
 class Leaderboard {
-    constructor(updatedAt, players) {
-        this.updatedAt = updatedAt || 0
-        this.players = players || []
-    }
+	constructor(updatedAt, players) {
+		this.updatedAt = updatedAt || 0
+		this.players = players || []
+	}
 
-    static async getOrUpdate() {
-        const snapshot = await getDoc(docRef)
-        const data = snapshot.exists() ? snapshot.data() : null
+	static async getOrUpdate() {
+		const snapshot = await getDoc(docRef)
+		const data = snapshot.exists() ? snapshot.data() : null
 
-        const now = Date.now()
-        // Check if data exists and is fresh (less than 10 minutes old)
-        if (data && (now - data.updatedAt < 10 * 60 * 1000)) {
-            return new Leaderboard(data.updatedAt, data.players)
-        }
+		const now = Date.now()
+		// Check if data exists and is fresh (less than 10 minutes old)
+		if (data && now - data.updatedAt < 10 * 60 * 1000) {
+			return new Leaderboard(data.updatedAt, data.players)
+		}
 
-        // Otherwise recalculate
-        return await this.recalculate()
-    }
+		// Otherwise recalculate
+		return await this.recalculate()
+	}
 
-    static async recalculate() {
-        // Fetch specific data needed for calculation
-        const [cards, allCollections, profiles, settings] = await Promise.all([
-            Card.getAll(),
-            Collection.getAll(),
-            Profile.getAll(),
-            Settings.getById("general")
-        ])
+	static async recalculate() {
+		// Fetch specific data needed for calculation
+		const [cards, allCollections, profiles, settings] = await Promise.all([Card.getAll(), Collection.getAll(), Profile.getAll(), Settings.getById("general")])
 
-        const collections = allCollections.filter(c => c.isPublic)
+		const collections = allCollections.filter((c) => c.isPublic)
 
-        const pointsConfig = {
-            common: settings.rarityPoints.common,
-            silver: settings.rarityPoints.silver,
-            gold: settings.rarityPoints.golden,
-            foil: settings.rarityPoints.foil,
-            souls: settings.soulPoints || 100
-        }
+		const pointsConfig = {
+			common: settings.rarityPoints.common,
+			silver: settings.rarityPoints.silver,
+			gold: settings.rarityPoints.golden,
+			foil: settings.rarityPoints.foil,
+			souls: settings.soulPoints || 100,
+		}
 
-        const players = profiles
-            .filter(profile => {
-                if (!profile.activated) return false
-                if (profile.stats && profile.stats.public === false) return false
-                return true
-            })
-            .map(profile => {
-                const stats = this.calculatePlayerStats(profile, cards, collections, achievementsData, settings, pointsConfig)
-                return stats
-            })
+		const players = profiles
+			.filter((profile) => {
+				if (!profile.activated) return false
+				if (profile.stats && profile.stats.public === false) return false
+				return true
+			})
+			.map((profile) => {
+				const stats = this.calculatePlayerStats(profile, cards, collections, achievementsData, settings, pointsConfig)
+				return stats
+			})
 
-        // Sort by score descending
-        players.sort((a, b) => b.score - a.score)
+		// Sort by score descending
+		players.sort((a, b) => b.score - a.score)
 
-        const leaderboard = new Leaderboard(Date.now(), players)
-        await leaderboard.save()
-        return leaderboard
-    }
+		// Check for Rank Achievements
+		for (let i = 0; i < players.length; i++) {
+			if (i >= 20) break
+			const playerStats = players[i]
+			const profile = profiles.find((p) => p.id === playerStats.id)
 
-    static calculatePlayerStats(profile, allCards, allCollections, achievementsData, settings, pointsConfig) {
-        const userCards = profile.cards || {}
-        const cardCounts = { common: 0, silver: 0, gold: 0, foil: 0 }
-        const completed = { common: 0, silver: 0, gold: 0, foil: 0 }
+			if (profile) {
+				let changes = false
+				if (!profile.achievements) profile.achievements = {}
 
-        // --- 1. Unique Card Counts ---
-        Object.entries(userCards).forEach(([cardId, cardData]) => {
-            const cardDef = allCards.find(c => c.id === cardId)
-            if (!cardDef) return
+				// Top 10
+				if (i < 20 && !profile.achievements["top_10_collectionneurs"]) {
+					profile.achievements["top_10_collectionneurs"] = true
+					notifManager.sendAchievementNotif(profile.id, "top_10_collectionneurs", "Vous avez atteint le top 10 du classement !")
+					changes = true
+				}
+				// Top 5
+				if (i < 5 && !profile.achievements["top_5_collectionneurs"]) {
+					profile.achievements["top_5_collectionneurs"] = true
+					notifManager.sendAchievementNotif(profile.id, "top_5_collectionneurs", "Vous avez atteint le top 5 du classement !")
+					changes = true
+				}
+				// Top 3
+				if (i < 3 && !profile.achievements["top_3_collectionneurs"]) {
+					profile.achievements["top_3_collectionneurs"] = true
+					notifManager.sendAchievementNotif(profile.id, "top_3_collectionneurs", "Vous avez atteint le top 3 du classement !")
+					changes = true
+				}
+				// Top 1
+				if (i === 0 && !profile.achievements["le_roi_des_collectionneurs"]) {
+					profile.achievements["le_roi_des_collectionneurs"] = true
+					notifManager.sendAchievementNotif(profile.id, "le_roi_des_collectionneurs", "Vous avez atteint la première place du classement !")
+					changes = true
+				}
 
-            // Verify the card belongs to a valid (public) collection
-            const collectionDef = allCollections.find(c => c.id === cardDef.collection)
-            if (!collectionDef) return
+				if (changes) {
+					await profile.save()
+				}
+			}
+		}
 
-            if (!profile.collections || !profile.collections[cardDef.collection]) return
+		const leaderboard = new Leaderboard(Date.now(), players)
+		await leaderboard.save()
+		return leaderboard
+	}
 
-            if (cardData.common > 0) cardCounts.common++
-            if (cardData.silver > 0) cardCounts.silver++
-            if ((cardData.golden || cardData.gold) > 0) cardCounts.gold++
-            if (cardData.foil > 0) cardCounts.foil++
-        })
+	static calculatePlayerStats(profile, allCards, allCollections, achievementsData, settings, pointsConfig) {
+		const userCards = profile.cards || {}
+		const cardCounts = { common: 0, silver: 0, gold: 0, foil: 0 }
+		const completed = { common: 0, silver: 0, gold: 0, foil: 0 }
 
-        // --- 2. Collection Completion ---
-        allCollections.forEach(collection => {
-            if (!profile.collections || !profile.collections[collection.id]) return
+		// --- 1. Unique Card Counts ---
+		Object.entries(userCards).forEach(([cardId, cardData]) => {
+			const cardDef = allCards.find((c) => c.id === cardId)
+			if (!cardDef) return
 
-            const collectionCardIds = allCards
-                .filter(c => c.collection === collection.id)
-                .map(c => c.id)
+			// Verify the card belongs to a valid (public) collection
+			const collectionDef = allCollections.find((c) => c.id === cardDef.collection)
+			if (!collectionDef) return
 
-            if (collectionCardIds.length === 0) return
+			if (!profile.collections || !profile.collections[cardDef.collection]) return
 
-            const isComplete = (rarityKey) => {
-                return collectionCardIds.every(cardId => {
-                    const owned = userCards[cardId]
-                    const key = rarityKey === 'gold' ? 'golden' : rarityKey
-                    return owned && owned[key] > 0
-                })
-            }
+			if (cardData.common > 0) cardCounts.common++
+			if (cardData.silver > 0) cardCounts.silver++
+			if ((cardData.golden || cardData.gold) > 0) cardCounts.gold++
+			if (cardData.foil > 0) cardCounts.foil++
+		})
 
-            if (isComplete('common')) completed.common++
-            if (isComplete('silver')) completed.silver++
-            if (isComplete('gold')) completed.gold++
-            if (isComplete('foil')) completed.foil++
-        })
+		// --- 2. Collection Completion ---
+		allCollections.forEach((collection) => {
+			if (!profile.collections || !profile.collections[collection.id]) return
 
-        // --- 3. Achievement Points ---
-        let achievementPoints = 0
-        if (profile.achievements) {
-            achievementsData.forEach(ach => {
-                if (profile.achievements[ach.id] === true) {
-                    achievementPoints += ach.points
-                }
-            })
-        }
+			const collectionCardIds = allCards.filter((c) => c.collection === collection.id).map((c) => c.id)
 
-        // --- 4. Score Calculation ---
-        const getMultiplier = (type) => 1 + ((completed[type] || 0) * settings.collectionMultiplier)
+			if (collectionCardIds.length === 0) return
 
-        let soulsScore = 0
-        const souls = profile.souls || 0
-        if (souls > 0) {
-            soulsScore = (Math.floor(Math.log2(souls)) + 1) * pointsConfig.souls
-        }
+			const isComplete = (rarityKey) => {
+				return collectionCardIds.every((cardId) => {
+					const owned = userCards[cardId]
+					const key = rarityKey === "gold" ? "golden" : rarityKey
+					return owned && owned[key] > 0
+				})
+			}
 
-        const score = (cardCounts.common * pointsConfig.common * getMultiplier('common')) +
-            (cardCounts.silver * pointsConfig.silver * getMultiplier('silver')) +
-            (cardCounts.gold * pointsConfig.gold * getMultiplier('gold')) +
-            (cardCounts.foil * pointsConfig.foil * getMultiplier('foil')) +
-            soulsScore + 
-            achievementPoints
+			if (isComplete("common")) completed.common++
+			if (isComplete("silver")) completed.silver++
+			if (isComplete("gold")) completed.gold++
+			if (isComplete("foil")) completed.foil++
+		})
 
-        return {
-            id: profile.id,
-            name: profile.name || 'Joueur Inconnu',
-            // isCurrentUser checked in View using ID
-            achievementPoints: achievementPoints,
-            cards: cardCounts,
-            souls: profile.souls || 0,
-            completedCollections: completed,
-            score: score,
-            multipliers: {
-                common: getMultiplier('common'),
-                silver: getMultiplier('silver'),
-                gold: getMultiplier('gold'),
-                foil: getMultiplier('foil')
-            }
-        }
-    }
+		// --- 3. Achievement Points ---
+		let achievementPoints = 0
+		if (profile.achievements) {
+			achievementsData.forEach((ach) => {
+				if (profile.achievements[ach.id] === true) {
+					achievementPoints += ach.points
+				}
+			})
+		}
 
-    async save() {
-        await setDoc(docRef, {
-            updatedAt: this.updatedAt,
-            players: this.players
-        })
-    }
+		// --- 4. Score Calculation ---
+		const getMultiplier = (type) => 1 + (completed[type] || 0) * settings.collectionMultiplier
+
+		let soulsScore = 0
+		const souls = profile.souls || 0
+		if (souls > 0) {
+			soulsScore = (Math.floor(Math.log2(souls)) + 1) * pointsConfig.souls
+		}
+
+		const score = cardCounts.common * pointsConfig.common * getMultiplier("common") + cardCounts.silver * pointsConfig.silver * getMultiplier("silver") + cardCounts.gold * pointsConfig.gold * getMultiplier("gold") + cardCounts.foil * pointsConfig.foil * getMultiplier("foil") + soulsScore + achievementPoints
+
+		return {
+			id: profile.id,
+			name: profile.name || "Joueur Inconnu",
+			// isCurrentUser checked in View using ID
+			achievementPoints: achievementPoints,
+			cards: cardCounts,
+			souls: profile.souls || 0,
+      soulsScore: soulsScore,
+			completedCollections: completed,
+			score: score,
+			multipliers: {
+				common: getMultiplier("common"),
+				silver: getMultiplier("silver"),
+				gold: getMultiplier("gold"),
+				foil: getMultiplier("foil"),
+			},
+		}
+	}
+
+	async save() {
+		await setDoc(docRef, {
+			updatedAt: this.updatedAt,
+			players: this.players,
+		})
+	}
 }
 
 export default Leaderboard

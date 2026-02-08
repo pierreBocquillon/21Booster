@@ -233,6 +233,20 @@ let achievementsManager = {
 					unlocked = (profile.souls || 0) >= 100
 					break
 
+				// Money
+				case "l_argent_ne_fait_pas_le_bonheur":
+					unlocked = (profile.cash || 0) >= 1000
+					break
+				case "je_suis_riche":
+					unlocked = (profile.cash || 0) >= 5000
+					break
+				case "je_nage_dans_les_card_coins":
+					unlocked = (profile.cash || 0) >= 10000
+					break
+				case "l_evasions_fiscale_ca_me_connait":
+					unlocked = (profile.cash || 0) >= 25000
+					break
+
 				// Collections
 				case "addiction_aux_classiques":
 					unlocked = builtCollections.common >= 1

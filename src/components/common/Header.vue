@@ -11,6 +11,17 @@
         <v-img src="/card-soul.png" height="38" width="38"></v-img>
         <h3>&nbsp;x&nbsp;</h3>
         <h2>{{ formatMoney(userStore.profile?.souls) }}</h2>
+        <v-tooltip activator="parent" location="bottom">
+          <div class="text-center" style="min-width: 220px;">
+            <div class="mb-2">Score actuel : {{ currentSoulPoints }} pts</div>
+            <div v-if="nextSoulMilestone" class="mb-1">Prochain palier : {{ nextSoulMilestone }} âmes ({{ nextSoulPoints }} pts)</div>
+            <v-progress-linear v-if="nextSoulMilestone" :model-value="milestoneProgress" color="light-blue" height="18" rounded>
+              <template v-slot:default="{ value }">
+                <strong style="font-size: 11px">{{ Math.round(value) }}%</strong>
+              </template>
+            </v-progress-linear>
+          </div>
+        </v-tooltip>
       </div>
 
       <div class="mr-5 d-flex flex-row align-center justify-center cursor-pointer" @click="handleCashClick">
@@ -44,21 +55,21 @@
 
           <v-list-item @click="reset">
             <div class="d-flex align-center">
-                  <v-img height="42" width="42" src="/nav/reset.png"></v-img>
+              <v-img height="42" width="42" src="/nav/reset.png"></v-img>
               <h3 class="w-100 font-weight-regular">Réinitialiser mon profil</h3>
             </div>
           </v-list-item>
 
           <v-list-item @click="openResetPasswordDialog">
             <div class="d-flex align-center">
-                  <v-img height="42" width="42" src="/nav/changePassword.png"></v-img>
+              <v-img height="42" width="42" src="/nav/changePassword.png"></v-img>
               <h3 class="w-100 font-weight-regular">Changer mon mot de passe</h3>
             </div>
           </v-list-item>
 
           <v-list-item @click="logout">
             <div class="d-flex align-center">
-                  <v-img height="42" width="42" src="/nav/quit.png"></v-img>
+              <v-img height="42" width="42" src="/nav/quit.png"></v-img>
               <h3 class="w-100 font-weight-regular">Se déconnecter</h3>
             </div>
           </v-list-item>
@@ -117,11 +128,11 @@
           <v-btn icon variant="tonal" @click="nextText" v-if="textSeq != 1"><v-icon>mdi-arrow-right</v-icon></v-btn>
         </v-sheet>
         <v-img src="/demon_full.png" height="400" contain style="opacity: 1; transition: opacity 0.3s;" :style="{ opacity: textSeq == 1 ? '0.3' : '1' }"></v-img>
-        
+
         <div v-if="textSeq == 1" class="d-flex flex-wrap justify-center align-center position-absolute w-100 h-100" style="top:0; left:0; padding-top: 80px; overflow-y: auto;">
-            <v-card v-for="booster in publicBoosters" :key="booster.id" class="ma-2 cursor-pointer elevation-4" @click="pickBooster(booster)" width="120" color="surface">
-                <v-img :src="'/boosters/' + booster.image" height="200" cover class="align-end"></v-img>
-            </v-card>
+          <v-card v-for="booster in publicBoosters" :key="booster.id" class="ma-2 cursor-pointer elevation-4" @click="pickBooster(booster)" width="120" color="surface">
+            <v-img :src="'/boosters/' + booster.image" height="200" cover class="align-end"></v-img>
+          </v-card>
         </div>
       </v-card>
     </v-dialog>
@@ -129,7 +140,7 @@
   </v-app-bar>
 </template>
 <script>
-import { getAuth, signOut, updatePassword, EmailAuthProvider, reauthenticateWithCredential} from "firebase/auth"
+import { getAuth, signOut, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth"
 
 import { useUserStore } from '@/store/user.js'
 import Swal from 'sweetalert2/dist/sweetalert2.js'
@@ -178,9 +189,9 @@ export default {
       this.sellers = list
     }).then(unsub => {
       this.unsubSellers = unsub
-    this.unsub.push(Booster.listenAll((list) => {
-      this.boosters = list
-    }))
+      this.unsub.push(Booster.listenAll((list) => {
+        this.boosters = list
+      }))
     }))
   },
   beforeUnmount() {
@@ -230,16 +241,45 @@ export default {
           currentGroup = []
         }
       }
-      return filteredItems    
+      return filteredItems
     },
     publicBoosters() {
       return this.boosters.filter(b => b.canBuy)
     },
+    currentSoulPoints() {
+      const souls = this.userStore.profile?.souls || 0
+      if (souls <= 0) return 0
+      return (Math.floor(Math.log2(souls)) + 1) * (this.settings.soulPoints || 100)
+    },
+    nextSoulMilestone() {
+      const souls = this.userStore.profile?.souls || 0
+      if (souls <= 0) return 1
+      // Next power of 2
+      const power = Math.floor(Math.log2(souls)) + 1
+      return Math.pow(2, power)
+    },
+    nextSoulPoints() {
+      const souls = this.userStore.profile?.souls || 0
+      const basePoints = this.settings.soulPoints || 100
+      let nextPower = 0
+      if (souls <= 0) {
+        nextPower = 0
+      } else {
+        nextPower = Math.floor(Math.log2(souls)) + 1
+      }
+      return (nextPower + 1) * basePoints
+    },
+    milestoneProgress() {
+      const souls = this.userStore.profile?.souls || 0
+      const next = this.nextSoulMilestone
+
+      return ((souls) / (next)) * 100
+    }
   },
   methods: {
     async nextText() {
       this.textSeq++
-      if (this.textSeq > 2){
+      if (this.textSeq > 2) {
         this.showEasterEggDialog = false
 
         if (this.userStore.profile) {
@@ -247,7 +287,7 @@ export default {
 
           if (!this.userStore.profile.achievements['un_visiteur_demoniaque']) {
             this.userStore.profile.achievements['un_visiteur_demoniaque'] = true;
-            
+
             notifManager.sendAchievementNotif(this.userStore.profile.id, 'un_visiteur_demoniaque', 'Vous avez obtenues le succès "Un visiteur demoniaque" !');
             await this.userStore.profile.save();
           }
@@ -262,9 +302,9 @@ export default {
       if (!this.userStore.profile.boosters) this.userStore.profile.boosters = {}
       this.userStore.profile.boosters[booster.id] = (this.userStore.profile.boosters[booster.id] || 0) + 1
       await this.userStore.profile.save()
-      
+
       logsManager.log(this.userStore.profile.name, 'EASTER_EGG', `A reçu le booster ${booster.name}`)
-      
+
       this.textSeq++
     },
     handleMenuClick() {
@@ -272,7 +312,7 @@ export default {
 
       this.menuClickCount++
       if (this.menuClickTimer) clearTimeout(this.menuClickTimer)
-      
+
       if (this.menuClickCount >= 10) {
         this.showEasterEggDialog = true
         this.menuClickCount = 0
@@ -297,7 +337,7 @@ export default {
     async resetPassword() {
       const user = this.auth.currentUser
 
-      if(this.newPasswordA !== this.newPasswordB) {
+      if (this.newPasswordA !== this.newPasswordB) {
         Swal.fire({
           icon: 'error',
           title: 'Erreur',
@@ -410,7 +450,7 @@ export default {
 
         if (!this.userStore.profile.achievements['ou_est_mon_dealer']) {
           this.userStore.profile.achievements['ou_est_mon_dealer'] = true;
-          
+
           notifManager.sendAchievementNotif(this.userStore.profile.id, 'ou_est_mon_dealer', 'Vous avez obtenues le succès "Où est mon dealer" !');
           await this.userStore.profile.save();
         }
@@ -422,7 +462,7 @@ export default {
   },
   beforeUnmount() {
     this.unsub.forEach(unsub => {
-      if(typeof unsub === 'function') unsub();
+      if (typeof unsub === 'function') unsub();
     })
   },
 }

@@ -144,9 +144,22 @@ export default {
 
       // Trigger Achievement if not already
       if (!this.userStore.profile.achievements) this.userStore.profile.achievements = {};
+      
+      let achievementsChanged = false;
+
       if (!this.userStore.profile.achievements['casino']) {
         this.userStore.profile.achievements['casino'] = true;
         notifManager.sendAchievementNotif(this.userStore.profile.id, 'casino', 'Vous avez lancé la roue du casino !');
+        achievementsChanged = true;
+      }
+
+      if (cost >= 500 && !this.userStore.profile.achievements['c_est_meme_pas_rentable']) {
+        this.userStore.profile.achievements['c_est_meme_pas_rentable'] = true;
+        notifManager.sendAchievementNotif(this.userStore.profile.id, 'c_est_meme_pas_rentable', 'C\'est même pas rentable.');
+        achievementsChanged = true;
+      }
+
+      if (achievementsChanged) {
         await this.userStore.profile.save();
       }
 
