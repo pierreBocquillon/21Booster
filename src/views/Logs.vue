@@ -31,6 +31,10 @@
           <v-icon>mdi-database-arrow-down</v-icon>
           Extraire les données de vente
         </v-btn>
+        <!-- <v-btn color="green" @click="extractBalancingData" class="mx-2">
+          <v-icon>mdi-finance</v-icon>
+          Extraire les données d'aquilibrage
+        </v-btn> -->
       </div>
     </v-card>
   </div>
@@ -55,7 +59,7 @@ export default {
       pageSize: 50,
       loading: false,
       userList: [],
-      typeList: ['OPEN', 'CASINO', 'BUY', 'MODERATION', 'DESTROY', 'DAILY_BONUS', 'CODE', 'EASTER_EGG', 'CONFIG', 'TRANSACTION', 'RESET', 'PASSWORD']
+      typeList: ['OPEN', 'CASINO', 'BUY', 'MODERATION', 'DESTROY', 'AUTO_DESTROY' , 'DAILY_BONUS', 'CODE', 'EASTER_EGG', 'CONFIG', 'TRANSACTION', 'RESET', 'PASSWORD']
     }
   },
   mounted() {
@@ -335,6 +339,123 @@ export default {
 
       } catch (e) {
         console.error("Erreur export excel", e)
+      }
+    },
+    async extractBalancingData() {
+      try {
+        const types = ['TRANSACTION', 'BUY', 'RESET', 'CODE']
+        let allLogs = []
+
+        for (const type of types) {
+           const typeLogs = await Log.getAllByFilters({ type })
+           allLogs = allLogs.concat(typeLogs)
+        }
+
+        // Tri par date croissante pour rejouer l'historique
+        allLogs.sort((a, b) => {
+          let dateA = (a.date && a.date.seconds) ? a.date.seconds * 1000 : new Date(a.date).getTime()
+          let dateB = (b.date && b.date.seconds) ? b.date.seconds * 1000 : new Date(b.date).getTime()
+          return dateA - dateB
+        })
+
+        const userStats = {}
+        const getStats = (username) => {
+          if (!userStats[username]) {
+            userStats[username] = {
+              initialCards: 0,
+              codeBoosters: 0,
+              codeCoins: 0,
+              boughtCoins: 0,
+              boughtBoosters: 0
+            }
+          }
+          return userStats[username]
+        }
+
+        for (const log of allLogs) {
+          const user = log.user
+          const desc = log.description || ""
+
+          if (log.type === 'RESET') {
+            if (userStats[user]) {
+              // Réinitialisation des stats de cet utilisateur
+              delete userStats[user]
+            }
+            continue
+          }
+
+          if (log.type === 'TRANSACTION') {
+             // "A ajouté X card coin(s) à USER"
+             const match = desc.match(/A ajouté (\d+) card coin\(s\) à (.*)/)
+             if (match) {
+                 const amount = parseInt(match[1])
+                 const targetUser = match[2].trim()
+                 getStats(targetUser).boughtCoins += amount
+             }
+          } else if (log.type === 'BUY') {
+              // "Acheté X booster(s)"
+              const match = desc.match(/Acheté (\d+) booster\(s\)/)
+              if (match) {
+                  getStats(user).boughtBoosters += parseInt(match[1])
+              }
+          } else if (log.type === 'CODE') {
+              const isOld = desc.toLowerCase().includes('old') || desc.toLowerCase().includes('héritage') || desc.toLowerCase().includes('ancien temps')
+
+              if (isOld) {
+                  const match = desc.match(/(\d+)\s+Carte/i)
+                  if (match) {
+                      getStats(user).initialCards += parseInt(match[1])
+                  }
+              } else {
+                  const boosterMatch = desc.match(/(\d+)\s+Booster/i)
+                  if (boosterMatch) {
+                      getStats(user).codeBoosters += parseInt(boosterMatch[1])
+                  }
+
+                  const coinMatch = desc.match(/(\d+)\s+Card coin/i)
+                  if (coinMatch) {
+                      getStats(user).codeCoins += parseInt(coinMatch[1])
+                  }
+              }
+          }
+        }
+
+        // Génération Excel
+        const headers = [
+             "Nom", 
+             "Cartes Initiales (Old)", 
+             "Boosters (Code)", 
+             "Card Coins (Code)", 
+             "Card Coins Achetés", 
+             "Boosters Achetés"
+        ]
+        
+        const data = Object.keys(userStats).sort().map(user => {
+            const s = userStats[user]
+            return {
+                "Nom": user,
+                "Cartes Initiales (Old)": s.initialCards,
+                "Boosters (Code)": s.codeBoosters,
+                "Card Coins (Code)": s.codeCoins,
+                "Card Coins Achetés": s.boughtCoins,
+                "Boosters Achetés": s.boughtBoosters
+            }
+        })
+        
+        const wb = XLSX.utils.book_new()
+        const ws = XLSX.utils.json_to_sheet(data, { header: headers }) // force order
+        
+        // Auto-width
+        const wscols = headers.map(h => ({ wch: h.length + 5 }))
+        // Adjust known columns if needed
+        wscols[0] = { wch: 20 } // Name
+        ws['!cols'] = wscols
+        
+        XLSX.utils.book_append_sheet(wb, ws, "Balancing Data")
+        XLSX.writeFile(wb, "Balancing_Data.xlsx")
+
+      } catch (e) {
+        console.error("Erreur extractBalancingData", e)
       }
     },
     getWeekRange(date) {
