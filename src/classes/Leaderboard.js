@@ -5,6 +5,7 @@ import Collection from "./Collection.js"
 import Settings from "./Settings.js"
 import achievementsData from "@/data/achievements.json"
 import notifManager from "@/assets/functions/notifManager.js"
+import blacklistData from "@/data/leaderboardBlacklist.json"
 
 const db = getFirestore()
 const docRef = doc(db, "general", "leaderboard")
@@ -33,7 +34,7 @@ class Leaderboard {
 		// Fetch specific data needed for calculation
 		const [cards, allCollections, profiles, settings] = await Promise.all([Card.getAll(), Collection.getAll(), Profile.getAll(), Settings.getById("general")])
 
-		const collections = allCollections.filter((c) => c.isPublic)
+		const collections = allCollections.filter((c) => c.isPublic && !blacklistData.includes(c.id))
 
 		const pointsConfig = {
 			common: settings.rarityPoints.common,
@@ -115,7 +116,7 @@ class Leaderboard {
 
 			// Verify the card belongs to a valid (public) collection
 			const collectionDef = allCollections.find((c) => c.id === cardDef.collection)
-			if (!collectionDef) return
+			if (!collectionDef || blacklistData.includes(collectionDef.id)) return
 
 			if (!profile.collections || !profile.collections[cardDef.collection]) return
 
@@ -127,6 +128,7 @@ class Leaderboard {
 
 		// --- 2. Collection Completion ---
 		allCollections.forEach((collection) => {
+			if (blacklistData.includes(collection.id)) return
 			if (!profile.collections || !profile.collections[collection.id]) return
 
 			const collectionCardIds = allCards.filter((c) => c.collection === collection.id).map((c) => c.id)
