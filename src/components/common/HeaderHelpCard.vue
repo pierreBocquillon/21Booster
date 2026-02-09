@@ -74,11 +74,12 @@
         </v-expansion-panels>
       </div>
       <div class="my-4 mt-6">
-        <h3 class="text-primary my-2">🗂️ 3. Gestion des collections, Forge et Cimetière</h3>
+        <h3 class="text-primary my-2">🗂️ 3. Gestion des collections, Extractions, Forge et Cimetière</h3>
         <p class="my-2">L'onglet Collections est votre quartier général. C'est ici que vous admirez votre butin, mais c'est aussi un atelier stratégique pour gérer vos doublons.</p>
         <ul class="ml-4">
           <li><strong>Le Cimetière (Recyclage) :</strong> Vos cartes en double ne sont jamais perdues. "Sacrifiez-les" pour récupérer des Card Coins et acheter de nouveaux boosters.</li>
           <li><strong>La Forge (Fusion) :</strong> Ciblez l'excellence ! Combinez plusieurs exemplaires d'une même carte pour en forger une variante de qualité supérieure.</li>
+          <li><strong>L'Extraction :</strong> Sélectionnez des cartes foil pour en extraire les âmes qu'elles contiennent afin d'améliorer votre classement. (gagnez des points de classement chaque fois que votre nombre total d'âmes double)</li>
         </ul>
         <v-expansion-panels class="my-2">
           <v-expansion-panel>
@@ -125,6 +126,25 @@
                   </tr>
                 </tbody>
               </v-table>
+            </v-expansion-panel-text>
+          </v-expansion-panel>
+        </v-expansion-panels>
+
+        <v-expansion-panels class="my-2">
+          <v-expansion-panel>
+            <v-expansion-panel-title>
+              <strong>Voir les valeurs d'extraction :</strong>
+            </v-expansion-panel-title>
+            <v-expansion-panel-text>
+              <div class="pl-10">
+                <p class="mb-2">Nombre d'âmes obtenues par extraction (uniquement cartes foil) :</p>
+                <ul>
+                  <li><strong>Commune : </strong> {{ settings.raritySoul.common }} âmes</li>
+                  <li><strong>Inhabituelle : </strong> {{ settings.raritySoul.uncommon }} âmes</li>
+                  <li><strong>Rare : </strong> {{ settings.raritySoul.rare }} âmes</li>
+                  <li><strong>Mythique : </strong> {{ settings.raritySoul.mythic }} âmes</li>
+                </ul>
+              </div>
             </v-expansion-panel-text>
           </v-expansion-panel>
         </v-expansion-panels>

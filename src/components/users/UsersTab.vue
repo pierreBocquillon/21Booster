@@ -196,7 +196,7 @@
         <v-card-text>
           <v-row>
             <v-col cols="12">
-              <v-select label="Utilisateurs" v-model="selectedGiveawayUsers" :items="users" item-title="name" item-value="id" multiple chips closable-chips clearable></v-select>
+              <v-autocomplete label="Utilisateurs" v-model="selectedGiveawayUsers" :items="users" item-title="name" item-value="id" multiple chips closable-chips clearable></v-autocomplete>
             </v-col>
             
             <v-col cols="12">
@@ -215,12 +215,27 @@
 
             <!-- Boosters -->
             <v-col cols="12" sm="6">
-              <v-select label="Booster" v-model="selectedGiveawayBooster" :items="boosters" item-title="name" item-value="id" clearable>
-                <template v-slot:item="{ props, item }">
-                  <v-list-item v-bind="props" :subtitle="'( ' + item.raw.size + ' Cartes )'"></v-list-item>
-                </template>
-              </v-select>
-              <v-text-field v-if="selectedGiveawayBooster" label="Quantité de boosters" v-model.number="giveawayBoosterQuantity" type="number" min="1"></v-text-field>
+              <v-card variant="outlined" class="pa-4 h-100">
+                <v-card-subtitle class="pl-0 mb-2">Boosters</v-card-subtitle>
+                <div class="d-flex align-center">
+                  <v-select label="Booster" v-model="selectedGiveawayBooster" :items="boosters" item-title="name" item-value="id" clearable density="compact" hide-details class="mr-2">
+                    <template v-slot:item="{ props, item }">
+                      <v-list-item v-bind="props" :subtitle="'( ' + item.raw.size + ' Cartes )'"></v-list-item>
+                    </template>
+                  </v-select>
+                  <v-text-field label="Qté" v-model.number="giveawayBoosterQuantity" type="number" min="1" density="compact" hide-details style="max-width: 80px;" class="mr-2"></v-text-field>
+                  <v-btn icon="mdi-plus" size="small" color="success" @click="addGiveawayBooster" :disabled="!selectedGiveawayBooster"></v-btn>
+                </div>
+                
+                <v-list density="compact" class="mt-2 bg-transparent" v-if="giveawayBoostersList.length > 0">
+                  <v-list-item v-for="(item, index) in giveawayBoostersList" :key="index">
+                    <v-list-item-title>{{ item.name }} x {{ item.quantity }}</v-list-item-title>
+                    <template v-slot:append>
+                      <v-btn icon="mdi-close" size="x-small" variant="text" color="error" @click="removeGiveawayBooster(index)"></v-btn>
+                    </template>
+                  </v-list-item>
+                </v-list>
+              </v-card>
             </v-col>
 
             <!-- Collections -->
@@ -228,28 +243,40 @@
               <v-select label="Déverrouiller des collections" v-model="selectedGiveawayCollections" :items="allCollections" item-title="name" item-value="id" multiple chips closable-chips></v-select>
             </v-col>
 
-            <!-- Single Card -->
+            <!-- Multiple Cards -->
             <v-col cols="12">
               <v-card variant="outlined" class="pa-4">
-                <v-card-subtitle class="pl-0">Donner une carte spécifique</v-card-subtitle>
-                <v-row class="mt-2 text-center">
-                  <v-col cols="12" sm="6">
-                    <v-select label="Collection" v-model="selectedGiveawayCardCollection" :items="allCollections" item-title="name" item-value="id" clearable @update:model-value="selectedGiveawayCard = null"></v-select>
+                <v-card-subtitle class="pl-0">Ajouter des cartes</v-card-subtitle>
+                <v-row class="mt-2 align-center">
+                  <v-col cols="12" sm="3">
+                    <v-select label="Collection" v-model="selectedGiveawayCardCollection" :items="allCollections" item-title="name" item-value="id" clearable @update:model-value="selectedGiveawayCard = null" density="compact" hide-details></v-select>
                   </v-col>
-                  <v-col cols="12" sm="6">
-                    <v-select label="Carte" v-model="selectedGiveawayCard" :items="giveawayFilteredCards" item-title="name" item-value="id" :disabled="!selectedGiveawayCardCollection">
+                  <v-col cols="12" sm="3">
+                    <v-select label="Carte" v-model="selectedGiveawayCard" :items="giveawayFilteredCards" item-title="name" item-value="id" :disabled="!selectedGiveawayCardCollection" density="compact" hide-details>
                       <template v-slot:item="{ props, item }">
                         <v-list-item v-bind="props" :title="item.raw.number + ' - ' + item.raw.name"></v-list-item>
                       </template>
                     </v-select>
                   </v-col>
-                  <v-col cols="12" sm="4">
-                    <v-select label="Rareté" v-model="selectedGiveawayCardRarity" :items="rarities" item-title="title" item-value="value"></v-select>
+                  <v-col cols="12" sm="3">
+                    <v-select label="Rareté" v-model="selectedGiveawayCardRarity" :items="rarities" item-title="title" item-value="value" density="compact" hide-details></v-select>
                   </v-col>
-                  <v-col cols="12" sm="4">
-                    <v-text-field label="Quantité" v-model.number="giveawayCardQuantity" type="number" min="1"></v-text-field>
+                  <v-col cols="12" sm="2">
+                    <v-text-field label="Qté" v-model.number="giveawayCardQuantity" type="number" min="1" density="compact" hide-details></v-text-field>
+                  </v-col>
+                   <v-col cols="12" sm="1" class="d-flex justify-center">
+                    <v-btn icon="mdi-plus" size="small" color="success" @click="addGiveawayCard" :disabled="!selectedGiveawayCard"></v-btn>
                   </v-col>
                 </v-row>
+
+                 <v-list density="compact" class="mt-2 bg-transparent" v-if="giveawayCardsList.length > 0">
+                    <v-list-item v-for="(item, index) in giveawayCardsList" :key="index">
+                        <v-list-item-title>{{ item.cardName }} ({{ item.rarityName }}) x {{ item.quantity }}</v-list-item-title>
+                        <template v-slot:append>
+                             <v-btn icon="mdi-close" size="x-small" variant="text" color="error" @click="removeGiveawayCard(index)"></v-btn>
+                        </template>
+                    </v-list-item>
+                 </v-list>
               </v-card>
             </v-col>
           </v-row>
@@ -337,6 +364,8 @@ export default {
       selectedGiveawayCard: null,
       selectedGiveawayCardRarity: 'common',
       giveawayCardQuantity: 1,
+      giveawayBoostersList: [],
+      giveawayCardsList: [],
     }
   },
   mounted() {
@@ -812,16 +841,72 @@ export default {
       link.click()
       URL.revokeObjectURL(url)
     },
+    addGiveawayBooster() {
+      if (!this.selectedGiveawayBooster || this.giveawayBoosterQuantity <= 0) return
+
+      let booster = this.boosters.find(b => b.id === this.selectedGiveawayBooster)
+      if (!booster) return
+
+      // Check if already in list
+      let item = this.giveawayBoostersList.find(b => b.id === this.selectedGiveawayBooster)
+      if (item) {
+        item.quantity += this.giveawayBoosterQuantity
+      } else {
+        this.giveawayBoostersList.push({
+          id: this.selectedGiveawayBooster,
+          name: booster.name,
+          quantity: this.giveawayBoosterQuantity
+        })
+      }
+
+      this.selectedGiveawayBooster = null
+      this.giveawayBoosterQuantity = 1
+    },
+    removeGiveawayBooster(index) {
+      this.giveawayBoostersList.splice(index, 1)
+    },
+    addGiveawayCard() {
+      if (!this.selectedGiveawayCard || this.giveawayCardQuantity <= 0) return
+
+      let card = this.allCards.find(c => c.id === this.selectedGiveawayCard)
+      if (!card) return
+      
+      let rarityName = this.rarities.find(r => r.value === this.selectedGiveawayCardRarity)?.title || this.selectedGiveawayCardRarity
+
+      // Check if already in list (same card AND same rarity)
+      let item = this.giveawayCardsList.find(c => c.id === this.selectedGiveawayCard && c.rarity === this.selectedGiveawayCardRarity)
+      if (item) {
+          item.quantity += this.giveawayCardQuantity
+      } else {
+          this.giveawayCardsList.push({
+              id: this.selectedGiveawayCard,
+              cardName: card.name,
+              rarity: this.selectedGiveawayCardRarity,
+              rarityName: rarityName,
+              quantity: this.giveawayCardQuantity,
+              collectionId: this.selectedGiveawayCardCollection
+          })
+      }
+      
+      // Keep collection selected for ease of adding multiple cards from same collection
+      this.selectedGiveawayCard = null
+      this.giveawayCardQuantity = 1
+    },
+    removeGiveawayCard(index) {
+      this.giveawayCardsList.splice(index, 1)
+    },
     async openGiveaway(){
       this.selectedGiveawayUsers = []
       this.giveawayCash = 0
       this.selectedGiveawayBooster = null
       this.giveawayBoosterQuantity = 1
+      this.giveawayBoostersList = []
       this.selectedGiveawayCollections = []
       this.selectedGiveawayCardCollection = null
       this.selectedGiveawayCard = null
       this.selectedGiveawayCardRarity = 'common'
       this.giveawayCardQuantity = 1
+      this.giveawayCardsList = []
 
       if (this.allCards.length === 0) {
         this.allCards = await Card.getAll()
@@ -867,10 +952,12 @@ export default {
             user.cash += this.giveawayCash
           }
 
-          // Booster
-          if (this.selectedGiveawayBooster && this.giveawayBoosterQuantity > 0) {
-            if (!user.boosters) user.boosters = {}
-            user.boosters[this.selectedGiveawayBooster] = (user.boosters[this.selectedGiveawayBooster] || 0) + this.giveawayBoosterQuantity
+          // Boosters List
+          if (this.giveawayBoostersList.length > 0) {
+              if (!user.boosters) user.boosters = {}
+              this.giveawayBoostersList.forEach(booster => {
+                  user.boosters[booster.id] = (user.boosters[booster.id] || 0) + booster.quantity
+              })
           }
 
           // Collections
@@ -881,13 +968,15 @@ export default {
             })
           }
 
-          // Card
-          if (this.selectedGiveawayCard && this.giveawayCardQuantity > 0) {
-            if (!user.cards) user.cards = {}
-            if (!user.cards[this.selectedGiveawayCard]) {
-              user.cards[this.selectedGiveawayCard] = { common: 0, silver: 0, golden: 0, foil: 0 }
-            }
-            user.cards[this.selectedGiveawayCard][this.selectedGiveawayCardRarity] += this.giveawayCardQuantity
+          // Cards List
+          if (this.giveawayCardsList.length > 0) {
+              if (!user.cards) user.cards = {}
+              this.giveawayCardsList.forEach(card => {
+                  if (!user.cards[card.id]) {
+                      user.cards[card.id] = { common: 0, silver: 0, golden: 0, foil: 0 }
+                  }
+                  user.cards[card.id][card.rarity] += card.quantity
+              })
           }
 
           await user.save()
@@ -900,14 +989,19 @@ export default {
         let summary = `A effectué une distribution collective à ${this.selectedGiveawayUsers.length} utilisateurs : `
         let changes = []
         if (this.giveawayCash > 0) changes.push(`${this.giveawayCash} cash`)
-        if (this.selectedGiveawayBooster) {
-          let bName = this.boosters.find(b => b.id === this.selectedGiveawayBooster)?.name || "booster inconnu"
-          changes.push(`${this.giveawayBoosterQuantity}x booster ${bName}`)
+        
+        if (this.giveawayBoostersList.length > 0) {
+            this.giveawayBoostersList.forEach(b => {
+                changes.push(`${b.quantity}x booster ${b.name}`)
+            })
         }
+        
         if (this.selectedGiveawayCollections.length > 0) changes.push(`${this.selectedGiveawayCollections.length} collection(s) déverrouillée(s)`)
-        if (this.selectedGiveawayCard) {
-          let cName = this.allCards.find(c => c.id === this.selectedGiveawayCard)?.name || "carte inconnue"
-          changes.push(`${this.giveawayCardQuantity}x card ${cName} (${this.selectedGiveawayCardRarity})`)
+        
+        if (this.giveawayCardsList.length > 0) {
+            this.giveawayCardsList.forEach(c => {
+                changes.push(`${c.quantity}x card ${c.cardName} (${c.rarity})`)
+            })
         }
         
         logsManager.log(this.userStore.profile.name, "TRANSACTION", summary + changes.join(', '))
@@ -916,20 +1010,26 @@ export default {
           const user = this.users.find(u => u.id === userId)
           if (!user) continue
 
-          let notifParts = []
           if (this.giveawayCash > 0){
             await notifManager.sendCashNotif(user.id, this.giveawayCash, (this.userStore.profile.name + ' vous a envoyé ' + this.giveawayCash + ' card coin(s).'))
           }
-          if (this.selectedGiveawayBooster) {
-            await notifManager.sendBoosterNotif(user.id, {[this.selectedGiveawayBooster]: this.giveawayBoosterQuantity}, (this.userStore.profile.name + ' vous a envoyé ' + this.giveawayBoosterQuantity + ' booster(s).'))
+           if (this.giveawayBoostersList.length > 0) {
+             let boosterNotif = {}
+             this.giveawayBoostersList.forEach(b => {
+                 boosterNotif[b.id] = b.quantity
+             })
+            let totalBoosters = this.giveawayBoostersList.reduce((acc, b) => acc + b.quantity, 0)
+            await notifManager.sendBoosterNotif(user.id, boosterNotif, (this.userStore.profile.name + ' vous a envoyé ' + totalBoosters + ' booster(s).'))
           }
-          if (this.selectedGiveawayCard) {
-            let cardSent = {}
-            cardSent[this.selectedGiveawayCard] = {
-              amount: this.giveawayCardQuantity,
-              rarity: this.selectedGiveawayCardRarity
+          if (this.giveawayCardsList.length > 0) {
+             for(let cardItem of this.giveawayCardsList) {
+                 let cardSent = {}
+                 cardSent[cardItem.id] = {
+                     amount: cardItem.quantity,
+                     rarity: cardItem.rarity
+                 }
+                 await notifManager.sendCardNotif(user.id, cardSent, (this.userStore.profile.name + ' vous a envoyé ' + cardItem.quantity + ' carte(s).'))
             }
-            await notifManager.sendCardNotif(user.id, cardSent, (this.userStore.profile.name + ' vous a envoyé ' + this.giveawayCardQuantity + ' carte(s).'))
           }
         }
 

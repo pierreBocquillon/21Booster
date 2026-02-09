@@ -120,7 +120,7 @@ const routes = [
 		meta: {
 			needAccount: true,
 			showNav: true,
-			permissions: ["moderator"],
+			permissions: ["seller", "moderator"],
 		},
 	},
 	{

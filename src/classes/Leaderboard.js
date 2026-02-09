@@ -60,7 +60,7 @@ class Leaderboard {
 
 		// Check for Rank Achievements
 		for (let i = 0; i < players.length; i++) {
-			if (i >= 20) break
+			if (i >= 10) break
 			const playerStats = players[i]
 			const profile = profiles.find((p) => p.id === playerStats.id)
 
@@ -69,7 +69,7 @@ class Leaderboard {
 				if (!profile.achievements) profile.achievements = {}
 
 				// Top 10
-				if (i < 20 && !profile.achievements["top_10_collectionneurs"]) {
+				if (i < 10 && !profile.achievements["top_10_collectionneurs"]) {
 					profile.achievements["top_10_collectionneurs"] = true
 					notifManager.sendAchievementNotif(profile.id, "top_10_collectionneurs", "Vous avez atteint le top 10 du classement !")
 					changes = true
