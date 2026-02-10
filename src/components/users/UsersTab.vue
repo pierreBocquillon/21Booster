@@ -10,6 +10,11 @@
         <span v-else-if="!item.activated && userStore.profile.permissions.some(p => ['dev', 'moderator'].includes(p))"><v-icon color="error">mdi-handcuffs</v-icon></span>
       </template>
 
+      <template v-slot:item.rank="{ item }">
+        <span v-if="item.rank && item.rank !== 999999">#{{ item.rank }}</span>
+        <span v-else>-</span>
+      </template>
+
       <template v-slot:item.name="{ item }">
         <span v-if="item.activated">{{ item.name }}</span>
         <span v-else class="text-error">{{ item.name }}</span>
@@ -308,6 +313,7 @@ import logsManager from '@/assets/functions/logsManager.js'
 import notifManager from '@/assets/functions/notifManager.js'
 import achievementsManager from '@/assets/functions/achievementsManager.js'
 import Settings from '@/classes/Settings.js'
+import Leaderboard from '@/classes/Leaderboard.js'
 
 export default {
   data() {
@@ -315,8 +321,10 @@ export default {
       unsub: [],
       functions: getFunctions(),
       userStore: useUserStore(),
+      leaderboardPlayers: [],
       headers: [
         { title: 'Public', key: 'check', sortable: false, align: 'start' },
+        { title: 'Rang', key: 'rank', sortable: true, align: 'start' },
         { title: 'Nom', key: 'name', sortable: true, align: 'start' },
         { title: 'numéro', key: 'phone', sortable: true, align: 'start' },
         { title: 'Permissions', key: 'permissions', sortable: true, align: 'start' },
@@ -368,11 +376,24 @@ export default {
       giveawayCardsList: [],
     }
   },
-  mounted() {
+  async mounted() {
+    try {
+        const lb = await Leaderboard.getOrUpdate()
+        if (lb && lb.players) {
+            this.leaderboardPlayers = lb.players
+        }
+    } catch (e) {
+        console.error("Error fetching leaderboard", e)
+    }
+
     this.unsub.push(Profile.listenAll(users => {
       this.users = users.map(user => {
         if (!user.stats) user.stats = {}
         if (user.stats.public === undefined) user.stats.public = true
+
+        const rankIndex = this.leaderboardPlayers.findIndex(p => p.id === user.id)
+        user.rank = rankIndex !== -1 ? rankIndex + 1 : 999999
+
         return user
       })
       this.users.sort((a, b) => a.name.localeCompare(b.name))
@@ -385,7 +406,7 @@ export default {
         return tmp_headers
       } 
 
-      let keys = ['name','phone','cash','actions']
+      let keys = ['rank', 'name','phone','cash','actions']
 
       if(this.userStore.profile.permissions.includes('moderator')) {
         keys.push('permissions')
@@ -763,6 +784,8 @@ export default {
 
           item.cash += amount
           await item.save()
+
+          achievementsManager.checkForAchievements()
 
           logsManager.log(this.userStore.profile.name, "TRANSACTION", `A ajouté ${amount} card coin(s) à ${item.name}`)
           await notifManager.sendCashNotif(item.id, amount, (this.userStore.profile.name + ' vous a envoyé ' + amount + ' card coin(s).'))

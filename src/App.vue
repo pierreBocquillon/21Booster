@@ -268,6 +268,7 @@ export default {
               } else {
                 this.notifs = []
               }
+              achievementsManager.checkForAchievements()
             }))
 
             this.ready = true
